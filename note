@@ -1,0 +1,18 @@
+
+# [DONE] Angular App setted up for NDF frontend
+# [TODO] List available API endpoints to be consumed
+# SET up laout/ pages for buyer, vendor & admin
+   1 npm run dev
+   2 ng g c buyer
+   3 ng g c admin
+   4 ng g c vendor
+   5 ng g m admin/admin --flat -m app
+   6 ng g m buyer/buyer --flat -m app
+   7 ng g m vendor/vendor --flat -m app
+   8 git add .
+   9 git commit -m'admin, buyer, vendor components and modules created
+
+
+# Usage
+npm start to run development server
+npm run dev to run development server and open brower
