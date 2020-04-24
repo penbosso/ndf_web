@@ -8,7 +8,11 @@ import { SiteFooterComponent } from './layout/site-footer/site-footer.component'
 import { SiteLayoutComponent } from './layout/site-layout/site-layout.component';
 import { CmsLayoutComponent } from './layout/cms-layout/cms-layout.component';
 import { CmsHeaderComponent } from './layout/cms-header/cms-header.component';
+import { from } from 'rxjs';
 
+import { routing } from './app.routing';
+import { NewsComponent } from './news/news.component';
+import { CatalogComponent } from './catalog/catalog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,10 +21,13 @@ import { CmsHeaderComponent } from './layout/cms-header/cms-header.component';
     SiteFooterComponent,
     SiteLayoutComponent,
     CmsLayoutComponent,
-    CmsHeaderComponent
+    CmsHeaderComponent,
+    NewsComponent,
+    CatalogComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

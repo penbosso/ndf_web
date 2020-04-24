@@ -1,18 +1,20 @@
+* generate site home component and layouts
 
-# [DONE] Angular App setted up for NDF frontend
-# [TODO] List available API endpoints to be consumed
-# SET up laout/ pages for buyer, vendor & admin
-   1 npm run dev
-   2 ng g c buyer
-   3 ng g c admin
-   4 ng g c vendor
-   5 ng g m admin/admin --flat -m app
-   6 ng g m buyer/buyer --flat -m app
-   7 ng g m vendor/vendor --flat -m app
-   8 git add .
-   9 git commit -m'admin, buyer, vendor components and modules created
+  19 ng g c home
+  20 ng g c layout/site-header
+  21 ng g c layout/site-footer
+  22 ng g c layout/site-layout
+  23 ng g c layout/cms-layout
+  24 ng g c layout/cms-header
+  25 git add .
+  26 git commit -m'developed layout for site and cms'
 
+* define routes in app.routing.ts
+* add styles to site-header css and remove view style encapsulation.
 
-# Usage
-npm start to run development server
-npm run dev to run development server and open brower
+* include js into scripts of angular.json
+
+* create news and catalog component and route to into
+
+   1 ng g c news
+   2 ng g c catalog

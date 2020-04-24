@@ -26,7 +26,12 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/site/vendor/bootstrap/js/bootstrap.min.js",
+              "src/assets/site/vendor/jquery.cookie/jquery.cookie.js",
+              "src/assets/site/vendor/owl.carousel/owl.carousel.min.js",
+              "src/assets/site/js/front.js"
+            ]
           },
           "configurations": {
             "production": {
