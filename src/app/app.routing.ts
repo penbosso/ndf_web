@@ -1,3 +1,4 @@
+import { VendorHomeComponent } from './cms/vendor-home/vendor-home.component';
 import { NewsComponent } from './news/news.component';
 import { HomeComponent } from './home/home.component';
 import { CmsLayoutComponent } from './layout/cms-layout/cms-layout.component';
@@ -19,7 +20,13 @@ const appRoutes: Routes = [
   },
 
   // cms routes goes here
-
+  {
+    path:'',
+    component: CmsLayoutComponent,
+    children: [
+      {path:'vendor', component: VendorHomeComponent}
+    ]
+  },
 
   // no layout routes goes here
 

@@ -6,3 +6,7 @@
 @import url('../assets/site/vendor/owl.carousel/assets/owl.theme.default.css');
 @import url('../assets/site/css/style.green.css');
 @import url('../assets/site/css/custom.css');
+
+.invalid-feedback {
+  display: inline !important;
+}

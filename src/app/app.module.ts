@@ -13,6 +13,12 @@ import { from } from 'rxjs';
 import { routing } from './app.routing';
 import { NewsComponent } from './news/news.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { VendorHomeComponent } from './cms/vendor-home/vendor-home.component';
+import { AdminHomeComponent } from './cms/admin-home/admin-home.component';
+import { CmsFooterComponent } from './layout/cms-footer/cms-footer.component';
+import { UserComponent } from './user/user.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +29,17 @@ import { CatalogComponent } from './catalog/catalog.component';
     CmsLayoutComponent,
     CmsHeaderComponent,
     NewsComponent,
-    CatalogComponent
+    CatalogComponent,
+    VendorHomeComponent,
+    AdminHomeComponent,
+    CmsFooterComponent,
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     routing
   ],
   providers: [],

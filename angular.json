@@ -30,7 +30,13 @@
               "src/assets/site/vendor/bootstrap/js/bootstrap.min.js",
               "src/assets/site/vendor/jquery.cookie/jquery.cookie.js",
               "src/assets/site/vendor/owl.carousel/owl.carousel.min.js",
-              "src/assets/site/js/front.js"
+              "src/assets/cms/js/require.min.js",
+              "src/assets/cms/js/dashboard.js",
+              "src/assets/cms/plugins/charts-c3/plugin.js",
+              "src/assets/cms/plugins/maps-google/plugin.js",
+              "src/assets/cms/plugins/input-mask/plugin.js",
+              "src/assets/cms/plugins/datatables/plugin.js",
+              "src/assets/cms/plugins/dropzone/dropzone.js"
             ]
           },
           "configurations": {

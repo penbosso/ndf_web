@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-cms-header',
   templateUrl: './cms-header.component.html',
-  styleUrls: ['./cms-header.component.css']
+  styleUrls: ['./cms-header.component.css'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class CmsHeaderComponent implements OnInit {
 

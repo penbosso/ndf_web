@@ -18,7 +18,7 @@
             class="navbar-nav ml-auto align-items-start align-items-lg-center"
           >
             <li class="nav-item">
-              <a [routerLink]="['/']" routerLinkActive="active"class="nav-link link-scroll">Home</a>
+              <a [routerLink]="['/']" routerLinkActive="active" class="nav-link link-scroll">Home</a>
             </li>
             <li class="nav-item">
               <a [routerLink]="['/catalog']" routerLinkActive="active" class="nav-link link-scroll"
@@ -33,7 +33,7 @@
             <!-- Button trigger modal--><a
               href="#"
               data-toggle="modal"
-              data-target="#signup"
+              data-target="#login"
               class="btn btn-primary navbar-btn btn-shadow btn-gradient"
               >Login</a
             >
@@ -50,6 +50,9 @@
         </div>
       </nav>
     </header>
+    <div *ngIf="errorMessage" class="row">
+      <div class="alert alert-danger">{{errorMessage?.message}}</div>
+    </div>
     <!-- Sign up Modal-->
     <div
       id="signup"
@@ -72,39 +75,98 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">
-            <form id="signupform" action="#">
+          <div class="signup-modal-body">
+            <div *ngIf="errorMessage" class="row">
+              <div class="alert alert-danger">{{errorMessage?.message}}</div>
+            </div>
+            <form id="signupform"
+                  [formGroup]="buyerForm"
+                  (ngSubmit)="saveBuyer()">
               <div class="form-group">
-                <label for="fullname">Full Name</label>
+                <label for="FirstName">First Name</label>
                 <input
                   type="text"
-                  name="fullname"
-                  placeholder="Full Name"
-                  id="fullname"
+                  placeholder="First Name"
+                  id="FirstName"
+                  required autofocus
+                  minlength="3"
+                  formControlName="FirstName"
+                  [ngClass]="{'is-invalid': (buyerForm.get('FirstName').touched || buyerForm.get('FirstName').dirty) && !buyerForm.get('FirstName').valid}"
                 />
+                <span class="invalid-feedback">
+                  <span *ngIf="buyerForm.get('FirstName').errors?.minlength">Name must be longer than 3 characters</span>
+                </span>
               </div>
               <div class="form-group">
-                <label for="username">User Name</label>
+                <label for="OtherNames">Other Name(s)</label>
                 <input
                   type="text"
-                  name="username"
-                  placeholder="User Name"
-                  id="username"
-                />
+                  placeholder="Other Name(s)"
+                  id="OtherNames"
+                  minlength="3"
+                  formControlName="OtherNames"
+                  [ngClass]="{'is-invalid': (buyerForm.get('OtherNames').touched || buyerForm.get('OtherNames').dirt) && !buyerForm.get('OtherNames').valid}"/>
+            <span class="invalid-feedback">
+              <span *ngIf="buyerForm.get('OtherNames').errors?.required">Please enter your name</span>
+              <span *ngIf="buyerForm.get('OtherNames').errors?.minlength">Name must be longer than 3 characters</span>
+            </span>
               </div>
               <div class="form-group">
-                <label for="email">Email Address</label>
+                <label for="Telephone">Telephone Number</label>
                 <input
-                  type="text"
-                  name="email"
-                  placeholder="Email Address"
-                  id="email"
-                />
+                  type="tel"
+                  placeholder="Telephone Number"
+                  id="Telephone"
+                  minlength="10"
+                  formControlName="Telephone"
+                  [ngClass]="{'is-invalid': (buyerForm.get('Telephone').touched || buyerForm.get('Telephone').derty) && !buyerForm.get('Telephone').valid}" />
+                  <span class="invalid-feedback">
+                      <span *ngIf="buyerForm.get('Telephone').errors">Please enter a valid Telephone number</span>
+                      <span *ngIf="buyerForm.get('OtherNames').errors?.minlength">Telephone number must be longer than 10 Numbers</span>
+                  </span>
+              </div>
+              <div formGroupName="passwordGroup">
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password" required
+                    minlength="6"
+                    placeholder="Password"
+                    id="password"
+                    formControlName="password"
+                    [ngClass]="{'is-invalid': buyerForm.get('passwordGroup').errors ||
+                                              ((buyerForm.get('passwordGroup.password').touched ||
+                                              buyerForm.get('passwordGroup.password').derty) &&
+                                              !buyerForm.get('passwordGroup.password').valid)}"
+                  />
+                  <span class="invalid-feedback">
+                    <span *ngIf="buyerForm.get('passwordGroup.password').errors?.minlength">Password must be longer than 6 characters</span>
+                  </span>
+                </div>
+                <div class="form-group">
+                  <label for="confirmpassword">Confirm Password</label>
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    id="confirmpassword"
+                        minlength="6" required
+                        formControlName="confirmPassword"
+                        [ngClass]="{'is-invalid': buyerForm.get('passwordGroup').errors ||
+                                                  ((buyerForm.get('passwordGroup.confirmPassword').touched ||
+                                                  buyerForm.get('passwordGroup.confirmPassword').derty) &&
+                                                  !buyerForm.get('passwordGroup.confirmPassword').valid)}" />
+                  <span class="invalid-feedback">
+                    <span *ngIf="buyerForm.get('passwordGroup.confirmPassword').errors?.required">Please enter a valid password</span>
+                    <span *ngIf="buyerForm.get('passwordGroup').errors?.match">Password does not match</span>
+                  </span>
+                </div>
               </div>
               <div class="form-group">
                 <button
                   type="submit"
                   class="submit btn btn-primary btn-shadow btn-gradient"
+                  [title]="buyerForm.valid ? 'Save your entered data' : 'Disabled until form data is valid'"
+                  [disabled]="!buyerForm.valid"
                 >
                   Signup
                 </button>
@@ -117,10 +179,10 @@
 
     <!-- Modal-->
     <div
-      id="signup"
+      id="login"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="signup"
+      aria-labelledby="login"
       aria-hidden="true"
       class="modal fade"
     >
@@ -137,33 +199,35 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">
-            <form id="signupform" action="#">
+          <div class="login-modal-body">
+            <div *ngIf="errorMessage" class="row">
+              <div class="alert alert-danger">{{errorMessage?.message}}</div>
+            </div>
+            <form id="loginform"
+            #loginform="ngForm" (ngSubmit)="authenticate(loginform)">
               <div class="form-group">
-                <label for="fullname">Full Name</label>
+                <label for="Telephone">Telephone Number</label>
                 <input
-                  type="text"
-                  name="fullname"
-                  placeholder="Full Name"
-                  id="fullname"
+                  type="tel"
+                  name="Telephone"
+                  placeholder="Telephone Number"
+                  id="Telephone"
+                  minlength="10"
+                  [(ngModel)]="buyer.Telephone"
+                  #TelephoneVar="ngModel"
+                  [ngClass]="{'is-invalid': TelephoneVar.touched && !TelephoneVar.valid}"
                 />
+                <span class="invalid-feedback" *ngIf="TelephoneVar.errors">enter a valid telephone number</span>
               </div>
               <div class="form-group">
-                <label for="username">User Name</label>
+                <label for="password">Password</label>
                 <input
-                  type="text"
-                  name="username"
-                  placeholder="User Name"
-                  id="username"
-                />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Email Address"
-                  id="email"
+                  type="password"
+                  name="Password"
+                  placeholder="Password"
+                  id="password"
+                  [(ngModel)]="buyer.Password"
+                  #PasswordVar="ngModel"
                 />
               </div>
               <div class="form-group">
