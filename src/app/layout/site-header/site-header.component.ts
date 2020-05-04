@@ -1,3 +1,4 @@
+import { AuthService } from './../../login/auth.interceptor';
 import { Buyer } from './../../user/buyer';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, NgForm } from '@angular/forms';
@@ -31,14 +32,15 @@ export class SiteHeaderComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private router: Router) { }
+              private router: Router,
+              public auth:AuthService) { }
 
   ngOnInit() {
     this.buyerForm = this.fb.group({
       FirstName: '',
-      OtherNames: '',
-      Telephone:'',
-      Password: '',
+      otherNames: '',
+      telephone:'',
+      password: '',
       passwordGroup: this.fb.group({
         password:'',
         confirmPassword: ''
@@ -47,26 +49,39 @@ export class SiteHeaderComponent implements OnInit {
   }
 
   authenticate(loginForm: NgForm): void {
-    const {Telephone, Password} = loginForm.value;
-    console.log(Telephone, Password);
+    const {telephone, password} = loginForm.value;
+    if (telephone && password) {
+      this.auth.login(telephone,password)
+          .subscribe( success => {
+            if (success) {
+              this.router.navigateByUrl(this.router.url);
+            }
+          });
+        }
+    console.log(telephone, password);
     console.log(JSON.stringify(loginForm.value))
   }
 
   saveBuyer(): void {
     const newBuyer = {...this.buyer, ...this.buyerForm.value}
-    newBuyer.Password = this.buyerForm.value.passwordGroup.password;
+    newBuyer.password = this.buyerForm.value.passwordGroup.password;
 
     this.userService.createUser(newBuyer).subscribe(
       () => this.onSaveComplete(),
       (error: any) => this.errorMessage = <any>error
     );
-    console.log('new user',newBuyer);
+    console.log('new buyer',newBuyer);
     console.log('Saved: ' + JSON.stringify(this.buyerForm.value));
   }
 
   onSaveComplete(): void {
     this.buyerForm.reset();
     this.router.navigate([this.router.url]);
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/']);
   }
 
 }

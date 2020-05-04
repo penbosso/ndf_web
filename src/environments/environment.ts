@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  userApi: "https://protected-brushlands-06858.herokuapp.com/api/user",
+  userApi: "https://banana-sundae-96116.herokuapp.com/api/user",
   stockApi: "https://protected-brushlands-06858.herokuapp.com/api/stock",
   feedbackApi: "https://ndf-feedback.herokuapp.com/api/v1/",
   nessfeedApi: "https://ndf-newsfeed.herokuapp.com/api/v1/"

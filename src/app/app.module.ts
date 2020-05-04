@@ -19,6 +19,8 @@ import { CmsFooterComponent } from './layout/cms-footer/cms-footer.component';
 import { UserComponent } from './user/user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,10 +36,12 @@ import { LoginComponent } from './login/login.component';
     AdminHomeComponent,
     CmsFooterComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     routing

@@ -29,7 +29,7 @@
               <a [routerLink]="['/news']" routerLinkActive="active" class="nav-link link-scroll">News</a>
             </li>
           </ul>
-          <div class="navbar-text">
+          <div class="navbar-text" *ngIf="!auth.isLoggedIn()">
             <!-- Button trigger modal--><a
               href="#"
               data-toggle="modal"
@@ -38,7 +38,7 @@
               >Login</a
             >
           </div>
-          <div class="navbar-text">
+          <div class="navbar-text" *ngIf="!auth.isLoggedIn()">
             <!-- Button trigger modal--><a
               href="#"
               data-toggle="modal"
@@ -46,8 +46,11 @@
               class="btn btn-primary navbar-btn btn-shadow btn-gradient"
               >Sign Up</a
             >
-          </div>
         </div>
+        <ul class="nav nav-pills navbar-right">
+          <a *ngIf="auth.isLoggedIn()" class="nav-link">welcome {{ auth.getLoggedUser().firstName }}</a>
+          <li *ngIf="auth.isLoggedIn()" class="nav-item"><a class="nav-link" type="button" (click)="logout()"  routerLinkActive="active"><span class="nav-link fa fa-sign-out"></span>Logout</a></li>
+        </ul>
       </nav>
     </header>
     <div *ngIf="errorMessage" class="row">
@@ -98,40 +101,40 @@
                 </span>
               </div>
               <div class="form-group">
-                <label for="OtherNames">Other Name(s)</label>
+                <label for="otherNames">Other Name(s)</label>
                 <input
                   type="text"
                   placeholder="Other Name(s)"
-                  id="OtherNames"
+                  id="otherNames"
                   minlength="3"
-                  formControlName="OtherNames"
-                  [ngClass]="{'is-invalid': (buyerForm.get('OtherNames').touched || buyerForm.get('OtherNames').dirt) && !buyerForm.get('OtherNames').valid}"/>
+                  formControlName="otherNames"
+                  [ngClass]="{'is-invalid': (buyerForm.get('otherNames').touched || buyerForm.get('otherNames').dirt) && !buyerForm.get('otherNames').valid}"/>
             <span class="invalid-feedback">
-              <span *ngIf="buyerForm.get('OtherNames').errors?.required">Please enter your name</span>
-              <span *ngIf="buyerForm.get('OtherNames').errors?.minlength">Name must be longer than 3 characters</span>
+              <span *ngIf="buyerForm.get('otherNames').errors?.required">Please enter your name</span>
+              <span *ngIf="buyerForm.get('otherNames').errors?.minlength">Name must be longer than 3 characters</span>
             </span>
               </div>
               <div class="form-group">
-                <label for="Telephone">Telephone Number</label>
+                <label for="telephone">telephone Number</label>
                 <input
                   type="tel"
-                  placeholder="Telephone Number"
-                  id="Telephone"
+                  placeholder="telephone Number"
+                  id="telephone"
                   minlength="10"
-                  formControlName="Telephone"
-                  [ngClass]="{'is-invalid': (buyerForm.get('Telephone').touched || buyerForm.get('Telephone').derty) && !buyerForm.get('Telephone').valid}" />
+                  formControlName="telephone"
+                  [ngClass]="{'is-invalid': (buyerForm.get('telephone').touched || buyerForm.get('telephone').derty) && !buyerForm.get('telephone').valid}" />
                   <span class="invalid-feedback">
-                      <span *ngIf="buyerForm.get('Telephone').errors">Please enter a valid Telephone number</span>
-                      <span *ngIf="buyerForm.get('OtherNames').errors?.minlength">Telephone number must be longer than 10 Numbers</span>
+                      <span *ngIf="buyerForm.get('telephone').errors">Please enter a valid telephone number</span>
+                      <span *ngIf="buyerForm.get('otherNames').errors?.minlength">telephone number must be longer than 10 Numbers</span>
                   </span>
               </div>
               <div formGroupName="passwordGroup">
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password">password</label>
                   <input
                     type="password" required
                     minlength="6"
-                    placeholder="Password"
+                    placeholder="password"
                     id="password"
                     formControlName="password"
                     [ngClass]="{'is-invalid': buyerForm.get('passwordGroup').errors ||
@@ -140,14 +143,14 @@
                                               !buyerForm.get('passwordGroup.password').valid)}"
                   />
                   <span class="invalid-feedback">
-                    <span *ngIf="buyerForm.get('passwordGroup.password').errors?.minlength">Password must be longer than 6 characters</span>
+                    <span *ngIf="buyerForm.get('passwordGroup.password').errors?.minlength">password must be longer than 6 characters</span>
                   </span>
                 </div>
                 <div class="form-group">
-                  <label for="confirmpassword">Confirm Password</label>
+                  <label for="confirmpassword">Confirm password</label>
                   <input
                     type="password"
-                    placeholder="Confirm Password"
+                    placeholder="Confirm password"
                     id="confirmpassword"
                         minlength="6" required
                         formControlName="confirmPassword"
@@ -157,7 +160,7 @@
                                                   !buyerForm.get('passwordGroup.confirmPassword').valid)}" />
                   <span class="invalid-feedback">
                     <span *ngIf="buyerForm.get('passwordGroup.confirmPassword').errors?.required">Please enter a valid password</span>
-                    <span *ngIf="buyerForm.get('passwordGroup').errors?.match">Password does not match</span>
+                    <span *ngIf="buyerForm.get('passwordGroup').errors?.match">password does not match</span>
                   </span>
                 </div>
               </div>
@@ -206,27 +209,27 @@
             <form id="loginform"
             #loginform="ngForm" (ngSubmit)="authenticate(loginform)">
               <div class="form-group">
-                <label for="Telephone">Telephone Number</label>
+                <label for="telephone">telephone Number</label>
                 <input
                   type="tel"
-                  name="Telephone"
-                  placeholder="Telephone Number"
-                  id="Telephone"
+                  name="telephone"
+                  placeholder="telephone Number"
+                  id="telephone"
                   minlength="10"
-                  [(ngModel)]="buyer.Telephone"
+                  [(ngModel)]="buyer.telephone"
                   #TelephoneVar="ngModel"
                   [ngClass]="{'is-invalid': TelephoneVar.touched && !TelephoneVar.valid}"
                 />
                 <span class="invalid-feedback" *ngIf="TelephoneVar.errors">enter a valid telephone number</span>
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">password</label>
                 <input
                   type="password"
-                  name="Password"
-                  placeholder="Password"
+                  name="password"
+                  placeholder="password"
                   id="password"
-                  [(ngModel)]="buyer.Password"
+                  [(ngModel)]="buyer.password"
                   #PasswordVar="ngModel"
                 />
               </div>
