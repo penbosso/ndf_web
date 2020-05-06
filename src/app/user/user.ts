@@ -3,7 +3,7 @@ export class User {
   public otherNames = '',
   public telephone = '',
   public profilePic = '',
-  public Type = '',
-  public RegistrationCode = '',
+  public type = '',
+  public registrationCode = '',
   public password?: string) {}
 }

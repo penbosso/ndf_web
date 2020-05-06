@@ -1,4 +1,4 @@
-import { AuthService } from './../../login/auth.interceptor';
+import { AuthService } from './../../login/auth.service';
 import { Buyer } from './../../user/buyer';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, NgForm } from '@angular/forms';
@@ -35,7 +35,7 @@ export class SiteHeaderComponent implements OnInit {
               private router: Router,
               public auth:AuthService) { }
 
-  ngOnInit() {
+  ngOnInit() {console.log(this.auth.isLoggedIn());
     this.buyerForm = this.fb.group({
       FirstName: '',
       otherNames: '',

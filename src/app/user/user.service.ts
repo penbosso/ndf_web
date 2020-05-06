@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { AuthService } from '../login/auth.service';
 
 
 @Injectable({
@@ -12,13 +13,17 @@ import { environment } from '../../environments/environment';
 export class UserService {
 
   private userApiBaseUrl = environment.userApi;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              public auth:AuthService) { }
 
   createUser(user: User): Observable<User> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<User>(this.userApiBaseUrl, user, {headers:headers})
       .pipe(
-        tap(data =>console.log('create User: '+ JSON.stringify(data))),
+        tap(data =>{
+          this.auth.doLoginUser(data);
+          console.log('create User: '+ JSON.stringify(data))
+        }),
         catchError(this.handleError)
       );
   }

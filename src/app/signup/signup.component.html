@@ -1,1 +1,123 @@
-<p>signup works!</p>
+
+    <div class="page">
+      <div class="page-single">
+        <div class="container">
+          <div class="row">
+            <div class="col col-login mx-auto">
+              <div class="text-center mb-6">
+                <h2>GFC | Legal Timber System</h2>
+              </div>
+              <form class="card" [formGroup]="vendorForm"
+                                (ngSubmit)="saveVendor()">
+                <div class="card-body p-6">
+                  <div class="card-title">Create vendor account</div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="FirstName">First Name</label>
+                    <input class="form-control"
+                      type="text"
+                      placeholder="First Name"
+                      id="FirstName"
+                      required autofocus
+                      minlength="3"
+                      formControlName="FirstName"
+                      [ngClass]="{'is-invalid': (vendorForm.get('FirstName').touched || vendorForm.get('FirstName').dirty) && !vendorForm.get('FirstName').valid}"
+                    />
+                    <span class="invalid-feedback">
+                      <span *ngIf="vendorForm.get('FirstName').errors?.minlength">Name must be longer than 3 characters</span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="otherNames">Other Name(s)</label>
+                    <input class="form-control"
+                      type="text"
+                      placeholder="Other Name(s)"
+                      id="otherNames"
+                      minlength="3"
+                      formControlName="otherNames"
+                      [ngClass]="{'is-invalid': (vendorForm.get('otherNames').touched || vendorForm.get('otherNames').dirt) && !vendorForm.get('otherNames').valid}"/>
+                <span class="invalid-feedback">
+                  <span *ngIf="vendorForm.get('otherNames').errors?.required">Please enter your name</span>
+                  <span *ngIf="vendorForm.get('otherNames').errors?.minlength">Name must be longer than 3 characters</span>
+                </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="telephone">Telephone Number</label>
+                    <input class="form-control"
+                      type="tel"
+                      placeholder="Telephone Number"
+                      id="telephone"
+                      minlength="10"
+                      formControlName="telephone"
+                      [ngClass]="{'is-invalid': (vendorForm.get('telephone').touched || vendorForm.get('telephone').derty) && !vendorForm.get('telephone').valid}" />
+                      <span class="invalid-feedback">
+                          <span *ngIf="vendorForm.get('telephone').errors">Please enter a valid telephone number</span>
+                          <span *ngIf="vendorForm.get('telephone').errors?.minlength">telephone number must be longer than 10 Numbers</span>
+                      </span>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="registrationCode">Company code</label>
+                    <input class="form-control"
+                      type="text"
+                      placeholder="Company code"
+                      id="registrationCode"
+                      minlength="3"
+                      formControlName="registrationCode"
+                      [ngClass]="{'is-invalid': (vendorForm.get('registrationCode').touched || vendorForm.get('registrationCode').derty) && !vendorForm.get('registrationCode').valid}" />
+                      <span class="invalid-feedback">
+                          <span *ngIf="vendorForm.get('registrationCode').errors">Please enter a valid Company code</span>
+                          <span *ngIf="vendorForm.get('registrationCode').errors?.minlength">Company code must be longer than 10 Numbers</span>
+                      </span>
+                  </div>
+                  <div formGroupName="passwordGroup">
+                    <div class="form-group">
+                      <label class="form-label" for="password">password</label>
+                      <input class="form-control"
+                        type="password" required
+                        minlength="6"
+                        placeholder="password"
+                        id="password"
+                        formControlName="password"
+                        [ngClass]="{'is-invalid': vendorForm.get('passwordGroup').errors ||
+                                                  ((vendorForm.get('passwordGroup.password').touched ||
+                                                  vendorForm.get('passwordGroup.password').derty) &&
+                                                  !vendorForm.get('passwordGroup.password').valid)}"
+                      />
+                      <span class="invalid-feedback">
+                        <span *ngIf="vendorForm.get('passwordGroup.password').errors?.minlength">password must be longer than 6 characters</span>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="confirmpassword">Confirm password</label>
+                      <input class="form-control"
+                        type="password"
+                        placeholder="Confirm password"
+                        id="confirmpassword"
+                            minlength="6" required
+                            formControlName="confirmPassword"
+                            [ngClass]="{'is-invalid': vendorForm.get('passwordGroup').errors ||
+                                                      ((vendorForm.get('passwordGroup.confirmPassword').touched ||
+                                                      vendorForm.get('passwordGroup.confirmPassword').derty) &&
+                                                      !vendorForm.get('passwordGroup.confirmPassword').valid)}" />
+                      <span class="invalid-feedback">
+                        <span *ngIf="vendorForm.get('passwordGroup.confirmPassword').errors?.required">Please enter a valid password</span>
+                        <span *ngIf="vendorForm.get('passwordGroup').errors?.match">password does not match</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-footer">
+                    <button
+                      type="submit" class="btn btn-green btn-block"
+                      [title]="vendorForm.valid ? 'Save your entered data' : 'Disabled until form data is valid'"
+                      [disabled]="!vendorForm.valid">
+                      Sign up
+                    </button>
+                  </div>
+                </div>
+                <a [routerLink]="['/login']">Already got account? Login</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

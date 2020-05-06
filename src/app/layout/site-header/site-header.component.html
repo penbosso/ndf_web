@@ -46,11 +46,20 @@
               class="btn btn-primary navbar-btn btn-shadow btn-gradient"
               >Sign Up</a
             >
+          </div>
         </div>
-        <ul class="nav nav-pills navbar-right">
-          <a *ngIf="auth.isLoggedIn()" class="nav-link">welcome {{ auth.getLoggedUser().firstName }}</a>
-          <li *ngIf="auth.isLoggedIn()" class="nav-item"><a class="nav-link" type="button" (click)="logout()"  routerLinkActive="active"><span class="nav-link fa fa-sign-out"></span>Logout</a></li>
-        </ul>
+        <div *ngIf="auth.isLoggedIn()" class="dropdown">
+          <button *ngIf="auth.isLoggedIn()" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            welcome {{ auth.getLoggedUser().firstName }}
+            <span class="caret"></span>
+          </button>
+        </div>
+        <div class="navbar-text" *ngIf="auth.isLoggedIn()">
+          <a (click)="logout()" class="btn btn-danger navbar-btn"
+            >Logout</a
+          >
+        </div>
+
       </nav>
     </header>
     <div *ngIf="errorMessage" class="row">
@@ -115,17 +124,17 @@
             </span>
               </div>
               <div class="form-group">
-                <label for="telephone">telephone Number</label>
+                <label for="telephone">Telephone Number</label>
                 <input
                   type="tel"
-                  placeholder="telephone Number"
+                  placeholder="Telephone Number"
                   id="telephone"
                   minlength="10"
                   formControlName="telephone"
                   [ngClass]="{'is-invalid': (buyerForm.get('telephone').touched || buyerForm.get('telephone').derty) && !buyerForm.get('telephone').valid}" />
                   <span class="invalid-feedback">
                       <span *ngIf="buyerForm.get('telephone').errors">Please enter a valid telephone number</span>
-                      <span *ngIf="buyerForm.get('otherNames').errors?.minlength">telephone number must be longer than 10 Numbers</span>
+                      <span *ngIf="buyerForm.get('telephone').errors?.minlength">telephone number must be longer than 10 Numbers</span>
                   </span>
               </div>
               <div formGroupName="passwordGroup">
@@ -209,11 +218,11 @@
             <form id="loginform"
             #loginform="ngForm" (ngSubmit)="authenticate(loginform)">
               <div class="form-group">
-                <label for="telephone">telephone Number</label>
+                <label for="telephone">Telephone Number</label>
                 <input
                   type="tel"
                   name="telephone"
-                  placeholder="telephone Number"
+                  placeholder="Telephone Number"
                   id="telephone"
                   minlength="10"
                   [(ngModel)]="buyer.telephone"
