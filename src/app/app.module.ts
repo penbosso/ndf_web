@@ -20,7 +20,12 @@ import { UserComponent } from './user/user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './login/auth.service';
+import { AuthInterceptor } from './login/auth.interceptor';
+import { AuthGuard } from './login/auth.guard';
+import { ManageStockComponent } from './cms/stock/manage-stock/manage-stock.component';
+import { AddStockComponent } from './cms/stock/add-stock/add-stock.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +42,9 @@ import { HttpClientModule } from '@angular/common/http';
     CmsFooterComponent,
     UserComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ManageStockComponent,
+    AddStockComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,14 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     routing
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

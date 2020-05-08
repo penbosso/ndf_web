@@ -7,6 +7,7 @@ import { SiteLayoutComponent } from './layout/site-layout/site-layout.component'
 import {Routes, RouterModule } from '@angular/router'
 import { CatalogComponent } from './catalog/catalog.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './login/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -26,7 +27,7 @@ const appRoutes: Routes = [
     path:'',
     component: CmsLayoutComponent,
     children: [
-      {path:'vendor', component: VendorHomeComponent}
+      {path:'vendor', canActivate: [AuthGuard], component: VendorHomeComponent}
     ]
   },
 

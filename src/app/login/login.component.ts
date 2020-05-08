@@ -1,3 +1,4 @@
+import { Vendor } from './../user/vendor';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -9,6 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  vendor = new Vendor()
 
   constructor(
     private router: Router,
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(telephone,password)
           .subscribe( success => {
             if (success) {
-              this.router.navigateByUrl(this.router.url);
+              this.router.navigateByUrl('/vendor');
             }
           });
         }

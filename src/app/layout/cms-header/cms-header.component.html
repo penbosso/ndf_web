@@ -6,12 +6,44 @@
                 <h4>GFC | Legal Timber System</h4>
               </a>
               <div class="d-flex order-lg-2 ml-auto">
-                <a href="login.html" class="nav-link pr-0 leading-none">
-                  <i class="fe fe-user"></i>
-                  <span class="ml-2 d-none d-lg-block">
-                    <span class="text-default"> Log in</span>
-                  </span>
-                </a>
+                  <div class="dropdown">
+                      <a
+                          href="#"
+                          class="nav-link pr-0 leading-none"
+                          data-toggle="dropdown"
+                      >
+                          <span
+                              class="avatar"
+                              [ngStyle]="{ 'background-image': 'url(' + auth.getLoggedUser().profilePic + ')'}"
+                          ></span>
+                          <span class="ml-2 d-none d-lg-block">
+                              <span class="text-default"
+                                  >{{ auth.getLoggedUser().firstName }}</span
+                              >
+                              <small
+                                  class="text-muted d-block mt-1"
+                                  >{{auth.getLoggedUser().type}}</small
+                              >
+                          </span>
+                      </a>
+                      <div
+                          class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
+                      >
+                          <a class="dropdown-item" href="#">
+                              <i
+                                  class="dropdown-icon fe fe-user"
+                              ></i>
+                              Profile
+                          </a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">
+                              <i
+                                  class="dropdown-icon fe fe-log-out"
+                              ></i>
+                              Sign out
+                          </a>
+                      </div>
+                  </div>
               </div>
             </div>
           </div>

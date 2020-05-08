@@ -28,6 +28,9 @@
             <li class="nav-item">
               <a [routerLink]="['/news']" routerLinkActive="active" class="nav-link link-scroll">News</a>
             </li>
+            <li class="nav-item">
+              <a [routerLink]="['/vendor']" routerLinkActive="active" class="nav-link link-scroll">Vendor</a>
+            </li>
           </ul>
           <div class="navbar-text" *ngIf="!auth.isLoggedIn()">
             <!-- Button trigger modal--><a
