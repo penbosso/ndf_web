@@ -26,6 +26,8 @@ import { AuthInterceptor } from './login/auth.interceptor';
 import { AuthGuard } from './login/auth.guard';
 import { ManageStockComponent } from './cms/stock/manage-stock/manage-stock.component';
 import { AddStockComponent } from './cms/stock/add-stock/add-stock.component';
+import { VendorNewsComponent } from './cms/vendor-news/vendor-news.component';
+import { VendorViewNewsComponent } from './cms/vendor-news/vendor-view-news/vendor-view-news.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,9 @@ import { AddStockComponent } from './cms/stock/add-stock/add-stock.component';
     LoginComponent,
     SignupComponent,
     ManageStockComponent,
-    AddStockComponent
+    AddStockComponent,
+    VendorNewsComponent,
+    VendorViewNewsComponent
   ],
   imports: [
     BrowserModule,

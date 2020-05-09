@@ -1,3 +1,7 @@
+import { VendorViewNewsComponent } from './cms/vendor-news/vendor-view-news/vendor-view-news.component';
+import { AddStockComponent } from './cms/stock/add-stock/add-stock.component';
+import { VendorNewsComponent } from './cms/vendor-news/vendor-news.component';
+import { ManageStockComponent } from './cms/stock/manage-stock/manage-stock.component';
 import { LoginComponent } from './login/login.component';
 import { VendorHomeComponent } from './cms/vendor-home/vendor-home.component';
 import { NewsComponent } from './news/news.component';
@@ -27,7 +31,11 @@ const appRoutes: Routes = [
     path:'',
     component: CmsLayoutComponent,
     children: [
-      {path:'vendor', canActivate: [AuthGuard], component: VendorHomeComponent}
+      {path:'vendor', canActivate: [AuthGuard], component: VendorHomeComponent},
+      {path:'vendor/add-stock', canActivate: [AuthGuard], component: AddStockComponent},
+      {path:'vendor/manage-stock', canActivate: [AuthGuard], component: ManageStockComponent},
+      {path:'vendor/news', canActivate: [AuthGuard], component: VendorNewsComponent},
+      {path:'vendor/view-news', canActivate: [AuthGuard], component: VendorViewNewsComponent}
     ]
   },
 

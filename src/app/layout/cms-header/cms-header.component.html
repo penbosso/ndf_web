@@ -54,17 +54,17 @@
               <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                   <li class="nav-item">
-                    <a href="home.html" class="nav-link active"
+                    <a [routerLink]="['/vendor']" routerLinkActive="active"  class="nav-link"
                       ><i class="fe fe-book-open"></i> Home
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="manage-stock.html" class="nav-link"
+                    <a [routerLink]="['/vendor/manage-stock']" routerLinkActive="active" class="nav-link"
                       ><i class="fe fe-file"></i> Manage Stock
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="news.html" class="nav-link"
+                    <a [routerLink]="['/vendor/news']" routerLinkActive="active" class="nav-link"
                       ><i class="fe fe-book-open"></i> News
                     </a>
                   </li>
