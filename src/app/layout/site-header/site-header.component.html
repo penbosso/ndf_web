@@ -52,10 +52,10 @@
           </div>
         </div>
         <div *ngIf="auth.isLoggedIn()" class="dropdown">
-          <button *ngIf="auth.isLoggedIn()" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <a *ngIf="auth.isLoggedIn()" class="btn btn-default ">
             welcome {{ auth.getLoggedUser().firstName }}
             <span class="caret"></span>
-          </button>
+          </a>
         </div>
         <div class="navbar-text" *ngIf="auth.isLoggedIn()">
           <a (click)="logout()" class="btn btn-danger navbar-btn"

@@ -28,6 +28,9 @@ import { ManageStockComponent } from './cms/stock/manage-stock/manage-stock.comp
 import { AddStockComponent } from './cms/stock/add-stock/add-stock.component';
 import { VendorNewsComponent } from './cms/vendor-news/vendor-news.component';
 import { VendorViewNewsComponent } from './cms/vendor-news/vendor-view-news/vendor-view-news.component';
+import { AdminHeaderComponent } from './layout/admin-header/admin-header.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { AdminLoginComponent } from './login/admin-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,10 @@ import { VendorViewNewsComponent } from './cms/vendor-news/vendor-view-news/vend
     ManageStockComponent,
     AddStockComponent,
     VendorNewsComponent,
-    VendorViewNewsComponent
+    VendorViewNewsComponent,
+    AdminHeaderComponent,
+    AdminLayoutComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

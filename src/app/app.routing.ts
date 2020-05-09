@@ -1,3 +1,5 @@
+import { AdminLoginComponent } from './login/admin-login.component';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { VendorViewNewsComponent } from './cms/vendor-news/vendor-view-news/vendor-view-news.component';
 import { AddStockComponent } from './cms/stock/add-stock/add-stock.component';
 import { VendorNewsComponent } from './cms/vendor-news/vendor-news.component';
@@ -12,6 +14,7 @@ import {Routes, RouterModule } from '@angular/router'
 import { CatalogComponent } from './catalog/catalog.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './login/auth.guard';
+import { AdminHomeComponent } from './cms/admin-home/admin-home.component';
 
 
 const appRoutes: Routes = [
@@ -39,9 +42,26 @@ const appRoutes: Routes = [
     ]
   },
 
+  // cms routes goes here
+  {
+    path:'',
+    component: AdminLayoutComponent,
+    children: [
+      {path:'admin', canActivate: [AuthGuard], component: AdminHomeComponent},
+      {path:'admin/creat-news', canActivate: [AuthGuard], component: AddStockComponent},
+      {path:'admin/view-news', canActivate: [AuthGuard], component: ManageStockComponent},
+      {path:'admin/view-vendor', canActivate: [AuthGuard], component: VendorNewsComponent},
+      {path:'vendor/view-news', canActivate: [AuthGuard], component: VendorViewNewsComponent}
+    ]
+  },
+
   // no layout routes goes here
-  {path:'login', component: LoginComponent},
-  {path:'signup', component: SignupComponent},
+  {path:'admin/login', component: AdminLoginComponent},
+  {path:'vendor/login', component: LoginComponent},
+  {path:'vendor/signup', component: SignupComponent},
+
+  {path: 'login', redirectTo: 'vendor/login'},
+  {path: 'signup', redirectTo: 'vendor/signup'},
   // otherwise redirect to home
   {path: '**', redirectTo: ''}
 ]

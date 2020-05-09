@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   userApi: "https://banana-sundae-96116.herokuapp.com/api/user",
+  vendorApi: "https://safe-gorge-05038.herokuapp.com/api/vendors",
   stockApi: "https://protected-brushlands-06858.herokuapp.com/api/stock",
   feedbackApi: "https://ndf-feedback.herokuapp.com/api/v1/",
   nessfeedApi: "https://ndf-newsfeed.herokuapp.com/api/v1/"

@@ -1,15 +1,14 @@
-import { Router } from '@angular/router';
-import { AuthService } from './../../login/auth.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AuthService } from 'src/app/login/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cms-header',
-  templateUrl: './cms-header.component.html',
-  styleUrls: ['./cms-header.component.css'],
+  selector: 'app-admin-header',
+  templateUrl: './admin-header.component.html',
+  styleUrls: ['./admin-header.component.css'],
   encapsulation: ViewEncapsulation.None
-
 })
-export class CmsHeaderComponent implements OnInit {
+export class AdminHeaderComponent implements OnInit {
 
   constructor(public auth: AuthService, private router: Router) { }
 
