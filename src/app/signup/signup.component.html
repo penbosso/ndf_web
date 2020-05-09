@@ -56,17 +56,17 @@
                       </span>
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="registrationCode">Company code</label>
+                    <label class="form-label" for="companyCode">Company code</label>
                     <input class="form-control"
                       type="text"
                       placeholder="Company code"
-                      id="registrationCode"
+                      id="companyCode"
                       minlength="3"
-                      formControlName="registrationCode"
-                      [ngClass]="{'is-invalid': (vendorForm.get('registrationCode').touched || vendorForm.get('registrationCode').derty) && !vendorForm.get('registrationCode').valid}" />
+                      formControlName="companyCode"
+                      [ngClass]="{'is-invalid': (vendorForm.get('companyCode').touched || vendorForm.get('companyCode').derty) && !vendorForm.get('companyCode').valid}" />
                       <span class="invalid-feedback">
-                          <span *ngIf="vendorForm.get('registrationCode').errors">Please enter a valid Company code</span>
-                          <span *ngIf="vendorForm.get('registrationCode').errors?.minlength">Company code must be longer than 10 Numbers</span>
+                          <span *ngIf="vendorForm.get('companyCode').errors">Please enter a valid Company code</span>
+                          <span *ngIf="vendorForm.get('companyCode').errors?.minlength">Company code must be longer than 10 Numbers</span>
                       </span>
                   </div>
                   <div formGroupName="passwordGroup">

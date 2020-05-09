@@ -4,6 +4,6 @@ export class User {
   public telephone = '',
   public profilePic = '',
   public type = '',
-  public registrationCode = '',
+  public companyCode = '',
   public password?: string) {}
 }

@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
       FirstName: '',
       otherNames: '',
       telephone:'',
-      registrationCode:'',
+      companyCode:'',
       password: '',
       passwordGroup: this.fb.group({
         password:'',
