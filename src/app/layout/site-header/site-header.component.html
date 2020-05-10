@@ -1,4 +1,9 @@
-    <!-- navbar-->
+<!-- Loding -->
+<div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
+<!-- navbar-->
     <header class="header">
       <nav class="navbar navbar-expand-lg fixed-top">
         <a href="index.html" class="navbar-brand">GFC - Legal Timber System</a>
@@ -51,17 +56,39 @@
             >
           </div>
         </div>
+
         <div *ngIf="auth.isLoggedIn()" class="dropdown">
-          <a *ngIf="auth.isLoggedIn()" class="btn btn-default ">
-            welcome {{ auth.getLoggedUser().firstName }}
-            <span class="caret"></span>
-          </a>
-        </div>
-        <div class="navbar-text" *ngIf="auth.isLoggedIn()">
-          <a (click)="logout()" class="btn btn-danger navbar-btn"
-            >Logout</a
+          <a
+              href="#"
+              class="nav-link pr-0 leading-none"
+              data-toggle="dropdown"
           >
-        </div>
+              <span
+                  class="avatar"
+                  [ngStyle]="{ 'background-image': 'url(' + auth.getLoggedUser().profilePic + ')'}"
+              ></span>
+              <span class="ml-2 d-none d-lg-block">
+                  <span class="text-default"
+                      >{{ auth.getLoggedUser().firstName }}</span
+                  >
+                  <small
+                      class="text-muted d-block mt-1"
+                      >Welcome!</small
+                  >
+              </span>
+          </a>
+          <div
+              class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
+          >
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="logout()">
+                  <i
+                      class="dropdown-icon fe fe-log-out"
+                  ></i>
+                  Sign out
+              </a>
+          </div>
+      </div>
 
       </nav>
     </header>
@@ -86,6 +113,7 @@
               data-dismiss="modal"
               aria-label="Close"
               class="close"
+              #closeSignupModal
             >
               <span aria-hidden="true">×</span>
             </button>
@@ -210,6 +238,7 @@
               data-dismiss="modal"
               aria-label="Close"
               class="close"
+              #closeLoginModal
             >
               <span aria-hidden="true">×</span>
             </button>

@@ -31,6 +31,11 @@ import { VendorViewNewsComponent } from './cms/vendor/vendor-news/vendor-view-ne
 import { AdminHeaderComponent } from './layout/admin-header/admin-header.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { AdminLoginComponent } from './login/admin-login.component';
+import { CreateNewsComponent } from './cms/admin/create-news/create-news.component';
+import { ShowVendorComponent } from './cms/admin/show-vendor/show-vendor.component';
+import { AdminViewNewsComponent } from './cms/admin/admin-view-news/admin-view-news.component';
+import { ViewVendorComponent } from './cms/admin/view-vendor/view-vendor.component';
+import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +59,12 @@ import { AdminLoginComponent } from './login/admin-login.component';
     VendorViewNewsComponent,
     AdminHeaderComponent,
     AdminLayoutComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    CreateNewsComponent,
+    ShowVendorComponent,
+    AdminViewNewsComponent,
+    ViewVendorComponent,
+    UploadExcelComponent
   ],
   imports: [
     BrowserModule,

@@ -68,7 +68,7 @@
                               >
                                   <li class="nav-item">
                                       <a
-                                          href="dashboard.html"
+                                      [routerLink]="['/admin']" routerLinkActive="active"
                                           class="nav-link"
                                           ><i class="fe fe-book-open"></i>
                                           Dashboard</a
@@ -86,17 +86,17 @@
                                           class="dropdown-menu dropdown-menu-arrow"
                                       >
                                           <a
-                                              href="upload-db.html"
+                                              [routerLink]="['/admin/upload-excel']" routerLinkActive="active"
                                               class="dropdown-item "
                                               >Upload database</a
                                           >
                                           <a
-                                              href="show-vendor.html"
+                                             [routerLink]="['/admin/show-vendors']" routerLinkActive="active"
                                               class="dropdown-item "
                                               >Show vendors</a
                                           >
                                           <a
-                                              href="view-vendor.html"
+                                              [routerLink]="['/admin/view-vendor']" routerLinkActive="active"
                                               class="dropdown-item "
                                               >View vendor</a
                                           >
@@ -114,17 +114,17 @@
                                           class="dropdown-menu dropdown-menu-arrow"
                                       >
                                           <a
-                                              href="create-news.html"
+                                              [routerLink]="['/admin/create-news']" routerLinkActive="active"
                                               class="dropdown-item active"
                                               >Create news</a
                                           >
                                           <a
-                                              href="view-news.html"
+                                              [routerLink]="['/admin/view-news']" routerLinkActive="active"
                                               class="dropdown-item "
                                               >View all news</a
                                           >
                                           <a
-                                              href="manage-news.html"
+                                              [routerLink]="['/admin/manage-news']" routerLinkActive="active"
                                               class="dropdown-item "
                                               >Manage news</a
                                           >

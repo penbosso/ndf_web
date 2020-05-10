@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   vendor = new Vendor()
+  public showOverlay = false;
 
   constructor(
     private router: Router,
@@ -23,11 +24,13 @@ export class LoginComponent implements OnInit {
 
   authenticate(loginForm: NgForm): void {
     const {telephone, password} = loginForm.value;
+    this.showOverlay = true;
     if (telephone && password) {
       this.auth.login(telephone,password)
           .subscribe( success => {
             if (success) {
               this.router.navigateByUrl('/vendor');
+              this.showOverlay = false;
             }
           });
         }

@@ -1,6 +1,6 @@
 import { AuthService } from './../../login/auth.service';
 import { Buyer } from './../../user/buyer';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
@@ -29,13 +29,17 @@ export class SiteHeaderComponent implements OnInit {
   buyerForm: FormGroup;
   buyer = new Buyer();
   errorMessage: any;
+  public showOverlay = false;
+
+  @ViewChild('closeLoginModal', { static: true }) closeLoginModal: ElementRef
+  @ViewChild('closeSignupModal', { static: true }) closeSignupModal: ElementRef
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private router: Router,
               public auth:AuthService) { }
 
-  ngOnInit() {console.log(this.auth.isLoggedIn());
+  ngOnInit() {
     this.buyerForm = this.fb.group({
       FirstName: '',
       otherNames: '',
@@ -49,23 +53,25 @@ export class SiteHeaderComponent implements OnInit {
   }
 
   authenticate(loginForm: NgForm): void {
+    this.showOverlay = true;
     const {telephone, password} = loginForm.value;
     if (telephone && password) {
       this.auth.login(telephone,password)
           .subscribe( success => {
             if (success) {
               this.router.navigateByUrl(this.router.url);
+              this.closeLoginModal.nativeElement.click();
+              this.showOverlay = false;
             }
           });
         }
-    console.log(telephone, password);
-    console.log(JSON.stringify(loginForm.value))
   }
 
   saveBuyer(): void {
     const newBuyer = {...this.buyer, ...this.buyerForm.value}
     newBuyer.password = this.buyerForm.value.passwordGroup.password;
 
+    this.showOverlay = true;
     this.userService.createUser(newBuyer).subscribe(
       () => this.onSaveComplete(),
       (error: any) => this.errorMessage = <any>error
@@ -76,7 +82,9 @@ export class SiteHeaderComponent implements OnInit {
 
   onSaveComplete(): void {
     this.buyerForm.reset();
+    this.closeSignupModal.nativeElement.click()
     this.router.navigate([this.router.url]);
+    this.showOverlay = false;
   }
 
   logout() {

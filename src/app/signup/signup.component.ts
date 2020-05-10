@@ -27,6 +27,7 @@ export class SignupComponent implements OnInit {
   vendorForm: FormGroup;
   vendor = new Vendor();
   errorMessage: any;
+  public showOverlay = false;
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
@@ -50,17 +51,17 @@ export class SignupComponent implements OnInit {
   saveVendor(): void {
     const newVendor = {...this.vendor, ...this.vendorForm.value}
     newVendor.password = this.vendorForm.value.passwordGroup.password;
+    this.showOverlay = true;
 
     this.userService.createUser(newVendor).subscribe(
       () => this.onSaveComplete(),
       (error: any) => this.errorMessage = <any>error
     );
-    console.log('new vendor',newVendor);
-    console.log('Saved: ' + JSON.stringify(this.vendorForm.value));
   }
 
   onSaveComplete(): void {
     this.vendorForm.reset();
-    this.router.navigate([this.router.url]);
+    this.showOverlay = false;
+    this.router.navigate(['/vendor']);
   }
 }

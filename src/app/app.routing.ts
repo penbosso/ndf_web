@@ -1,3 +1,7 @@
+import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.component';
+import { ViewVendorComponent } from './cms/admin/view-vendor/view-vendor.component';
+import { AdminViewNewsComponent } from './cms/admin/admin-view-news/admin-view-news.component';
+import { CreateNewsComponent } from './cms/admin/create-news/create-news.component';
 import { AdminLoginComponent } from './login/admin-login.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { VendorViewNewsComponent } from './cms/vendor/vendor-news/vendor-view-news/vendor-view-news.component';
@@ -48,10 +52,12 @@ const appRoutes: Routes = [
     component: AdminLayoutComponent,
     children: [
       {path:'admin', canActivate: [AuthGuard], component: AdminHomeComponent},
-      {path:'admin/creat-news', canActivate: [AuthGuard], component: AddStockComponent},
-      {path:'admin/view-news', canActivate: [AuthGuard], component: ManageStockComponent},
-      {path:'admin/view-vendor', canActivate: [AuthGuard], component: VendorNewsComponent},
-      {path:'vendor/view-news', canActivate: [AuthGuard], component: VendorViewNewsComponent}
+      {path:'admin/create-news', canActivate: [AuthGuard], component: CreateNewsComponent},
+      {path:'admin/view-news', canActivate: [AuthGuard], component: AdminViewNewsComponent},
+      {path:'admin/manage-news', canActivate: [AuthGuard], component: AdminViewNewsComponent},
+      {path:'admin/view-vendor', canActivate: [AuthGuard], component: ViewVendorComponent},
+      {path:'admin/upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
+      {path:'admin/show-vendors', canActivate: [AuthGuard], component: VendorViewNewsComponent}
     ]
   },
 
