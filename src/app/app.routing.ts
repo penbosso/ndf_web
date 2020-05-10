@@ -1,11 +1,11 @@
 import { AdminLoginComponent } from './login/admin-login.component';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
-import { VendorViewNewsComponent } from './cms/vendor-news/vendor-view-news/vendor-view-news.component';
-import { AddStockComponent } from './cms/stock/add-stock/add-stock.component';
-import { VendorNewsComponent } from './cms/vendor-news/vendor-news.component';
-import { ManageStockComponent } from './cms/stock/manage-stock/manage-stock.component';
+import { VendorViewNewsComponent } from './cms/vendor/vendor-news/vendor-view-news/vendor-view-news.component';
+import { AddStockComponent } from './cms/vendor/stock/add-stock/add-stock.component';
+import { VendorNewsComponent } from './cms/vendor/vendor-news/vendor-news.component';
+import { ManageStockComponent } from './cms/vendor/stock/manage-stock/manage-stock.component';
 import { LoginComponent } from './login/login.component';
-import { VendorHomeComponent } from './cms/vendor-home/vendor-home.component';
+import { VendorHomeComponent } from './cms/vendor/vendor-home/vendor-home.component';
 import { NewsComponent } from './news/news.component';
 import { HomeComponent } from './home/home.component';
 import { CmsLayoutComponent } from './layout/cms-layout/cms-layout.component';
@@ -14,7 +14,7 @@ import {Routes, RouterModule } from '@angular/router'
 import { CatalogComponent } from './catalog/catalog.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './login/auth.guard';
-import { AdminHomeComponent } from './cms/admin-home/admin-home.component';
+import { AdminHomeComponent } from './cms/admin/admin-home/admin-home.component';
 
 
 const appRoutes: Routes = [
