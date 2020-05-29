@@ -6,7 +6,13 @@
 <!-- navbar-->
     <header class="header">
       <nav class="navbar navbar-expand-lg fixed-top">
-        <a href="index.html" class="navbar-brand">GFC - Legal Timber System</a>
+        <a href="index.html" class="navbar-brand">
+          <img
+          src="assets/images/logo.png"
+          width="64px"
+          height="auto"
+        />| Legal Timber System
+      </a>
         <button
           type="button"
           data-toggle="collapse"
@@ -92,8 +98,8 @@
 
       </nav>
     </header>
-    <div *ngIf="errorMessage" class="row">
-      <div class="alert alert-danger">{{errorMessage?.message}}</div>
+    <div *ngIf="errorMessage" class="row" style="margin-top: 20px">
+      <div class="alert alert-danger">{{errorMessage}}</div>
     </div>
     <!-- Sign up Modal-->
     <div
@@ -120,7 +126,7 @@
           </div>
           <div class="signup-modal-body">
             <div *ngIf="errorMessage" class="row">
-              <div class="alert alert-danger">{{errorMessage?.message}}</div>
+              <div class="alert alert-danger">{{errorMessage}}</div>
             </div>
             <form id="signupform"
                   [formGroup]="buyerForm"
@@ -148,7 +154,7 @@
                   id="otherNames"
                   minlength="3"
                   formControlName="otherNames"
-                  [ngClass]="{'is-invalid': (buyerForm.get('otherNames').touched || buyerForm.get('otherNames').dirt) && !buyerForm.get('otherNames').valid}"/>
+                  [ngClass]="{'is-invalid': (buyerForm.get('otherNames').touched || buyerForm.get('otherNames').dirty) && !buyerForm.get('otherNames').valid}"/>
             <span class="invalid-feedback">
               <span *ngIf="buyerForm.get('otherNames').errors?.required">Please enter your name</span>
               <span *ngIf="buyerForm.get('otherNames').errors?.minlength">Name must be longer than 3 characters</span>
@@ -162,7 +168,7 @@
                   id="telephone"
                   minlength="10"
                   formControlName="telephone"
-                  [ngClass]="{'is-invalid': (buyerForm.get('telephone').touched || buyerForm.get('telephone').derty) && !buyerForm.get('telephone').valid}" />
+                  [ngClass]="{'is-invalid': (buyerForm.get('telephone').touched || buyerForm.get('telephone').dirty) && !buyerForm.get('telephone').valid}" />
                   <span class="invalid-feedback">
                       <span *ngIf="buyerForm.get('telephone').errors">Please enter a valid telephone number</span>
                       <span *ngIf="buyerForm.get('telephone').errors?.minlength">telephone number must be longer than 10 Numbers</span>
@@ -179,7 +185,7 @@
                     formControlName="password"
                     [ngClass]="{'is-invalid': buyerForm.get('passwordGroup').errors ||
                                               ((buyerForm.get('passwordGroup.password').touched ||
-                                              buyerForm.get('passwordGroup.password').derty) &&
+                                              buyerForm.get('passwordGroup.password').dirty) &&
                                               !buyerForm.get('passwordGroup.password').valid)}"
                   />
                   <span class="invalid-feedback">
@@ -196,7 +202,7 @@
                         formControlName="confirmPassword"
                         [ngClass]="{'is-invalid': buyerForm.get('passwordGroup').errors ||
                                                   ((buyerForm.get('passwordGroup.confirmPassword').touched ||
-                                                  buyerForm.get('passwordGroup.confirmPassword').derty) &&
+                                                  buyerForm.get('passwordGroup.confirmPassword').dirty) &&
                                                   !buyerForm.get('passwordGroup.confirmPassword').valid)}" />
                   <span class="invalid-feedback">
                     <span *ngIf="buyerForm.get('passwordGroup.confirmPassword').errors?.required">Please enter a valid password</span>
@@ -245,7 +251,7 @@
           </div>
           <div class="login-modal-body">
             <div *ngIf="errorMessage" class="row">
-              <div class="alert alert-danger">{{errorMessage?.message}}</div>
+              <div class="alert alert-danger">{{errorMessage}}</div>
             </div>
             <form id="loginform"
             #loginform="ngForm" (ngSubmit)="authenticate(loginform)">
@@ -255,7 +261,6 @@
                   type="tel"
                   name="telephone"
                   placeholder="Telephone Number"
-                  id="telephone"
                   minlength="10"
                   [(ngModel)]="buyer.telephone"
                   #TelephoneVar="ngModel"
@@ -269,7 +274,6 @@
                   type="password"
                   name="password"
                   placeholder="password"
-                  id="password"
                   [(ngModel)]="buyer.password"
                   #PasswordVar="ngModel"
                 />

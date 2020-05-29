@@ -39,7 +39,7 @@
                       id="otherNames"
                       minlength="3"
                       formControlName="otherNames"
-                      [ngClass]="{'is-invalid': (vendorForm.get('otherNames').touched || vendorForm.get('otherNames').dirt) && !vendorForm.get('otherNames').valid}"/>
+                      [ngClass]="{'is-invalid': (vendorForm.get('otherNames').touched || vendorForm.get('otherNames').dirty) && !vendorForm.get('otherNames').valid}"/>
                 <span class="invalid-feedback">
                   <span *ngIf="vendorForm.get('otherNames').errors?.required">Please enter your name</span>
                   <span *ngIf="vendorForm.get('otherNames').errors?.minlength">Name must be longer than 3 characters</span>
@@ -53,7 +53,7 @@
                       id="telephone"
                       minlength="10"
                       formControlName="telephone"
-                      [ngClass]="{'is-invalid': (vendorForm.get('telephone').touched || vendorForm.get('telephone').derty) && !vendorForm.get('telephone').valid}" />
+                      [ngClass]="{'is-invalid': (vendorForm.get('telephone').touched || vendorForm.get('telephone').dirty) && !vendorForm.get('telephone').valid}" />
                       <span class="invalid-feedback">
                           <span *ngIf="vendorForm.get('telephone').errors">Please enter a valid telephone number</span>
                           <span *ngIf="vendorForm.get('telephone').errors?.minlength">telephone number must be longer than 10 Numbers</span>
@@ -67,7 +67,7 @@
                       id="companyCode"
                       minlength="3"
                       formControlName="companyCode"
-                      [ngClass]="{'is-invalid': (vendorForm.get('companyCode').touched || vendorForm.get('companyCode').derty) && !vendorForm.get('companyCode').valid}" />
+                      [ngClass]="{'is-invalid': (vendorForm.get('companyCode').touched || vendorForm.get('companyCode').dirty) && !vendorForm.get('companyCode').valid}" />
                       <span class="invalid-feedback">
                           <span *ngIf="vendorForm.get('companyCode').errors">Please enter a valid Company code</span>
                           <span *ngIf="vendorForm.get('companyCode').errors?.minlength">Company code must be longer than 10 Numbers</span>
@@ -84,7 +84,7 @@
                         formControlName="password"
                         [ngClass]="{'is-invalid': vendorForm.get('passwordGroup').errors ||
                                                   ((vendorForm.get('passwordGroup.password').touched ||
-                                                  vendorForm.get('passwordGroup.password').derty) &&
+                                                  vendorForm.get('passwordGroup.password').dirty) &&
                                                   !vendorForm.get('passwordGroup.password').valid)}"
                       />
                       <span class="invalid-feedback">
@@ -101,7 +101,7 @@
                             formControlName="confirmPassword"
                             [ngClass]="{'is-invalid': vendorForm.get('passwordGroup').errors ||
                                                       ((vendorForm.get('passwordGroup.confirmPassword').touched ||
-                                                      vendorForm.get('passwordGroup.confirmPassword').derty) &&
+                                                      vendorForm.get('passwordGroup.confirmPassword').dirty) &&
                                                       !vendorForm.get('passwordGroup.confirmPassword').valid)}" />
                       <span class="invalid-feedback">
                         <span *ngIf="vendorForm.get('passwordGroup.confirmPassword').errors?.required">Please enter a valid password</span>

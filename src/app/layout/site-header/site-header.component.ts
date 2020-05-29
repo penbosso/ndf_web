@@ -59,9 +59,13 @@ export class SiteHeaderComponent implements OnInit {
       this.auth.login(telephone,password)
           .subscribe( success => {
             if (success) {
+              this.showOverlay = false;
+              this.errorMessage = '';
               this.router.navigateByUrl(this.router.url);
               this.closeLoginModal.nativeElement.click();
+            } else {
               this.showOverlay = false;
+              this.errorMessage = "Invalid telephone number / password";
             }
           });
         }
@@ -74,7 +78,10 @@ export class SiteHeaderComponent implements OnInit {
     this.showOverlay = true;
     this.userService.createUser(newBuyer).subscribe(
       () => this.onSaveComplete(),
-      (error: any) => this.errorMessage = <any>error
+      (error: any) =>  {
+        this.errorMessage = <any>error;
+        this.showOverlay = false;
+      }
     );
     console.log('new buyer',newBuyer);
     console.log('Saved: ' + JSON.stringify(this.buyerForm.value));

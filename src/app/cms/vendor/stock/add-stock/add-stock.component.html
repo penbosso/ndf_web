@@ -1,4 +1,8 @@
 
+<div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
@@ -31,69 +35,89 @@
                       </div>
                     </div>
                     <div class="card-body">
-                      <form>
+                      <div *ngIf="errorMessage" class="row">
+                        <div class="alert alert-danger">{{errorMessage}}</div>
+                      </div>
+                      <form [formGroup]="stockForm"
+                            (ngSubmit)="save()">
                         <div class="row">
                           <div class="col-7">
                             <div class="form-group">
-                              <label class="form-label">Timber Name</label>
+                              <label for="name" class="form-label">Timber Name</label>
                               <input
-                                type="text"
+                                type="text" required
                                 class="form-control"
                                 placeholder="Wawa"
+                                formControlName="name"
+                                [ngClass]="{'is-invalid': stockForm.get('name').touched && !stockForm.get('name').valid}"
                               />
+                              <span *ngIf="stockForm.get('name').errors?.required "> Please enter the timber name</span>
                             </div>
                           </div>
                           <div class="col-5">
                             <div class="form-group">
-                              <label class="form-label">Available Unit</label>
+                              <label for="availableUnit" class="form-label">Available Unit</label>
                               <input
-                                type="text"
+                                type="text" required
                                 class="form-control"
                                 placeholder="500"
+                                formControlName="availableUnit"
+                                [ngClass]="{'is-invalid': stockForm.get('availableUnit').touched && !stockForm.get('availableUnit').valid}"
                               />
+                              <span *ngIf="stockForm.get('availableUnit').errors?.required "> Please enter timber quantity available</span>
                             </div>
                           </div>
                           <div class="col-4">
                             <div class="form-group">
-                              <label class="form-label">Size</label>
+                              <label for="size" class="form-label">Size</label>
                               <input
-                                type="text"
+                                type="text" required
                                 class="form-control"
                                 placeholder="2 x 6"
+                                formControlName="size"
+                                [ngClass]="{'is-invalid': stockForm.get('size').touched && !stockForm.get('size').valid}"
                               />
+                              <span *ngIf="stockForm.get('size').errors?.required "> Please  enter the size</span>
                             </div>
                           </div>
                           <div class="col-4">
                             <div class="form-group">
-                              <label class="form-label"
+                              <label for="quantity" class="form-label"
                                 >Quantity in Stock</label
                               >
                               <input
-                                type="text"
+                                type="text" required
                                 class="form-control"
                                 placeholder="500"
+                                formControlName="quantity"
+                                [ngClass]="{'is-invalid': stockForm.get('quantity').touched && !stockForm.get('quantity').valid}"
                               />
+                              <span *ngIf="stockForm.get('quantity').errors?.required "> Please enter timber quantity in stock</span>
                             </div>
                           </div>
                           <div class="col-4">
                             <div class="form-group">
                               <label class="form-label">Price per log</label>
                               <input
-                                type="text"
+                                type="text" required
                                 class="form-control"
                                 placeholder="Ghc 170"
+                                formControlName="pricePerLog"
+                                [ngClass]="{'is-invalid': stockForm.get('pricePerLog').touched && !stockForm.get('pricePerLog').valid}"
                               />
+                              <span *ngIf="stockForm.get('pricePerLog').errors?.required "> Please enter the price</span>
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group mb-0">
-                              <label class="form-label">Description</label>
-                              <textarea rows="5" class="form-control">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel animi,
-voluptatem consequuntur debitis nam suscipit cupiditate in similique
-ea dolor deleniti inventore ullam, quod repudiandae placeat voluptatum nesciunt dolore dolorem!
-</textarea
+                              <label for="description" class="form-label">Description</label>
+                              <textarea rows="5"
+                              class="form-control"
+                              formControlName="description"
+                              [ngClass]="{'is-invalid': stockForm.get('description').touched && !stockForm.get('description').valid}"
                               >
+                              </textarea>
+                            <span *ngIf="stockForm.get('description').errors?.required "> Please enter the description</span>
                             </div>
                           </div>
                         </div>

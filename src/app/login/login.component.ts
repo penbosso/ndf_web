@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   vendor = new Vendor()
   public showOverlay = false;
+  errorMessage: any;
 
   constructor(
     private router: Router,
@@ -29,9 +30,13 @@ export class LoginComponent implements OnInit {
       this.auth.login(telephone,password)
           .subscribe( success => {
             if (success) {
-              this.router.navigateByUrl('/vendor');
               this.showOverlay = false;
-            }
+              this.errorMessage = '';
+              this.router.navigateByUrl('/vendor');
+            } else {
+              this.showOverlay = false;
+              this.errorMessage = "Invalid telephone number / password";
+          }
           });
         }
     console.log(telephone, password);

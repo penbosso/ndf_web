@@ -55,7 +55,10 @@ export class SignupComponent implements OnInit {
 
     this.userService.createUser(newVendor).subscribe(
       () => this.onSaveComplete(),
-      (error: any) => this.errorMessage = <any>error
+      (error: any) =>  {
+        this.errorMessage = <any>error;
+        this.showOverlay = false;
+      }
     );
   }
 

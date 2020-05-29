@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  userApi: "https://banana-sundae-96116.herokuapp.com/api/user",
-  vendorApi: "https://safe-gorge-05038.herokuapp.com/api/vendors",
-  stockApi: "https://protected-brushlands-06858.herokuapp.com/api/stock",
+  userApi: "http://167.99.233.152:5000/api/user",
+  vendorApi: "http://167.99.233.152:8000/api/vendors",
+  stockApi: "http://167.99.233.152:7000/api/stocks",
   feedbackApi: "https://ndf-feedback.herokuapp.com/api/v1/",
-  nessfeedApi: "https://ndf-newsfeed.herokuapp.com/api/v1/"
+  nessfeedApi: "http://167.99.233.152:8010/api/v1/"
 };
 
 /*

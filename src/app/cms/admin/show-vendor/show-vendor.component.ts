@@ -1,4 +1,7 @@
+
+import { VendorInfo } from './../vendorInfo';
 import { Component, OnInit } from '@angular/core';
+import { AdminVendorService } from '../admin-vendor.service';
 
 @Component({
   selector: 'app-show-vendor',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show-vendor.component.css']
 })
 export class ShowVendorComponent implements OnInit {
+  vendors: VendorInfo[] = [];
+  errorMessage: any;
 
-  constructor() { }
+  constructor(private VendorService: AdminVendorService) { }
 
   ngOnInit() {
+    this.VendorService.showVendors().subscribe(
+      vendorInfoPage => {
+        this.vendors = vendorInfoPage.data;
+      },
+      error => this.errorMessage = <any>error
+    )
   }
 
 }

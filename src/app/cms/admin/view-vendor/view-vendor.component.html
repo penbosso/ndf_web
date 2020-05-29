@@ -1,1 +1,173 @@
-<p>view-vendor works!</p>
+
+                <div class="my-3 my-md-5">
+                  <div class="container">
+                      <div class="page-header">
+                          <h1 class="page-title">
+                              Vendor Data
+                          </h1>
+                          <div class="page-subtitle">
+                              Show all Vendors
+                          </div>
+                      </div>
+
+                      <!-- Body goes here -->
+                      <div class="my-auto">
+                          <div class="container">
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h3 class="card-title">
+                                          Vendor profile
+                                      </h3>
+                                      <div class="card-options">
+                                      </div>
+                                  </div>
+
+                                  <form>
+                                      <div class="card-body"  *ngIf='vendor'>
+                                          <div class="row">
+                                              <div class="col-md-5">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Company Name</label
+                                                      >
+                                                      <input
+                                                          type="text"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          placeholder="Company"
+                                                          value="{{ vendor.companyName }}."
+                                                      />
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-6 col-md-3">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Registration
+                                                          No.</label
+                                                      >
+                                                      <input
+                                                          type="text"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          placeholder="Username"
+                                                          value="{{ vendor.companyName }}"
+                                                      />
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-6 col-md-4">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Status</label
+                                                      >
+                                                      <input
+                                                          type="email"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          placeholder="{{ vendor.status }}"
+                                                      />
+                                                  </div>
+                                              </div>
+                                              <div class="col-6">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Remarks </label
+                                                      >
+                                                      <input
+                                                          type="text"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          value="{{ vendor.remarks }}"
+                                                      />
+                                                  </div>
+                                              </div>
+                                              <div class="col-3">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Location</label
+                                                      >
+                                                      <input
+                                                          type="text"
+                                                          class="form-control"
+                                                          placeholder="City"
+                                                          disabled=""
+                                                          value="{{ vendor.location }}"
+                                                      />
+                                                  </div>
+                                              </div>
+                                              <div class="col-3">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Phone</label
+                                                      >
+                                                      <input
+                                                          type="number"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          placeholder="{{ vendor.telephoneNumber }}"
+                                                      />
+                                                  </div>
+                                              </div>
+
+                                              <hr />
+
+                                              <div class="col-5">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Contact Person
+                                                          (Name)</label
+                                                      >
+                                                      <input
+                                                          type="text"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          placeholder="{{ vendor.contactPerson }}"
+                                                      />
+                                                  </div>
+                                              </div>
+
+                                              <!-- <div class="col-3">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Contact Person
+                                                          (Phone)</label
+                                                      >
+                                                      <input
+                                                          type="number"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          placeholder="+233 678 893"
+                                                      />
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-4">
+                                                  <div class="form-group">
+                                                      <label
+                                                          class="form-label"
+                                                          >Contact Person
+                                                          (Email)</label
+                                                      >
+                                                      <input
+                                                          type="number"
+                                                          class="form-control"
+                                                          disabled=""
+                                                          placeholder="N/A"
+                                                      />
+                                                  </div>
+                                              </div> -->
+                                          </div>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>

@@ -17,7 +17,7 @@ export class AuthService {
   eventAuthError$ = this.eventAuthError.asObservable();
 
   private authUrl = environment.userApi + '/login';
-  private authUrlRefresh = environment.userApi + '/login';
+  private authUrlRefresh = environment.userApi + '/guest-login';
   constructor(private http: HttpClient) { }
 
   login(telephone: string, password: string): Observable<boolean> {

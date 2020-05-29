@@ -2,8 +2,12 @@
                 <div class="header py-4">
                   <div class="container">
                       <div class="d-flex">
-                          <a class="header-brand" href="./index.html">
-                              <h4>GFC | Legal Timber System</h4>
+                          <a class="header-brand" [routerLink]="['/admin']">
+                            <h4><img
+                            src="assets/images/logo.png"
+                            width="64px"
+                            height="auto"
+                          />| Legal Timber System</h4>
                           </a>
                           <div class="d-flex order-lg-2 ml-auto">
                               <div class="dropdown">
@@ -94,11 +98,6 @@
                                              [routerLink]="['/admin/show-vendors']" routerLinkActive="active"
                                               class="dropdown-item "
                                               >Show vendors</a
-                                          >
-                                          <a
-                                              [routerLink]="['/admin/view-vendor']" routerLinkActive="active"
-                                              class="dropdown-item "
-                                              >View vendor</a
                                           >
                                       </div>
                                   </li>

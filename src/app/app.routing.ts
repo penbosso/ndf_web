@@ -1,3 +1,4 @@
+import { ShowVendorComponent } from './cms/admin/show-vendor/show-vendor.component';
 import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.component';
 import { ViewVendorComponent } from './cms/admin/view-vendor/view-vendor.component';
 import { AdminViewNewsComponent } from './cms/admin/admin-view-news/admin-view-news.component';
@@ -19,6 +20,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './login/auth.guard';
 import { AdminHomeComponent } from './cms/admin/admin-home/admin-home.component';
+import { ManageNewsComponent } from './cms/admin/manage-news/manage-news.component';
 
 
 const appRoutes: Routes = [
@@ -35,29 +37,29 @@ const appRoutes: Routes = [
 
   // cms routes goes here
   {
-    path:'',
+    path:'vendor',
     component: CmsLayoutComponent,
     children: [
-      {path:'vendor', canActivate: [AuthGuard], component: VendorHomeComponent},
-      {path:'vendor/add-stock', canActivate: [AuthGuard], component: AddStockComponent},
-      {path:'vendor/manage-stock', canActivate: [AuthGuard], component: ManageStockComponent},
-      {path:'vendor/news', canActivate: [AuthGuard], component: VendorNewsComponent},
-      {path:'vendor/view-news', canActivate: [AuthGuard], component: VendorViewNewsComponent}
+      {path:'', canActivate: [AuthGuard], component: VendorHomeComponent},
+      {path:'add-stock', canActivate: [AuthGuard], component: AddStockComponent},
+      {path:'manage-stock', canActivate: [AuthGuard], component: ManageStockComponent},
+      {path:'news', canActivate: [AuthGuard], component: VendorNewsComponent},
+      {path:'view-news', canActivate: [AuthGuard], component: VendorViewNewsComponent}
     ]
   },
 
   // cms routes goes here
   {
-    path:'',
+    path:'admin',
     component: AdminLayoutComponent,
     children: [
-      {path:'admin', canActivate: [AuthGuard], component: AdminHomeComponent},
-      {path:'admin/create-news', canActivate: [AuthGuard], component: CreateNewsComponent},
-      {path:'admin/view-news', canActivate: [AuthGuard], component: AdminViewNewsComponent},
-      {path:'admin/manage-news', canActivate: [AuthGuard], component: AdminViewNewsComponent},
-      {path:'admin/view-vendor', canActivate: [AuthGuard], component: ViewVendorComponent},
-      {path:'admin/upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
-      {path:'admin/show-vendors', canActivate: [AuthGuard], component: VendorViewNewsComponent}
+      {path:'', canActivate: [AuthGuard], component: AdminHomeComponent},
+      {path:'create-news', canActivate: [AuthGuard], component: CreateNewsComponent},
+      {path:'view-news', canActivate: [AuthGuard], component: AdminViewNewsComponent},
+      {path:'manage-news', canActivate: [AuthGuard], component: ManageNewsComponent},
+      {path:'view-vendor/:code', canActivate: [AuthGuard], component: ViewVendorComponent},
+      {path:'upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
+      {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent}
     ]
   },
 

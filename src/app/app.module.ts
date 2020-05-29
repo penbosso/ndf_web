@@ -36,6 +36,7 @@ import { ShowVendorComponent } from './cms/admin/show-vendor/show-vendor.compone
 import { AdminViewNewsComponent } from './cms/admin/admin-view-news/admin-view-news.component';
 import { ViewVendorComponent } from './cms/admin/view-vendor/view-vendor.component';
 import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.component';
+import { ManageNewsComponent } from './cms/admin/manage-news/manage-news.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,8 @@ import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.comp
     ShowVendorComponent,
     AdminViewNewsComponent,
     ViewVendorComponent,
-    UploadExcelComponent
+    UploadExcelComponent,
+    ManageNewsComponent
   ],
   imports: [
     BrowserModule,
