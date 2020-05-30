@@ -13,7 +13,8 @@ export class UploadExcelComponent implements OnInit {
   data: any;
   bulkData: VendorInfo[] = [];
   fileForm: FormGroup;
-  errorMassage: any;
+  errorMessage: any;
+  showOverlay: boolean = false;
 
   constructor(private fb: FormBuilder, private vendorService: AdminVendorService) { }
 
@@ -46,7 +47,7 @@ export class UploadExcelComponent implements OnInit {
             "location":element[3],
             "companyCode": element[4],
             "contactPerson":element[5],
-            "telephoneNumber":element[6],
+            "telephoneNumber":`0${element[6]}`,
             "status":element[7],
             "remarks":element[8]
           };
@@ -63,14 +64,17 @@ export class UploadExcelComponent implements OnInit {
   }
 
   saveBulk() {console.log(JSON.stringify(this.bulkData));
+    this.showOverlay = true;
     this.vendorService.saveBulkData(this.bulkData).subscribe(
       () => this.onSaveComplete(),
       (error: any) => {
-        this.errorMassage = <any> error;
+        this.errorMessage = <any> error;
+        this.showOverlay = false;
       }
     );
   }
   onSaveComplete(): void {
+    this.showOverlay = false;
     this.fileForm.reset();
     this.bulkData=[];
   }

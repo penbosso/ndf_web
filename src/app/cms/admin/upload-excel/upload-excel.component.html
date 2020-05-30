@@ -1,4 +1,11 @@
-
+<!-- Loding -->
+        <div class="my-overlay" *ngIf="showOverlay">
+          <i class="fa fa-spinner fa-spin" aria-hidden="true">
+          </i>
+        </div>
+        <div *ngIf="errorMessage" class="row" style="margin-top: 20px">
+          <div class="alert alert-danger">{{errorMessage}}</div>
+        </div>
                 <div class="my-3 my-md-5">
                   <div class="container">
                       <div class="page-header">
@@ -48,7 +55,6 @@
                                     <td>{{ data.location }}</td>
                                     <td>{{ data.companyCode }}</td>
                                     <td>{{ data.contactPerson }}</td>
-                                    <td>{{ data.companyName }}</td>
                                     <td>{{ data.telephoneNumber }}</td>
                                     <td>{{ data.status }}</td>
                                     <td>{{ data.remarks }}</td>

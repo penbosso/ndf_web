@@ -101,35 +101,30 @@
                           alt=""
                           class="img-fluid"
                         />
-                        <div class="my-5">
+                        <div class="my-5" *ngIf="filteredStock">
                           <table class="table">
                             <tbody>
                               <tr>
                                 <td>Timber Name</td>
-                                <td>Wawa</td>
+                                <td>{{filteredStock.name}}</td>
                               </tr>
                               <tr>
                                 <td>Available Units</td>
-                                <td>500 logs</td>
+                                <td>{{filteredStock.quantity}} logs</td>
                               </tr>
                               <tr>
                                 <td>Size</td>
-                                <td>2 x 6</td>
+                                <td>{{filteredStock.size}}</td>
                               </tr>
 
                               <tr>
                                 <td>Price per Log</td>
-                                <td>GHc 60</td>
+                                <td>GHc {{filteredStock.pricePerLog}}</td>
                               </tr>
                               <tr>
                                 <td>Description</td>
                                 <td>
-                                  Lorem ipsum dolor sit amet consectetur
-                                  adipisicing elit. Iusto, quas. Quasi
-                                  necessitatibus possimus pariatur non enim esse
-                                  omnis facere fugit doloremque praesentium,
-                                  quia repudiandae nisi eaque minima, ea ullam
-                                  odit./td>
+                                  {{filteredStock.description}}
                                 </td>
                               </tr>
                             </tbody>
@@ -138,13 +133,16 @@
                       </div>
                       <div class="modal-footer">
                         <button
+                          (click)=deleteStock(filteredStock.id)
                           type="button"
                           class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Delete
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button
+                          (click)=updateStock(filteredStock.id)
+                          type="button" class="btn btn-primary">
                           Update
                         </button>
                       </div>
@@ -153,13 +151,13 @@
                 </div>
                 <!-- individual stocks -->
                 <h4>Available Stock</h4>
-                <div class="row">
-                  <div class="col-4">
+                <div class="row" *ngIf='stocks && stocks.length'>
+                  <div class="col-4" *ngFor='let stock of stocks'>
                     <div class="card">
                       <div class="card-body">
                         <div class="mb-4 text-center">
                           <img
-                            src="assets/images/dev/wood1.jpg"
+                            src="https://www.ghanaiantimes.com.gh/wp-content/uploads/2020/02/Timber.jpg"
                             alt=""
                             class="img-fluid"
                           />
@@ -167,56 +165,10 @@
                         <h4 class="card-title">
                           <a
                             href="javascript:void(0)"
+                            (click)=getFilteredStock(stock.id)
                             data-toggle="modal"
                             data-target="#details"
-                            >Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.dolor sit amet consectetur adipisicing elit
-                          </a>
-                        </h4>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-4">
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="mb-4 text-center">
-                          <img
-                            src="assets/images/dev/wood1.jpg"
-                            alt=""
-                            class="img-fluid"
-                          />
-                        </div>
-                        <h4 class="card-title">
-                          <a
-                            href="javascript:void(0)"
-                            data-toggle="modal"
-                            data-target="#details"
-                            >Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.dolor sit amet consectetur adipisicing elit
-                          </a>
-                        </h4>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-4">
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="mb-4 text-center">
-                          <img
-                            src="assets/images/dev/wood1.jpg"
-                            alt=""
-                            class="img-fluid"
-                          />
-                        </div>
-                        <h4 class="card-title">
-                          <a
-                            href="javascript:void(0)"
-                            data-toggle="modal"
-                            data-target="#details"
-                            >Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.dolor sit amet consectetur adipisicing elit
+                            >{{stock.description}}
                           </a>
                         </h4>
                       </div>
@@ -246,7 +198,7 @@
                         ></a>
                       </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" *ngIf='pendingStocks && pendingStocks.length'>
                       <!-- individual stocks preview modal -->
 
                       <!-- Modal -->

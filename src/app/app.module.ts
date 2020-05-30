@@ -37,6 +37,8 @@ import { AdminViewNewsComponent } from './cms/admin/admin-view-news/admin-view-n
 import { ViewVendorComponent } from './cms/admin/view-vendor/view-vendor.component';
 import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.component';
 import { ManageNewsComponent } from './cms/admin/manage-news/manage-news.component';
+import { EditorModule } from "@tinymce/tinymce-angular";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +72,7 @@ import { ManageNewsComponent } from './cms/admin/manage-news/manage-news.compone
   ],
   imports: [
     BrowserModule,
+    EditorModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,

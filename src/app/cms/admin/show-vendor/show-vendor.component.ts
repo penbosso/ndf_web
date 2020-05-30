@@ -20,7 +20,7 @@ export class ShowVendorComponent implements OnInit {
         this.vendors = vendorInfoPage.data;
       },
       error => this.errorMessage = <any>error
-    )
+    );
   }
 
 }

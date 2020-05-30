@@ -11,6 +11,7 @@ import { Component, OnInit,ChangeDetectorRef,AfterContentChecked } from '@angula
 export class AddStockComponent implements OnInit {
   public showOverlay = false;
   stockForm : FormGroup;
+  message=""
   errorMessage: any;
   stock = new Stock();
 
@@ -22,7 +23,6 @@ export class AddStockComponent implements OnInit {
       name:'',
       size:'',
       quantity: '',
-      availableUnit: '',
       pricePerLog: '',
       description:''
     })
@@ -44,6 +44,7 @@ export class AddStockComponent implements OnInit {
   onSaveComplete(): void {
     this.stockForm.reset();
     this.showOverlay = false;
+    this.message = "Stock added";
   }
 
 }

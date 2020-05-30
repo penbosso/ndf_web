@@ -1,3 +1,4 @@
+import { StockPage } from './stockPage';
 import { Stock } from './stock';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -24,8 +25,8 @@ export class StockService {
       );
   }
 
-  getStocks(): Observable<Stock[]> {
-    return this.http.get<Stock[]>(this.stockApiBaseUrl).pipe(
+  getStocks(): Observable<StockPage> {
+    return this.http.get<StockPage>(this.stockApiBaseUrl).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
