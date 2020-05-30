@@ -1,8 +1,9 @@
+import { Vendor } from './../../user/vendor';
 import { VendorPage } from './vendorPage';
 import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { VendorInfo } from './vendorInfo';
 
@@ -25,6 +26,17 @@ export class AdminVendorService {
     return this.http.get<VendorInfo>(`${this.vendorApiBaseUrl}/code/${code}`).pipe(
       catchError(this.handleError)
     );
+  }
+
+  saveBulkData(bulkData: VendorInfo[]): Observable<VendorInfo[]> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<VendorInfo[]>(`${this.vendorApiBaseUrl}/bulk`, bulkData, {headers})
+            .pipe(
+              tap( data => {
+                console.log('save bulk data', JSON.stringify(data));
+              }),
+              catchError(this.handleError)
+            );
   }
 
   private handleError(err: HttpErrorResponse) {

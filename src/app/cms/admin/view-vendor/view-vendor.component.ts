@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { VendorInfo } from '../vendorInfo';
 import { AdminVendorService } from '../admin-vendor.service';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './view-vendor.component.html',
   styleUrls: ['./view-vendor.component.css']
 })
-export class ViewVendorComponent implements OnInit {
+export class ViewVendorComponent implements OnInit, OnDestroy {
   vendor: VendorInfo;
   private subscription: Subscription;
 
@@ -29,4 +29,7 @@ export class ViewVendorComponent implements OnInit {
   });
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

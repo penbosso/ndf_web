@@ -14,7 +14,7 @@ export class StockService {
   constructor(private http: HttpClient) { }
 
   saveStock(stock: Stock): Observable<Stock> {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});console.log(headers);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<Stock>(this.stockApiBaseUrl, stock, {headers:headers})
       .pipe(
         tap(data =>{

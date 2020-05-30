@@ -13,24 +13,62 @@
                       <!-- Body goes here -->
                       <div class="my-auto">
                           <div class="container">
-                              <form action="/file-upload" class="dropzone">
+                              <form class="dropzone" [formGroup]="fileForm">
                                   <div class="fallback">
                                       <input
-                                          name="file"
+                                          formControlName="file"
                                           type="file"
-                                          multiple
+                                          (change)="onFileChange($event)"
+                                          multiple="false"
                                       />
                                   </div>
                               </form>
-                              <div class="my-5 text-center">
+                              <hr/>
+                              <div class="table-responsive" style="max-height: 400px; background-color: #fff;">
+                                <h4><b>NB*</b> The excel file should have the following rows arranged in same manner</h4>
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>NO.</th>
+                                    <th>COMPANY NAME</th>
+                                    <th>ADDRESS/RESIDENTIAL</th>
+                                    <th>LOCATION</th>
+                                    <th>COMPANY CODE</th>
+                                    <th>CONTACT PERSON</th>
+                                    <th>TELEPHONE NO.</th>
+                                    <th>STATUS</th>
+                                    <th>REMARKS</th>
+                                  </tr>
+                                </thead >
+                                <tbody *ngIf="bulkData">
+                                  <tr *ngFor="let data of bulkData">
+                                    <td> </td>
+                                    <td>{{ data.companyName }}</td>
+                                    <td>{{ data.address }}</td>
+                                    <td>{{ data.location }}</td>
+                                    <td>{{ data.companyCode }}</td>
+                                    <td>{{ data.contactPerson }}</td>
+                                    <td>{{ data.companyName }}</td>
+                                    <td>{{ data.telephoneNumber }}</td>
+                                    <td>{{ data.status }}</td>
+                                    <td>{{ data.remarks }}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                              <div class="my-5 text-center" *ngIf="bulkData && bulkData.length">
                                   <button
+                                      (click)="cancel()"
                                       type="button"
                                       class="btn btn-outline-dark mr-3"
                                   >
                                       <i class="fe fe-x-circle mr-2"></i>
                                       Cancel
                                   </button>
-                                  <button type="button" class="btn btn-cyan">
+                                  <button
+                                  (click)="saveBulk()"
+                                  type="button"
+                                  class="btn btn-cyan">
                                       <i class="fe fe-check-circle mr-2"></i
                                       >Upload database
                                   </button>
