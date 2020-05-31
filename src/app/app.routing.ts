@@ -1,3 +1,4 @@
+import { VendorGuard } from './user/vendor.guard';
 import { ShowVendorComponent } from './cms/admin/show-vendor/show-vendor.component';
 import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.component';
 import { ViewVendorComponent } from './cms/admin/view-vendor/view-vendor.component';
@@ -38,14 +39,15 @@ const appRoutes: Routes = [
   // cms routes goes here
   {
     path:'vendor',
+    canActivate: [AuthGuard, VendorGuard],
     component: CmsLayoutComponent,
     children: [
-      {path:'', canActivate: [AuthGuard], component: VendorHomeComponent},
-      {path:'add-stock', canActivate: [AuthGuard], component: AddStockComponent},
-      {path:'add-stock/:id', canActivate: [AuthGuard], component: AddStockComponent},
-      {path:'manage-stock', canActivate: [AuthGuard], component: ManageStockComponent},
-      {path:'news', canActivate: [AuthGuard], component: VendorNewsComponent},
-      {path:'view-news', canActivate: [AuthGuard], component: VendorViewNewsComponent}
+      {path:'', component: VendorHomeComponent},
+      {path:'add-stock', component: AddStockComponent},
+      {path:'add-stock/:id', component: AddStockComponent},
+      {path:'manage-stock', component: ManageStockComponent},
+      {path:'news', component: VendorNewsComponent},
+      {path:'view-news', component: VendorViewNewsComponent}
     ]
   },
 
