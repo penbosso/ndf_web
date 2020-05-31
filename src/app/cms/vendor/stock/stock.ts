@@ -6,5 +6,5 @@ export class Stock {
     public quantity = 0,
     public pricePerLog= 0,
     public description ='',
-    public image = 'https://www.ghanaiantimes.com.gh/wp-content/uploads/2020/02/Timber.jpg') {}
+    public image = '') {}
 }

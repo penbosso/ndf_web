@@ -8,7 +8,8 @@ export const environment = {
   vendorApi: "http://167.99.233.152:8000/api/vendors",
   stockApi: "http://167.99.233.152:7000/api/stocks",
   feedbackApi: "https://ndf-feedback.herokuapp.com/api/v1/",
-  nessfeedApi: "http://167.99.233.152:8010/api/v1/"
+  nessfeedApi: "http://167.99.233.152:8010/api/v1/",
+  baseImageUrl: "https://ndf-images.ams3.digitaloceanspaces.com"
 };
 
 /*

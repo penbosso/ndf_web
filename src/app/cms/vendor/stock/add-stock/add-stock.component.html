@@ -44,6 +44,29 @@
                       <form [formGroup]="stockForm"
                             (ngSubmit)="save()">
                         <div class="row">
+                          <div class="form-group col-7">
+                              <div class="form-label">
+                                  Upload image
+                              </div>
+                              <div class="custom-file">
+                                  <input
+                                      type="file"
+                                      (change)="fileChangeEvent($event)"
+                                      class="custom-file-input"
+                                      name="example-file-input-custom"
+                                  />
+                                  <label class="custom-file-label"
+                                      >Choose file</label
+                                  >
+                              </div>
+                          </div>
+                          <div class="col-4">
+                            <img style="max-height: 100px; max-width: 100px;"
+                            src="{{base64Image ? base64Image : updateThisStock ? updateThisStock.image : 'assets/images/dev/wood1.jpg'}}"
+                            alt=""
+                            class="img-fluid"
+                          />
+                          </div>
                           <div class="col-7">
                             <div class="form-group">
                               <label for="name" class="form-label">Timber Name</label>
@@ -52,6 +75,7 @@
                                 class="form-control"
                                 placeholder="Wawa"
                                 formControlName="name"
+                                value="{{updateThisStock ? updateThisStock.name :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('name').touched && !stockForm.get('name').valid}"
                               />
                               <span *ngIf="stockForm.get('name').errors?.required "> Please enter the timber name</span>
@@ -65,6 +89,7 @@
                                 class="form-control"
                                 placeholder="2 x 6"
                                 formControlName="size"
+                                value="{{updateThisStock ? updateThisStock.size :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('size').touched && !stockForm.get('size').valid}"
                               />
                               <span *ngIf="stockForm.get('size').errors?.required "> Please  enter the size</span>
@@ -80,6 +105,7 @@
                                 class="form-control"
                                 placeholder="500"
                                 formControlName="quantity"
+                                value="{{updateThisStock ? updateThisStock.quantity :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('quantity').touched && !stockForm.get('quantity').valid}"
                               />
                               <span *ngIf="stockForm.get('quantity').errors?.required "> Please enter timber quantity in stock</span>
@@ -93,6 +119,7 @@
                                 class="form-control"
                                 placeholder="Ghc 170"
                                 formControlName="pricePerLog"
+                                value="{{updateThisStock ? updateThisStock.pricePerLog :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('pricePerLog').touched && !stockForm.get('pricePerLog').valid}"
                               />
                               <span *ngIf="stockForm.get('pricePerLog').errors?.required "> Please enter the price</span>
@@ -104,6 +131,7 @@
                               <textarea rows="5"
                               class="form-control"
                               formControlName="description"
+                              value="{{updateThisStock ? updateThisStock.description :'' }}"
                               [ngClass]="{'is-invalid': stockForm.get('description').touched && !stockForm.get('description').valid}"
                               >
                               </textarea>

@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-stock.component.css']
 })
 export class ManageStockComponent implements OnInit {
-
+  errorMessage: any;
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

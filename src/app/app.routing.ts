@@ -42,6 +42,7 @@ const appRoutes: Routes = [
     children: [
       {path:'', canActivate: [AuthGuard], component: VendorHomeComponent},
       {path:'add-stock', canActivate: [AuthGuard], component: AddStockComponent},
+      {path:'add-stock/:id', canActivate: [AuthGuard], component: AddStockComponent},
       {path:'manage-stock', canActivate: [AuthGuard], component: ManageStockComponent},
       {path:'news', canActivate: [AuthGuard], component: VendorNewsComponent},
       {path:'view-news', canActivate: [AuthGuard], component: VendorViewNewsComponent}
