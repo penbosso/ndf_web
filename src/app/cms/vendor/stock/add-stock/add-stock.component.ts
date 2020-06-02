@@ -2,26 +2,26 @@ import { Subscription } from 'rxjs';
 import { StockService } from './../stock.service';
 import { Stock } from './../stock';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as _ from 'lodash';
 import { ActivatedRoute } from '@angular/router';
-import { error } from 'protractor';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-stock',
   templateUrl: './add-stock.component.html',
   styleUrls: ['./add-stock.component.css']
 })
-export class AddStockComponent implements OnInit {
+export class AddStockComponent implements OnInit, OnDestroy {
   public showOverlay = false;
   stockForm : FormGroup;
-  message=""
+  message: string ="";
   errorMessage: any;
   stock = new Stock();
   base64Image: string;
   updateThisStock: Stock;
   private subscription: Subscription;
-  update: boolean = false;
+  imageBaseUrl = environment.baseImageUrl;
 
   constructor(private stockService : StockService,
               private route: ActivatedRoute,
@@ -39,7 +39,6 @@ export class AddStockComponent implements OnInit {
     this.subscription = this.route.paramMap.subscribe( params => {
       const id = params.get('id');
       if (id) {
-        this.update = true;
         this.stockService.getStockById(id).subscribe(
           stock => {
             this.updateThisStock = stock
@@ -54,7 +53,7 @@ export class AddStockComponent implements OnInit {
           error => this.errorMessage = <any> error
         );
       }
-      
+
     });
   }
 
@@ -64,7 +63,7 @@ export class AddStockComponent implements OnInit {
     console.log(newStock);
     this.showOverlay = true;
     // update or safe ? up date if id is found
-    if (this.update) {
+    if (this.updateThisStock) {
       newStock.id = this.updateThisStock.id;
       this.stockService.updateStock(newStock).subscribe(
         () => this.onSaveComplete(),

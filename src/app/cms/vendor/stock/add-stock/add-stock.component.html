@@ -35,10 +35,10 @@
                       </div>
                     </div>
                     <div class="card-body">
-                      <div *ngIf="errorMessage" class="row">
+                      <div *ngIf="errorMessage" class="row row text-center">
                         <div class="alert alert-danger">{{errorMessage}}</div>
                       </div>
-                      <div *ngIf="message" class="row">
+                      <div *ngIf="message" class="row row text-center">
                         <div class="alert alert-success">{{message}}</div>
                       </div>
                       <form [formGroup]="stockForm"
@@ -62,7 +62,7 @@
                           </div>
                           <div class="col-4">
                             <img style="max-height: 100px; max-width: 100px;"
-                            src="{{base64Image ? base64Image : updateThisStock ? updateThisStock.image : 'assets/images/dev/wood1.jpg'}}"
+                            src="{{base64Image ? base64Image : updateThisStock ? imageBaseUrl+'/'+updateThisStock.image : 'assets/images/dev/wood1.jpg'}}"
                             alt=""
                             class="img-fluid"
                           />

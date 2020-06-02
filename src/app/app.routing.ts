@@ -47,7 +47,7 @@ const appRoutes: Routes = [
       {path:'add-stock/:id', component: AddStockComponent},
       {path:'manage-stock', component: ManageStockComponent},
       {path:'news', component: VendorNewsComponent},
-      {path:'view-news', component: VendorViewNewsComponent}
+      {path:'view-news/:id', component: VendorViewNewsComponent}
     ]
   },
 
@@ -58,8 +58,10 @@ const appRoutes: Routes = [
     children: [
       {path:'', canActivate: [AuthGuard], component: AdminHomeComponent},
       {path:'create-news', canActivate: [AuthGuard], component: CreateNewsComponent},
+      {path:'create-news/:id', canActivate: [AuthGuard], component: CreateNewsComponent},
       {path:'view-news', canActivate: [AuthGuard], component: AdminViewNewsComponent},
-      {path:'manage-news', canActivate: [AuthGuard], component: ManageNewsComponent},
+      {path:'view-news/:id', canActivate: [AuthGuard], component: VendorViewNewsComponent},
+      {path:'manage-news/:id', canActivate: [AuthGuard], component: AdminViewNewsComponent},
       {path:'view-vendor/:code', canActivate: [AuthGuard], component: ViewVendorComponent},
       {path:'upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
       {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent}

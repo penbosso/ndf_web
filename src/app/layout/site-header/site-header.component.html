@@ -98,7 +98,7 @@
 
       </nav>
     </header>
-    <div *ngIf="errorMessage" class="row" style="margin-top: 20px">
+    <div *ngIf="errorMessage" class="row row text-center" style="margin-top: 20px">
       <div class="alert alert-danger">{{errorMessage}}</div>
     </div>
     <!-- Sign up Modal-->
@@ -125,7 +125,7 @@
             </button>
           </div>
           <div class="signup-modal-body">
-            <div *ngIf="errorMessage" class="row">
+            <div *ngIf="errorMessage" class="row row text-center">
               <div class="alert alert-danger">{{errorMessage}}</div>
             </div>
             <form id="signupform"
@@ -250,7 +250,7 @@
             </button>
           </div>
           <div class="login-modal-body">
-            <div *ngIf="errorMessage" class="row">
+            <div *ngIf="errorMessage" class="row row text-center">
               <div class="alert alert-danger">{{errorMessage}}</div>
             </div>
             <form id="loginform"

@@ -11,7 +11,7 @@
               <div class="text-center mb-6">
                 <h2>GFC | Legal Timber System</h2>
               </div>
-              <div *ngIf="errorMessage" class="row">
+              <div *ngIf="errorMessage" class="row row text-center">
                 <div class="alert alert-danger">{{errorMessage}}</div>
               </div>
               <form class="card" #loginform="ngForm" (ngSubmit)="authenticate(loginform)">

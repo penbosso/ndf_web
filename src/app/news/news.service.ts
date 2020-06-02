@@ -1,63 +1,63 @@
-import { StockPage } from './stockPage';
-import { Stock } from './stock';
-import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { News } from './news';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { NewsPage } from '../cms/admin/newsPage';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StockService {
-  private stockApiBaseUrl = environment.stockApi
+export class NewsService {
+  private newsApiBaseUrl = environment.newsfeedApi
 
   constructor(private http: HttpClient) { }
 
-  saveStock(stock: Stock): Observable<Stock> {
+  saveNews(news: News): Observable<News> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post<Stock>(this.stockApiBaseUrl, stock, {headers:headers})
+    return this.http.post<News>(this.newsApiBaseUrl, news, {headers:headers})
       .pipe(
         tap(data =>{
-          console.log('save Stock: '+ JSON.stringify(data))
+          console.log('save News: '+ JSON.stringify(data))
         }),
         catchError(this.handleError)
       );
   }
 
-  deleteStock(stock: string): Observable<{}> {
+  deleteNews(newsId: string): Observable<{}> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const url = `${this.stockApiBaseUrl}/${stock}`; console.log(url);
+    const url = `${this.newsApiBaseUrl}/${newsId}`; console.log(url);
     return this.http.delete(url, {headers:headers})
       .pipe(
         tap(data =>{
-          console.log('delete Stock: '+ JSON.stringify(data))
+          console.log('delete News: '+ JSON.stringify(data))
         }),
         catchError(this.handleError)
       );
   }
 
-  updateStock(stock: Stock): Observable<Stock> {
+  updateNews(news: News): Observable<News> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.put<Stock>(`${this.stockApiBaseUrl}/${stock.id}`, stock, {headers:headers})
+    return this.http.put<News>(`${this.newsApiBaseUrl}/${news.id}`, news, {headers:headers})
       .pipe(
         tap(data =>{
-          console.log('update Stock: '+ JSON.stringify(data))
+          console.log('update News: '+ JSON.stringify(data))
         }),
         catchError(this.handleError)
       );
   }
 
-  getStocks(): Observable<StockPage> {
-    return this.http.get<StockPage>(this.stockApiBaseUrl).pipe(
+  getNews(): Observable<NewsPage> {
+    return this.http.get<NewsPage>(this.newsApiBaseUrl).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
-  getStockById(id: string): Observable<Stock> {
-    return this.http.get<Stock>(`${this.stockApiBaseUrl}/${id}`).pipe(
-      tap(data => console.log("stock: " + JSON.stringify(data))),
+  getNewsById(id: string): Observable<News> {
+    return this.http.get<News>(`${this.newsApiBaseUrl}/${id}`).pipe(
+      tap(data => console.log("news: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

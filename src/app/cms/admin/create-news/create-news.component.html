@@ -1,5 +1,10 @@
 
-                <div class="my-3 my-md-5">
+<div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
+
+             <div class="my-3 my-md-5">
                   <div class="container">
                       <div class="page-header">
                           <h1 class="page-title">
@@ -10,28 +15,48 @@
                           </div>
                       </div>
 
+                      <div *ngIf="errorMessage" class="row text-center">
+                        <div class="alert alert-danger">{{errorMessage}}</div>
+                      </div>
+                      <div *ngIf="message" class="row row text-center">
+                        <div class="alert alert-success">{{message}}</div>
+                      </div>
+
                       <!-- Body goes here -->
                       <div class="text-right mb-5">
-                          <button
-                              type="button"
-                              class="btn btn-outline-dark mr-2"
-                          >
-                              <i class="fe fe-x-circle mr-2"></i>Cancel
-                          </button>
-                          <button type="button" class="btn btn-primary">
-                              <i class="fe fe-plus-circle mr-2"></i>Create
-                              news
-                          </button>
+                        <h4 class="float-left">Status:
+                          <span class="badge badge-secondary" *ngIf="!isPublished">Draft</span>
+                          <span class="badge badge-success" *ngIf="isPublished">Publish</span>
+                        </h4>
+                        <button
+                            type="button"
+                            (click)="toggleIsPublished()"
+                            class="btn btn-outline-dark mr-2"
+                        >
+                            <i class="fe fe-toggle-right mr-2"></i>Draft / Publish
+                        </button>
+                        <button
+                        *ngIf="this.updateThisNews"
+                        (click)=deleteNews(updateThisNews.id)
+                        type="button"
+                        class="btn btn-danger">
+                            <i class="fe fe-trash-2 mr-2"></i>Delete news
+                        </button>
                       </div>
                       <div class="my-2">
-                          <form action="" method="post">
+                          <form [formGroup]="newsForm"
+                                (ngSubmit)="save()">
                               <div class="row">
+                                  <div class="col-7">
+                                    <img src="{{base64Image ? base64Image : updateThisNews ? imageBaseUrl+'/'+updateThisNews.image : 'assets/images/dev/wood1.jpg'}}" alt="news image" />
+                                  </div>
                                   <div class="form-group col-7">
                                       <div class="form-label">
                                           Upload news image
                                       </div>
                                       <div class="custom-file">
                                           <input
+                                              (change)="fileChangeEvent($event)"
                                               type="file"
                                               class="custom-file-input"
                                               name="example-file-input-custom"
@@ -41,17 +66,54 @@
                                           >
                                       </div>
                                   </div>
-
                                   <div class="form-group col-7 mt-3">
                                       <label class="form-label"
                                           >News Caption</label
                                       >
                                       <input
-                                          type="text"
+                                          type="text" required
                                           class="form-control"
-                                          name="example-text-input"
+                                          formControlName="title"
                                           placeholder="Text.."
-                                      />
+                                          value="{{updateThisNews? updateThisNews.title : '' }}"
+                                          [ngClass]="{'is-invalid': newsForm.get('title').touched && !newsForm.get('title').valid}"
+                                        />
+                                        <span *ngIf="newsForm.get('title').errors?.required "> Please news title</span>
+                                  </div>
+                                  <div class="form-group col-7 mt-3">
+                                      <label class="form-label"
+                                          >Consumer</label>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" *ngIf="!updateThisNews || updateThisNews?.consumer ==='all'"
+                                        formControlName="consumer" id="consumerRadios1" value="all" checked
+                                        />
+                                        <input class="form-check-input" type="radio" *ngIf="updateThisNews && updateThisNews?.consumer !=='all'"
+                                        formControlName="consumer" id="consumerRadios1" value="all" />
+                                        <label class="form-check-label" for="consumerRadios1">
+                                          All
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio"
+                                        formControlName="consumer" id="consumerRadios2" value="buyer"  *ngIf="(!updateThisNews) || (updateThisNews && updateThisNews?.consumer !=='buyer')"
+                                        />
+                                        <input class="form-check-input" type="radio" *ngIf="updateThisNews && updateThisNews?.consumer ==='buyer'"
+                                        formControlName="consumer" id="consumerRadios2" value="buyer" checked />
+                                        <label class="form-check-label" for="consumerRadios2">
+                                          Buyer
+                                        </label>
+                                      </div>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio"
+                                        formControlName="consumer" id="consumerRadios3" value="vendor" *ngIf="(!updateThisNews) || (updateThisNews && updateThisNews?.consumer !=='vendor')"
+                                        />
+                                        <input class="form-check-input" type="radio" *ngIf="updateThisNews && updateThisNews?.consumer ==='vendor'"
+                                        formControlName="consumer" id="consumerRadios3" value="vendor" checked
+                                        />
+                                        <label class="form-check-label" for="consumerRadios3">
+                                          Vendor
+                                        </label>
+                                      </div>
                                   </div>
 
                                   <div class="form-group col-12 mt-3">
@@ -60,14 +122,18 @@
                                       >
                                       <editor
                                       apiKey="Get your free API key and paste it here"
-                                      plugins="wordcount"
-                                    ></editor>
-
-                                  </div>
+                                      plugins="wordcount" required
+                                      formControlName="description"
+                                    >
+                                    {{updateThisNews ? updateThisNews?.description :'' }}
+                                  </editor>
+                                  <span *ngIf="newsForm.get('description').errors?.required "> Please news body</span>
+                                </div>
                               </div>
                               <hr />
                               <div class="text-center mt-5">
                                   <button
+                                      (click)="cancel()"
                                       type="button"
                                       class="btn btn-outline-dark mr-2"
                                   >
@@ -75,7 +141,7 @@
                                       >Cancel
                                   </button>
                                   <button
-                                      type="button"
+                                      type="submit"
                                       class="btn btn-primary"
                                   >
                                       <i class="fe fe-plus-circle mr-2"></i

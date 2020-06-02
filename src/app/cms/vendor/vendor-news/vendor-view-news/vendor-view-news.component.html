@@ -3,86 +3,41 @@
           <div class="container">
             <!-- Body goes here -->
             <section style="margin-top: 75px;" class="news-link">
-              <img
+              <img  *ngIf="!newsArticle?.image"
                 src="assets/images/dev/wood2.jpg"
                 alt=""
                 height="250px"
                 width="100%"
                 class="rounded"
               />
+              <img  *ngIf="newsArticle?.image"
+                src="{{imageBaseUrl+'/'+newsArticle.image}}"
+                alt=""
+                style="max-height: 600px;"
+                width="100%"
+                class="rounded"
+              />
               <div class="my-auto">
-                <div class="col-12 mb-5">
+                <div class="col-12 mb-5" *ngIf="newsArticle">
                   <div class="mt-5">
-                    <h4>This is the caption for the news.</h4>
-                    <small>By: Arthur David</small>
+                    <h4>{{newsArticle.title}}</h4>
+                    <small>By: NDF</small>
                   </div>
 
                   <div class="mt-5">
-                    Video provides a powerful way to help you prove your point.
-                    When you click Online Video, you can paste in the embed code
-                    for the video you want to add. You can also type a keyword
-                    to search online for the video that best fits your document.
-                    To make your document look professionally produced, Word
-                    provides header, footer, cover page, and text box designs
-                    that complement each other. For example, you can add a
-                    matching cover page, header, and sidebar. Click Insert and
-                    then choose the elements you want from the different
-                    galleries. Themes and styles also help keep your document
-                    coordinated. When you click Design and choose a new Theme,
-                    the pictures, charts, and SmartArt graphics change to match
-                    your new theme. When you apply styles, your headings change
-                    to match the new theme. Save time in Word with new buttons
-                    that show up where you need them. To change the way a
-                    picture fits in your document, click it and a button for
-                    layout options appears next to it. When you work on a table,
-                    click where you want to add a row or a column, and then
-                    click the plus sign. Reading is easier, too, in the new
-                    Reading view. You can collapse parts of the document and
-                    focus on the text you want. If you need to stop reading
-                    before you reach the end, Word remembers where you left off
-                    - even on another device. Video provides a powerful way to
-                    help you prove your point. When you click Online Video, you
-                    can paste in the embed code for the video you want to add.
-                    You can also type a keyword to search online for the video
-                    that best fits your document. To make your document look
-                    professionally produced, Word provides header, footer, cover
-                    page, and text box designs that complement each other. For
-                    example, you can add a matching cover page, header, and
-                    sidebar. Click Insert and then choose the elements you want
-                    from the different galleries. Themes and styles also help
-                    keep your document coordinated. When you click Design and
-                    choose a new Theme, the pictures, charts, and SmartArt
-                    graphics change to match your new theme. When you apply
-                    styles, your headings change to match the new theme. Save
-                    time in Word with new buttons that show up where you need
-                    them. To change the way a picture fits in your document,
-                    click it and a button for layout options appears next to it.
-                    When you work on a table, click where you want to add a row
-                    or a column, and then click the plus sign. Reading is
-                    easier, too, in the new Reading view. You can collapse parts
-                    of the document and focus on the text you want. If you need
-                    to stop reading before you reach the end, Word remembers
-                    where you left off - even on another device. Video provides
-                    a powerful way to help you prove your point. When you click
-                    Online Video, you can paste in the embed code for the video
-                    you want to add. You can also type a keyword to search
-                    online for the video that best fits your document. To make
-                    your document look professionally produced, Word provides
-                    header, footer, cover page, and text box designs that
-                    complement each other. For example, you can add a matching
-                    cover page, header, and sidebar. Click Insert and then
-                    choose the elements you want from the different galleries.
+                    {{newsArticle.description}}
                   </div>
                   <hr />
                   <div class="my-5">
-                    <a href="news.html" class="btn btn-outline-dark">
+                    <!-- <a
+                    class="btn btn-outline-dark">
                       <i class="fe fe-arrow-left mr-2"></i>Go Back
                     </a>
                     <div class="float-right">
-                      <a href="#" class="btn btn-primary">
+                      <a href="" class="btn btn-primary">
                         <i class="fe fe-share-2 mr-2"></i>Share
                       </a>
-                    </div>
+                    </div>-->
                   </div>
                 </div>
               </div>
