@@ -1,0 +1,20 @@
+* generate site home component and layouts
+
+  19 ng g c home
+  20 ng g c layout/site-header
+  21 ng g c layout/site-footer
+  22 ng g c layout/site-layout
+  23 ng g c layout/cms-layout
+  24 ng g c layout/cms-header
+  25 git add .
+  26 git commit -m'developed layout for site and cms'
+
+* define routes in app.routing.ts
+* add styles to site-header css and remove view style encapsulation.
+
+* include js into scripts of angular.json
+
+* create news and catalog component and route to into
+
+   1 ng g c news
+   2 ng g c catalog

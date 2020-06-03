@@ -1,0 +1,154 @@
+
+<div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
+        <div class="my-3 my-md-5">
+          <div class="container">
+            <div class="page-header">
+              <h1 class="page-title">
+                Manage Stock
+              </h1>
+            </div>
+
+            <!-- Body goes here -->
+            <div class="my-auto">
+              <div class="container">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-status bg-orange"></div>
+                    <div class="card-header">
+                      <h3 class="card-title">Add Stock</h3>
+                      <div class="card-options">
+                        <a
+                          href="#"
+                          class="card-options-collapse"
+                          data-toggle="card-collapse"
+                          ><i class="fe fe-chevron-up"></i
+                        ></a>
+                        <a
+                          href="#"
+                          class="card-options-remove"
+                          data-toggle="card-remove"
+                          ><i class="fe fe-x"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div *ngIf="errorMessage" class="row row text-center">
+                        <div class="alert alert-danger">{{errorMessage}}</div>
+                      </div>
+                      <div *ngIf="message" class="row row text-center">
+                        <div class="alert alert-success">{{message}}</div>
+                      </div>
+                      <form [formGroup]="stockForm"
+                            (ngSubmit)="save()">
+                        <div class="row">
+                          <div class="form-group col-7">
+                              <div class="form-label">
+                                  Upload image
+                              </div>
+                              <div class="custom-file">
+                                  <input
+                                      type="file"
+                                      (change)="fileChangeEvent($event)"
+                                      class="custom-file-input"
+                                      name="example-file-input-custom"
+                                  />
+                                  <label class="custom-file-label"
+                                      >Choose file</label
+                                  >
+                              </div>
+                          </div>
+                          <div class="col-4">
+                            <img style="max-height: 100px; max-width: 100px;"
+                            src="{{base64Image ? base64Image : updateThisStock ? imageBaseUrl+'/'+updateThisStock.image : 'assets/images/dev/wood1.jpg'}}"
+                            alt=""
+                            class="img-fluid"
+                          />
+                          </div>
+                          <div class="col-7">
+                            <div class="form-group">
+                              <label for="name" class="form-label">Timber Name</label>
+                              <input
+                                type="text" required
+                                class="form-control"
+                                placeholder="Wawa"
+                                formControlName="name"
+                                value="{{updateThisStock ? updateThisStock.name :'' }}"
+                                [ngClass]="{'is-invalid': stockForm.get('name').touched && !stockForm.get('name').valid}"
+                              />
+                              <span *ngIf="stockForm.get('name').errors?.required "> Please enter the timber name</span>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <div class="form-group">
+                              <label for="size" class="form-label">Size</label>
+                              <input
+                                type="text" required
+                                class="form-control"
+                                placeholder="2 x 6"
+                                formControlName="size"
+                                value="{{updateThisStock ? updateThisStock.size :'' }}"
+                                [ngClass]="{'is-invalid': stockForm.get('size').touched && !stockForm.get('size').valid}"
+                              />
+                              <span *ngIf="stockForm.get('size').errors?.required "> Please  enter the size</span>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <div class="form-group">
+                              <label for="quantity" class="form-label"
+                                >Quantity in Stock</label
+                              >
+                              <input
+                                type="number" required
+                                class="form-control"
+                                placeholder="500"
+                                formControlName="quantity"
+                                value="{{updateThisStock ? updateThisStock.quantity :'' }}"
+                                [ngClass]="{'is-invalid': stockForm.get('quantity').touched && !stockForm.get('quantity').valid}"
+                              />
+                              <span *ngIf="stockForm.get('quantity').errors?.required "> Please enter timber quantity in stock</span>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <div class="form-group">
+                              <label class="form-label">Price per log</label>
+                              <input
+                                type="number" required
+                                class="form-control"
+                                placeholder="Ghc 170"
+                                formControlName="pricePerLog"
+                                value="{{updateThisStock ? updateThisStock.pricePerLog :'' }}"
+                                [ngClass]="{'is-invalid': stockForm.get('pricePerLog').touched && !stockForm.get('pricePerLog').valid}"
+                              />
+                              <span *ngIf="stockForm.get('pricePerLog').errors?.required "> Please enter the price</span>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group mb-0">
+                              <label for="description" class="form-label">Description</label>
+                              <textarea rows="5"
+                              class="form-control"
+                              formControlName="description"
+                              value="{{updateThisStock ? updateThisStock.description :'' }}"
+                              [ngClass]="{'is-invalid': stockForm.get('description').touched && !stockForm.get('description').valid}"
+                              >
+                              </textarea>
+                            <span *ngIf="stockForm.get('description').errors?.required "> Please enter the description</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-right">
+                          <button type="submit" class="btn btn-primary">
+                            Add Stock
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>

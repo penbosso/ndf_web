@@ -20,13 +20,24 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
+              "src/favicon1.ico",
               "src/assets"
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/site/vendor/bootstrap/js/bootstrap.min.js",
+              "src/assets/site/vendor/jquery.cookie/jquery.cookie.js",
+              "src/assets/site/vendor/owl.carousel/owl.carousel.min.js",
+              "src/assets/cms/js/require.min.js",
+              "src/assets/cms/js/dashboard.js",
+              "src/assets/cms/plugins/charts-c3/plugin.js",
+              "src/assets/cms/plugins/maps-google/plugin.js",
+              "src/assets/cms/plugins/input-mask/plugin.js",
+              "src/assets/cms/plugins/datatables/plugin.js",
+              "src/assets/cms/plugins/dropzone/dropzone.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -85,7 +96,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/favicon1.ico",
               "src/assets"
             ],
             "styles": [

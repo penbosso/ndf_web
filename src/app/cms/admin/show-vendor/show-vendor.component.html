@@ -1,0 +1,92 @@
+
+                <div class="my-3 my-md-5">
+                  <div class="container">
+                      <div class="page-header">
+                          <h1 class="page-title">
+                              Vendor Data
+                          </h1>
+                          <div class="page-subtitle">
+                              Show all Vendors
+                          </div>
+                      </div>
+
+                      <!-- Body goes here -->
+                      <div class="my-auto">
+                          <div class="container">
+                              <!-- start -->
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h3 class="card-title">
+                                          Filter vendor data
+                                      </h3>
+                                  </div>
+                                  <div class="table-responsive">
+                                      <table
+                                          class="table card-table table-vcenter text-nowrap datatable"
+                                      >
+                                          <thead>
+                                              <tr>
+                                                  <th class="w-1">
+                                                      Reg. Code
+                                                  </th>
+                                                  <th>Company Name</th>
+                                                  <th>Address (postal)</th>
+                                                  <th>Telephone No.</th>
+                                                  <th>Status</th>
+                                                  <th>Remarks</th>
+                                                  <th>Contact Person</th>
+                                                  <th>Location</th>
+                                                  <th></th>
+                                              </tr>
+                                          </thead>
+                                          <tbody *ngIf='vendors && vendors.length'>
+                                              <tr *ngFor='let vendor of vendors' >
+                                                  <td>
+                                                      <span class="text-muted"
+                                                          >{{ vendor.companyCode }}</span
+                                                      >
+                                                  </td>
+                                                  <td>
+                                                      {{ vendor.companyName }}
+                                                  </td>
+                                                  <td>
+                                                      {{ vendor.address }}
+                                                  </td>
+                                                  <td>
+                                                      {{ vendor.telephoneNumber }}
+                                                  </td>
+                                                  <td>
+                                                      {{ vendor.status }}
+                                                  </td>
+                                                  <td>
+                                                      {{ vendor.remarks }}
+                                                  </td>
+                                                  <td>
+                                                      {{ vendor.contactPerson }}
+                                                  </td>
+                                                  <td>{{ vendor.location }}</td>
+                                                  <td class="text-right">
+                                                      <a
+                                                          [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                                                          class="btn btn-outline-dark btn-sm"
+                                                          >View</a
+                                                      >
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      <script>
+                                          require([
+                                              "datatables",
+                                              "jquery"
+                                          ], function(datatable, $) {
+                                              $(".datatable").DataTable();
+                                          });
+                                      </script>
+                                  </div>
+                                  <!-- Finish -->
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>

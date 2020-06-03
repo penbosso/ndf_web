@@ -1,0 +1,46 @@
+
+        <div class="my-3 my-md-5">
+          <div class="container">
+            <!-- Body goes here -->
+            <section style="margin-top: 75px;" class="news-link">
+              <img  *ngIf="!newsArticle?.image"
+                src="assets/images/dev/wood2.jpg"
+                alt=""
+                height="250px"
+                width="100%"
+                class="rounded"
+              />
+              <img  *ngIf="newsArticle?.image"
+                src="{{imageBaseUrl+'/'+newsArticle.image}}"
+                alt=""
+                style="max-height: 500px;"
+                width="100%"
+                class="rounded"
+              />
+              <div class="my-auto">
+                <div class="col-12 mb-5" *ngIf="newsArticle">
+                  <div class="mt-5">
+                    <h4>{{newsArticle.title}}</h4>
+                    <small>By: NDF</small>
+                  </div>
+
+                  <div class="mt-5">
+                    {{newsArticle.description}}
+                  </div>
+                  <hr />
+                  <div class="my-5">
+                    <!-- <a
+                    class="btn btn-outline-dark">
+                      <i class="fe fe-arrow-left mr-2"></i>Go Back
+                    </a>
+                    <div class="float-right">
+                      <a href="" class="btn btn-primary">
+                        <i class="fe fe-share-2 mr-2"></i>Share
+                      </a>
+                    </div>-->
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>

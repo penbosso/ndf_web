@@ -1,0 +1,157 @@
+/* your styles go here */
+
+#contact .form-group {
+  margin-bottom: 20px;
+}
+
+#contact label {
+  display: block;
+  padding-left: 10px;
+  color: #656565;
+  font-family: "Open Sans", sans-serif;
+}
+
+#contact input {
+  width: 100%;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid #eee;
+  outline: none;
+}
+
+#contact input:focus {
+  border-color: #5989e5;
+}
+
+#contact input::-moz-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+#contact input::-webkit-input-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+#contact textarea:-ms-input-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+#contact textarea {
+  width: 100%;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid #eee;
+  outline: none;
+}
+
+#contact textarea:focus {
+  border-color: #16a71eda;
+}
+
+#contact textarea::-moz-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+#contact textarea::-webkit-input-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+#contact textarea:-ms-input-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+#query .form-group {
+  margin-bottom: 20px;
+}
+
+#query label {
+  display: block;
+  padding-left: 10px;
+  color: #656565;
+  font-family: "Open Sans", sans-serif;
+}
+
+#query select {
+  width: 100%;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid #eee;
+  outline: none;
+}
+
+#query select:focus {
+  border-color: #16a71eda;
+}
+
+#query select::-moz-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+.bg-wood {
+  background-image: url("../img/OG22NQ0.jpg");
+}
+.bg-search {
+  background-image: url("../img/lumber.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#contact .header {
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #fff;
+}
+.news a {
+  color: #656565;
+  text-decoration: none;
+  border-bottom: 1px solid grey;
+}
+.news a:hover {
+  background-color: #eee;
+  color: #000000;
+}
+.news-article,
+.news-image {
+  margin: 15px 0;
+}
+.pagination-green {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  margin: 7.5em 45% 0;
+}
+.query select {
+  width: 100%;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid #eee;
+  outline: none;
+}

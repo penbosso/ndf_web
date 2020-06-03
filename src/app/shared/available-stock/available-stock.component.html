@@ -1,0 +1,137 @@
+
+                  <div class="card">
+                    <div class="card-status bg-orange"></div>
+                    <div class="card-header">
+                      <h3 class="card-title">Available Stock</h3>
+                      <div class="card-options">
+                        <a
+                          href="#"
+                          class="card-options-collapse"
+                          data-toggle="card-collapse"
+                          ><i class="fe fe-chevron-up"></i
+                        ></a>
+                        <a
+                          href="#"
+                          class="card-options-remove"
+                          data-toggle="card-remove"
+                          ><i class="fe fe-x"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="text-right mb-5">
+                        <a [routerLink]="['/vendor/add-stock']" class="btn btn-dark">
+                          <i class="fe fe-plus"></i> Add Stock
+                        </a>
+                      </div>
+                      <!-- individual stocks preview modal -->
+
+                      <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="details"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="details"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="details">
+                          Details
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true"></span>
+                        </button>
+                      </div>
+                      <div class="modal-body" *ngIf="filteredStock">
+                        <img
+                          src="{{filteredStock.image ? imageBaseUrl+'/'+filteredStock.image : 'assets/images/dev/wood1.jpg'}}"
+                          alt=""
+                          class="img-fluid"
+                        />
+                        <div class="my-5">
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <td>Timber Name</td>
+                                <td>{{filteredStock.name}}</td>
+                              </tr>
+                              <tr>
+                                <td>Available Units</td>
+                                <td>{{filteredStock.quantity}} logs</td>
+                              </tr>
+                              <tr>
+                                <td>Size</td>
+                                <td>{{filteredStock.size}}</td>
+                              </tr>
+
+                              <tr>
+                                <td>Price per Log</td>
+                                <td>GHc {{filteredStock.pricePerLog}}</td>
+                              </tr>
+                              <tr>
+                                <td>Description</td>
+                                <td>
+                                  {{filteredStock.description}}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          (click)=deleteStock(filteredStock.id)
+                          type="button"
+                          class="btn btn-danger"
+                          data-dismiss="modal"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          (click)=updateStock(filteredStock.id)
+                          data-dismiss="modal"
+                          type="button" class="btn btn-primary">
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                      <!-- individual stocks -->
+                <div class="row" *ngIf='stocks && stocks.length'>
+                  <div class="col-4" *ngFor='let stock of stocks'>
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="mb-4 text-center">
+                          <img style="max-height: 200px;"
+                            src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}"
+                            alt=""
+                            class="img-fluid"
+                          />
+                        </div>
+                        <h4 class="card-title">
+                          <a
+                            href="javascript:void(0)"
+                            (click)=getFilteredStock(stock.id)
+                            data-toggle="modal"
+                            data-target="#details"
+                            >{{stock.description.length > 100 ? stock.description.substr(0,100)+"..." : stock.description}}
+                          </a>
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                    </div>
+                  </div>
