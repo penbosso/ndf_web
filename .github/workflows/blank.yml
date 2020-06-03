@@ -25,8 +25,7 @@ jobs:
       with:
         node-version: '10.x'
  
-    - uses: actions/cache@v1 # this allows for re-using node_modules caching, making builds a bit faster.
-      
+    
     # Runs a single command using the runners shell 
     - run: npm install
     - run: npx browserslist@latest --update-db
