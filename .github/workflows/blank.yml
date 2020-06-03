@@ -42,7 +42,7 @@ jobs:
         HOST: 161.35.98.73
         USERNAME: penbosso
         PORT: 22
-        KEY: ${{ secrets.forSSH }}
+        KEY: ${{ secrets.FORSSH }}
       with:
         source: "./dist/ndf_web/"
         target: "/home/user/ndf-web/pwa/"
