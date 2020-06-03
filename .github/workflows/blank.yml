@@ -40,7 +40,7 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USER }}
         PORT: 22
-        KEY: ${{ secrets.FORSSH }}
+        KEY: ${{ secrets.SSHKEY }}
       with:
         source: "./dist/ndf-web/"
         target: "/home/penbosso/ndf-web/"
