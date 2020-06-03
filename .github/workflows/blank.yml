@@ -31,8 +31,8 @@ jobs:
     - run: npm install jasmine-core
     - run: npx browserslist@latest --update-db
     - run: npm install -g http-server
-    - run: npm install -g @angular/cli  > /dev/null
-    - run: ng build --prod --aot
+    - run: npm install -g @angular/cli@8.2.2
+    - run: ng build --prod
     - run: http-server ndf-web/dist/ -p 80 > ./output.log &
 
  
