@@ -28,6 +28,7 @@ jobs:
     
     # Runs a single command using the runners shell 
     - run: npm install
+    - run: npm jasmine-core
     - run: npx browserslist@latest --update-db
     - run: npm install -g http-server
     - run: npm install -g @angular/cli  > /dev/null
