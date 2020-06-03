@@ -15,7 +15,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -25,14 +25,15 @@ jobs:
       with:
         node-version: '10.x'
  
-    
+    - uses: actions/cache@v1 # this allows for re-using node_modules caching, making builds a bit faster.
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     # Runs a single command using the runners shell 
     - run: npm install
-    - run: npm install jasmine-core@>=3.5
-    - run: npx browserslist@latest --update-db
     - run: npm install -g http-server
     - run: npm install -g @angular/cli@8.2.2
-    - run: ng build --prod
+    - run: ng build --prod --aot
     - run: http-server ndf-web/dist/ -p 80 > ./output.log &
-
- 
