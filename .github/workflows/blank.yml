@@ -36,12 +36,11 @@ jobs:
  
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
-      env:
+      with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         port: 22
         password: ${{ secrets.PASS }}
-      with:
         source: "./dist/ndf-web/"
         target: "/home/penbosso/ndf-web/"
         strip_components: 3 # this is important
