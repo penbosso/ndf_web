@@ -33,9 +33,9 @@ jobs:
           ${{ runner.os }}-node-
     # Runs a single command using the runners shell 
     - run: npm install
-    - run: npm update
     - run: npm install -g http-server
     - run: npm install -g @angular/cli@8.2.2
+    - run: npm update
     - run: ng build --prod --aot
     - run: http-server ndf-web/dist/ -p 80 > ./output.log &
 
