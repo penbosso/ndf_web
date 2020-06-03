@@ -39,6 +39,7 @@ import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.comp
 import { ManageNewsComponent } from './cms/admin/manage-news/manage-news.component';
 import { EditorModule } from "@tinymce/tinymce-angular";
 import { AvailableStockComponent } from './shared/available-stock/available-stock.component';
+import { NewsArticleComponent } from './news/news-article/news-article.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { AvailableStockComponent } from './shared/available-stock/available-stoc
     ViewVendorComponent,
     UploadExcelComponent,
     ManageNewsComponent,
-    AvailableStockComponent
+    AvailableStockComponent,
+    NewsArticleComponent
   ],
   imports: [
     BrowserModule,

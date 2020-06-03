@@ -1,0 +1,36 @@
+
+    <!-- Section for search results -->
+    <section class="news bg-gray">
+      <div class="container">
+        <img  *ngIf="!newsArticle?.image"
+          src="assets/images/dev/wood2.jpg"
+          alt=""
+          height="250px"
+          width="100%"
+          class="rounded"
+        />
+        <img  *ngIf="newsArticle?.image"
+          src="{{imageBaseUrl+'/'+newsArticle.image}}"
+          src="./img/lumber.jpg"
+          alt=""
+          style="max-height: 500px;"
+          width="100%"
+          class="rounded"
+        />
+        <div class="my-5">
+          <h4>{{newsArticle.title}}</h4>
+          <p class="text-muted">Published: {{newsArticle.updatedAt | date}}</p>
+        </div>
+
+        <div class="my-5">
+          {{newsArticle.description}}
+        </div>
+        <hr />
+        <div class="my-auto">
+          <!-- <a href="news.html" class="btn btn-outline-dark">Go Back</a>
+          <div class="float-right">
+            <a class="btn btn-primary">Share</a>
+          </div> -->
+        </div>
+      </div>
+    </section>

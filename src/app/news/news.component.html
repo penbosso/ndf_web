@@ -1,76 +1,48 @@
 
     <!-- Custom Search bar -->
     <section id="newsletter" class="newsletter bg-search">
-      <div class="container text-center">
+      <div class="container text-center" style="max-height: 200px;">
         <h2>Know more about the timber industry</h2>
         <div class="form-holder">
-          <form id="newsletterForm" action="#">
             <div class="form-group">
               <input
+              [(ngModel)]='listFilter'
                 type="text"
                 name="search"
                 id="search"
-                placeholder="Type search query here"
+                placeholder="Search by key workd or phrase"
               />
               <a
-                href="news_search.html"
                 class="btn btn-primary btn-gradient submit"
               >
                 Search
               </a>
             </div>
-          </form>
         </div>
       </div>
     </section>
     <!-- Section for search results -->
     <section class="news bg-gray">
-      <div class="container text-center">
-        <h2 class="h3">Recent News</h2>
-        <a href="view_news.html" class="row d-flex justify-content-center mt-5">
-          <div class="col-lg-3 news-image">
-            <img src="assets/site/img/lumber.jpg" alt="" class="img-fluid" />
-          </div>
+      <div class="container text-center"  *ngIf="filteredNews && filteredNews.length">
+        <h2 class="h3">News</h2>
+        <div *ngFor="let newsArticle of filteredNews">
+          <a [routerLink]="['/news',newsArticle.id]" class="row d-flex justify-content-center mt-5">
+            <div class="col-lg-3 news-image">
+              <img
+              *ngIf="newsArticle?.image"
+              src="{{imageBaseUrl+'/'+newsArticle.image}}" alt="" class="img-fluid" />
+              <img
+              *ngIf="!newsArticle?.image"
+              src="assets/images/dev/wood2.jpg" alt="" class="img-fluid" />
+            </div>
 
-          <div class="col-lg-9 news-article">
-            <p class="text-left">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              rerum vero corrupti dolores tempora maiores accusantium,
-              reprehenderit soluta perspiciatis nobis! Nisi error quisquam
-              sapiente consequuntur blanditiis animi id labore voluptates?
-            </p>
-          </div>
-        </a>
-
-        <a href="view_news.html" class="row d-flex justify-content-center mt-5">
-          <div class="col-lg-3 news-image">
-            <img src="assets/site/img/lumber.jpg" alt="" class="img-fluid" />
-          </div>
-
-          <div class="col-lg-9 news-article">
-            <p class="text-left">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              rerum vero corrupti dolores tempora maiores accusantium,
-              reprehenderit soluta perspiciatis nobis! Nisi error quisquam
-              sapiente consequuntur blanditiis animi id labore voluptates?
-            </p>
-          </div>
-        </a>
-
-        <a href="view_news.html" class="row d-flex justify-content-center mt-5">
-          <div class="col-lg-3 news-image">
-            <img src="assets/site/img/lumber.jpg" alt="" class="img-fluid" />
-          </div>
-
-          <div class="col-lg-9 news-article">
-            <p class="text-left">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-              rerum vero corrupti dolores tempora maiores accusantium,
-              reprehenderit soluta perspiciatis nobis! Nisi error quisquam
-              sapiente consequuntur blanditiis animi id labore voluptates?
-            </p>
-          </div>
-        </a>
+            <div class="col-lg-9 news-article">
+              <p class="text-left">
+                {{newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description}}
+              </p>
+            </div>
+          </a>
+        </div>
 
         <nav aria-label="...">
           <ul class="pagination-green">

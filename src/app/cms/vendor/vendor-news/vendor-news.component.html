@@ -28,7 +28,7 @@
                 </h4>
               </div>
               <div *ngFor="let newsArticle of filteredNews">
-                <a [routerLink]="['/vendor/view-news/'+newsArticle.id]"
+                <a [routerLink]="['/vendor/view-news',newsArticle.id]"
                   ><div class="my-auto">
                     <div class="container">
                       <div class="col-12">

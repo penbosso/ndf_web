@@ -1,3 +1,4 @@
+import { NewsArticleComponent } from './news/news-article/news-article.component';
 import { VendorGuard } from './user/vendor.guard';
 import { ShowVendorComponent } from './cms/admin/show-vendor/show-vendor.component';
 import { UploadExcelComponent } from './cms/admin/upload-excel/upload-excel.component';
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
       { path:'', component: HomeComponent, pathMatch: 'full'},
       { path:'catalog', component: CatalogComponent},
       { path:'news', component: NewsComponent},
+      { path:'news/:id', component: NewsArticleComponent},
     ]
   },
 
