@@ -35,7 +35,7 @@ jobs:
     - run: npm install
     - run: npm install -g http-server
     - run: npm install -g @angular/cli@8.2.2
-    - run: npm update
+    - run: npm update caniuse-lite browserslist
     - run: ng build --prod --aot
     - run: http-server ndf-web/dist/ -p 80 > ./output.log &
 
