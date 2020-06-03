@@ -33,18 +33,9 @@ jobs:
           ${{ runner.os }}-node-
     # Runs a single command using the runners shell 
     - run: npm install
-    - run: npm install -g @angular/cli > /dev/null
-    - run: ng build --prod
+    - run: npm install -g http-server
+    - run: npm install -g @angular/cli@8.2.2
+    - run: ng build --prod --aot
+    - run: http-server ndf-web/dist/ -p 80 > ./output.log &
 
-    - name: copy file via ssh key
-      uses: appleboy/scp-action@master
-      env:
-        HOST: 161.35.98.73
-        USERNAME: penbosso
-        PORT: 22
-        KEY: ${{ secrets.FORSSH }}
-      with:
-        source: "./dist/ndf_web/"
-        target: "/home/user/ndf-web/pwa/"
-        strip_components: 3 # this is important
  
