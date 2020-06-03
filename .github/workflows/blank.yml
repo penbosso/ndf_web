@@ -43,5 +43,5 @@ jobs:
         KEY: ${{ secrets.FORSSH }}
       with:
         source: "./dist/ndf_web/"
-        target: "/home/user/ndf_web/"
+        target: "/home/penbosso/ndf_web/"
         strip_components: 3 # this is important
