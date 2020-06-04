@@ -50,6 +50,10 @@ export class SiteHeaderComponent implements OnInit {
         confirmPassword: ''
       }, {validator: confirmPassword})
     });
+    // cleaar error after 5s
+    if(this.errorMessage) {
+      setTimeout(()=>this.errorMessage = '', 5000)
+    }
   }
 
   authenticate(loginForm: NgForm): void {
@@ -79,7 +83,7 @@ export class SiteHeaderComponent implements OnInit {
     this.userService.createUser(newBuyer).subscribe(
       () => this.onSaveComplete(),
       (error: any) =>  {
-        this.errorMessage = <any>error;
+        this.errorMessage = "An error occurred please try again try again later";
         this.showOverlay = false;
       }
     );

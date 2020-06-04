@@ -50,11 +50,15 @@ export class AddStockComponent implements OnInit, OnDestroy {
               description: this.updateThisStock.description
             });
           },
-          error => this.errorMessage = <any> error
+          error => this.errorMessage = "An error occurred please try again try again later"
         );
       }
 
     });
+    // cleaar error after 5s
+    if(this.errorMessage) {
+      setTimeout(()=>this.errorMessage = '', 5000)
+    }
   }
 
   save() {
@@ -68,7 +72,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
       this.stockService.updateStock(newStock).subscribe(
         () => this.onSaveComplete(),
         (error: any) => {
-          this.errorMessage = <any>error;
+          this.errorMessage = "An error occurred please try again try again later";
           this.showOverlay = false;
         }
       );
@@ -76,7 +80,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
       this.stockService.saveStock(newStock).subscribe(
         () => this.onSaveComplete(),
         (error: any) => {
-          this.errorMessage = <any>error;
+          this.errorMessage = "An error occurred please try again try again later";
           this.showOverlay = false;
         }
       );

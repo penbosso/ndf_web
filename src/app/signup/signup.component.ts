@@ -46,6 +46,10 @@ export class SignupComponent implements OnInit {
         confirmPassword: ''
       }, {validator: confirmPassword})
     });
+    // cleaar error after 5s
+    if(this.errorMessage) {
+      setTimeout(()=>this.errorMessage = '', 5000)
+    }
   }
 
   saveVendor(): void {
@@ -56,7 +60,7 @@ export class SignupComponent implements OnInit {
     this.userService.createUser(newVendor).subscribe(
       () => this.onSaveComplete(),
       (error: any) =>  {
-        this.errorMessage = <any>error;
+        this.errorMessage = "An error occurred please try again try again later";
         this.showOverlay = false;
       }
     );
