@@ -40,6 +40,7 @@ import { ManageNewsComponent } from './cms/admin/manage-news/manage-news.compone
 import { EditorModule } from "@tinymce/tinymce-angular";
 import { AvailableStockComponent } from './shared/available-stock/available-stock.component';
 import { NewsArticleComponent } from './news/news-article/news-article.component';
+import { Page404Component } from './page404/page404.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { NewsArticleComponent } from './news/news-article/news-article.component
     UploadExcelComponent,
     ManageNewsComponent,
     AvailableStockComponent,
-    NewsArticleComponent
+    NewsArticleComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,

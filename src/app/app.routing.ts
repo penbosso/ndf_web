@@ -1,3 +1,4 @@
+import { Page404Component } from './page404/page404.component';
 import { NewsArticleComponent } from './news/news-article/news-article.component';
 import { VendorGuard } from './user/vendor.guard';
 import { ShowVendorComponent } from './cms/admin/show-vendor/show-vendor.component';
@@ -78,7 +79,12 @@ const appRoutes: Routes = [
   {path: 'login', redirectTo: 'vendor/login'},
   {path: 'signup', redirectTo: 'vendor/signup'},
   // otherwise redirect to home
-  {path: '**', redirectTo: ''}
+  {path: '**',
+  component: SiteLayoutComponent,
+  children: [
+    { path:'', component: Page404Component}
+  ]
+  }
 ]
 
 

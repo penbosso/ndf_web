@@ -32,7 +32,13 @@ export class LoginComponent implements OnInit {
             if (success) {
               this.showOverlay = false;
               this.errorMessage = '';
-              this.router.navigateByUrl('/vendor');
+              if(this.auth.isVendor()) {
+                this.router.navigateByUrl('/vendor');
+              } else if (this.auth.isAdmin) {
+                this.router.navigateByUrl('/admin');
+              } else {
+                this.router.navigateByUrl('/');
+              }
             } else {
               this.showOverlay = false;
               this.errorMessage = "Invalid telephone number / password";
