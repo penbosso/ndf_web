@@ -15,6 +15,7 @@ export class AvailableStockComponent implements OnInit {
   filteredStock: Stock;
   errorMessage: any;
   imageBaseUrl = environment.baseImageUrl;
+  stockCount: number;
 
   constructor(private stockService : StockService,
               private router: Router) { }
@@ -23,9 +24,14 @@ export class AvailableStockComponent implements OnInit {
     this.stockService.getStocks().subscribe(
       stockPage => {
         this.stocks = stockPage.data;
+        this.stockCount = this.stocks.length;
       },
-      error => this.errorMessage = <any> error
+      error => this.errorMessage = "An error occurred please try again later"
     );
+    // cleaar error after 5s
+    if(this.errorMessage) {
+      setTimeout(()=>this.errorMessage = '', 5000)
+    }
   }
 
   getFilteredStock(id: string) {

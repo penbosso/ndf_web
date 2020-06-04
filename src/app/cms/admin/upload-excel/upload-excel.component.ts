@@ -68,10 +68,14 @@ export class UploadExcelComponent implements OnInit {
     this.vendorService.saveBulkData(this.bulkData).subscribe(
       () => this.onSaveComplete(),
       (error: any) => {
-        this.errorMessage = <any> error;
+        this.errorMessage = "An error occurred please try again try again later";
         this.showOverlay = false;
       }
     );
+    // cleaar error after 5s
+    if(this.errorMessage) {
+      setTimeout(()=>this.errorMessage = '', 5000)
+    }
   }
   onSaveComplete(): void {
     this.showOverlay = false;

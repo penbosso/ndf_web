@@ -31,8 +31,12 @@ export class VendorNewsComponent implements OnInit {
         this.news = newsPage.data;
         this.filteredNews = this.news;
       },
-      error => this.errorMessage = <any> error
+      error => this.errorMessage = "An error occurred please try again try again later"
     );
+    // cleaar error after 5s
+    if(this.errorMessage) {
+      setTimeout(()=>this.errorMessage = '', 5000)
+    }
   }
 
   performFilter(listFilter: string): News[] {
