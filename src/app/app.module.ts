@@ -41,7 +41,7 @@ import { EditorModule } from "@tinymce/tinymce-angular";
 import { AvailableStockComponent } from './shared/available-stock/available-stock.component';
 import { NewsArticleComponent } from './news/news-article/news-article.component';
 import { Page404Component } from './page404/page404.component';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -88,7 +88,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
   providers: [
     {
       provide: LocationStrategy,
-      useClass: HashLocationStrategy
+      useClass: PathLocationStrategy
     },
     AuthGuard,
     AuthService,
