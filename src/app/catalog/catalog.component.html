@@ -24,62 +24,64 @@
             </button>
           </div>
           <div class="modal-body mt-5">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td class="font-weight-bold">Name of Company</td>
-                  <td>XYZ limited</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Species</td>
-                  <td>Odum, Wawa</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Location</td>
-                  <td>Nkawkaw</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Doltic Number</td>
-                  <td>123456</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Email</td>
-                  <td>email@something.com</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Phone</td>
-                  <td>+233 50678 994</td>
-                </tr>
-              </tbody>
-            </table>
+            <div
+              class="modal-dialog modal-dialog-centered"
+              role="document"
+            >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="details">
+                    Details
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="modal-body" *ngIf="filteredStock">
+                  <img
+                    src="{{filteredStock.image ? imageBaseUrl+'/'+filteredStock.image : 'assets/images/dev/wood1.jpg'}}"
+                    alt=""
+                    class="img-fluid"
+                  />
+                  <div class="my-5">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td>Timber Name</td>
+                          <td>{{filteredStock.name}}</td>
+                        </tr>
+                        <tr>
+                          <td>Available Units</td>
+                          <td>{{filteredStock.quantity}} logs</td>
+                        </tr>
+                        <tr>
+                          <td>Size</td>
+                          <td>{{filteredStock.size}}</td>
+                        </tr>
 
-            <section id="testimonials" class="testimonials">
-              <div class="container">
-                <header class="text-center no-margin-bottom">
-                  <h2>Images of Lumber stock</h2>
-                </header>
-                <div class="owl-carousel owl-theme testimonials-slider">
-                  <div class="item-holder">
-                    <div class="text">
-                      <img src="assets/site/img/lumber.jpg" alt="" class="img-fluid" />
-                      <strong class="name">Wawa</strong>
-                    </div>
-                  </div>
-                  <div class="item-holder">
-                    <div class="text">
-                      <img src="assets/site/img/lumber.jpg" alt="" class="img-fluid" />
-                      <strong class="name">Wawa</strong>
-                    </div>
-                  </div>
-                  <div class="item-holder">
-                    <div class="text">
-                      <img src="assets/site/img/lumber.jpg" alt="" class="img-fluid" />
-                      <strong class="name">Wawa</strong>
-                    </div>
+                        <tr>
+                          <td>Price per Log</td>
+                          <td>GHc {{filteredStock.pricePerLog}}</td>
+                        </tr>
+                        <tr>
+                          <td>Description</td>
+                          <td>
+                            {{filteredStock.description}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h2>Vendor Info</h2>
+                    <a href="/catalog/404">Click to view more stocks from vendor</a>
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +90,7 @@
     <section id="query">
       <div class="container">
         <div class="text-center mb-5">
-          <h2>Filter your search</h2>
+          <h2>Filter Catlog</h2>
         </div>
         <div class="form-holder">
           <form>
@@ -127,9 +129,9 @@
                 </select>
               </div>
             </div>
-            <div class="text-center">
+            <!-- <div class="text-center">
               <button type="submit" class="btn btn-primary">Search</button>
-            </div>
+            </div> -->
           </form>
         </div>
       </div>
@@ -137,50 +139,42 @@
     <!-- Search results -->
     <section class="news bg-gray">
       <div class="container text-center">
-        <h2 class="h3">Search Results</h2>
+        <h2 class="h3">Timber Stock Catalog</h2>
         <div
-          
+
           class="row d-flex justify-content-center mt-5"
           data-toggle="modal"
           data-target="#details"
+          *ngIf="filteredStocks && filteredStocks.length"
         >
           <table class="table text-left">
             <thead>
               <tr>
-                <th scope="col">Company</th>
-                <th scope="col">Location</th>
-                <th scope="col">Contact</th>
+                <th scope="col">Image</th>
+                <th scope="col">Species</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Quantity</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>XYZ Limited</td>
-                <td>Accra, Dome pilar 2</td>
-                <td>+233 1234566</td>
+              <tr *ngFor="let stock of filteredStocks">
+                <td>
+                  <a href="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}">
+                    <img src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}" height="80px" width="100px"/>
+                  </a>
+                </td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.size }}</td>
+                <td>{{ stock.quantity }}</td>
                 <td>
                   <a
                     class="btn btn-outline-dark btn-sm"
-
+                    (click)=getFilteredStock(stock.id)
                     data-toggle="modal"
                     data-target="#details"
                   >
                     <i class="fa fa-external-link mr-2"></i>
-                    View details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>ACB Lumber organization</td>
-                <td>Nkawkaw Asubone Rails</td>
-                <td>+123 5667659</td>
-                <td>
-                  <a
-                    class="btn btn-outline-dark btn-sm"
-
-                    data-toggle="modal"
-                    data-target="#details"
-                    ><i class="fa fa-external-link mr-2"></i>
                     View details
                   </a>
                 </td>
