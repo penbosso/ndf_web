@@ -42,6 +42,7 @@ import { AvailableStockComponent } from './shared/available-stock/available-stoc
 import { NewsArticleComponent } from './news/news-article/news-article.component';
 import { Page404Component } from './page404/page404.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     ManageNewsComponent,
     AvailableStockComponent,
     NewsArticleComponent,
-    Page404Component
+    Page404Component,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
