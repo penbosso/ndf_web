@@ -18,7 +18,7 @@ export class CmsHeaderComponent implements OnInit {
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
 }
