@@ -51,8 +51,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="text-muted">
-                                                {{newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description}}
+                                            <div class="text-muted"
+                                            [innerHTML]="newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description">
                                             </div>
                                             <div>
                                                 <small

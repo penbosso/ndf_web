@@ -22,8 +22,7 @@
           <p class="text-muted">Published: {{newsArticle.updatedAt | date}}</p>
         </div>
 
-        <div class="my-5">
-          {{newsArticle.description}}
+        <div class="my-5" [innerHTML]="newsArticle.description">
         </div>
         <hr />
         <div class="my-auto">

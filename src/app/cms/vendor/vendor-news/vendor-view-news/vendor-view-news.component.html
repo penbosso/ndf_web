@@ -24,8 +24,9 @@
                     <small>By: NDF</small>
                   </div>
 
-                  <div class="mt-5">
-                    {{newsArticle.description}}
+                  <div class="mt-5"
+                  [innerHTML]="newsArticle.description">
+                    
                   </div>
                   <hr />
                   <div class="my-5">

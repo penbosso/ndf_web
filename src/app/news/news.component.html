@@ -36,10 +36,8 @@
               src="assets/images/dev/wood2.jpg" alt="" class="img-fluid" />
             </div>
 
-            <div class="col-lg-9 news-article">
-              <p class="text-left">
-                {{newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description}}
-              </p>
+            <div class="col-lg-9 news-article"
+            [innerHTML]="newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description">
             </div>
           </a>
         </div>
