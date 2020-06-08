@@ -76,8 +76,28 @@
                         </tr>
                       </tbody>
                     </table>
-                    <h2>Vendor Info</h2>
-                    <a href="/catalog/404">Click to view more stocks from vendor</a>
+                    <h6>Vendor Info</h6>
+                    <div class="col" *ngIf="vendor">
+                      <table class="table text-left">
+                        <thead>
+                          <tr>
+                            <th scope="col">Company</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Contact</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{ vendor.companyName }}</td>
+                            <td>{{ vendor.address}}</td>
+                            <td>{{ vendor.telephoneNumber }}</td>
+                            <td><a href="{{'/catalog/venodor/'+ vendor.companyCode}}">View vendor</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -150,7 +170,7 @@
           <table class="table text-left">
             <thead>
               <tr>
-                <th scope="col">Image</th>
+                <th scope="col">Stock image</th>
                 <th scope="col">Species</th>
                 <th scope="col">Unit</th>
                 <th scope="col">Quantity</th>

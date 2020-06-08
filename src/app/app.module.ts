@@ -88,10 +88,6 @@ import { ProfileComponent } from './user/profile/profile.component';
     routing
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    },
     AuthGuard,
     AuthService,
     {

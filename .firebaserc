@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ndf-project": {
+      "hosting": {
+        "ndf-web": [
+          "ndf-project"
+        ]
+      }
+    }
+  }
+}

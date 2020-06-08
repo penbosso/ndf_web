@@ -28,6 +28,12 @@ export class AdminVendorService {
     );
   }
 
+  getVendorByid(id: string): Observable<VendorInfo> {
+    return this.http.get<VendorInfo>(`${this.vendorApiBaseUrl}/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   saveBulkData(bulkData: VendorInfo[]): Observable<VendorInfo[]> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<VendorInfo[]>(`${this.vendorApiBaseUrl}/bulk`, bulkData, {headers})

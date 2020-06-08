@@ -129,8 +129,13 @@
               "devServerTarget": "ndf-web:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ndf-web"
 }
