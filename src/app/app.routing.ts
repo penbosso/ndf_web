@@ -1,3 +1,4 @@
+import { ProfileComponent } from './user/profile/profile.component';
 import { Page404Component } from './page404/page404.component';
 import { NewsArticleComponent } from './news/news-article/news-article.component';
 import { VendorGuard } from './user/vendor.guard';
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
       {path:'add-stock/:id', component: AddStockComponent},
       {path:'manage-stock', component: ManageStockComponent},
       {path:'news', component: VendorNewsComponent},
-      {path:'view-news/:id', component: VendorViewNewsComponent}
+      {path:'view-news/:id', component: VendorViewNewsComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
   },
 
@@ -67,7 +69,8 @@ const appRoutes: Routes = [
       {path:'manage-news/:id', canActivate: [AuthGuard], component: AdminViewNewsComponent},
       {path:'view-vendor/:code', canActivate: [AuthGuard], component: ViewVendorComponent},
       {path:'upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
-      {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent}
+      {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
   },
 

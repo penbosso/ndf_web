@@ -85,10 +85,11 @@ export class AuthService {
     const currentUser = JSON.stringify({
       profilePic: decodedUserInfo["ProfilePic"],
       firstName: decodedUserInfo["FirstName"],
-      otherName: decodedUserInfo["OtherName"],
+      otherName: decodedUserInfo["OtherNames"],
+      companyCode: decodedUserInfo["CompanyCode"],
       telephone: decodedUserInfo["Telephone"],
       type: decoded["role"],
-      id: decoded["unique_name"]
+      id: decoded["id"]
     });
     console.log(currentUser );
     localStorage.setItem(this.loggedUser, currentUser );

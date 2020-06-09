@@ -83,7 +83,7 @@ export class SiteHeaderComponent implements OnInit {
     this.userService.createUser(newBuyer).subscribe(
       () => this.onSaveComplete(),
       (error: any) =>  {
-        this.errorMessage = "An error occurred please try again try again later";
+        this.errorMessage = "An error occurred please try again later";
         this.showOverlay = false;
       }
     );
