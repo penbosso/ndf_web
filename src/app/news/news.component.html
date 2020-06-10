@@ -25,7 +25,7 @@
     <section class="news " style="background-color: #f5f5f5;">
       <div class="container text-center"  *ngIf="filteredNews && filteredNews.length">
         <h2 class="h3">News</h2>
-        <div *ngFor="let newsArticle of filteredNews">
+        <div *ngFor="let newsArticle of pageOfItems">
           <a [routerLink]="['/news',newsArticle.id]" class="row d-flex justify-content-center mt-5">
             <div class="col-lg-3 news-image">
               <img
@@ -44,23 +44,8 @@
           </a>
         </div>
 
-        <nav aria-label="...">
-          <ul class="pagination-green">
-            <li class="page-item disabled">
-              <span class="page-link">Previous</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active">
-              <span class="page-link">
-                2
-                <span class="sr-only">(current)</span>
-              </span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
+        <nav aria-label="..." class="text-center" style="align-items: center;">
+          <jw-pagination [items]="filteredNews" (changePage)="onChangePage($event)"></jw-pagination>
         </nav>
       </div>
     </section>

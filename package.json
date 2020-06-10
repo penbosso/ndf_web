@@ -25,6 +25,7 @@
     "@tinymce/tinymce-angular": "^3.6.0",
     "firebase": ">= 5.5.7 <8",
     "fuse.js": "^6.0.4",
+    "jw-angular-pagination": "^1.1.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "rxjs": "~6.4.0",

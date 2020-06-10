@@ -14,6 +14,7 @@ export class AvailableStockComponent implements OnInit {
   pendingStocks: Stock[] = [];
   filteredStock: Stock;
   errorMessage: any;
+  pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
   stockCount: number;
 
@@ -32,6 +33,11 @@ export class AvailableStockComponent implements OnInit {
     if(this.errorMessage) {
       setTimeout(()=>this.errorMessage = '', 5000)
     }
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
   }
 
   getFilteredStock(id: string) {

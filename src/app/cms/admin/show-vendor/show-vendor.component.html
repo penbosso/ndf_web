@@ -40,7 +40,7 @@
                                               </tr>
                                           </thead>
                                           <tbody *ngIf='vendors && vendors.length'>
-                                              <tr *ngFor='let vendor of vendors' >
+                                              <tr *ngFor='let vendor of pageOfItems' >
                                                   <td>
                                                       <span class="text-muted"
                                                           >{{ vendor.companyCode }}</span
@@ -73,6 +73,10 @@
                                                       >
                                                   </td>
                                               </tr>
+
+                                              <nav aria-label="..." class="text-center" style="align-items: center; position: fixed;">
+                                                <jw-pagination [items]="vendors" (changePage)="onChangePage($event)"></jw-pagination>
+                                              </nav>
                                           </tbody>
                                       </table>
                                       <script>

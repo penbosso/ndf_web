@@ -170,7 +170,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let stock of filteredStocks">
+              <tr *ngFor="let stock of pageOfItems">
                 <td>
                   <a href="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}">
                     <img src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}" height="80px" width="100px"/>
@@ -194,6 +194,10 @@
             </tbody>
           </table>
         </div>
+
+        <nav aria-label="..." class="text-center">
+          <jw-pagination [items]="filteredStocks" (changePage)="onChangePage($event)"></jw-pagination>
+        </nav>
       </div>
     </section>
     <!-- Search results -->

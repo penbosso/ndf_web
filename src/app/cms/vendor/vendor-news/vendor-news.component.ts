@@ -14,6 +14,7 @@ export class VendorNewsComponent implements OnInit {
   news: News[] = [];
   filteredNews: News[];
   errorMessage: any;
+  pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
 
 
@@ -38,6 +39,11 @@ export class VendorNewsComponent implements OnInit {
     if(this.errorMessage) {
       setTimeout(()=>this.errorMessage = '', 5000)
     }
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
   }
 
   performFilter(listFilter: string): any {

@@ -2,9 +2,9 @@
 
                         <hr />
 
-                        <div class="my-3 my-md-5">
+                        <div class="my-3 my-md-5 container">
                             <div class="row row-cards row-deck" *ngIf="news && news.length">
-                                <div class="col-lg-12" *ngFor="let newsArticle of news">
+                                <div class="col-lg-12" *ngFor="let newsArticle of pageOfItems">
                                     <div class="card card-aside">
                                         <a *ngIf="newsArticle?.image"
                                             [routerLink]="['/admin/view-news/'+newsArticle.id]"
@@ -52,7 +52,7 @@
                                             </div>
 
                                             <div class="text-muted"
-                                            [innerHTML]="newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description">
+                                            [innerHTML]="newsArticle.description.length > 530 ? newsArticle.description.substr(0,530)+'...': newsArticle.description">
                                             </div>
                                             <div>
                                                 <small
@@ -63,5 +63,10 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                              <nav aria-label="..." class="text-center"  style="align-items: center;">
+                                <jw-pagination [items]="news" (changePage)="onChangePage($event)"></jw-pagination>
+                              </nav>
                             </div>
                         </div>

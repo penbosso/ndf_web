@@ -14,6 +14,7 @@ export class AdminViewNewsComponent implements OnInit {
   pendingNews: News[] = [];
   // filteredNews: News;
   errorMessage: any;
+  pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
 
   constructor(private newsService : NewsService,
@@ -31,6 +32,11 @@ export class AdminViewNewsComponent implements OnInit {
   if(this.errorMessage) {
     setTimeout(()=>this.errorMessage = '', 5000)
   }
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
   }
 
   // getFilteredNews(id: string) {

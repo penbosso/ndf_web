@@ -23,6 +23,7 @@ export class CatalogComponent implements OnInit {
   uniqueName: string[] = [];
   uniqueLoc: string[] = [];
   uniqueUnit: string[] = [];
+  pageOfItems: Array<any>;
 
   // get locationFilter(): string {
   //   return this._locationFilter;
@@ -67,6 +68,11 @@ export class CatalogComponent implements OnInit {
     );
   }
 
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
+  }
+
   getFilteredStock(id: string) {
     this.filteredStock = this.stocks.find(stock => stock.id === id);
     this.getStockVendor(this.filteredStock.vendorId);console.log("venodr ID", this.filteredStock.vendorId);
@@ -99,7 +105,7 @@ export class CatalogComponent implements OnInit {
         $or: [{ name: this._nameFilter }, { size: this._unitFilter }]
       };
     }
-    
+
     return fuse.search(para).map(fuse => fuse.item);
   }
 }
