@@ -18,8 +18,8 @@ export class CatalogComponent implements OnInit {
   filteredStock: Stock;
   imageBaseUrl = environment.baseImageUrl;
   // _locationFilter: string;
-  _nameFilter: string;
-  _unitFilter: string;
+  _nameFilter: string = "";
+  _unitFilter: string = "";
   uniqueName: string[] = [];
   uniqueLoc: string[] = [];
   uniqueUnit: string[] = [];
@@ -55,7 +55,7 @@ export class CatalogComponent implements OnInit {
       stockPage => {
         this.stocks = stockPage.data;
         this.filteredStocks = this.stocks;
-        this.stocks.forEach(stock => {console.log(this.uniqueName.includes(stock.name.toLocaleLowerCase()))
+        this.stocks.forEach(stock => {
           if(!(this.uniqueName.includes(stock.name.toLocaleLowerCase()))) {
             this.uniqueName.push(stock.name.toLocaleLowerCase());
           }
@@ -82,14 +82,24 @@ export class CatalogComponent implements OnInit {
     const options = {
       keys: [
         "name",
-        "unit"
+        "size"
       ]
     };
 
     let fuse  = new Fuse(this.stocks, options);
-    const para = {
-      $and: [{ name: this._nameFilter }, { unit: this._unitFilter }]
-    };
-    return fuse.search("param");
+    let para
+    if(this._nameFilter.length > 1 && this._unitFilter.length > 1) {
+      para = {
+        $and: [{ name: this._nameFilter }, { size: this._unitFilter }]
+      };
+    } else if (this._nameFilter.length <= 1 && this._unitFilter.length <= 1) {
+      return this.stocks;
+    } else {
+      para = {
+        $or: [{ name: this._nameFilter }, { size: this._unitFilter }]
+      };
+    }
+console.log("param", para)
+    return fuse.search(para).map(fuse => fuse.item);
   }
 }
