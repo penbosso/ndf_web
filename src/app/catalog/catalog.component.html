@@ -108,7 +108,7 @@
     </div>
     <!-- Search filter -->
     <section id="query">
-      <div class="container">
+      <div class="container text-center">
         <div class="text-center mb-5">
           <h2>Filter Catlog</h2>
         </div>
@@ -121,33 +121,27 @@
                   class="form-control custom-select custom-select-lg"
                   >
                   <option value=" ">Choose...</option>
-                  <option value="">Accra</option>
-                  <option value="">Kumasi</option>
-                  <option value="">Nkawkaw</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">Species</label>
-                <select
+                <select *ngIf="uniqueName"
                   class="form-control custom-select custom-select-lg"
                   [(ngModel)]='nameFilter' [ngModelOptions]="{standalone: true}"
                   >
                   <option value=" " selected>Choose...</option>
-                  <option value="odum">Odum</option>
-                  <option value="wawa">Wawa</option>
-                  <option value="Sapele">Sapele</option>
+                  <option *ngFor="let specie of uniqueName " value="{{specie}}">{{specie}}</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">Unit</label>
-                <select
+                <select *ngIf="uniqueUnit"
                   id="inputState"
                   class="form-control custom-select custom-select-lg"
                   [(ngModel)]='unitFilter' [ngModelOptions]="{standalone: true}"
                 >
                   <option value=" " selected>Choose...</option>
-                  <option>2x4</option>
-                  <option>2x8</option>
+                  <option *ngFor="let unit of uniqueUnit " value="{{unit}}">{{unit}}</option>
                 </select>
               </div>
             </div>
@@ -156,11 +150,7 @@
             </div> -->
           </form>
         </div>
-      </div>
-    </section>
-    <!-- Search results -->
-    <section class="news bg-gray">
-      <div class="container text-center">
+
         <h2 class="h3">Timber Stock Catalog</h2>
         <div
 
@@ -206,3 +196,8 @@
         </div>
       </div>
     </section>
+    <!-- Search results -->
+    <!-- <section class="news" >
+      <div class="container text-center">
+      </div>
+    </section> -->

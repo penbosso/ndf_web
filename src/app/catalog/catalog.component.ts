@@ -20,6 +20,9 @@ export class CatalogComponent implements OnInit {
   // _locationFilter: string;
   _nameFilter: string;
   _unitFilter: string;
+  uniqueName: string[] = [];
+  uniqueLoc: string[] = [];
+  uniqueUnit: string[] = [];
 
   // get locationFilter(): string {
   //   return this._locationFilter;
@@ -52,6 +55,14 @@ export class CatalogComponent implements OnInit {
       stockPage => {
         this.stocks = stockPage.data;
         this.filteredStocks = this.stocks;
+        this.stocks.forEach(stock => {console.log(this.uniqueName.includes(stock.name.toLocaleLowerCase()))
+          if(!(this.uniqueName.includes(stock.name.toLocaleLowerCase()))) {
+            this.uniqueName.push(stock.name.toLocaleLowerCase());
+          }
+          if(!this.uniqueUnit.includes(stock.size.toLocaleLowerCase())) {
+            this.uniqueUnit.push(stock.size.toLocaleLowerCase());
+          }
+        })
       },
     );
   }
@@ -74,7 +85,7 @@ export class CatalogComponent implements OnInit {
         "unit"
       ]
     };
-    
+
     let fuse  = new Fuse(this.stocks, options);
     const para = {
       $and: [{ name: this._nameFilter }, { unit: this._unitFilter }]
