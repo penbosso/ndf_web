@@ -99,7 +99,7 @@ export class CatalogComponent implements OnInit {
         $or: [{ name: this._nameFilter }, { size: this._unitFilter }]
       };
     }
-console.log("param", para)
+    
     return fuse.search(para).map(fuse => fuse.item);
   }
 }
