@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Stock } from '../cms/vendor/stock/stock';
 import { AdminVendorService } from '../cms/admin/admin-vendor.service';
 import { VendorInfo } from '../cms/admin/vendorInfo';
+import Fuse from 'fuse.js';
 
 @Component({
   selector: 'app-catalog',
@@ -16,14 +17,32 @@ export class CatalogComponent implements OnInit {
   filteredStocks: Stock[];
   filteredStock: Stock;
   imageBaseUrl = environment.baseImageUrl;
-  _listFilter: string;
+  // _locationFilter: string;
+  _nameFilter: string;
+  _unitFilter: string;
 
-  get listFilter(): string {
-    return this._listFilter;
+  // get locationFilter(): string {
+  //   return this._locationFilter;
+  // }
+  // set locationFilter(value: string) {
+  //   this._locationFilter = value;
+  //   this.filteredStocks = this.locationFilter ? this.performFilter() : this.stocks;
+  // }
+
+  get nameFilter(): string {
+    return this._nameFilter;
   }
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredStocks = this.listFilter ? this.performFilter(this.listFilter) : this.stocks;
+  set nameFilter(value: string) {
+    this._nameFilter = value;
+    this.filteredStocks = this.nameFilter ? this.performFilter() : this.stocks;
+  }
+
+  get unitFilter(): string {
+    return this._unitFilter;
+  }
+  set unitFilter(value: string) {
+    this._unitFilter = value;
+    this.filteredStocks = this.unitFilter ? this.performFilter() : this.stocks;
   }
 
   constructor(private stockService : StockService,private vendorService : AdminVendorService) { }
@@ -48,9 +67,18 @@ export class CatalogComponent implements OnInit {
     );
   }
 
-  performFilter(listFilter: string): Stock[] {
-    listFilter = listFilter.toLocaleLowerCase();
-    return this.stocks.filter((newsArticle: Stock) =>
-      newsArticle.description.toLocaleLowerCase().indexOf(listFilter) !== -1);
+  performFilter(): any {
+    const options = {
+      keys: [
+        "name",
+        "unit"
+      ]
+    };
+    
+    let fuse  = new Fuse(this.stocks, options);
+    const para = {
+      $and: [{ name: this._nameFilter }, { unit: this._unitFilter }]
+    };
+    return fuse.search("param");
   }
 }

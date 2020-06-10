@@ -35,9 +35,11 @@
               *ngIf="!newsArticle?.image"
               src="assets/images/dev/wood2.jpg" alt="" class="img-fluid" />
             </div>
-
-            <div class="col-lg-9 news-article"
-            [innerHTML]="newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description">
+            <div class="col-lg-9 news-article" style="text-align: justify;">
+            <h4>{{newsArticle.title}}</h4>
+            <div
+            [innerHTML]="newsArticle.description.length > 530 ? newsArticle.description.substr(0,530)+'...': newsArticle.description">
+            </div>
             </div>
           </a>
         </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { News } from 'src/app/news/news';
 import { environment } from 'src/environments/environment';
 import { NewsService } from 'src/app/news/news.service';
+import Fuse from 'fuse.js';
 
 @Component({
   selector: 'app-vendor-news',
@@ -39,10 +40,16 @@ export class VendorNewsComponent implements OnInit {
     }
   }
 
-  performFilter(listFilter: string): News[] {
-    listFilter = listFilter.toLocaleLowerCase();
-    return this.news.filter((newsArticle: News) =>
-      newsArticle.description.toLocaleLowerCase().indexOf(listFilter) !== -1);
+  performFilter(listFilter: string): any {
+    const options = {
+      keys: [
+        "title",
+        "description"
+      ]
+    };
+
+    let fuse  = new Fuse(this.news, options);
+    return fuse.search(listFilter);
   }
 
 }

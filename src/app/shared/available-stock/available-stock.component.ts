@@ -41,7 +41,9 @@ export class AvailableStockComponent implements OnInit {
 
   deleteStock(id: string) {
     //deleting stock
-    this.stockService.deleteStock(id).subscribe();
+    this.stockService.deleteStock(id).subscribe(
+      () => this.stocks = this.stocks.filter(stock => stock.id !== id)
+    );
   }
 
   updateStock(id: string) {

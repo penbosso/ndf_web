@@ -40,7 +40,9 @@ export class AdminViewNewsComponent implements OnInit {
 
   deleteNews(id: string) {
     //deleting news
-    this.newsService.deleteNews(id).subscribe();
+    this.newsService.deleteNews(id).subscribe(
+      () => this.news = this.news.filter(newsArticle => newsArticle.id !== id)
+    );
   }
 
   updateNews(id: string) {

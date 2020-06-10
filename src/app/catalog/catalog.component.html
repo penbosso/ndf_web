@@ -118,10 +118,10 @@
               <div class="form-group col-md-4">
                 <label for="inputState">Location</label>
                 <select
-                  id="inputState"
                   class="form-control custom-select custom-select-lg"
-                  >>
-                  <option selected>Accra</option>
+                  >
+                  <option value=" ">Choose...</option>
+                  <option value="">Accra</option>
                   <option value="">Kumasi</option>
                   <option value="">Nkawkaw</option>
                 </select>
@@ -129,12 +129,13 @@
               <div class="form-group col-md-4">
                 <label for="inputState">Species</label>
                 <select
-                  id="inputState"
                   class="form-control custom-select custom-select-lg"
-                  >>
-                  <option selected>Odum</option>
-                  <option value="">Wawa</option>
-                  <option value="Sapele"></option>
+                  [(ngModel)]='nameFilter' [ngModelOptions]="{standalone: true}"
+                  >
+                  <option value=" " selected>Choose...</option>
+                  <option value="odum">Odum</option>
+                  <option value="wawa">Wawa</option>
+                  <option value="Sapele">Sapele</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
@@ -142,8 +143,9 @@
                 <select
                   id="inputState"
                   class="form-control custom-select custom-select-lg"
+                  [(ngModel)]='unitFilter' [ngModelOptions]="{standalone: true}"
                 >
-                  <option selected>Choose...</option>
+                  <option value=" " selected>Choose...</option>
                   <option>2x4</option>
                   <option>2x8</option>
                 </select>
