@@ -168,8 +168,8 @@
               <tr>
                 <th scope="col">Stock image</th>
                 <th scope="col">Species</th>
-                <th scope="col">Unit</th>
-                <th scope="col">Quantity</th>
+                <th scope="col">Quantity (Unit)</th>
+                <th scope="col">Location</th>
                 <th></th>
               </tr>
             </thead>
@@ -181,8 +181,8 @@
                   </a>
                 </td>
                 <td>{{ stock.name }}</td>
-                <td>{{ stock.size }}</td>
-                <td>{{ stock.quantity }}</td>
+                <td>{{ stock.quantitxy }} ({{ stock.size }})</td>
+                <td>{{ stock.location }}</td>
                 <td>
                   <a
                     class="btn btn-outline-dark btn-sm"

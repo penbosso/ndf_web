@@ -17,7 +17,7 @@ export class CatalogComponent implements OnInit {
   filteredStocks: Stock[];
   filteredStock: Stock;
   imageBaseUrl = environment.baseImageUrl;
-  // _locationFilter: string;
+  _locationFilter: string;
   _nameFilter: string = "";
   _unitFilter: string = "";
   uniqueName: string[] = [];
@@ -25,13 +25,13 @@ export class CatalogComponent implements OnInit {
   uniqueUnit: string[] = [];
   pageOfItems: Array<any>;
 
-  // get locationFilter(): string {
-  //   return this._locationFilter;
-  // }
-  // set locationFilter(value: string) {
-  //   this._locationFilter = value;
-  //   this.filteredStocks = this.locationFilter ? this.performFilter() : this.stocks;
-  // }
+  get locationFilter(): string {
+    return this._locationFilter;
+  }
+  set locationFilter(value: string) {
+    this._locationFilter = value;
+    this.filteredStocks = this.locationFilter ? this.performFilter() : this.stocks;
+  }
 
   get nameFilter(): string {
     return this._nameFilter;
@@ -63,6 +63,9 @@ export class CatalogComponent implements OnInit {
           if(!this.uniqueUnit.includes(stock.size.toLocaleLowerCase())) {
             this.uniqueUnit.push(stock.size.toLocaleLowerCase());
           }
+          if(!this.uniqueLoc.includes(stock.location.toLocaleLowerCase())) {
+            this.uniqueUnit.push(stock.size.toLocaleLowerCase());
+          }
         })
       },
     );
@@ -88,21 +91,42 @@ export class CatalogComponent implements OnInit {
     const options = {
       keys: [
         "name",
-        "size"
+        "size",
+        "location"
       ]
     };
 
     let fuse  = new Fuse(this.stocks, options);
     let para
-    if(this._nameFilter.length > 1 && this._unitFilter.length > 1) {
+    if(this._nameFilter.length > 1 && this._unitFilter.length > 1 && this._locationFilter.length > 1) {
+      para = {
+        $and: [{ name: this._nameFilter }, { size: this._unitFilter }, { location: this._locationFilter }]
+      };
+    } else if (this._nameFilter.length <= 1 && this._unitFilter.length <= 1 && this._locationFilter.length <= 1) {
+      return this.stocks;
+    } else if(this._nameFilter.length > 1 && this._unitFilter.length > 1 && this._locationFilter.length <= 1) {
       para = {
         $and: [{ name: this._nameFilter }, { size: this._unitFilter }]
       };
-    } else if (this._nameFilter.length <= 1 && this._unitFilter.length <= 1) {
-      return this.stocks;
+    } else if(this._nameFilter.length > 1 && this._unitFilter.length <= 1 && this._locationFilter.length > 1) {
+      para = {
+        $and: [{ name: this._nameFilter }, { location: this._locationFilter }]
+      };
+    } else if(this._nameFilter.length <= 1 && this._unitFilter.length > 1 && this._locationFilter.length > 1) {
+      para = {
+        $and: [{ size: this._unitFilter }, { location: this._locationFilter }]
+      };
+    } else if(this._nameFilter.length > 1 && this._unitFilter.length <= 1 && this._locationFilter.length <= 1) {
+      para = {
+        name: this._nameFilter
+      };
+    } else if(this._nameFilter.length <= 1 && this._unitFilter.length <= 1 && this._locationFilter.length > 1) {
+      para = {
+         location: this._locationFilter
+      };
     } else {
       para = {
-        $or: [{ name: this._nameFilter }, { size: this._unitFilter }]
+         size: this._unitFilter
       };
     }
 

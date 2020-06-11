@@ -1,5 +1,6 @@
 export class Stock {
   id: string;
+  location: string;
   vendorId: string;
   constructor(
     public name ='',
