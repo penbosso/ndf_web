@@ -1,4 +1,8 @@
-
+<!-- Loding -->
+<div class="my-overlay" *ngIf="!pageOfItems">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
 
                         <hr />
 
@@ -23,7 +27,7 @@
                                                 <div class="col-9">
                                                     <h4>
                                                         <a [routerLink]="['/admin/view-news/'+newsArticle.id]"
-                                                            >{{newsArticle.title}} </a
+                                                            >{{newsArticle?.title}} </a
                                                         >
                                                     </h4>
                                                 </div>

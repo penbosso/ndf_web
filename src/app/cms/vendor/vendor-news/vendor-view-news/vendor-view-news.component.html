@@ -1,4 +1,8 @@
-
+<!-- Loding -->
+<div class="my-overlay" *ngIf="!newsArticle">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
         <div class="my-3 my-md-5">
           <div class="container">
             <!-- Body goes here -->
@@ -20,13 +24,13 @@
               <div class="my-auto">
                 <div class="col-12 mb-5" *ngIf="newsArticle">
                   <div class="mt-5">
-                    <h4>{{newsArticle.title}}</h4>
+                    <h4>{{newsArticle?.title}}</h4>
                     <small>By: NDF</small>
                   </div>
 
                   <div class="mt-5"
                   [innerHTML]="newsArticle.description">
-                    
+
                   </div>
                   <hr />
                   <div class="my-5">

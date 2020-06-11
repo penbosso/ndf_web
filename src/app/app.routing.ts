@@ -1,3 +1,5 @@
+import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
+import { PrivacyComponent } from './signup/privacy/privacy.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { Page404Component } from './page404/page404.component';
 import { NewsArticleComponent } from './news/news-article/news-article.component';
@@ -37,6 +39,8 @@ const appRoutes: Routes = [
       { path:'catalog', component: CatalogComponent},
       { path:'news', component: NewsComponent},
       { path:'news/:id', component: NewsArticleComponent},
+      {path:'privacy', component: PrivacyComponent},
+      {path:'terms', component: TermsConditionsComponent}
     ]
   },
 

@@ -1,11 +1,31 @@
 import { Subscription } from 'rxjs';
 import { StockService } from './../stock.service';
 import { Stock } from './../stock';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as _ from 'lodash';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+
+function priceCheck(c: AbstractControl): {[key: string]: boolean } | null {
+  let priceControl = c.get('pricePerLog');
+  if (priceControl.pristine) {
+    return null
+  }
+  if(priceControl.value < 0) {
+    return {'match': true};
+  }
+}
+
+function quantityCheck(c: AbstractControl): {[key: string]: boolean } | null {
+  let quantityControl = c.get('quantity');
+  if (quantityControl.pristine) {
+    return null
+  }
+  if(quantityControl.value < 1) {
+    return {'match': true};
+  }
+}
 
 @Component({
   selector: 'app-add-stock',

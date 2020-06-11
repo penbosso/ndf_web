@@ -210,6 +210,16 @@
                   </span>
                 </div>
               </div>
+              <div class="form-group row">
+                <div class="col-2">
+                <input type="checkbox" name="terms" required  class="form-control"/>
+                </div>
+                <div class="col-10">
+                  <label class="form-label" for="terms">
+                    I agree with the <a data-dismiss="modal" [routerLink]="['/privacy']">privacy</a>, <a data-dismiss="modal" [routerLink]="['/terms']"> terms and conditions</a>
+                  </label>
+                </div>
+              </div>
               <div class="form-group">
                 <button
                   type="submit"

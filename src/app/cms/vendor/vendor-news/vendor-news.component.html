@@ -1,4 +1,8 @@
-
+<!-- Loding -->
+<div class="my-overlay" *ngIf="!pageOfItems">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
@@ -42,7 +46,7 @@
                             [ngStyle]="{ 'background-image': 'url(assets/images/dev/wood2.jpg)'}"
                           ></div>
                           <div class="card-body d-flex flex-column">
-                            <h4>{{ newsArticle.title }}</h4>
+                            <h4>{{ newsArticle?.title }}</h4>
                             <div class="text-muted"
                             [innerHTML]="newsArticle.description.length > 530 ? newsArticle.description.substr(0,530)+'...': newsArticle.description">
                             </div>

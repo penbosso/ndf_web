@@ -43,6 +43,8 @@ import { NewsArticleComponent } from './news/news-article/news-article.component
 import { Page404Component } from './page404/page404.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
+import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
+import { PrivacyComponent } from './signup/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     NewsArticleComponent,
     Page404Component,
     ProfileComponent,
-    JwPaginationComponent
+    JwPaginationComponent,
+    TermsConditionsComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
