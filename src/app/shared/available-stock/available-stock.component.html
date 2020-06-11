@@ -112,7 +112,7 @@
                 </div>
                       <!-- individual stocks -->
                 <div class="row" *ngIf='stocks && stocks.length'>
-                  <div class="col-4" *ngFor='let stock of pageOfItems'>
+                  <div class="col-sm-12 col-md-4" *ngFor='let stock of pageOfItems'>
                     <div class="card">
                       <div class="card-body">
                         <div class="mb-4 text-center">
@@ -135,10 +135,10 @@
                     </div>
                   </div>
 
-
+                </div>
+                
                 <nav aria-label="..." class="text-center">
                   <jw-pagination [items]="stocks" (changePage)="onChangePage($event)"></jw-pagination>
                 </nav>
-                </div>
               </div>
             </div>

@@ -64,7 +64,7 @@ export class CatalogComponent implements OnInit {
             this.uniqueUnit.push(stock.size.toLocaleLowerCase());
           }
           if(!this.uniqueLoc.includes(stock.location.toLocaleLowerCase())) {
-            this.uniqueUnit.push(stock.size.toLocaleLowerCase());
+            this.uniqueLoc.push(stock.location.toLocaleLowerCase());
           }
         })
       },

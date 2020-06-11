@@ -22,7 +22,7 @@ export class AvailableStockComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.stockService.getStocks().subscribe(
+    this.stockService.getVendorsStocks().subscribe(
       stockPage => {
         this.stocks = stockPage.data;
         this.stockCount = this.stocks.length;

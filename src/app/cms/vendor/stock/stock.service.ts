@@ -1,3 +1,4 @@
+import { AuthService } from './../../../login/auth.service';
 import { StockPage } from './stockPage';
 import { Stock } from './stock';
 import { environment } from '../../../../environments/environment';
@@ -12,7 +13,7 @@ import { tap, catchError } from 'rxjs/operators';
 export class StockService {
   private stockApiBaseUrl = environment.stockApi
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   saveStock(stock: Stock): Observable<Stock> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
@@ -50,6 +51,13 @@ export class StockService {
 
   getStocks(): Observable<StockPage> {
     return this.http.get<StockPage>(this.stockApiBaseUrl).pipe(
+      tap(data => console.log("All: " + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getVendorsStocks(): Observable<StockPage> {
+    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?pageSize=500&vendorId=${this.auth.getLoggedUser().id}`).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );

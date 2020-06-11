@@ -123,8 +123,10 @@
                 <label for="inputState">Location</label>
                 <select
                   class="form-control custom-select custom-select-lg"
+                  [(ngModel)]='locationFilter' [ngModelOptions]="{standalone: true}"
                   >
                   <option value=" ">Choose...</option>
+                  <option *ngFor="let location of uniqueLoc "value="{{location}}">{{location}}</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
@@ -138,7 +140,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="inputState">Unit</label>
+                <label for="inputState">Size</label>
                 <select *ngIf="uniqueUnit"
                   id="inputState"
                   class="form-control custom-select custom-select-lg"
@@ -168,7 +170,7 @@
               <tr>
                 <th scope="col">Stock image</th>
                 <th scope="col">Species</th>
-                <th scope="col">Quantity (Unit)</th>
+                <th scope="col">Quantity (Size)</th>
                 <th scope="col">Location</th>
                 <th></th>
               </tr>
@@ -181,7 +183,7 @@
                   </a>
                 </td>
                 <td>{{ stock.name }}</td>
-                <td>{{ stock.quantitxy }} ({{ stock.size }})</td>
+                <td>{{ stock.quantity }} ({{ stock.size }})</td>
                 <td>{{ stock.location }}</td>
                 <td>
                   <a
