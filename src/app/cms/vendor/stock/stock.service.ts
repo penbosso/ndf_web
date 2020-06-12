@@ -50,14 +50,14 @@ export class StockService {
   }
 
   getStocks(): Observable<StockPage> {
-    return this.http.get<StockPage>(this.stockApiBaseUrl).pipe(
+    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?pageSize=1500`).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
   getVendorsStocks(): Observable<StockPage> {
-    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?pageSize=500&vendorId=${this.auth.getLoggedUser().id}`).pipe(
+    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?pageSize=500&vendorId=${this.auth.getLoggedUser().vendorId}`).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );

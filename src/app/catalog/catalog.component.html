@@ -178,7 +178,11 @@
             <tbody>
               <tr *ngFor="let stock of pageOfItems">
                 <td>
-                  <a href="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}">
+                  <a
+                  class="btn btn-outline-dark btn-sm"
+                  (click)=getFilteredStock(stock.id)
+                  data-toggle="modal"
+                  data-target="#details">
                     <img src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}" height="80px" width="100px"/>
                   </a>
                 </td>

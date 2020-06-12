@@ -45,6 +45,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { JwPaginationComponent } from 'jw-angular-pagination';
 import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
 import { PrivacyComponent } from './signup/privacy/privacy.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { PrivacyComponent } from './signup/privacy/privacy.component';
     ProfileComponent,
     JwPaginationComponent,
     TermsConditionsComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
