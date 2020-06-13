@@ -1,3 +1,4 @@
+import { AdminGuard } from './user/admin.guard';
 import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
 import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
 import { PrivacyComponent } from './signup/privacy/privacy.component';
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
   // cms routes goes here
   {
     path:'admin',
+    canActivate: [AdminGuard],
     component: AdminLayoutComponent,
     children: [
       {path:'', canActivate: [AuthGuard], component: AdminHomeComponent},
