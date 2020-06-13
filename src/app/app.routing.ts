@@ -80,10 +80,10 @@ const appRoutes: Routes = [
 
   // no layout routes goes here
   {path:'admin/login', component: AdminLoginComponent},
-  {path:'vendor/login', component: LoginComponent},
+  {path:'app/login', component: LoginComponent},
   {path:'vendor/signup', component: SignupComponent},
 
-  {path: 'login', redirectTo: 'vendor/login'},
+  {path: 'login', redirectTo: 'app/login'},
   {path: 'signup', redirectTo: 'vendor/signup'},
   // otherwise redirect to home
   {path: '**',
