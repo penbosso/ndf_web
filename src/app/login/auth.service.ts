@@ -83,6 +83,7 @@ export class AuthService {
     const decoded = jwt_decode(authResult.token);
     const decodedUserInfo = JSON.parse(decoded["user_info"]);
     const decodedCompanyInfo = JSON.parse(decoded["company_info"])
+    console.log(decodedCompanyInfo)
     const currentUser = JSON.stringify({
       profilePic: decodedUserInfo["ProfilePic"],
       firstName: decodedUserInfo["FirstName"],

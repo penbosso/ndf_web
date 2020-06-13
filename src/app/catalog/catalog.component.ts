@@ -17,7 +17,7 @@ export class CatalogComponent implements OnInit {
   filteredStocks: Stock[];
   filteredStock: Stock;
   imageBaseUrl = environment.baseImageUrl;
-  _locationFilter: string;
+  _locationFilter: string ="";
   _nameFilter: string = "";
   _unitFilter: string = "";
   uniqueName: string[] = [];
