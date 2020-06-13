@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/login/auth.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin-header',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AdminHeaderComponent implements OnInit {
+  imageBaseUrl = environment.baseImageUrl;
 
   constructor(public auth: AuthService, private router: Router) { }
 

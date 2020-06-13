@@ -1,10 +1,11 @@
-import { AuthService } from './../login/auth.service';
-import { Vendor } from './../user/vendor';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/login/auth.service';
+import { User } from 'src/app/user/user';
 import * as _ from 'lodash';
+
 
 function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   let confirmControl = c.get('confirmPassword');
@@ -19,29 +20,31 @@ function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   }
   return null;
 }
+
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-add-admin',
+  templateUrl: './add-admin.component.html',
+  styleUrls: ['./add-admin.component.css']
 })
-export class SignupComponent implements OnInit {
-  vendorForm: FormGroup;
-  vendor = new Vendor();
+export class AddAdminComponent implements OnInit {
+  adminForm: FormGroup;
+  admin = new User();
   errorMessage: any;
   public showOverlay = false;
-  base64Image: any;
+  base64Image: string;
+  message: string;
+
 
   constructor(private fb: FormBuilder,
-              private userService: UserService,
-              private router: Router,
-              public auth:AuthService) { }
+    private userService: UserService,
+    private router: Router,
+    public auth:AuthService) { }
 
   ngOnInit() {
-    this.vendorForm = this.fb.group({
-      FirstName: '',
+    this.adminForm = this.fb.group({
+      firstName: '',
       otherNames: '',
       telephone:'',
-      companyCode:'',
       password: '',
       passwordGroup: this.fb.group({
         password:'',
@@ -54,25 +57,27 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  saveVendor(): void {
-    const newVendor = {...this.vendor, ...this.vendorForm.value}
-    newVendor.password = this.vendorForm.value.passwordGroup.password;
-    newVendor.profilePic = this.base64Image ? this.base64Image.replace(/^data:image\/[a-z]+;base64,/, "") : this.vendor.profilePic;
+  saveAdmin(): void {
+    const newAdmin = {...this.admin, ...this.adminForm.value}
+    newAdmin.type = "admin"
+    newAdmin.profilePic = this.base64Image ? this.base64Image.replace(/^data:image\/[a-z]+;base64,/, "") : this.admin.profilePic;
+    newAdmin.password = this.adminForm.value.passwordGroup.password;
+    console.log(newAdmin);
     this.showOverlay = true;
-
-    this.userService.createUser(newVendor).subscribe(
+    this.userService.createUser(newAdmin).subscribe(
       () => this.onSaveComplete(),
-      (error: any) =>  {
+      (error: any) => {
         this.errorMessage = "An error occurred please try again later";
         this.showOverlay = false;
       }
-    );
+    )
+
   }
 
   onSaveComplete(): void {
-    this.vendorForm.reset();
+    this.adminForm.reset();
     this.showOverlay = false;
-    this.router.navigate(['/vendor']);
+    this.message = "Account created"
   }
 
   fileChangeEvent(fileInput: any) {

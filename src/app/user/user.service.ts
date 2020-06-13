@@ -21,7 +21,9 @@ export class UserService {
     return this.http.post<User>(this.userApiBaseUrl, user, {headers:headers})
       .pipe(
         tap(data =>{
-          this.auth.doLoginUser(data);
+          if(!this.auth.isLoggedIn()){
+            this.auth.doLoginUser(data);
+          }
           console.log('create User: '+ JSON.stringify(data))
         }),
         catchError(this.handleError)

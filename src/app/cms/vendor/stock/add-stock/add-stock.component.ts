@@ -117,12 +117,12 @@ export class AddStockComponent implements OnInit, OnDestroy {
     this.errorMessage = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
       // Size Filter Bytes
-      const max_size = 20971520;
+      const max_size = 2048000;
       const allowed_types = ['image/png', 'image/jpeg', 'image/jpg'];
 
       if (fileInput.target.files[0].size > max_size) {
         this.errorMessage =
-          'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+          'Maximum size allowed is ' + max_size / 1024000 + 'Mb';
 
         return false;
       }
