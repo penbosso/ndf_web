@@ -9,7 +9,7 @@
                   height="auto"
                 />| Legal Timber System</h4>
               </a>
-              <div class="d-flex order-lg-2 ml-auto">
+              <div class="d-flex order-lg-2 ml-auto" *ngIf="toggleShow()">
                   <div class="dropdown">
                       <a
                           href="#"
@@ -51,7 +51,7 @@
               </div>
 
                 <a
-                href="#"
+                (click)="toggleShow()"
                 class="header-toggler d-lg-none ml-3 ml-lg-0"
                 data-toggle="collapse"
                 data-target="#headerMenuCollapse"
