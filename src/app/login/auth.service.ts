@@ -82,7 +82,10 @@ export class AuthService {
   doLoginUser(authResult) {
     const decoded = jwt_decode(authResult.token);
     const decodedUserInfo = JSON.parse(decoded["user_info"]);
-    const decodedCompanyInfo = JSON.parse(decoded["company_info"])
+    let decodedCompanyInfo = {};
+    if (decoded["company_info"]) {
+      decodedCompanyInfo = JSON.parse(decoded["company_info"])
+    }
     console.log(decodedCompanyInfo)
     const currentUser = JSON.stringify({
       profilePic: decodedUserInfo["ProfilePic"],
@@ -91,7 +94,7 @@ export class AuthService {
       companyCode: decodedUserInfo["CompanyCode"],
       telephone: decodedUserInfo["Telephone"],
       type: decoded["role"],
-      id: decoded["id"],
+      id: decoded["Id"],
       vendorId: decodedCompanyInfo["id"]
     });
     console.log("cureent user **** ",currentUser );

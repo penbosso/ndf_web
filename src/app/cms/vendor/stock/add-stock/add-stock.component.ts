@@ -108,9 +108,8 @@ export class AddStockComponent implements OnInit, OnDestroy {
   }
 
   onSaveComplete(): void {
-    this.stockForm.reset();
     this.showOverlay = false;
-    this.message = "Stock added";
+    this.message = "Stock saved";
   }
 
   fileChangeEvent(fileInput: any) {

@@ -30,7 +30,7 @@
       <div class="container text-center"  *ngIf="filteredNews && filteredNews.length">
         <h2 class="h3">News</h2>
         <div *ngFor="let newsArticle of pageOfItems">
-          <a [routerLink]="['/news',newsArticle.id]" class="row d-flex justify-content-center mt-5">
+          <a [routerLink]="['/news',newsArticle.id]" class="row d-flex justify-content-center mt-5" *ngIf="newsArticle.consumer !=='vendor'">
             <div class="col-lg-3 news-image">
               <img
               *ngIf="newsArticle?.image"

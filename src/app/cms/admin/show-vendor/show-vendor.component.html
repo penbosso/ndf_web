@@ -41,34 +41,53 @@
                                           </thead>
                                           <tbody *ngIf='vendors && vendors.length'>
                                               <tr *ngFor='let vendor of pageOfItems' >
-                                                <a
-                                                [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                
+
                                                   <td>
+                                                    <a
+                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
                                                       <span class="text-muted"
                                                           >{{ vendor.companyCode }}</span
                                                       >
+                                                    </a>
                                                   </td>
                                                   <td>
+                                                    <a
+                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
                                                       {{ vendor.companyName }}
+                                                      </a>
                                                   </td>
                                                   <td>
+                                                    <a
+                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
                                                       {{ vendor.address }}
+                                                      </a>
                                                   </td>
                                                   <td>
+                                                    <a
+                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
                                                       {{ vendor.telephoneNumber }}
+                                                      </a>
                                                   </td>
                                                   <td>
-                                                      {{ vendor.status }}
+                                                      <a
+                                                      [routerLink]="['/admin/view-vendor', vendor.companyCode]">
+                                                        {{ vendor.status }}
+                                                      </a>
                                                   </td>
                                                   <td>
-                                                      {{ vendor.remarks }}
+
+                                                      <a
+                                                      [routerLink]="['/admin/view-vendor', vendor.companyCode]">
+                                                        {{ vendor.remarks }}
+                                                      </a>
                                                   </td>
                                                   <td>
-                                                      {{ vendor.contactPerson }}
+                                                      <a
+                                                      [routerLink]="['/admin/view-vendor', vendor.companyCode]">
+                                                        {{ vendor.contactPerson }}
+                                                      </a>
                                                   </td>
                                                   <td>{{ vendor.location }}</td>
-                                                </a>
                                               </tr>
 
                                               <nav aria-label="..." class="text-center" style="align-items: center; position: fixed;">
