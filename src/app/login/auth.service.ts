@@ -25,7 +25,7 @@ export class AuthService {
           .pipe(
             tap(res => this.doLoginUser(res)),
             mapTo(true),
-            catchError(error => {
+            catchError(error => {console.log(error);
               this.eventAuthError.next(error)
               return of(false);
             })
@@ -56,14 +56,14 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    if(this.getLoggedUser().type == 'admin') {
+    if(this.getLoggedUser() && this.getLoggedUser().type == 'admin') {
       return true;
     }
     return false;
   }
 
   isVendor(): boolean  {
-    if(this.getLoggedUser().type == 'vendor') {
+    if(this.getLoggedUser() && this.getLoggedUser().type == 'vendor') {
       return true;
     }
     return false;
