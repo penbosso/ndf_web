@@ -243,28 +243,7 @@ section header {
 }
 
 .modal {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.modal button.close {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  color: #fff;
-  text-align: center;
-  background-color: #429244;
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#429244),
-    to(#00cdac)
-  );
-  background-image: linear-gradient(to right, #429244, #00cdac);
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 1;
+  background: rgba(0, 0, 0, 0.192);
 }
 
 .modal-content {
@@ -275,6 +254,9 @@ section header {
 .modal-body {
   padding: 20px 30px;
   border: none;
+}
+#loginform {
+  padding: 0 20px;
 }
 
 #loginform .form-group,
