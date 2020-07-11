@@ -101,7 +101,7 @@
     </div>
   </nav>
 </header>
-<div *ngIf="errorMessage" class="row row text-center" style="margin-top: 20px;">
+<div *ngIf="errorMessage" class="row row text-center">
   <div class="alert alert-danger">{{ errorMessage }}</div>
 </div>
 <!-- Sign up Modal-->
@@ -113,10 +113,10 @@
   aria-hidden="true"
   class="modal fade"
 >
-  <div role="document" class="modal-dialog">
+  <div role="document" class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="signupModalLabel" class="modal-title">Sign Up Modal</h5>
+        <h5 id="signupModalLabel" class="modal-title">Sign Up</h5>
         <button
           type="button"
           data-dismiss="modal"
@@ -136,7 +136,7 @@
             <label for="FirstName">First Name</label>
             <input
               type="text"
-              placeholder="First Name"
+              placeholder="Enter your firstname"
               id="FirstName"
               required
               autofocus
@@ -159,7 +159,7 @@
             <label for="otherNames">Other Name(s)</label>
             <input
               type="text"
-              placeholder="Other Name(s)"
+              placeholder="Enter othernames"
               id="otherNames"
               minlength="3"
               formControlName="otherNames"
@@ -183,7 +183,7 @@
             <label for="telephone">Telephone Number</label>
             <input
               type="tel"
-              placeholder="Telephone Number"
+              placeholder="Enter valid phone number"
               id="telephone"
               minlength="10"
               formControlName="telephone"
@@ -210,7 +210,7 @@
                 type="password"
                 required
                 minlength="6"
-                placeholder="password"
+                placeholder="Enter your password"
                 id="password"
                 formControlName="password"
                 [ngClass]="{
@@ -234,7 +234,7 @@
               <label for="confirmpassword">Confirm password</label>
               <input
                 type="password"
-                placeholder="Confirm password"
+                placeholder="Confirm your password"
                 id="confirmpassword"
                 minlength="6"
                 required
@@ -261,7 +261,7 @@
               </span>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group text-center">
             <button
               type="submit"
               class="submit btn btn-primary btn-shadow btn-gradient"
@@ -272,7 +272,7 @@
               "
               [disabled]="!buyerForm.valid"
             >
-              Signup
+              Sign up
             </button>
           </div>
         </form>

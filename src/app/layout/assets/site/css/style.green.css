@@ -255,7 +255,8 @@ section header {
   padding: 20px 30px;
   border: none;
 }
-#loginform {
+#loginform,
+#signupform {
   padding: 0 20px;
 }
 
