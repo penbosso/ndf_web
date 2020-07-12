@@ -317,7 +317,7 @@ section header {
 /* General Media Query ---------------------------------- */
 @media (max-width: 991px) {
   section {
-    padding: 100px 0;
+    padding: 70px 0;
   }
 }
 
