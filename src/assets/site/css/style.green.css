@@ -46,7 +46,7 @@ strong {
 
 .bg-gray,
 section.browser .nav-tabs a.active {
-  background: #f5f5f5;
+  background-color: #cccccc; /* Used if the image is unavailable */
 }
 
 .no-padding {
@@ -277,18 +277,21 @@ section header {
   border: none;
 }
 
-#loginform .form-group, #signupform .form-group {
+#loginform .form-group,
+#signupform .form-group {
   margin-bottom: 20px;
 }
 
-#loginform label, #signupform label {
+#loginform label,
+#signupform label {
   display: block;
   padding-left: 10px;
   color: #656565;
   font-family: "Open Sans", sans-serif;
 }
 
-#loginform input, #signupform input {
+#loginform input,
+#signupform input {
   width: 100%;
   display: block;
   padding: 10px 20px;
@@ -297,11 +300,13 @@ section header {
   outline: none;
 }
 
-#loginform  input:focus, #signupform input:focus {
+#loginform input:focus,
+#signupform input:focus {
   border-color: #429244;
 }
 
-#loginform input::-moz-placeholder, #signupform input::-moz-placeholder {
+#loginform input::-moz-placeholder,
+#signupform input::-moz-placeholder {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #aaa;
@@ -309,7 +314,8 @@ section header {
   font-size: 0.9em;
 }
 
-#loginform input::-webkit-input-placeholder, #signupform input::-webkit-input-placeholder {
+#loginform input::-webkit-input-placeholder,
+#signupform input::-webkit-input-placeholder {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #aaa;
@@ -317,7 +323,8 @@ section header {
   font-size: 0.9em;
 }
 
-#loginform input:-ms-input-placeholder, #signupform input:-ms-input-placeholder {
+#loginform input:-ms-input-placeholder,
+#signupform input:-ms-input-placeholder {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #aaa;
@@ -634,11 +641,10 @@ section.testimonials .avatar {
 * ==========================================================
 */
 section.newsletter .form-holder {
-  padding: 70px 40px;
+  padding: 20px;
   background: #fff;
   -webkit-box-shadow: -5.665px 9.429px 35px 0px rgba(0, 0, 0, 0.2);
   box-shadow: -5.665px 9.429px 35px 0px rgba(0, 0, 0, 0.2);
-  margin-top: 70px;
 }
 
 section.newsletter .form-group {
@@ -701,7 +707,6 @@ section.newsletter .form-group .submit {
 * ==========================================================
 */
 footer.main-footer {
-  padding: 150px 0 0;
   overflow-x: hidden;
 }
 
@@ -727,10 +732,6 @@ footer.main-footer ul.contact-info a {
 
 footer.main-footer ul.contact-info a:hover {
   color: #429244;
-}
-
-footer.main-footer h5 {
-  margin-bottom: 30px;
 }
 
 footer.main-footer ul.links {
@@ -1836,6 +1837,10 @@ a.bg-light:hover {
 a.bg-dark:focus,
 a.bg-dark:hover {
   background-color: #1d2124 !important;
+}
+
+.bg.callout {
+  background-color: #dccec1;
 }
 
 .border-primary {
