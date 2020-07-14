@@ -11,6 +11,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class CmsHeaderComponent implements OnInit {
 
+  show:boolean = true;
+  firstClick: boolean = true;
+  toggleShow() {
+    if(this.firstClick) { this.firstClick = false; return}
+    this.show = this.show? false : true;
+  }
+
   constructor(public auth: AuthService, private router: Router) { }
 
   ngOnInit() {

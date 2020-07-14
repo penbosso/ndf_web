@@ -25,7 +25,7 @@ export class AuthService {
           .pipe(
             tap(res => this.doLoginUser(res)),
             mapTo(true),
-            catchError(error => {
+            catchError(error => {console.log(error);
               this.eventAuthError.next(error)
               return of(false);
             })
@@ -56,14 +56,14 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    if(this.getLoggedUser().type == 'admin') {
+    if(this.getLoggedUser() && this.getLoggedUser().type == 'admin') {
       return true;
     }
     return false;
   }
 
   isVendor(): boolean  {
-    if(this.getLoggedUser().type == 'vendor') {
+    if(this.getLoggedUser() && this.getLoggedUser().type == 'vendor') {
       return true;
     }
     return false;
@@ -82,7 +82,10 @@ export class AuthService {
   doLoginUser(authResult) {
     const decoded = jwt_decode(authResult.token);
     const decodedUserInfo = JSON.parse(decoded["user_info"]);
-    const decodedCompanyInfo = JSON.parse(decoded["company_info"])
+    let decodedCompanyInfo = {};
+    if (decoded["company_info"]) {
+      decodedCompanyInfo = JSON.parse(decoded["company_info"])
+    }
     console.log(decodedCompanyInfo)
     const currentUser = JSON.stringify({
       profilePic: decodedUserInfo["ProfilePic"],
@@ -91,7 +94,7 @@ export class AuthService {
       companyCode: decodedUserInfo["CompanyCode"],
       telephone: decodedUserInfo["Telephone"],
       type: decoded["role"],
-      id: decoded["id"],
+      id: decoded["Id"],
       vendorId: decodedCompanyInfo["id"]
     });
     console.log("cureent user **** ",currentUser );

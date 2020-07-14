@@ -9,10 +9,9 @@
                   height="auto"
                 />| Legal Timber System</h4>
               </a>
-              <div class="d-flex order-lg-2 ml-auto">
+              <div class="d-flex order-lg-2 ml-auto" (click)="toggleShow()">
                   <div class="dropdown">
                       <a
-                          href="#"
                           class="nav-link pr-0 leading-none"
                           data-toggle="dropdown"
                       >
@@ -33,7 +32,7 @@
                       <div
                           class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                       >
-                          <a class="dropdown-item" routerLink="/vendor/profile">
+                          <a class="dropdown-item" [routerLink]="['/vendor/profile']">
                               <i
                                   class="dropdown-icon fe fe-user"
                               ></i>
@@ -51,7 +50,7 @@
               </div>
 
                 <a
-                href="#"
+                (click)="toggleShow()"
                 class="header-toggler d-lg-none ml-3 ml-lg-0"
                 data-toggle="collapse"
                 data-target="#headerMenuCollapse"

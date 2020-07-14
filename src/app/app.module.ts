@@ -46,6 +46,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
 import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
 import { PrivacyComponent } from './signup/privacy/privacy.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     JwPaginationComponent,
     TermsConditionsComponent,
     PrivacyComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,

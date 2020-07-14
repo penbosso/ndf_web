@@ -32,7 +32,7 @@
                 </h4>
               </div>
               <div *ngFor="let newsArticle of pageOfItems">
-                <a [routerLink]="['/vendor/view-news',newsArticle.id]"
+                <a [routerLink]="['/vendor/view-news',newsArticle.id]" *ngIf="newsArticle.consumer !=='buyer'"
                   ><div class="my-auto">
                     <div class="container">
                       <div class="col-12">

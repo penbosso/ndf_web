@@ -1,3 +1,5 @@
+import { AdminGuard } from './user/admin.guard';
+import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
 import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
 import { PrivacyComponent } from './signup/privacy/privacy.component';
 import { ProfileComponent } from './user/profile/profile.component';
@@ -63,6 +65,7 @@ const appRoutes: Routes = [
   // cms routes goes here
   {
     path:'admin',
+    canActivate: [AdminGuard],
     component: AdminLayoutComponent,
     children: [
       {path:'', canActivate: [AuthGuard], component: AdminHomeComponent},
@@ -74,7 +77,8 @@ const appRoutes: Routes = [
       {path:'view-vendor/:code', canActivate: [AuthGuard], component: ViewVendorComponent},
       {path:'upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
       {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent},
-      {path: 'profile', component: ProfileComponent}
+      {path: 'profile',  canActivate: [AuthGuard], component: ProfileComponent},
+      {path: 'add-admin',  canActivate: [AuthGuard], component: AddAdminComponent}
     ]
   },
 

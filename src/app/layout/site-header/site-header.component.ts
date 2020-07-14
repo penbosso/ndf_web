@@ -31,6 +31,14 @@ export class SiteHeaderComponent implements OnInit {
   errorMessage: any;
   public showOverlay = false;
 
+  show:boolean = true;
+  firstClick: boolean = true;
+  toggleShow() {
+    if(this.firstClick) { this.firstClick = false; return}
+    this.show = this.show? false : true;
+  }
+
+
   @ViewChild('closeLoginModal', { static: true }) closeLoginModal: ElementRef
   @ViewChild('closeSignupModal', { static: true }) closeSignupModal: ElementRef
 
