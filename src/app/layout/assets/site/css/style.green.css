@@ -243,7 +243,28 @@ section header {
 }
 
 .modal {
-  background: rgba(0, 0, 0, 0.192);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal button.close {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  background-color: #429244;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#429244),
+    to(#00cdac)
+  );
+  background-image: linear-gradient(to right, #429244, #00cdac);
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 1;
 }
 
 .modal-content {
@@ -255,26 +276,19 @@ section header {
   padding: 20px 30px;
   border: none;
 }
-#loginform,
-#signupform {
-  padding: 0 20px;
-}
 
-#loginform .form-group,
-#signupform .form-group {
+#loginform .form-group, #signupform .form-group {
   margin-bottom: 20px;
 }
 
-#loginform label,
-#signupform label {
+#loginform label, #signupform label {
   display: block;
   padding-left: 10px;
   color: #656565;
   font-family: "Open Sans", sans-serif;
 }
 
-#loginform input,
-#signupform input {
+#loginform input, #signupform input {
   width: 100%;
   display: block;
   padding: 10px 20px;
@@ -283,8 +297,7 @@ section header {
   outline: none;
 }
 
-#loginform input:focus,
-#signupform input:focus {
+#loginform input:focus, #signupform input:focus {
   border-color: #429244;
 }
 
@@ -296,8 +309,7 @@ section header {
   font-size: 0.9em;
 }
 
-#loginform input::-webkit-input-placeholder,
-#signupform input::-webkit-input-placeholder {
+#loginform input::-webkit-input-placeholder, #signupform input::-webkit-input-placeholder {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #aaa;
@@ -305,8 +317,7 @@ section header {
   font-size: 0.9em;
 }
 
-#loginform input:-ms-input-placeholder,
-#signupform input:-ms-input-placeholder {
+#loginform input:-ms-input-placeholder, #signupform input:-ms-input-placeholder {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #aaa;
@@ -317,7 +328,7 @@ section header {
 /* General Media Query ---------------------------------- */
 @media (max-width: 991px) {
   section {
-    padding: 70px 0;
+    padding: 100px 0;
   }
 }
 
@@ -933,8 +944,6 @@ STYLE SWITCHER FOR DEMO
 
 .navbar-light .navbar-text {
   color: rgba(0, 0, 0, 0.5);
-  font-weight: 700;
-  font-size: large;
 }
 
 .navbar-dark .navbar-brand {
