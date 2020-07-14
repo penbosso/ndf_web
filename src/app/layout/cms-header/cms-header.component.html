@@ -33,7 +33,7 @@
                       <div
                           class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                       >
-                          <a class="dropdown-item" href="#">
+                          <a class="dropdown-item" routerLink="/vendor/profile">
                               <i
                                   class="dropdown-icon fe fe-user"
                               ></i>
@@ -79,6 +79,11 @@
                   <li class="nav-item">
                     <a [routerLink]="['/vendor/news']" routerLinkActive="active" class="nav-link"
                       ><i class="fe fe-book-open"></i> News
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a [routerLink]="['/']" class="nav-link"
+                      ><i class="fe fe-globe"></i> Website Home
                     </a>
                   </li>
                 </ul>

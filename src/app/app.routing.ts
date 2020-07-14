@@ -1,3 +1,6 @@
+import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
+import { PrivacyComponent } from './signup/privacy/privacy.component';
+import { ProfileComponent } from './user/profile/profile.component';
 import { Page404Component } from './page404/page404.component';
 import { NewsArticleComponent } from './news/news-article/news-article.component';
 import { VendorGuard } from './user/vendor.guard';
@@ -36,6 +39,8 @@ const appRoutes: Routes = [
       { path:'catalog', component: CatalogComponent},
       { path:'news', component: NewsComponent},
       { path:'news/:id', component: NewsArticleComponent},
+      {path:'privacy', component: PrivacyComponent},
+      {path:'terms', component: TermsConditionsComponent}
     ]
   },
 
@@ -50,7 +55,8 @@ const appRoutes: Routes = [
       {path:'add-stock/:id', component: AddStockComponent},
       {path:'manage-stock', component: ManageStockComponent},
       {path:'news', component: VendorNewsComponent},
-      {path:'view-news/:id', component: VendorViewNewsComponent}
+      {path:'view-news/:id', component: VendorViewNewsComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
   },
 
@@ -67,16 +73,17 @@ const appRoutes: Routes = [
       {path:'manage-news/:id', canActivate: [AuthGuard], component: AdminViewNewsComponent},
       {path:'view-vendor/:code', canActivate: [AuthGuard], component: ViewVendorComponent},
       {path:'upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
-      {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent}
+      {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
   },
 
   // no layout routes goes here
   {path:'admin/login', component: AdminLoginComponent},
-  {path:'vendor/login', component: LoginComponent},
+  {path:'app/login', component: LoginComponent},
   {path:'vendor/signup', component: SignupComponent},
 
-  {path: 'login', redirectTo: 'vendor/login'},
+  {path: 'login', redirectTo: 'app/login'},
   {path: 'signup', redirectTo: 'vendor/signup'},
   // otherwise redirect to home
   {path: '**',

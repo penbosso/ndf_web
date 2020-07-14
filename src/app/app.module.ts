@@ -41,8 +41,11 @@ import { EditorModule } from "@tinymce/tinymce-angular";
 import { AvailableStockComponent } from './shared/available-stock/available-stock.component';
 import { NewsArticleComponent } from './news/news-article/news-article.component';
 import { Page404Component } from './page404/page404.component';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { ProfileComponent } from './user/profile/profile.component';
+import { JwPaginationComponent } from 'jw-angular-pagination';
+import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
+import { PrivacyComponent } from './signup/privacy/privacy.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +80,11 @@ import { ProfileComponent } from './user/profile/profile.component';
     AvailableStockComponent,
     NewsArticleComponent,
     Page404Component,
-    ProfileComponent
+    ProfileComponent,
+    JwPaginationComponent,
+    TermsConditionsComponent,
+    PrivacyComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -88,10 +95,6 @@ import { ProfileComponent } from './user/profile/profile.component';
     routing
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    },
     AuthGuard,
     AuthService,
     {

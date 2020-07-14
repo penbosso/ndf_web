@@ -82,15 +82,19 @@ export class AuthService {
   doLoginUser(authResult) {
     const decoded = jwt_decode(authResult.token);
     const decodedUserInfo = JSON.parse(decoded["user_info"]);
+    const decodedCompanyInfo = JSON.parse(decoded["company_info"])
+    console.log(decodedCompanyInfo)
     const currentUser = JSON.stringify({
       profilePic: decodedUserInfo["ProfilePic"],
       firstName: decodedUserInfo["FirstName"],
-      otherName: decodedUserInfo["OtherName"],
+      otherName: decodedUserInfo["OtherNames"],
+      companyCode: decodedUserInfo["CompanyCode"],
       telephone: decodedUserInfo["Telephone"],
       type: decoded["role"],
-      id: decoded["unique_name"]
+      id: decoded["id"],
+      vendorId: decodedCompanyInfo["id"]
     });
-    console.log(currentUser );
+    console.log("cureent user **** ",currentUser );
     localStorage.setItem(this.loggedUser, currentUser );
     localStorage.setItem(this.JWT_TOKEN, authResult.token);
     localStorage.setItem(this.RERESH_TOKEN, authResult.refreshToken);

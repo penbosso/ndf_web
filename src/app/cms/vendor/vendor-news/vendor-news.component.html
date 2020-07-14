@@ -1,4 +1,8 @@
-
+<!-- Loding -->
+<div class="my-overlay" *ngIf="!pageOfItems">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
@@ -27,7 +31,7 @@
                   News Article
                 </h4>
               </div>
-              <div *ngFor="let newsArticle of filteredNews">
+              <div *ngFor="let newsArticle of pageOfItems">
                 <a [routerLink]="['/vendor/view-news',newsArticle.id]"
                   ><div class="my-auto">
                     <div class="container">
@@ -42,9 +46,9 @@
                             [ngStyle]="{ 'background-image': 'url(assets/images/dev/wood2.jpg)'}"
                           ></div>
                           <div class="card-body d-flex flex-column">
-                            <h4>{{ newsArticle.title }}</h4>
-                            <div class="text-muted">
-                              {{newsArticle.description.length > 230 ? newsArticle.description.substr(0,230)+'...': newsArticle.description}}
+                            <h4>{{ newsArticle?.title }}</h4>
+                            <div class="text-muted"
+                            [innerHTML]="newsArticle.description.length > 530 ? newsArticle.description.substr(0,530)+'...': newsArticle.description">
                             </div>
                             <div class="d-flex align-items-center pt-5 mt-auto">
                               <div>
@@ -61,6 +65,10 @@
                   </div>
                 </a>
               </div>
+
+              <nav aria-label="..." class="text-center">
+                <jw-pagination [items]="filteredNews" (changePage)="onChangePage($event)"></jw-pagination>
+              </nav>
             </section>
           </div>
         </div>

@@ -40,7 +40,10 @@
                                               </tr>
                                           </thead>
                                           <tbody *ngIf='vendors && vendors.length'>
-                                              <tr *ngFor='let vendor of vendors' >
+                                              <tr *ngFor='let vendor of pageOfItems' >
+                                                <a
+                                                [routerLink]="['/admin/view-vendor', vendor.companyCode]">
+                                                
                                                   <td>
                                                       <span class="text-muted"
                                                           >{{ vendor.companyCode }}</span
@@ -65,14 +68,12 @@
                                                       {{ vendor.contactPerson }}
                                                   </td>
                                                   <td>{{ vendor.location }}</td>
-                                                  <td class="text-right">
-                                                      <a
-                                                          [routerLink]="['/admin/view-vendor', vendor.companyCode]"
-                                                          class="btn btn-outline-dark btn-sm"
-                                                          >View</a
-                                                      >
-                                                  </td>
+                                                </a>
                                               </tr>
+
+                                              <nav aria-label="..." class="text-center" style="align-items: center; position: fixed;">
+                                                <jw-pagination [items]="vendors" (changePage)="onChangePage($event)"></jw-pagination>
+                                              </nav>
                                           </tbody>
                                       </table>
                                       <script>

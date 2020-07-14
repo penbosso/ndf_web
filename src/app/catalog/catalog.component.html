@@ -1,4 +1,8 @@
-
+<!-- Loding -->
+<div class="my-overlay" *ngIf="!pageOfItems">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
     <!-- Modal for details-->
     <div
       id="details"
@@ -76,8 +80,28 @@
                         </tr>
                       </tbody>
                     </table>
-                    <h2>Vendor Info</h2>
-                    <a href="/catalog/404">Click to view more stocks from vendor</a>
+                    <h6>Vendor Info</h6>
+                    <div class="col" *ngIf="vendor">
+                      <table class="table text-left">
+                        <thead>
+                          <tr>
+                            <th scope="col">Company</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Contact</th>
+                            <!-- <th></th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{ vendor.companyName }}</td>
+                            <td>{{ vendor.address}}</td>
+                            <td>{{ vendor.telephoneNumber }}</td>
+                            <td *ngIf="false"><a href="{{'/catalog/venodor/'+ vendor.companyCode}}">View vendor</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -88,7 +112,7 @@
     </div>
     <!-- Search filter -->
     <section id="query">
-      <div class="container">
+      <div class="container text-center">
         <div class="text-center mb-5">
           <h2>Filter Catlog</h2>
         </div>
@@ -98,34 +122,32 @@
               <div class="form-group col-md-4">
                 <label for="inputState">Location</label>
                 <select
-                  id="inputState"
                   class="form-control custom-select custom-select-lg"
-                  >>
-                  <option selected>Accra</option>
-                  <option value="">Kumasi</option>
-                  <option value="">Nkawkaw</option>
+                  [(ngModel)]='locationFilter' [ngModelOptions]="{standalone: true}"
+                  >
+                  <option value=" ">Choose...</option>
+                  <option *ngFor="let location of uniqueLoc "value="{{location}}">{{location}}</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">Species</label>
-                <select
-                  id="inputState"
+                <select *ngIf="uniqueName"
                   class="form-control custom-select custom-select-lg"
-                  >>
-                  <option selected>Odum</option>
-                  <option value="">Wawa</option>
-                  <option value="Sapele"></option>
+                  [(ngModel)]='nameFilter' [ngModelOptions]="{standalone: true}"
+                  >
+                  <option value=" " selected>Choose...</option>
+                  <option *ngFor="let specie of uniqueName " value="{{specie}}">{{specie}}</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="inputState">Unit</label>
-                <select
+                <label for="inputState">Size</label>
+                <select *ngIf="uniqueUnit"
                   id="inputState"
                   class="form-control custom-select custom-select-lg"
+                  [(ngModel)]='unitFilter' [ngModelOptions]="{standalone: true}"
                 >
-                  <option selected>Choose...</option>
-                  <option>2x4</option>
-                  <option>2x8</option>
+                  <option value=" " selected>Choose...</option>
+                  <option *ngFor="let unit of uniqueUnit " value="{{unit}}">{{unit}}</option>
                 </select>
               </div>
             </div>
@@ -134,11 +156,7 @@
             </div> -->
           </form>
         </div>
-      </div>
-    </section>
-    <!-- Search results -->
-    <section class="news bg-gray">
-      <div class="container text-center">
+
         <h2 class="h3">Timber Stock Catalog</h2>
         <div
 
@@ -150,23 +168,27 @@
           <table class="table text-left">
             <thead>
               <tr>
-                <th scope="col">Image</th>
+                <th scope="col">Stock image</th>
                 <th scope="col">Species</th>
-                <th scope="col">Unit</th>
-                <th scope="col">Quantity</th>
+                <th scope="col">Quantity (Size)</th>
+                <th scope="col">Location</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let stock of filteredStocks">
+              <tr *ngFor="let stock of pageOfItems">
                 <td>
-                  <a href="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}">
+                  <a
+                  class="btn btn-outline-dark btn-sm"
+                  (click)=getFilteredStock(stock.id)
+                  data-toggle="modal"
+                  data-target="#details">
                     <img src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}" height="80px" width="100px"/>
                   </a>
                 </td>
                 <td>{{ stock.name }}</td>
-                <td>{{ stock.size }}</td>
-                <td>{{ stock.quantity }}</td>
+                <td>{{ stock.quantity }} ({{ stock.size }})</td>
+                <td>{{ stock.location }}</td>
                 <td>
                   <a
                     class="btn btn-outline-dark btn-sm"
@@ -182,5 +204,14 @@
             </tbody>
           </table>
         </div>
+
+        <nav aria-label="..." class="text-center">
+          <jw-pagination [items]="filteredStocks" (changePage)="onChangePage($event)"></jw-pagination>
+        </nav>
       </div>
     </section>
+    <!-- Search results -->
+    <!-- <section class="news" >
+      <div class="container text-center">
+      </div>
+    </section> -->

@@ -49,7 +49,7 @@ export class NewsService {
   }
 
   getNews(): Observable<NewsPage> {
-    return this.http.get<NewsPage>(this.newsApiBaseUrl).pipe(
+    return this.http.get<NewsPage>(`${this.newsApiBaseUrl}?pageSize=1000`).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );

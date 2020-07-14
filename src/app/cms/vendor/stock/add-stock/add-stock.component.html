@@ -21,7 +21,7 @@
                       <h3 class="card-title">Add Stock</h3>
                       <div class="card-options">
                         <a
-                          
+
                           class="card-options-collapse"
                           data-toggle="card-collapse"
                           ><i class="fe fe-chevron-up"></i
@@ -101,7 +101,7 @@
                                 >Quantity in Stock</label
                               >
                               <input
-                                type="number" required
+                                type="number" required min="0"
                                 class="form-control"
                                 placeholder="500"
                                 formControlName="quantity"
@@ -115,7 +115,7 @@
                             <div class="form-group">
                               <label class="form-label">Price per log</label>
                               <input
-                                type="number" required
+                                type="number" required min="1"
                                 class="form-control"
                                 placeholder="Ghc 170"
                                 formControlName="pricePerLog"
@@ -141,7 +141,7 @@
                         </div>
                         <div class="card-footer text-right">
                           <button type="submit" class="btn btn-primary">
-                            Add Stock
+                            {{updateThisStock? "Update Stock" : "Add Stock "}}
                           </button>
                         </div>
                       </form>

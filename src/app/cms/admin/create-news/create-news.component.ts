@@ -3,8 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
-import { error } from 'protractor';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 import { News } from 'src/app/news/news';
 
@@ -29,6 +28,7 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
   constructor(
     private newsService: NewsService,
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder
   ) { }
 
@@ -56,7 +56,7 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
               consumer: this.updateThisNews.consumer
             });
           },
-          error => this.errorMessage = "An error occurred please try again try again later"
+          error => this.errorMessage = "An error occurred please try again later"
         );
       }
     });
@@ -74,7 +74,7 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
       this.newsService.updateNews(newsArticle).subscribe(
         () => this.onSaveComplete(),
         (error: any) => {
-          this.errorMessage = "An error occurred please try again try again later";
+          this.errorMessage = "An error occurred please try again later";
           this.showOverlay = false;
         }
       );
@@ -82,7 +82,7 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
       this.newsService.saveNews(newsArticle).subscribe(
         () => this.onSaveComplete(),
         (error: any) => {
-          this.errorMessage = "An error occurred please try again try again later";
+          this.errorMessage = "An error occurred please try again later";
           this.showOverlay = false;
         }
       );
@@ -110,7 +110,9 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
   }
 
   deleteNews(id: string) {
-    this.newsService.deleteNews(id).subscribe();
+    this.newsService.deleteNews(id).subscribe(
+      () => this.router.navigate(['/admin'])
+    );
   }
 
   fileChangeEvent(fileInput: any) {

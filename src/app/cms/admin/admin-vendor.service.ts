@@ -17,13 +17,19 @@ export class AdminVendorService {
 
   showVendors(): Observable<VendorPage> {
 
-    return this.http.get<VendorPage>(this.vendorApiBaseUrl).pipe(
+    return this.http.get<VendorPage>(`${this.vendorApiBaseUrl}?pageSize=1000`).pipe(
       catchError(this.handleError)
     );
   }
 
   getVendorByCode(code: string): Observable<VendorInfo> {
     return this.http.get<VendorInfo>(`${this.vendorApiBaseUrl}/code/${code}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getVendorByid(id: string): Observable<VendorInfo> {
+    return this.http.get<VendorInfo>(`${this.vendorApiBaseUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

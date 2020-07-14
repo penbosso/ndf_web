@@ -14,6 +14,7 @@ export class AvailableStockComponent implements OnInit {
   pendingStocks: Stock[] = [];
   filteredStock: Stock;
   errorMessage: any;
+  pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
   stockCount: number;
 
@@ -21,7 +22,7 @@ export class AvailableStockComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.stockService.getStocks().subscribe(
+    this.stockService.getVendorsStocks().subscribe(
       stockPage => {
         this.stocks = stockPage.data;
         this.stockCount = this.stocks.length;
@@ -34,6 +35,11 @@ export class AvailableStockComponent implements OnInit {
     }
   }
 
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
+  }
+
   getFilteredStock(id: string) {
     this.filteredStock = this.stocks.find(stock => stock.id === id);
   }
@@ -41,7 +47,9 @@ export class AvailableStockComponent implements OnInit {
 
   deleteStock(id: string) {
     //deleting stock
-    this.stockService.deleteStock(id).subscribe();
+    this.stockService.deleteStock(id).subscribe(
+      () => this.stocks = this.stocks.filter(stock => stock.id !== id)
+    );
   }
 
   updateStock(id: string) {

@@ -1,4 +1,8 @@
-
+<!-- Loding -->
+<div class="my-overlay" *ngIf="!pageOfItems">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true">
+  </i>
+</div>
                   <div class="card">
                     <div class="card-status bg-orange"></div>
                     <div class="card-header">
@@ -108,7 +112,7 @@
                 </div>
                       <!-- individual stocks -->
                 <div class="row" *ngIf='stocks && stocks.length'>
-                  <div class="col-4" *ngFor='let stock of stocks'>
+                  <div class="col-sm-12 col-md-4" *ngFor='let stock of pageOfItems'>
                     <div class="card">
                       <div class="card-body">
                         <div class="mb-4 text-center">
@@ -130,6 +134,11 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
-                    </div>
-                  </div>
+
+                <nav aria-label="..." class="text-center">
+                  <jw-pagination [items]="stocks" (changePage)="onChangePage($event)"></jw-pagination>
+                </nav>
+              </div>
+            </div>

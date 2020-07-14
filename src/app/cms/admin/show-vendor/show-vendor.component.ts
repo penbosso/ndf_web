@@ -10,6 +10,7 @@ import { AdminVendorService } from '../admin-vendor.service';
 })
 export class ShowVendorComponent implements OnInit {
   vendors: VendorInfo[] = [];
+  pageOfItems: Array<any>;
   errorMessage: any;
 
   constructor(private VendorService: AdminVendorService) { }
@@ -19,8 +20,13 @@ export class ShowVendorComponent implements OnInit {
       vendorInfoPage => {
         this.vendors = vendorInfoPage.data;
       },
-      error => this.errorMessage = "An error occurred please try again try again later"
+      error => this.errorMessage = "An error occurred please try again later"
     );
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
   }
 
 }

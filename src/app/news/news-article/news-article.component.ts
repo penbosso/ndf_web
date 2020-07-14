@@ -28,7 +28,7 @@ export class NewsArticleComponent implements OnInit {
         news => {
           this.newsArticle = news;
         },
-        error => this.errorMessage = "An error occurred please try again try again later"
+        error => this.errorMessage = "An error occurred please try again later"
       );
     });
     // cleaar error after 5s

@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "ndf-web",
+      "public": "dist/ndf-web",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

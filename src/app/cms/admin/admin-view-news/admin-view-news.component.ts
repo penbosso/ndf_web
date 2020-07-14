@@ -14,6 +14,7 @@ export class AdminViewNewsComponent implements OnInit {
   pendingNews: News[] = [];
   // filteredNews: News;
   errorMessage: any;
+  pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
 
   constructor(private newsService : NewsService,
@@ -24,13 +25,18 @@ export class AdminViewNewsComponent implements OnInit {
       newsPage => {
         this.news = newsPage.data;
       },
-      error => this.errorMessage = "An error occurred please try again try again later"
+      error => this.errorMessage = "An error occurred please try again later"
     );
 
   // cleaar error after 5s
   if(this.errorMessage) {
     setTimeout(()=>this.errorMessage = '', 5000)
   }
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
   }
 
   // getFilteredNews(id: string) {
@@ -40,7 +46,9 @@ export class AdminViewNewsComponent implements OnInit {
 
   deleteNews(id: string) {
     //deleting news
-    this.newsService.deleteNews(id).subscribe();
+    this.newsService.deleteNews(id).subscribe(
+      () => this.news = this.news.filter(newsArticle => newsArticle.id !== id)
+    );
   }
 
   updateNews(id: string) {

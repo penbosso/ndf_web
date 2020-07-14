@@ -28,6 +28,17 @@ export class UserService {
       );
   }
 
+  updateUser(user: User): Observable<User> {
+    const headers =  new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put<User>(`${this.userApiBaseUrl}/${user.id}`, user, {headers: headers})
+    .pipe(
+      tap(data =>{
+        console.log('User Updated: '+ JSON.stringify(data))
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

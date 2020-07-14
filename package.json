@@ -16,12 +16,16 @@
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
     "@angular/core": "~8.2.0",
+    "@angular/fire": "^5.4.2",
     "@angular/forms": "~8.2.0",
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "@ng-bootstrap/ng-bootstrap": "^5.3.1",
     "@tinymce/tinymce-angular": "^3.6.0",
+    "firebase": ">= 5.5.7 <8",
+    "fuse.js": "^6.0.4",
+    "jw-angular-pagination": "^1.1.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "rxjs": "~6.4.0",
@@ -51,6 +55,10 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "firebase-tools": "^7.12.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1"
   }
 }

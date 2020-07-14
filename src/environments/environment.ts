@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  userApi: "http://167.99.233.152:5000/api/user",
-  vendorApi: "http://167.99.233.152:8000/api/vendors",
-  stockApi: "http://167.99.233.152:7000/api/stocks",
+  userApi: "https://user-auth.ghanalegaltimbermarket.com/api/user",
+  vendorApi: "https://vendor-info.ghanalegaltimbermarket.com/api/vendors",
+  stockApi: "https://stocks.ghanalegaltimbermarket.com/api/stocks",
   feedbackApi: "https://ndf-feedback.herokuapp.com/api/v1/",
-  newsfeedApi: "http://167.99.233.152:8010/api/newsfeed",
+  newsfeedApi: "https://newsfeed.ghanalegaltimbermarket.com/api/newsfeed",
   baseImageUrl: "https://ndf-images.ams3.digitaloceanspaces.com"
 };
 

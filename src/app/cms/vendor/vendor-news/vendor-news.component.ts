@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { News } from 'src/app/news/news';
 import { environment } from 'src/environments/environment';
 import { NewsService } from 'src/app/news/news.service';
+import Fuse from 'fuse.js';
 
 @Component({
   selector: 'app-vendor-news',
@@ -13,6 +14,7 @@ export class VendorNewsComponent implements OnInit {
   news: News[] = [];
   filteredNews: News[];
   errorMessage: any;
+  pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
 
 
@@ -31,7 +33,7 @@ export class VendorNewsComponent implements OnInit {
         this.news = newsPage.data;
         this.filteredNews = this.news;
       },
-      error => this.errorMessage = "An error occurred please try again try again later"
+      error => this.errorMessage = "An error occurred please try again later"
     );
     // cleaar error after 5s
     if(this.errorMessage) {
@@ -39,10 +41,21 @@ export class VendorNewsComponent implements OnInit {
     }
   }
 
-  performFilter(listFilter: string): News[] {
-    listFilter = listFilter.toLocaleLowerCase();
-    return this.news.filter((newsArticle: News) =>
-      newsArticle.description.toLocaleLowerCase().indexOf(listFilter) !== -1);
+  onChangePage(pageOfItems: Array<any>) {
+      // update current page of items
+      this.pageOfItems = pageOfItems;
+  }
+
+  performFilter(listFilter: string): any {
+    const options = {
+      keys: [
+        "title",
+        "description"
+      ]
+    };
+
+    let fuse  = new Fuse(this.news, options);
+    return fuse.search(listFilter);
   }
 
 }

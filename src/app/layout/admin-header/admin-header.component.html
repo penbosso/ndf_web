@@ -33,7 +33,7 @@
                                   <div
                                       class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                   >
-                                      <a class="dropdown-item" >
+                                      <a class="dropdown-item" routerLink="/admin/profile" >
                                           <i
                                               class="dropdown-icon fe fe-user"
                                           ></i>
@@ -72,7 +72,7 @@
                               >
                                   <li class="nav-item">
                                       <a
-                                      [routerLink]="['/admin']" routerLinkActive="active"
+                                      [routerLink]="['/admin']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
                                           class="nav-link"
                                           ><i class="fe fe-book-open"></i>
                                           Dashboard</a
@@ -123,6 +123,11 @@
                                               >View all news</a
                                           >
                                       </div>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a [routerLink]="['/']" class="nav-link"
+                                      ><i class="fe fe-globe"></i> Website Home
+                                    </a>
                                   </li>
                               </ul>
                           </div>
