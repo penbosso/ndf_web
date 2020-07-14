@@ -109,17 +109,9 @@
   color: #aaa;
   font-size: 0.9em;
 }
-.hero-image {
-  background-image: url("../img/IMG_0612.JPG"); /* The image used */
-  background-color: #cccccc; /* Used if the image is unavailable */
-  height: 500px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-}
 
 .bg-wood {
-  background-color: #8a7e13;
+  background-image: url("../img/OG22NQ0.jpg");
 }
 .bg-search {
   background-image: url("../img/lumber.jpg");
