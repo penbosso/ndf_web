@@ -277,18 +277,21 @@ section header {
   border: none;
 }
 
-#loginform .form-group, #signupform .form-group {
+#loginform .form-group,
+#signupform .form-group {
   margin-bottom: 20px;
 }
 
-#loginform label, #signupform label {
+#loginform label,
+#signupform label {
   display: block;
   padding-left: 10px;
   color: #656565;
   font-family: "Open Sans", sans-serif;
 }
 
-#loginform input, #signupform input {
+#loginform input,
+#signupform input {
   width: 100%;
   display: block;
   padding: 10px 20px;
@@ -297,7 +300,8 @@ section header {
   outline: none;
 }
 
-#loginform input:focus, #signupform input:focus {
+#loginform input:focus,
+#signupform input:focus {
   border-color: #429244;
 }
 
@@ -309,7 +313,8 @@ section header {
   font-size: 0.9em;
 }
 
-#loginform input::-webkit-input-placeholder, #signupform input::-webkit-input-placeholder {
+#loginform input::-webkit-input-placeholder,
+#signupform input::-webkit-input-placeholder {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #aaa;
@@ -317,7 +322,8 @@ section header {
   font-size: 0.9em;
 }
 
-#loginform input:-ms-input-placeholder, #signupform input:-ms-input-placeholder {
+#loginform input:-ms-input-placeholder,
+#signupform input:-ms-input-placeholder {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #aaa;
@@ -886,6 +892,8 @@ STYLE SWITCHER FOR DEMO
  */
 .navbar {
   padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: large;
 }
 
 .navbar-brand {
@@ -893,12 +901,13 @@ STYLE SWITCHER FOR DEMO
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
 }
 
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
   line-height: 1;
   border: 1px solid transparent;
   border-radius: 50px;
