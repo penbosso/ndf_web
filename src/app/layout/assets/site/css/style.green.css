@@ -642,9 +642,9 @@ section.testimonials .avatar {
 section.newsletter .form-holder {
   padding: 70px 40px;
   background: #fff;
-  -webkit-box-shadow: -5.665px 9.429px 35px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: -5.665px 9.429px 35px 0px rgba(0, 0, 0, 0.2);
-  margin-top: 70px;
+  /* -webkit-box-shadow: -5.665px 9.429px 35px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: -5.665px 9.429px 35px 0px rgba(0, 0, 0, 0.2); */
+  /* margin-top: 70px; */
 }
 
 section.newsletter .form-group {
