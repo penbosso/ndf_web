@@ -3,7 +3,7 @@
   <i class="fa fa-spinner fa-spin" aria-hidden="true">
   </i>
 </div>
-
+<app-confirm-dialog></app-confirm-dialog>
                         <hr />
 
                         <div class="my-3 my-md-5 container">
@@ -45,7 +45,7 @@
                                                     </button>
 
                                                     <button
-                                                        (click)=deleteNews(newsArticle.id)
+                                                        (click)=showDialog(newsArticle.id)
                                                         class="btn btn-sm btn-danger ml-2"
                                                     >
                                                         <i

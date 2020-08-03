@@ -10,6 +10,7 @@ import { StockService } from 'src/app/cms/vendor/stock/stock.service';
   styleUrls: ['./available-stock.component.css']
 })
 export class AvailableStockComponent implements OnInit {
+  [x: string]: any;
   stocks: Stock[] = [];
   pendingStocks: Stock[] = [];
   filteredStock: Stock;
@@ -45,6 +46,14 @@ export class AvailableStockComponent implements OnInit {
   }
 
 
+
+  showDialog(id: string) {
+    this.confirmDialogService.confirmThis("Are you sure to delete this stock ?", function () {
+      this.deleteStock(id)
+    }, function () {
+      return
+    })
+  }
   deleteStock(id: string) {
     //deleting stock
     this.stockService.deleteStock(id).subscribe(

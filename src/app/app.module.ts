@@ -1,3 +1,4 @@
+import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -90,6 +91,7 @@ import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
   ],
   imports: [
     BrowserModule,
+    ConfirmDialogModule,
     EditorModule,
     HttpClientModule,
     ReactiveFormsModule,
