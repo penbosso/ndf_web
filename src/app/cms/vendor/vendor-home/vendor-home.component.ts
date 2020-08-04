@@ -1,6 +1,7 @@
 import { AvailableStockComponent } from './../../../shared/available-stock/available-stock.component';
 import { Stock } from './../stock/stock';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { PendingStockComponent } from 'src/app/shared/pending-stock/pending-stock.component';
 
 @Component({
   selector: 'app-vendor-home',
@@ -12,6 +13,7 @@ export class VendorHomeComponent implements OnInit {
   errorMessage: any;
 
   @ViewChild(AvailableStockComponent, {static: true}) availableStock: AvailableStockComponent;
+  @ViewChild(PendingStockComponent, {static: true}) pendingStock: PendingStockComponent;
 
   constructor() { }
 

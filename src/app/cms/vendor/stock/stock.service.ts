@@ -63,6 +63,13 @@ export class StockService {
     );
   }
 
+  getVendorsPendingStocks(): Observable<StockPage> {
+    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?isApproved=false&pageSize=500&vendorId=${this.auth.getLoggedUser().vendorId}`).pipe(
+      tap(data => console.log("All: " + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
   getStockById(id: string): Observable<Stock> {
     return this.http.get<Stock>(`${this.stockApiBaseUrl}/${id}`).pipe(
       tap(data => console.log("stock: " + JSON.stringify(data))),

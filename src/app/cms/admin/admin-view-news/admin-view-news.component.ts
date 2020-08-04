@@ -3,7 +3,6 @@ import { News } from '../../../news/news';
 import { environment } from 'src/environments/environment';
 import { NewsService } from 'src/app/news/news.service';
 import { Router } from '@angular/router';
-import { ConfirmDialogService } from 'src/app/confirm-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-admin-view-news',
@@ -11,6 +10,12 @@ import { ConfirmDialogService } from 'src/app/confirm-dialog/confirm-dialog.serv
   styleUrls: ['./admin-view-news.component.css']
 })
 export class AdminViewNewsComponent implements OnInit {
+
+  popoverTitle = 'Confirm delete';
+  popoverMessage = 'Are you sure you want to delete this news ?';
+  confirmClicked = false;
+  cancelClicked = false;
+
   news: News[] = [];
   pendingNews: News[] = [];
   // filteredNews: News;
@@ -19,7 +24,6 @@ export class AdminViewNewsComponent implements OnInit {
   imageBaseUrl = environment.baseImageUrl;
 
   constructor(private newsService : NewsService,
-              private confirmDialogService: ConfirmDialogService,
               private router: Router) { }
 
   ngOnInit() {
@@ -44,14 +48,6 @@ export class AdminViewNewsComponent implements OnInit {
   // getFilteredNews(id: string) {
   //   this.filteredNews = this.news.find(news => news.id === id);
   // }
-
-  showDialog(id: string) {
-    this.confirmDialogService.confirmThis("Are you sure to delete this news ?", function () {
-      this.deleteNews(id)
-    }, function () {
-      return
-    })
-  }
 
   deleteNews(id: string) {
     //deleting news

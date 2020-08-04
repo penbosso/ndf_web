@@ -3,7 +3,6 @@
   <i class="fa fa-spinner fa-spin" aria-hidden="true">
   </i>
 </div>
-<app-confirm-dialog></app-confirm-dialog>
                         <hr />
 
                         <div class="my-3 my-md-5 container">
@@ -45,7 +44,12 @@
                                                     </button>
 
                                                     <button
-                                                        (click)=showDialog(newsArticle.id)
+                                                    mwlConfirmationPopover
+                                                    [popoverTitle]=popoverTitle
+                                                    [popoverMessage]=popoverMessage
+                                                    placement="left"
+                                                    (confirm)=deleteNews(newsArticle.id)
+                                                    (cancel)="cancelClicked = true"
                                                         class="btn btn-sm btn-danger ml-2"
                                                     >
                                                         <i

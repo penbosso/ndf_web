@@ -8,5 +8,6 @@ export class Stock {
     public quantity = 0,
     public pricePerLog= 0,
     public description ='',
+    public isApproved = false,
     public image = '') {}
 }

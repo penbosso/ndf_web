@@ -3,10 +3,11 @@
   <i class="fa fa-spinner fa-spin" aria-hidden="true">
   </i>
 </div>
+
                   <div class="card">
                     <div class="card-status bg-orange"></div>
                     <div class="card-header">
-                      <h3 class="card-title">Available Stock</h3>
+                      <h3 class="card-title">Pending Stock</h3>
                       <div class="card-options">
                         <a
                           class="card-options-collapse"
@@ -31,10 +32,10 @@
                       <!-- Modal -->
                 <div
                   class="modal fade"
-                  id="details"
+                  id="pending-details"
                   tabindex="-1"
                   role="dialog"
-                  aria-labelledby="details"
+                  aria-labelledby="pending-details"
                   aria-hidden="true"
                 >
                   <div
@@ -43,7 +44,7 @@
                   >
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="details">
+                        <h5 class="modal-title" id="pending-details">
                           Details
                         </h5>
                         <p *ngIf="deletedStock"><br> Stock deleted click X to dismiss</p>
@@ -126,13 +127,13 @@
                             (deletedStock)=false
                             (click)=getFilteredStock(stock.id)
                             data-toggle="modal"
-                            data-target="#details">
+                            data-target="#pending-details">
                           <img style="max-height: 200px;"
                             src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}"
                             alt=""
                             class="img-fluid"
                           />
-                        </a>
+                          </a>
                         </div>
                         <h4 class="card-title">
                           <a
@@ -140,7 +141,7 @@
                             (deletedStock)=false
                             (click)=getFilteredStock(stock.id)
                             data-toggle="modal"
-                            data-target="#details"
+                            data-target="#pending-details"
                             >{{stock.description.length > 100 ? stock.description.substr(0,100)+"..." : stock.description}}
                           </a>
                         </h4>

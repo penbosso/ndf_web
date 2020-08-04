@@ -1,4 +1,4 @@
-import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
+import { PendingStockComponent } from 'src/app/shared/pending-stock/pending-stock.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -48,6 +48,7 @@ import { TermsConditionsComponent } from './signup/terms-conditions/terms-condit
 import { PrivacyComponent } from './signup/privacy/privacy.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   declarations: [
@@ -86,14 +87,17 @@ import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
     JwPaginationComponent,
     TermsConditionsComponent,
     PrivacyComponent,
+    PendingStockComponent,
     FeedbackComponent,
     AddAdminComponent
   ],
   imports: [
     BrowserModule,
-    ConfirmDialogModule,
     EditorModule,
     HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger', // set defaults here
+    }),
     ReactiveFormsModule,
     FormsModule,
     routing

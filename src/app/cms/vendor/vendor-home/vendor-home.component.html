@@ -22,8 +22,12 @@
                         <div>
                           <h4 class="m-0">
                             <a href="javascript:void(0)"
-                              >{{availableStock.stockCount}} <small>Products</small></a
+                              >{{availableStock.stockCount}} <small>Approved</small></a
+                            >,
+                            <a href="javascript:void(0)"
+                              >{{pendingStock.pendingStockCount}} <small>Pending</small></a
                             >
+                            Product
                           </h4>
                           <small class="text-muted"
                             >are available in stock</small
@@ -57,189 +61,7 @@
 
                 <hr />
 
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-status bg-cyan"></div>
-                    <div class="card-header">
-                      <h3 class="card-title">Pending Approval</h3>
-                      <div class="card-options">
-                        <a
-                          
-                          class="card-options-collapse"
-                          data-toggle="card-collapse"
-                          ><i class="fe fe-chevron-up"></i
-                        ></a>
-                        <a
-
-                          class="card-options-remove"
-                          data-toggle="card-remove"
-                          ><i class="fe fe-x"></i
-                        ></a>
-                      </div>
-                    </div>
-                    <div class="card-body" *ngIf='pendingStocks && pendingStocks.length'>
-                      <!-- individual stocks preview modal -->
-
-                      <!-- Modal -->
-                      <div
-                        class="modal fade"
-                        id="details"
-                        tabindex="-1"
-                        role="dialog"
-                        aria-labelledby="details"
-                        aria-hidden="true"
-                      >
-                        <div
-                          class="modal-dialog modal-dialog-centered"
-                          role="document"
-                        >
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="details">
-                                Details
-                              </h5>
-                              <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                              >
-                                <span aria-hidden="true"></span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <img
-                                src="assets/images/dev/wood1.jpg"
-                                alt=""
-                                class="img-fluid"
-                              />
-                              <div class="my-5">
-                                <table class="table">
-                                  <tbody>
-                                    <tr>
-                                      <td>Timber Name</td>
-                                      <td>Wawa</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Available Units</td>
-                                      <td>500 logs</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Size</td>
-                                      <td>2 x 6</td>
-                                    </tr>
-
-                                    <tr>
-                                      <td>Price per Log</td>
-                                      <td>GHc 60</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Description</td>
-                                      <td>
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Iusto, quas. Quasi
-                                        necessitatibus possimus pariatur non
-                                        enim esse omnis facere fugit doloremque
-                                        praesentium, quia repudiandae nisi eaque
-                                        minima, ea ullam odit./td>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button
-                                type="button"
-                                class="btn btn-danger"
-                                data-dismiss="modal"
-                              >
-                                Delete
-                              </button>
-                              <button type="button" class="btn btn-primary">
-                                Update
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- individual stocks -->
-                      <div class="row">
-                        <div class="col-4">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="mb-4 text-center">
-                                <img
-                                  src="assets/images/dev/wood1.jpg"
-                                  alt=""
-                                  class="img-fluid"
-                                />
-                              </div>
-                              <h4 class="card-title">
-                                <a
-                                  href="javascript:void(0)"
-                                  data-toggle="modal"
-                                  data-target="#details"
-                                  >Lorem ipsum dolor sit amet consectetur
-                                  adipisicing elit.dolor sit amet consectetur
-                                  adipisicing elit
-                                </a>
-                              </h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-4">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="mb-4 text-center">
-                                <img
-                                  src="assets/images/dev/wood1.jpg"
-                                  alt=""
-                                  class="img-fluid"
-                                />
-                              </div>
-                              <h4 class="card-title">
-                                <a
-                                  href="javascript:void(0)"
-                                  data-toggle="modal"
-                                  data-target="#details"
-                                  >Lorem ipsum dolor sit amet consectetur
-                                  adipisicing elit.dolor sit amet consectetur
-                                  adipisicing elit
-                                </a>
-                              </h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-4">
-                          <div class="card">
-                            <div class="card-body">
-                              <div class="mb-4 text-center">
-                                <img
-                                  src="assets/images/dev/wood1.jpg"
-                                  alt=""
-                                  class="img-fluid"
-                                />
-                              </div>
-                              <h4 class="card-title">
-                                <a
-                                  href="javascript:void(0)"
-                                  data-toggle="modal"
-                                  data-target="#details"
-                                  >Lorem ipsum dolor sit amet consectetur
-                                  adipisicing elit.dolor sit amet consectetur
-                                  adipisicing elit
-                                </a>
-                              </h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <app-pending-stock></app-pending-stock>
               </div>
             </div>
           </div>

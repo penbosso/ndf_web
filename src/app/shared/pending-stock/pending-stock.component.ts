@@ -1,15 +1,15 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Stock } from 'src/app/cms/vendor/stock/stock';
 import { environment } from 'src/environments/environment';
 import { StockService } from 'src/app/cms/vendor/stock/stock.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-available-stock',
-  templateUrl: './available-stock.component.html',
-  styleUrls: ['./available-stock.component.css']
+  selector: 'app-pending-stock',
+  templateUrl: './pending-stock.component.html',
+  styleUrls: ['./pending-stock.component.css']
 })
-export class AvailableStockComponent implements OnInit {
+export class PendingStockComponent implements OnInit {
 
   popoverTitle = 'Confirm delete';
   popoverMessage = 'Are you sure you want to delete this stock ?';
@@ -22,17 +22,17 @@ export class AvailableStockComponent implements OnInit {
   errorMessage: any;
   pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
-  stockCount: number;
+  pendingStockCount: number;
   deletedStock = false;
 
   constructor(private stockService : StockService,
               private router: Router) { }
 
   ngOnInit() {
-    this.stockService.getVendorsStocks().subscribe(
+    this.stockService.getVendorsPendingStocks().subscribe(
       stockPage => {
         this.stocks = stockPage.data;
-        this.stockCount = this.stocks.length;
+        this.pendingStockCount = this.stocks.length;
       },
       error => this.errorMessage = "An error occurred please try again later"
     );
@@ -52,10 +52,11 @@ export class AvailableStockComponent implements OnInit {
   }
 
 
+
   deleteStock(id: string) {
     //deleting stock
     this.stockService.deleteStock(id).subscribe(
-      () =>  {
+      () => {
         this.deletedStock = true;
         this.stocks = this.stocks.filter(stock => stock.id !== id)
       }
@@ -66,5 +67,6 @@ export class AvailableStockComponent implements OnInit {
     //navigate to update stock page
     this.router.navigate(['vendor/add-stock',id])
   }
+
 
 }
