@@ -155,3 +155,8 @@
   border: 1px solid #eee;
   outline: none;
 }
+
+#check-label label {
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}

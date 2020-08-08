@@ -1,85 +1,90 @@
 <!-- Loding -->
-        <div class="my-overlay" *ngIf="showOverlay">
-          <i class="fa fa-spinner fa-spin" aria-hidden="true">
-          </i>
-        </div>
-        <div *ngIf="errorMessage" class="row row text-center" style="margin-top: 20px">
-          <div class="alert alert-danger">{{errorMessage}}</div>
-        </div>
-                <div class="my-3 my-md-5">
-                  <div class="container">
-                      <div class="page-header">
-                          <h1 class="page-title">
-                              Vendor Data
-                          </h1>
-                          <div class="page-subtitle">
-                              Upload vendor database
-                          </div>
-                      </div>
+<div class="my-overlay" *ngIf="showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
+</div>
+<div *ngIf="errorMessage" class="row row text-center" style="margin-top: 20px;">
+  <div class="alert alert-danger">{{ errorMessage }}</div>
+</div>
+<div class="my-3 my-md-5">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">
+        Vendor Data
+      </h1>
+      <div class="page-subtitle">
+        Upload vendor database
+      </div>
+    </div>
 
-                      <!-- Body goes here -->
-                      <div class="my-auto">
-                          <div class="container">
-                              <form class="dropzone" [formGroup]="fileForm">
-                                  <div class="fallback">
-                                      <input
-                                          formControlName="file"
-                                          type="file"
-                                          (change)="onFileChange($event)"
-                                          multiple="false"
-                                      />
-                                  </div>
-                              </form>
-                              <hr/>
-                              <div class="table-responsive" style="max-height: 400px; background-color: #fff;">
-                                <h4><b style="color: red;">NB*</b> The excel file should have the following columns arranged in same manner</h4>
-                              <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th>NO.</th>
-                                    <th>COMPANY NAME</th>
-                                    <th>ADDRESS/RESIDENTIAL</th>
-                                    <th>LOCATION</th>
-                                    <th>COMPANY CODE</th>
-                                    <th>CONTACT PERSON</th>
-                                    <th>TELEPHONE NO.</th>
-                                    <th>STATUS</th>
-                                    <th>REMARKS</th>
-                                  </tr>
-                                </thead >
-                                <tbody *ngIf="bulkData">
-                                  <tr *ngFor="let data of bulkData">
-                                    <td> </td>
-                                    <td>{{ data.companyName }}</td>
-                                    <td>{{ data.address }}</td>
-                                    <td>{{ data.location }}</td>
-                                    <td>{{ data.companyCode }}</td>
-                                    <td>{{ data.contactPerson }}</td>
-                                    <td>{{ data.telephoneNumber }}</td>
-                                    <td>{{ data.status }}</td>
-                                    <td>{{ data.remarks }}</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              </div>
-                              <div class="my-5 text-center" *ngIf="bulkData && bulkData.length">
-                                  <button
-                                      (click)="cancel()"
-                                      type="button"
-                                      class="btn btn-outline-dark mr-3"
-                                  >
-                                      <i class="fe fe-x-circle mr-2"></i>
-                                      Cancel
-                                  </button>
-                                  <button
-                                  (click)="saveBulk()"
-                                  type="button"
-                                  class="btn btn-cyan">
-                                      <i class="fe fe-check-circle mr-2"></i
-                                      >Upload database
-                                  </button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+    <!-- Body goes here -->
+    <div class="my-auto">
+      <div class="container">
+        <div class="alert alert-icon alert-primary" role="alert">
+          <i class="fe fe-info mr-2" aria-hidden="true"></i> Upload the excel
+          data file in the box below.
+        </div>
+        <form class="dropzone" [formGroup]="fileForm">
+          <div class="fallback">
+            <input
+              formControlName="file"
+              type="file"
+              (change)="onFileChange($event)"
+              multiple="false"
+            />
+          </div>
+        </form>
+        <hr />
+        <div class="alert alert-icon alert-danger" role="alert">
+          <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> The excel
+          file should have the following columns arranged in same manner
+        </div>
+        <div
+          class="table-responsive"
+          style="max-height: 400px; background-color: #fff;"
+        >
+          <table class="table">
+            <thead>
+              <tr>
+                <th>NO.</th>
+                <th>COMPANY NAME</th>
+                <th>ADDRESS/RESIDENTIAL</th>
+                <th>LOCATION</th>
+                <th>COMPANY CODE</th>
+                <th>CONTACT PERSON</th>
+                <th>TELEPHONE NO.</th>
+                <th>STATUS</th>
+                <th>REMARKS</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="bulkData">
+              <tr *ngFor="let data of bulkData">
+                <td></td>
+                <td>{{ data.companyName }}</td>
+                <td>{{ data.address }}</td>
+                <td>{{ data.location }}</td>
+                <td>{{ data.companyCode }}</td>
+                <td>{{ data.contactPerson }}</td>
+                <td>{{ data.telephoneNumber }}</td>
+                <td>{{ data.status }}</td>
+                <td>{{ data.remarks }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="my-5 text-center" *ngIf="bulkData && bulkData.length">
+          <button
+            (click)="cancel()"
+            type="button"
+            class="btn btn-outline-dark mr-3"
+          >
+            <i class="fe fe-x-circle mr-2"></i>
+            Cancel
+          </button>
+          <button (click)="saveBulk()" type="button" class="btn btn-cyan">
+            <i class="fe fe-check-circle mr-2"></i>Upload database
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
