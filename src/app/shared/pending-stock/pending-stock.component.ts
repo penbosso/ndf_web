@@ -16,7 +16,6 @@ export class PendingStockComponent implements OnInit {
   confirmClicked = false;
   cancelClicked = false;
 
-  stocks: Stock[] = [];
   pendingStocks: Stock[] = [];
   filteredStock: Stock;
   errorMessage: any;
@@ -31,8 +30,8 @@ export class PendingStockComponent implements OnInit {
   ngOnInit() {
     this.stockService.getVendorsPendingStocks().subscribe(
       stockPage => {
-        this.stocks = stockPage.data;
-        this.pendingStockCount = this.stocks.length;
+        this.pendingStocks = stockPage.data;
+        this.pendingStockCount = this.pendingStocks.length;
       },
       error => this.errorMessage = "An error occurred please try again later"
     );
@@ -48,7 +47,7 @@ export class PendingStockComponent implements OnInit {
   }
 
   getFilteredStock(id: string) {
-    this.filteredStock = this.stocks.find(stock => stock.id === id);
+    this.filteredStock = this.pendingStocks.find(stock => stock.id === id);
   }
 
 
@@ -58,7 +57,7 @@ export class PendingStockComponent implements OnInit {
     this.stockService.deleteStock(id).subscribe(
       () => {
         this.deletedStock = true;
-        this.stocks = this.stocks.filter(stock => stock.id !== id)
+        this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id)
       }
     );
   }

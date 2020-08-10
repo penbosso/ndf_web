@@ -1,4 +1,6 @@
-
+<div class="my-overlay" *ngIf="!pageOfItems || showOverlay">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
+</div>
         <div class="my-3 my-md-5">
           <div class="container">
             <div class="page-header">
@@ -43,6 +45,175 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+
+            <div *ngIf="errorMessage" class="row row text-center">
+              <div class="alert alert-danger">{{errorMessage}}</div>
+            </div>
+            <div *ngIf="message" class="row row text-center">
+              <div class="alert alert-success">{{message}}</div>
+            </div>
+
+                      <!-- Modal -->
+                      <div
+                      class="modal fade"
+                      id="pending-details"
+                      tabindex="-1"
+                      role="dialog"
+                      aria-labelledby="pending-details"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered"
+                        role="document"
+                      >
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="pending-details">
+                              Details
+                            </h5>
+                            <button
+                              type="button"
+                              class="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true"></span>
+                            </button>
+                          </div>
+                          <div class="modal-body" *ngIf="filteredStock">
+                            <img
+                              src="{{filteredStock.image ? imageBaseUrl+'/'+filteredStock.image : 'assets/images/dev/wood1.jpg'}}"
+                              alt=""
+                              class="img-fluid"
+                            />
+                            <div class="my-5">
+                              <table class="table">
+                                <tbody>
+                                  <tr>
+                                    <td>Timber Name</td>
+                                    <td>{{filteredStock.name}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Available Units</td>
+                                    <td>{{filteredStock.quantity}} logs</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Size</td>
+                                    <td>{{filteredStock.size}}</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>Price per Log</td>
+                                    <td>GHc {{filteredStock.pricePerLog}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Description</td>
+                                    <td>
+                                      {{filteredStock.description}}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              (click)=declineStock(filteredStock.id)
+                              type="button"
+                              class="btn btn-danger"
+                            >
+                            <i class="fe fe-x mr-2"></i>Decline
+                            </button>
+                            <button
+                              (click)=approveStock(filteredStock.id)
+                              data-dismiss="modal"
+                              type="button" class="btn btn-success">
+                                <i class="fe fe-check-circle mr-2"></i>Approve
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            <hr />
+            <!-- stock approval -->
+            <div class="row mb-5">
+              <div class="col-md-6">
+                <h4>Stock Upload Approval</h4>
+              </div>
+              <div class="col-md-6 text-right"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <div class="card-options">
+                  <a class="btn btn-orange"
+                  mwlConfirmationPopover
+                  [popoverTitle]=popoverTitle
+                  [popoverMessage]=popoverMessage
+                  placement="left" style="color: white;"
+                  (confirm)=approveAllStock()
+                  (cancel)="cancelClicked = true"
+                    >Approve all pending stocks</a
+                  >
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- Cards of uploads -->
+                <div class="row row-cards row-deck" *ngIf='pendingStocks && pendingStocks.length'>
+                  <!-- card 1 -->
+                  <div class="col-md-4" *ngFor='let stock of pageOfItems'>
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="mb-4 text-center">
+                          <a
+                          href="javascript:void(0)"
+                          (deletedStock)=false
+                          (click)=getFilteredStock(stock.id)
+                          data-toggle="modal"
+                          data-target="#pending-details">
+                            <img style="height: 200px;"
+                              src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}"
+                              alt=""
+                              class="img-fluid"
+                            />
+                          </a>
+                        </div>
+                        <h4 class="card-title">
+                          <a
+                          href="javascript:void(0)"
+                          (deletedStock)=false
+                          (click)=getFilteredStock(stock.id)
+                          data-toggle="modal"
+                          data-target="#pending-details">
+                          {{stock.description.length > 100 ? stock.description.substr(0,100)+"..." : stock.description}}
+                          </a>
+                        </h4>
+                        <hr />
+                        <button
+                        (click)=declineStock(stock.id)
+                        class="btn btn-danger">
+                          <i class="fe fe-x mr-2"></i>Decline
+                        </button>
+                        <div class="float-right">
+                          <button
+                          (click)=approveStock(stock.id)
+                          class="btn btn-success">
+                            <i class="fe fe-check-circle mr-2"></i>Approve
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <nav aria-label="..." class="text-center">
+                  <jw-pagination [pageSize]="pageSize" [items]="pendingStocks" (changePage)="onChangePage($event)"></jw-pagination>
+                </nav>
               </div>
             </div>
 
