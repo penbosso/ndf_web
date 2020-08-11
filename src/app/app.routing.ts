@@ -28,7 +28,6 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './login/auth.guard';
 import { AdminHomeComponent } from './cms/admin/admin-home/admin-home.component';
-import { ManageNewsComponent } from './cms/admin/manage-news/manage-news.component';
 
 
 const appRoutes: Routes = [

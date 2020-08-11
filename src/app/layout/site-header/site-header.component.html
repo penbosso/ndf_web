@@ -54,13 +54,22 @@
             >News</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!auth.isAdmin()">
           <a
             [routerLink]="['/vendor']"
             routerLinkActive="active"
             target="_blank"
             class="nav-link link-scroll"
             >Vendor</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="auth.isAdmin()">
+          <a
+            [routerLink]="['/admin']"
+            routerLinkActive="active"
+            target="_blank"
+            class="nav-link link-scroll"
+            >Admin Portal</a
           >
         </li>
       </ul>

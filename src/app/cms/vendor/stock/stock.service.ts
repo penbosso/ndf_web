@@ -56,20 +56,20 @@ export class StockService {
   }
 
   getVendorsStocks(): Observable<StockPage> {
-    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?pageSize=500&vendorId=${this.auth.getLoggedUser().vendorId}`).pipe(
+    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?status=approved&pageSize=500&vendorId=${this.auth.getLoggedUser().vendorId}`).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
   getPendingStocks(): Observable<StockPage> {
-    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?isApproved=false`).pipe(
+    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?status=pending`).pipe(
       catchError(this.handleError)
     );
   }
 
   getVendorsPendingStocks(): Observable<StockPage> {
-    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?isApproved=false&pageSize=500&vendorId=${this.auth.getLoggedUser().vendorId}`).pipe(
+    return this.http.get<StockPage>(`${this.stockApiBaseUrl}?status=pending&pageSize=500&vendorId=${this.auth.getLoggedUser().vendorId}`).pipe(
       catchError(this.handleError)
     );
   }
