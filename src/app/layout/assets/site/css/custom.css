@@ -160,3 +160,73 @@
   margin-bottom: 0.5rem;
   display: inline-block;
 }
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ced4da no-repeat center/cover;
+  background-image: none;
+  position: relative;
+  text-align: center;
+  color: #868e96;
+  font-weight: 600;
+  vertical-align: bottom;
+  font-size: 0.875rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.site-nav-link {
+  line-height: 1 !important;
+  padding: 0 0.75rem;
+  padding-right: 0.75rem;
+  min-width: 2rem;
+  transition: 0.3s color;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  margin-top: 0.125rem;
+  font-size: 0.9375rem;
+  color: #495057;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 40, 100, 0.12);
+  border-radius: 3px;
+}
+
+.dropdown-icon {
+  color: #9aa0ac;
+  margin-right: 0.5rem;
+  margin-left: -0.5rem;
+  width: 1em;
+  display: inline-block;
+  text-align: center;
+  vertical-align: -1px;
+}
