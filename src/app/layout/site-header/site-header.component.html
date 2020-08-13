@@ -281,7 +281,9 @@
                 />
                 <span class="invalid-feedback">
                   <span
-                    *ngIf="
+                    *ngIf="(buyerForm.get('passwordGroup.confirmPassword')
+                    .touched ||
+                    buyerForm.get('passwordGroup.confirmPassword').dirty) &&
                       buyerForm.get('passwordGroup.confirmPassword').errors
                         ?.required
                     "
