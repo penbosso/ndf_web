@@ -1,132 +1,209 @@
-
 <div class="my-overlay" *ngIf="showOverlay">
-  <i class="fa fa-spinner fa-spin" aria-hidden="true">
-  </i>
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
 </div>
-        <div class="container">
-          <div class="row">
-            <div class="col col-login mx-auto">
-              <div *ngIf="errorMessage" class="row row text-center">
-                <div class="alert alert-danger">{{errorMessage}}</div>
+<div class="container mt-5">
+  <div class="page-header">
+    <h1 class="page-title">
+      Create admin account
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="errorMessage" class="row row text-center">
+        <div class="alert alert-danger">{{ errorMessage }}</div>
+      </div>
+      <div *ngIf="message" class="row row text-center">
+        <div class="alert alert-success">{{ message }}</div>
+      </div>
+      <form class="card" [formGroup]="adminForm" (ngSubmit)="saveAdmin()">
+        <div class="card-body p-6 row">
+          <!-- Left Section -->
+          <div class="col-md-4">
+            <!-- Upload Image -->
+            <div class="col align-self-center">
+              <img
+                src="{{ base64Image ? base64Image : admin.profilePic }}"
+                alt="news image"
+                style="max-height: 150px; max-width: 200px;"
+              />
+            </div>
+            <div class="form-group col my-auto">
+              <div class="form-label">
+                Upload profile image
               </div>
-              <div *ngIf="message" class="row row text-center">
-                <div class="alert alert-success">{{message}}</div>
+              <div class="custom-file">
+                <input
+                  (change)="fileChangeEvent($event)"
+                  type="file"
+                  class="custom-file-input"
+                  name="example-file-input-custom"
+                />
+                <label class="custom-file-label">Choose file</label>
               </div>
-              <form class="card" [formGroup]="adminForm"
-                                (ngSubmit)="saveAdmin()">
-                <div class="card-body p-6">
-                  <div class="card-title">Create admin account</div>
-
-                  <div class="">
-                    <img src="{{base64Image ? base64Image : admin.profilePic }}"
-                    alt="news image" style="max-height: 150px; max-width: 200px;"/>
-                  </div>
-                  <div class="form-group">
-                      <div class="form-label">
-                          Upload profile image
-                      </div>
-                      <div class="custom-file">
-                          <input
-                              (change)="fileChangeEvent($event)"
-                              type="file"
-                              class="custom-file-input"
-                              name="example-file-input-custom"
-                          />
-                          <label class="custom-file-label"
-                              >Choose file</label
-                          >
-                      </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="form-label" for="firstName">First Name</label>
-                    <input class="form-control"
-                      type="text"
-                      placeholder="First Name"
-                      id="firstName"
-                      required autofocus
-                      minlength="3"
-                      formControlName="firstName"
-                      [ngClass]="{'is-invalid': (adminForm.get('firstName').touched || adminForm.get('firstName').dirty) && !adminForm.get('firstName').valid}"
-                    />
-                    <span class="invalid-feedback">
-                      <span *ngIf="adminForm.get('firstName').errors?.minlength">Name must be longer than 3 characters</span>
-                    </span>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="otherNames">Other Name(s)</label>
-                    <input class="form-control"
-                      type="text"
-                      placeholder="Other Name(s)"
-                      id="otherNames"
-                      minlength="3"
-                      formControlName="otherNames"
-                      [ngClass]="{'is-invalid': (adminForm.get('otherNames').touched || adminForm.get('otherNames').dirty) && !adminForm.get('otherNames').valid}"/>
+            </div>
+          </div>
+          <!-- Right Section -->
+          <div class="col-md-8">
+            <div class="row">
+              <!-- Name -->
+              <div class="form-group col-md-6">
+                <label class="form-label" for="firstName">First Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="First Name"
+                  id="firstName"
+                  required
+                  autofocus
+                  minlength="3"
+                  formControlName="firstName"
+                  [ngClass]="{
+                    'is-invalid':
+                      (adminForm.get('firstName').touched ||
+                        adminForm.get('firstName').dirty) &&
+                      !adminForm.get('firstName').valid
+                  }"
+                />
                 <span class="invalid-feedback">
-                  <span *ngIf="adminForm.get('otherNames').errors?.required">Please enter your name</span>
-                  <span *ngIf="adminForm.get('otherNames').errors?.minlength">Name must be longer than 3 characters</span>
+                  <span *ngIf="adminForm.get('firstName').errors?.minlength"
+                    >Name must be longer than 3 characters</span
+                  >
                 </span>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="telephone">Telephone Number</label>
-                    <input class="form-control"
-                      type="tel"
-                      placeholder="Telephone Number"
-                      id="telephone"
-                      minlength="10"
-                      formControlName="telephone"
-                      [ngClass]="{'is-invalid': (adminForm.get('telephone').touched || adminForm.get('telephone').dirty) && !adminForm.get('telephone').valid}" />
-                      <span class="invalid-feedback">
-                          <span *ngIf="adminForm.get('telephone').errors">Please enter a valid telephone number</span>
-                          <span *ngIf="adminForm.get('telephone').errors?.minlength">telephone number must be longer than 10 Numbers</span>
-                      </span>
-                  </div>
-                  <div formGroupName="passwordGroup">
-                    <div class="form-group">
-                      <label class="form-label" for="password">password</label>
-                      <input class="form-control"
-                        type="password" required
-                        minlength="6"
-                        placeholder="password"
-                        id="password"
-                        formControlName="password"
-                        [ngClass]="{'is-invalid': adminForm.get('passwordGroup').errors ||
-                                                  ((adminForm.get('passwordGroup.password').touched ||
-                                                  adminForm.get('passwordGroup.password').dirty) &&
-                                                  !adminForm.get('passwordGroup.password').valid)}"
-                      />
-                      <span class="invalid-feedback">
-                        <span *ngIf="adminForm.get('passwordGroup.password').errors?.minlength">password must be longer than 6 characters</span>
-                      </span>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-label" for="confirmpassword">Confirm password</label>
-                      <input class="form-control"
-                        type="password"
-                        placeholder="Confirm password"
-                        id="confirmpassword"
-                            minlength="6" required
-                            formControlName="confirmPassword"
-                            [ngClass]="{'is-invalid': adminForm.get('passwordGroup').errors ||
-                                                      ((adminForm.get('passwordGroup.confirmPassword').touched ||
-                                                      adminForm.get('passwordGroup.confirmPassword').dirty) &&
-                                                      !adminForm.get('passwordGroup.confirmPassword').valid)}" />
-                      <span class="invalid-feedback">
-                        <span *ngIf="adminForm.get('passwordGroup.confirmPassword').errors?.required">Please enter a valid password</span>
-                        <span *ngIf="adminForm.get('passwordGroup').errors?.match">Passwords did not match</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="form-footer">
-                    <button
-                      type="submit" class="btn btn-green btn-block"
-                      [title]="adminForm.valid ? 'Save your entered data' : 'Disabled until form data is valid'"
-                      [disabled]="!adminForm.valid">
-                      Create account
-                    </button>
-                  </div>
-                </div>
-              </form>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="otherNames">Other Name(s)</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Other Name(s)"
+                  id="otherNames"
+                  minlength="3"
+                  formControlName="otherNames"
+                  [ngClass]="{
+                    'is-invalid':
+                      (adminForm.get('otherNames').touched ||
+                        adminForm.get('otherNames').dirty) &&
+                      !adminForm.get('otherNames').valid
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span *ngIf="adminForm.get('otherNames').errors?.required"
+                    >Please enter your name</span
+                  >
+                  <span *ngIf="adminForm.get('otherNames').errors?.minlength"
+                    >Name must be longer than 3 characters</span
+                  >
+                </span>
+              </div>
+              <!-- Phone -->
+              <div class="form-group col-md-12">
+                <label class="form-label" for="telephone"
+                  >Telephone Number</label
+                >
+                <input
+                  class="form-control"
+                  type="tel"
+                  placeholder="Telephone Number"
+                  id="telephone"
+                  minlength="10"
+                  formControlName="telephone"
+                  [ngClass]="{
+                    'is-invalid':
+                      (adminForm.get('telephone').touched ||
+                        adminForm.get('telephone').dirty) &&
+                      !adminForm.get('telephone').valid
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span *ngIf="adminForm.get('telephone').errors"
+                    >Please enter a valid telephone number</span
+                  >
+                  <span *ngIf="adminForm.get('telephone').errors?.minlength"
+                    >telephone number must be longer than 10 Numbers</span
+                  >
+                </span>
+              </div>
+              <!-- Password -->
+              <div class="form-group col-md-6">
+                <label class="form-label" for="password">password</label>
+                <input
+                  class="form-control"
+                  type="password"
+                  required
+                  minlength="6"
+                  placeholder="password"
+                  id="password"
+                  formControlName="password"
+                  [ngClass]="{
+                    'is-invalid':
+                      adminForm.get('passwordGroup').errors ||
+                      ((adminForm.get('passwordGroup.password').touched ||
+                        adminForm.get('passwordGroup.password').dirty) &&
+                        !adminForm.get('passwordGroup.password').valid)
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span
+                    *ngIf="
+                      adminForm.get('passwordGroup.password').errors?.minlength
+                    "
+                    >password must be longer than 6 characters</span
+                  >
+                </span>
+              </div>
+              <div class="form-group col-md-6">
+                <label class="form-label" for="confirmpassword"
+                  >Confirm password</label
+                >
+                <input
+                  class="form-control"
+                  type="password"
+                  placeholder="Confirm password"
+                  id="confirmpassword"
+                  minlength="6"
+                  required
+                  formControlName="confirmPassword"
+                  [ngClass]="{
+                    'is-invalid':
+                      adminForm.get('passwordGroup').errors ||
+                      ((adminForm.get('passwordGroup.confirmPassword')
+                        .touched ||
+                        adminForm.get('passwordGroup.confirmPassword').dirty) &&
+                        !adminForm.get('passwordGroup.confirmPassword').valid)
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span
+                    *ngIf="
+                      adminForm.get('passwordGroup.confirmPassword').errors
+                        ?.required
+                    "
+                    >Please enter a valid password</span
+                  >
+                  <span *ngIf="adminForm.get('passwordGroup').errors?.match"
+                    >Passwords did not match</span
+                  >
+                </span>
+              </div>
             </div>
           </div>
         </div>
+        <!-- Submit button -->
+        <div class="form-footer mb-5 mt-0 text-center">
+          <button
+            type="submit"
+            class="btn btn-success btn-large"
+            [title]="
+              adminForm.valid
+                ? 'Save your entered data'
+                : 'Disabled until form data is valid'
+            "
+            [disabled]="!adminForm.valid"
+          >
+            Create account
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
