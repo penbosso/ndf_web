@@ -51,7 +51,7 @@ export class NewsComponent implements OnInit {
     };
 
     let fuse  = new Fuse(this.news, options);
-    return fuse.search(listFilter);
+    return fuse.search(listFilter).map(fuse => fuse.item);
   }
 
 
