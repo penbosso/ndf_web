@@ -1,92 +1,93 @@
-
-        <div class="header py-4">
-          <div class="container">
-            <div class="d-flex">
-              <a class="header-brand" [routerLink]="['/vendor']">
-                <h4><img
-                  src="assets/images/logo.png"
-                  width="64px"
-                  height="auto"
-                />| Legal Timber System</h4>
-              </a>
-              <div class="d-flex order-lg-2 ml-auto" (click)="toggleShow()">
-                  <div class="dropdown">
-                      <a
-                          class="nav-link pr-0 leading-none"
-                          data-toggle="dropdown"
-                      >
-                          <span
-                              class="avatar"
-                              [ngStyle]="{ 'background-image': 'url(' + auth.getLoggedUser().profilePic + ')'}"
-                          ></span>
-                          <span class="ml-2 d-none d-lg-block">
-                              <span class="text-default"
-                                  >{{ auth.getLoggedUser().firstName }}</span
-                              >
-                              <small
-                                  class="text-muted d-block mt-1"
-                                  >{{auth.getLoggedUser().type}}</small
-                              >
-                          </span>
-                      </a>
-                      <div
-                          class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
-                      >
-                          <a class="dropdown-item" [routerLink]="['/vendor/profile']">
-                              <i
-                                  class="dropdown-icon fe fe-user"
-                              ></i>
-                              Profile
-                          </a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" (click)="logout()">
-                              <i
-                                  class="dropdown-icon fe fe-log-out"
-                              ></i>
-                              Sign out
-                          </a>
-                      </div>
-                  </div>
-              </div>
-
-                <a
-                (click)="toggleShow()"
-                class="header-toggler d-lg-none ml-3 ml-lg-0"
-                data-toggle="collapse"
-                data-target="#headerMenuCollapse"
-            >
-                <span class="header-toggler-icon"></span>
+<div class="header py-4">
+  <div class="container">
+    <div class="d-flex">
+      <a class="header-brand" [routerLink]="['/vendor']">
+        <h4>
+          <img src="assets/images/logo.png" width="64px" height="auto" />| Ghana
+          Legal Timber Market
+        </h4>
+      </a>
+      <div class="d-flex order-lg-2 ml-auto" (click)="toggleShow()">
+        <div class="dropdown">
+          <a class="nav-link pr-0 leading-none" data-toggle="dropdown">
+            <span
+              class="avatar"
+              [ngStyle]="{
+                'background-image':
+                  'url(' + auth.getLoggedUser().profilePic + ')'
+              }"
+            ></span>
+            <span class="ml-2 d-none d-lg-block">
+              <span class="text-default">{{
+                auth.getLoggedUser().firstName
+              }}</span>
+              <small class="text-muted d-block mt-1">{{
+                auth.getLoggedUser().type
+              }}</small>
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+            <a class="dropdown-item" [routerLink]="['/vendor/profile']">
+              <i class="dropdown-icon fe fe-user"></i>
+              Profile
             </a>
-            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">
+              <i class="dropdown-icon fe fe-log-out"></i>
+              Sign out
+            </a>
           </div>
         </div>
-        <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-lg order-lg-first">
-                <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
-                  <li class="nav-item">
-                    <a [routerLink]="['/vendor']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-link"
-                      ><i class="fe fe-book-open"></i> Home
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a [routerLink]="['/vendor/manage-stock']" routerLinkActive="active" class="nav-link"
-                      ><i class="fe fe-file"></i> Manage Stock
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a [routerLink]="['/vendor/news']" routerLinkActive="active" class="nav-link"
-                      ><i class="fe fe-book-open"></i> News
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a [routerLink]="['/']" class="nav-link"
-                      ><i class="fe fe-globe"></i> Website Home
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+
+      <a
+        (click)="toggleShow()"
+        class="header-toggler d-lg-none ml-3 ml-lg-0"
+        data-toggle="collapse"
+        data-target="#headerMenuCollapse"
+      >
+        <span class="header-toggler-icon"></span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg order-lg-first">
+        <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+          <li class="nav-item">
+            <a
+              [routerLink]="['/vendor']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="nav-link"
+              ><i class="fe fe-book-open"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              [routerLink]="['/vendor/manage-stock']"
+              routerLinkActive="active"
+              class="nav-link"
+              ><i class="fe fe-file"></i> Manage Stock
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              [routerLink]="['/vendor/news']"
+              routerLinkActive="active"
+              class="nav-link"
+              ><i class="fe fe-book-open"></i> News
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/']" class="nav-link"
+              ><i class="fe fe-globe"></i> Website Home
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

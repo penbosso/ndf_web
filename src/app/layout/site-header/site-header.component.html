@@ -97,27 +97,32 @@
           >
         </div>
       </div>
-    </div>
 
-    <div *ngIf="auth.isLoggedIn()" class="dropdown">
-      <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-        <span
-          class="avatar"
-          [ngStyle]="{
-            'background-image': 'url(' + auth.getLoggedUser().profilePic + ')'
-          }"
-        ></span>
-        <span class="ml-2 d-none d-lg-block">
-          <span class="text-default">{{ auth.getLoggedUser().firstName }}</span>
-          <small class="text-muted d-block mt-1">Welcome!</small>
-        </span>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="logout()">
-          <i class="dropdown-icon fe fe-log-out"></i>
-          Sign out
+      <div *ngIf="auth.isLoggedIn()" class="dropdown">
+        <a
+          href="#"
+          class="site-nav-link pr-0 pl-0 leading-none"
+          data-toggle="dropdown"
+        >
+          <span
+            class="avatar"
+            [ngStyle]="{
+              'background-image': 'url(' + auth.getLoggedUser().profilePic + ')'
+            }"
+          ></span>
+          <span class="ml-2 d-block">
+            <span class="text-default">{{
+              auth.getLoggedUser().firstName
+            }}</span>
+            <small class="text-muted d-block mt-1">Welcome!</small>
+          </span>
         </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#" (click)="logout()">
+            <i class="dropdown-icon fe fe-log-out"></i>
+            Sign out
+          </a>
+        </div>
       </div>
     </div>
   </nav>

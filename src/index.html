@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Forestry Commission | Legal Timber System</title>
+    <title>Ghana Legal Timber Market</title>
     <base href="/" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,8 +19,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="assets/js/front.js"></script>
     <!-- // cms scripts -->
+    <style>
+      .page {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: center;
+        justify-content: center;
+        min-height: 100%;
+      }
+      .flex-fill {
+        -ms-flex: 1 1 auto !important;
+        flex: 1 1 auto !important;
+      }
+      .footer {
+        background: #fff;
+        border-top: 1px solid rgba(0, 40, 100, 0.12);
+        font-size: 0.875rem;
+        padding: 1.25rem 0;
+        color: #9aa0ac;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+    </style>
   </head>
   <body>
-    <app-root></app-root>
+    <div class="page">
+      <div class="flex-fill">
+        <app-root></app-root>
+      </div>
+    </div>
   </body>
 </html>

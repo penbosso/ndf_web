@@ -1,116 +1,117 @@
 <!-- Loding -->
 <div class="my-overlay" *ngIf="!pageOfItems">
-  <i class="fa fa-spinner fa-spin" aria-hidden="true">
-  </i>
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
 </div>
-                <div class="my-3 my-md-5">
-                  <div class="container">
-                      <div class="page-header">
-                          <h1 class="page-title">
-                              Vendor Data
-                          </h1>
-                          <div class="page-subtitle">
-                              Show all Vendors
-                          </div>
-                      </div>
+<div class="my-3 my-md-5">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">
+        Vendor Data
+      </h1>
+      <div class="page-subtitle">
+        Show all Vendors
+      </div>
+    </div>
 
-                      <!-- Body goes here -->
-                      <div class="my-auto">
-                          <div class="container">
-                              <!-- start -->
-                              <div class="card">
-                                  <!-- <div class="card-header">
+    <!-- Body goes here -->
+    <div class="my-auto">
+      <div class="container">
+        <!-- start -->
+        <div class="card">
+          <!-- <div class="card-header">
                                       <h3 class="card-title">
                                           Filter vendor data
                                       </h3>
                                   </div> -->
-                                  <div class="table-responsive">
-                                      <table
-                                          class="table card-table table-vcenter text-nowrap datatable"
-                                      >
-                                          <thead>
-                                              <tr>
-                                                  <th class="w-1">
-                                                      Reg. Code
-                                                  </th>
-                                                  <th>Company Name</th>
-                                                  <th>Address (postal)</th>
-                                                  <th>Telephone No.</th>
-                                                  <th>Status</th>
-                                                  <th>Remarks</th>
-                                                  <th>Contact Person</th>
-                                                  <th>Location</th>
-                                                  <th></th>
-                                              </tr>
-                                          </thead>
-                                          <tbody *ngIf='vendors && vendors.length'>
-                                              <tr *ngFor='let vendor of pageOfItems' >
+          <div class="table-responsive">
+            <table class="table card-table table-vcenter text-nowrap datatable">
+              <thead>
+                <tr>
+                  <th class="w-1">
+                    Reg. Code
+                  </th>
+                  <th>Company Name</th>
+                  <th>Address (postal)</th>
+                  <th>Telephone No.</th>
+                  <th>Status</th>
+                  <th>Remarks</th>
+                  <th>Contact Person</th>
+                  <th>Location</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody *ngIf="vendors && vendors.length">
+                <tr *ngFor="let vendor of pageOfItems">
+                  <td>
+                    <a
+                      [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                    >
+                      <span class="text-muted">{{ vendor.companyCode }}</span>
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                    >
+                      {{ vendor.companyName }}
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                    >
+                      {{ vendor.address }}
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                    >
+                      {{ vendor.telephoneNumber }}
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                    >
+                      {{ vendor.status }}
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                    >
+                      {{ vendor.remarks }}
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      [routerLink]="['/admin/view-vendor', vendor.companyCode]"
+                    >
+                      {{ vendor.contactPerson }}
+                    </a>
+                  </td>
+                  <td>{{ vendor.location }}</td>
+                </tr>
+              </tbody>
+            </table>
 
-                                                  <td>
-                                                    <a
-                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                      <span class="text-muted"
-                                                          >{{ vendor.companyCode }}</span
-                                                      >
-                                                    </a>
-                                                  </td>
-                                                  <td>
-                                                    <a
-                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                      {{ vendor.companyName }}
-                                                      </a>
-                                                  </td>
-                                                  <td>
-                                                    <a
-                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                      {{ vendor.address }}
-                                                      </a>
-                                                  </td>
-                                                  <td>
-                                                    <a
-                                                    [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                      {{ vendor.telephoneNumber }}
-                                                      </a>
-                                                  </td>
-                                                  <td>
-                                                      <a
-                                                      [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                        {{ vendor.status }}
-                                                      </a>
-                                                  </td>
-                                                  <td>
-
-                                                      <a
-                                                      [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                        {{ vendor.remarks }}
-                                                      </a>
-                                                  </td>
-                                                  <td>
-                                                      <a
-                                                      [routerLink]="['/admin/view-vendor', vendor.companyCode]">
-                                                        {{ vendor.contactPerson }}
-                                                      </a>
-                                                  </td>
-                                                  <td>{{ vendor.location }}</td>
-                                              </tr>
-
-                                              <nav aria-label="..." class="text-center" style="align-items: center; position: fixed;">
-                                                <jw-pagination [items]="vendors" (changePage)="onChangePage($event)"></jw-pagination>
-                                              </nav>
-                                          </tbody>
-                                      </table>
-                                      <script>
-                                          require([
-                                              "datatables",
-                                              "jquery"
-                                          ], function(datatable, $) {
-                                              $(".datatable").DataTable();
-                                          });
-                                      </script>
-                                  </div>
-                                  <!-- Finish -->
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+            <script>
+              require(["datatables", "jquery"], function (datatable, $) {
+                $(".datatable").DataTable();
+              });
+            </script>
+          </div>
+          <!-- Finish -->
+        </div>
+        <!-- Pagination -->
+        <nav aria-label="...">
+          <jw-pagination
+            [items]="vendors"
+            (changePage)="onChangePage($event)"
+          ></jw-pagination>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
