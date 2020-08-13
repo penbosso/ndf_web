@@ -6,12 +6,20 @@
         <div class="container">
           <div class="row">
             <div class="col col-login mx-auto">
-              <div *ngIf="errorMessage" class="row row text-center">
-                <div class="alert alert-danger">{{errorMessage}}</div>
+
+              <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{errorMessage}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div *ngIf="message" class="row row text-center">
-                <div class="alert alert-success">{{message}}</div>
+              <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+              
               <form class="card" [formGroup]="adminForm"
                                 (ngSubmit)="saveAdmin()">
                 <div class="card-body p-6">

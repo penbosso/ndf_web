@@ -11,9 +11,14 @@
               <div class="text-center mb-6">
                 <h2>GFC | Legal Timber System</h2>
               </div>
-              <div *ngIf="errorMessage" class="row row text-center">
-                <div class="alert alert-danger">{{errorMessage}}</div>
+
+              <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{errorMessage}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+
               <form class="card" #loginform="ngForm" (ngSubmit)="authenticate(loginform)">
                 <div class="card-body p-6">
                   <div class="card-title">Login to your account</div>

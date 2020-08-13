@@ -35,10 +35,6 @@ export class NewsComponent implements OnInit {
       },
       error => this.errorMessage = "An error occurred please try again later"
     );
-    // cleaar error after 5s
-    if(this.errorMessage) {
-      setTimeout(()=>this.errorMessage = '', 5000)
-    }
   }
 
   onChangePage(pageOfItems: Array<any>) {
