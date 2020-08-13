@@ -1,107 +1,157 @@
 <div class="my-overlay" *ngIf="showOverlay">
-  <i class="fa fa-spinner fa-spin" aria-hidden="true">
-  </i>
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
 </div>
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
 
-    <section>
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Company code: <strong>{{ auth.getLoggedUser().companyCode? auth.getLoggedUser().companyCode : 'NDF' }}</strong></h3>
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">
+      User Profile
+    </h1>
+    <div class="page-subtitle">
+      Edit profile
+    </div>
+  </div>
+  <section class="">
+    <div class="card" style="margin-bottom: 125px;">
+      <div class="card-header">
+        <h3 class="card-title">
+          Company code:
+          <strong>{{
+            auth.getLoggedUser().companyCode
+              ? auth.getLoggedUser().companyCode
+              : "NDF"
+          }}</strong>
+        </h3>
+      </div>
+      <div class="card-body">
+        <div *ngIf="errorMessage" class="row text-center">
+          <div class="alert alert-danger">{{ errorMessage }}</div>
         </div>
-        <div class="card-body">
+        <div *ngIf="message" class="row row text-center">
+          <div class="alert alert-success">{{ message }}</div>
+        </div>
 
-
-          <div *ngIf="errorMessage" class="row text-center">
-            <div class="alert alert-danger">{{errorMessage}}</div>
-          </div>
-          <div *ngIf="message" class="row row text-center">
-            <div class="alert alert-success">{{message}}</div>
-          </div>
-          
-          <form id="signupform"
-          [formGroup]="userForm"
-          (ngSubmit)="updateUser()">
-            <!-- <div class="form-group">
+        <form id="signupform" [formGroup]="userForm" (ngSubmit)="updateUser()">
+          <!-- <div class="form-group">
               <label class="form-label">Email-Address</label>
               <input
                 class="form-control"
                 placeholder="your-email@domain.com"
               />
             </div> -->
-            <div class="col-7">
-              <img src="{{base64Image ? base64Image : user.profilePic }}"
-              alt="news image" style="max-height: 200px; max-width: 200px;"/>
-            </div>
-            <div class="form-group col-7">
-                <div class="form-label">
-                    Upload profile image
+          <div class="row">
+            <!-- Image Upload -->
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col-md-4 offset-md-3 mb-3">
+                  <img
+                    src="{{ base64Image ? base64Image : user.profilePic }}"
+                    alt="news image"
+                    style="max-height: 200px; max-width: 200px;"
+                  />
                 </div>
-                <div class="custom-file">
+                <div class="col-md-8 offset-md-2">
+                  <div class="custom-file">
                     <input
-                        (change)="fileChangeEvent($event)"
-                        type="file"
-                        class="custom-file-input"
-                        name="example-file-input-custom"
+                      (change)="fileChangeEvent($event)"
+                      type="file"
+                      class="custom-file-input"
+                      name="example-file-input-custom"
                     />
                     <label class="custom-file-label"
-                        >Choose file</label
+                      >Upload profile image</label
                     >
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Phone</label>
-              <input
-                type="tel"
-                class="form-control"
-                placeholder="0243344330"
-                value="{{user.telephone}}"
-                minlength="10"
-                formControlName="telephone"
-                [ngClass]="{'is-invalid': (userForm.get('telephone').touched || userForm.get('telephone').dirty) && !userForm.get('telephone').valid}" />
-                <span class="invalid-feedback">
-                    <span *ngIf="userForm.get('telephone').errors">Please enter a valid telephone number</span>
-                    <span *ngIf="userForm.get('telephone').errors?.minlength">telephone number must be longer than 10 Numbers</span>
-                </span>
+
+            <div class="col-md-7">
+              <div class="row">
+                <div class="col-md-8">
+                  <!-- Name -->
+                  <div class="form-group col-auto">
+                    <label class="form-label">First name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{ user.firstName }}"
+                      required
+                      minlength="3"
+                      formControlName="firstName"
+                      [ngClass]="{
+                        'is-invalid':
+                          (userForm.get('firstName').touched ||
+                            userForm.get('firstName').dirty) &&
+                          !userForm.get('firstName').valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span *ngIf="userForm.get('firstName').errors?.minlength"
+                        >Name must be longer than 3 characters</span
+                      >
+                    </span>
+                  </div>
+                  <div class="form-group col-auto">
+                    <label class="form-label">Other name(s)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      value="{{ user.otherName }}"
+                      minlength="3"
+                      formControlName="otherNames"
+                      [ngClass]="{
+                        'is-invalid':
+                          (userForm.get('otherNames').touched ||
+                            userForm.get('otherNames').dirty) &&
+                          !userForm.get('otherNames').valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span *ngIf="userForm.get('otherNames').errors?.required"
+                        >Please enter your name</span
+                      >
+                      <span *ngIf="userForm.get('otherNames').errors?.minlength"
+                        >Name must be longer than 3 characters</span
+                      >
+                    </span>
+                  </div>
+                  <!-- Phone -->
+                  <div class="form-group col-auto">
+                    <label class="form-label">Phone</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      placeholder="0243344330"
+                      value="{{ user.telephone }}"
+                      minlength="10"
+                      formControlName="telephone"
+                      [ngClass]="{
+                        'is-invalid':
+                          (userForm.get('telephone').touched ||
+                            userForm.get('telephone').dirty) &&
+                          !userForm.get('telephone').valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span *ngIf="userForm.get('telephone').errors"
+                        >Please enter a valid telephone number</span
+                      >
+                      <span *ngIf="userForm.get('telephone').errors?.minlength"
+                        >telephone number must be longer than 10 Numbers</span
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">First name</label>
-              <input
-                type="text"
-                class="form-control"
-                value="{{user.firstName }}"
-                required
-                minlength="3"
-                formControlName="firstName"
-                [ngClass]="{'is-invalid': (userForm.get('firstName').touched || userForm.get('firstName').dirty) && !userForm.get('firstName').valid}"
-              />
-              <span class="invalid-feedback">
-                <span *ngIf="userForm.get('firstName').errors?.minlength">Name must be longer than 3 characters</span>
-              </span>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Other name(s)</label>
-              <input
-                type="text"
-                class="form-control"
-                value="{{ user.otherName }}"
-                minlength="3"
-                formControlName="otherNames"
-                [ngClass]="{'is-invalid': (userForm.get('otherNames').touched || userForm.get('otherNames').dirty) && !userForm.get('otherNames').valid}"/>
-                <span class="invalid-feedback">
-                  <span *ngIf="userForm.get('otherNames').errors?.required">Please enter your name</span>
-                  <span *ngIf="userForm.get('otherNames').errors?.minlength">Name must be longer than 3 characters</span>
-                </span>
-            </div>
-            <div class="text-center">
-              <button class="btn btn-primary">Save</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <!-- Submit -->
+          <div class="text-center mt-6 mb-2">
+            <button class="btn btn-primary btn-lg">Save Changes</button>
+          </div>
+        </form>
       </div>
-    </section>
-  </div>
-  <div class="col-md-2"></div>
+    </div>
+  </section>
 </div>
