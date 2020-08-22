@@ -50,13 +50,12 @@ export class AdminHomeComponent implements OnInit {
     this.filteredStock = this.pendingStocks.find(stock => stock.id === id);
   }
 
-  getStock(id: string):Stock {
-    return this.pendingStocks.find(stock => stock.id === id);
-  }
+  // getStock(id: string):Stock {
+  //   return this.pendingStocks.find(stock => stock.id === id);
+  // }
 
   approveStock(id: string) {
-    const approvedStock = this.getStock(id);
-    approvedStock.isApproved = true;
+    const approvedStock = {"id": id, "status": "approved", "statusComment": ""}
     // console.log("after", approvedStock);
     this.showOverlay = true;
     this.stockService.updateStock(approvedStock).subscribe(
@@ -79,12 +78,7 @@ export class AdminHomeComponent implements OnInit {
 
 
   declineStock(id: string) {
-    //deleting stock
-    this.stockService.deleteStock(id).subscribe(
-      () => {
-        this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id)
-      }
-    );
+    console.log(id);
   }
 
   onSaveComplete(): void {
