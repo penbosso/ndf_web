@@ -4,6 +4,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef } from '@an
 import { AbstractControl, FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { environment } from 'src/environments/environment';
 
 function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   let confirmControl = c.get('confirmPassword');
@@ -26,6 +27,7 @@ function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   encapsulation: ViewEncapsulation.None
 })
 export class SiteHeaderComponent implements OnInit {
+  imageBaseUrl = environment.baseImageUrl;
   buyerForm: FormGroup;
   buyer = new Buyer();
   errorMessage: any;
