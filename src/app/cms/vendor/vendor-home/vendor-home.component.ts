@@ -1,3 +1,4 @@
+import { DeclindedStockComponent } from './../../../shared/declinded-stock/declinded-stock.component';
 import { AvailableStockComponent } from './../../../shared/available-stock/available-stock.component';
 import { Stock } from './../stock/stock';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -14,6 +15,7 @@ export class VendorHomeComponent implements OnInit {
 
   @ViewChild(AvailableStockComponent, {static: true}) availableStock: AvailableStockComponent;
   @ViewChild(PendingStockComponent, {static: true}) pendingStock: PendingStockComponent;
+  @ViewChild(DeclindedStockComponent, {static: true}) declinedStock: DeclindedStockComponent;
 
   constructor() { }
 

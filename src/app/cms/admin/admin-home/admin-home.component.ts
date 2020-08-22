@@ -25,20 +25,19 @@ export class AdminHomeComponent implements OnInit {
   bulkAproval :string[] = [];
   showOverlay: boolean= false;
   message: string;
+  statusComment: string = ""
 
   constructor(private stockService: StockService) { }
 
   ngOnInit() {
+    this.showOverlay = true;
     this.stockService.getPendingStocks().subscribe(
       stockPage => {
         this.pendingStocks = stockPage.data;
+        this.showOverlay = false;
       },
       error => this.errorMessage = "An error occurred please try again later"
     );
-    // cleaar error after 5s
-    if(this.errorMessage) {
-      setTimeout(()=>this.errorMessage = '', 5000)
-    }
   }
 
   onChangePage(pageOfItems: Array<any>) {
@@ -58,9 +57,10 @@ export class AdminHomeComponent implements OnInit {
     const approvedStock = {"id": id, "status": "approved", "statusComment": ""}
     // console.log("after", approvedStock);
     this.showOverlay = true;
-    this.stockService.updateStock(approvedStock).subscribe(
+    this.stockService.approveStock(approvedStock).subscribe(
       () => {
         this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id)
+        this.message = "Stock Approved";
         this.onSaveComplete()
       },
       (error: any) => {
@@ -78,11 +78,26 @@ export class AdminHomeComponent implements OnInit {
 
 
   declineStock(id: string) {
-    console.log(id);
+    if(this.statusComment.length > 3) {
+      const declinedStock = {"id": id, "status": "declined", "statusComment": this.statusComment}
+      this.showOverlay = true;
+      this.stockService.updateStock(declinedStock).subscribe(
+        () => {
+          this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id)
+          this.message = "Stock declined";
+          this.onSaveComplete()
+        },
+        (error: any) => {
+          this.errorMessage = "An error occurred please try again later";
+          this.showOverlay = false;
+        }
+      );
+    } else {
+      this.errorMessage = "Enter reason for declining pending stock";
+    }
   }
 
   onSaveComplete(): void {
     this.showOverlay = false;
-    this.message = "Stock Approved";
   }
 }

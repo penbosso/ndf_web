@@ -49,6 +49,7 @@ import { PrivacyComponent } from './signup/privacy/privacy.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { DeclindedStockComponent } from './shared/declinded-stock/declinded-stock.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
     PrivacyComponent,
     PendingStockComponent,
     FeedbackComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    DeclindedStockComponent
   ],
   imports: [
     BrowserModule,
