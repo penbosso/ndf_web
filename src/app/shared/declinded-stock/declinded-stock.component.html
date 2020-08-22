@@ -32,10 +32,10 @@
                       <!-- Modal -->
                 <div
                   class="modal fade"
-                  id="pending-details"
+                  id="declined-details"
                   tabindex="-1"
                   role="dialog"
-                  aria-labelledby="pending-details"
+                  aria-labelledby="declined-details"
                   aria-hidden="true"
                 >
                   <div
@@ -44,7 +44,7 @@
                   >
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="pending-details">
+                        <h5 class="modal-title" id="declined-details">
                           Details
                         </h5>
                         <p *ngIf="deletedStock"><br> Stock deleted click X to dismiss</p>
@@ -133,7 +133,7 @@
                             (deletedStock)=false
                             (click)=getFilteredStock(stock.id)
                             data-toggle="modal"
-                            data-target="#pending-details">
+                            data-target="#declined-details">
                           <img style="max-height: 200px;"
                             src="{{stock.image ? imageBaseUrl+'/'+stock.image : 'assets/images/dev/wood1.jpg'}}"
                             alt=""
@@ -147,7 +147,7 @@
                             (deletedStock)=false
                             (click)=getFilteredStock(stock.id)
                             data-toggle="modal"
-                            data-target="#pending-details"
+                            data-target="#declined-details"
                             >{{stock.statusComment.length > 100 ? stock.statusComment.substr(0,100)+"..." : stock.statusComment}}
                           </a>
                         </h4>
@@ -158,7 +158,7 @@
                 </div>
 
                 <nav aria-label="..." class="text-center">
-                  <jw-pagination [items]="pendingStocks" (changePage)="onChangePage($event)"></jw-pagination>
+                  <jw-pagination pageSize = 6 [items]="pendingStocks" (changePage)="onChangePage($event)"></jw-pagination>
                 </nav>
               </div>
             </div>

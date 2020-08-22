@@ -57,7 +57,7 @@ export class AdminHomeComponent implements OnInit {
     const approvedStock = {"id": id, "status": "approved", "statusComment": ""}
     // console.log("after", approvedStock);
     this.showOverlay = true;
-    this.stockService.approveStock(approvedStock).subscribe(
+    this.stockService.approveOrDeclineStock(approvedStock).subscribe(
       () => {
         this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id)
         this.message = "Stock Approved";
@@ -81,7 +81,7 @@ export class AdminHomeComponent implements OnInit {
     if(this.statusComment.length > 3) {
       const declinedStock = {"id": id, "status": "declined", "statusComment": this.statusComment}
       this.showOverlay = true;
-      this.stockService.updateStock(declinedStock).subscribe(
+      this.stockService.approveOrDeclineStock(declinedStock).subscribe(
         () => {
           this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id)
           this.message = "Stock declined";

@@ -40,18 +40,17 @@ export class StockService {
 
   updateStock(stock: any): Observable<Stock> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    // const newstock = stock;
-    // newstock.status = 'pending';
+    // const newStockStatus = {"id": stock.id, "status": "pending", "statusComment": ""};
     return this.http.put<Stock>(`${this.stockApiBaseUrl}/${stock.id}`, stock, {headers:headers})
       .pipe(
         tap(data =>{
-          console.log('update Stock: '+ JSON.stringify(data))
+          console.log('update Stock: '+ JSON.stringify(data));
         }),
         catchError(this.handleError)
       );
   }
 
-  approveStock(stock: any): Observable<Stock> {
+  approveOrDeclineStock(stock: any): Observable<Stock> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<Stock>(`${this.stockApiBaseUrl}/approval`, stock, {headers:headers})
       .pipe(
