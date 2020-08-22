@@ -1,4 +1,4 @@
-<div class="my-overlay" *ngIf="!availableStock.stockCount">
+<div class="my-overlay" *ngIf="!(availableStock.stockCount || availableStock.stockCount == 0)">
   <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
 </div>
         <!-- Page title -->
@@ -25,10 +25,10 @@
                           <h4 class="m-0">
                             <a href="javascript:void(0)"
                               >{{availableStock.stockCount}} <small class="text-success">Approved</small></a
-                            >,
+                            >, <br>
                             <a href="javascript:void(0)"
                               >{{pendingStock.pendingStockCount}} <small class="text-warning">Pending</small></a
-                            >,
+                            >, <br>
                             <a href="javascript:void(0)"
                               >{{declinedStock.declinedStockCount}} <small class="text-danger">Declined</small></a
                             >

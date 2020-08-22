@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../../login/auth.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cms-header',
@@ -13,6 +14,7 @@ export class CmsHeaderComponent implements OnInit {
 
   show:boolean = true;
   firstClick: boolean = true;
+  imageBaseUrl = environment.baseImageUrl;
   toggleShow() {
     if(this.firstClick) { this.firstClick = false; return}
     this.show = this.show? false : true;

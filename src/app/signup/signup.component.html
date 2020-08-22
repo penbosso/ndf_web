@@ -170,72 +170,80 @@
                       >
                     </span>
                   </div>
-                  <!-- New password -->
-                  <div class="form-group col-md-6">
-                    <label class="form-label" for="password">password</label>
-                    <input
-                      class="form-control"
-                      type="password"
-                      required
-                      minlength="6"
-                      placeholder="password"
-                      id="password"
-                      formControlName="password"
-                      [ngClass]="{
-                        'is-invalid':
-                          vendorForm.get('passwordGroup').errors ||
-                          ((vendorForm.get('passwordGroup.password').touched ||
-                            vendorForm.get('passwordGroup.password').dirty) &&
-                            !vendorForm.get('passwordGroup.password').valid)
-                      }"
-                    />
-                    <span class="invalid-feedback">
-                      <span
-                        *ngIf="
-                          vendorForm.get('passwordGroup.password').errors
-                            ?.minlength
-                        "
-                        >password must be longer than 6 characters</span
-                      >
-                    </span>
-                  </div>
-                  <!-- Re-enter password -->
-                  <div class="form-group col-md-6">
-                    <label class="form-label" for="confirmpassword"
-                      >Confirm password</label
-                    >
-                    <input
-                      class="form-control"
-                      type="password"
-                      placeholder="Confirm password"
-                      id="confirmpassword"
-                      minlength="6"
-                      required
-                      formControlName="confirmPassword"
-                      [ngClass]="{
-                        'is-invalid':
-                          vendorForm.get('passwordGroup').errors ||
-                          ((vendorForm.get('passwordGroup.confirmPassword')
-                            .touched ||
-                            vendorForm.get('passwordGroup.confirmPassword')
-                              .dirty) &&
-                            !vendorForm.get('passwordGroup.confirmPassword')
-                              .valid)
-                      }"
-                    />
-                    <span class="invalid-feedback">
-                      <span
-                        *ngIf="
-                          vendorForm.get('passwordGroup.confirmPassword').errors
-                            ?.required
-                        "
-                        >Please enter a valid password</span
-                      >
-                      <span
-                        *ngIf="vendorForm.get('passwordGroup').errors?.match"
-                        >Please enter a valid password</span
-                      >
-                    </span>
+
+                  <div formGroupName="passwordGroup" class="col-12">
+                    <div class="row">
+                      <!-- New password -->
+                      <div class="form-group col-md-6">
+                        <label class="form-label" for="password">password</label>
+                        <input
+                          class="form-control"
+                          type="password"
+                          required
+                          minlength="6"
+                          placeholder="password"
+                          id="password"
+                          formControlName="password"
+                          [ngClass]="{
+                            'is-invalid':
+                              vendorForm.get('passwordGroup').errors ||
+                              ((vendorForm.get('passwordGroup.password').touched ||
+                                vendorForm.get('passwordGroup.password').dirty) &&
+                                !vendorForm.get('passwordGroup.password').valid)
+                          }"
+                        />
+                        <span class="invalid-feedback">
+                          <span
+                            *ngIf="
+                              vendorForm.get('passwordGroup.password').errors
+                                ?.minlength
+                            "
+                            >password must be longer than 6 characters</span
+                          >
+                        </span>
+                      </div>
+                      <!-- Re-enter password -->
+                      <div class="form-group col-md-6">
+                        <label class="form-label" for="confirmpassword"
+                          >Confirm password</label
+                        >
+                        <input
+                          class="form-control"
+                          type="password"
+                          placeholder="Confirm password"
+                          id="confirmpassword"
+                          minlength="6"
+                          required
+                          formControlName="confirmPassword"
+                          [ngClass]="{
+                            'is-invalid':
+                              vendorForm.get('passwordGroup').errors ||
+                              ((vendorForm.get('passwordGroup.confirmPassword')
+                                .touched ||
+                                vendorForm.get('passwordGroup.confirmPassword')
+                                  .dirty) &&
+                                !vendorForm.get('passwordGroup.confirmPassword')
+                                  .valid)
+                          }"
+                        />
+                        <span class="invalid-feedback">
+                          <span
+                            *ngIf="(
+                              vendorForm.get('passwordGroup.confirmPassword')
+                              .touched ||
+                              vendorForm.get('passwordGroup.confirmPassword').dirty) &&
+                                vendorForm.get('passwordGroup.confirmPassword').errors
+                                  ?.required
+                              "
+                            >Please enter a valid password</span
+                          >
+                          <span
+                            *ngIf="vendorForm.get('passwordGroup').errors?.match"
+                            >Please enter a valid password</span
+                          >
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   <!-- Terms and Conditions -->
                   <div
