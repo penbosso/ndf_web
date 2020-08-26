@@ -23,13 +23,13 @@
                         </span>
                         <div>
                           <h4 class="m-0">
-                            <a href="javascript:void(0)"
+                            <a (click)="availableSection()" href="javascript:void(0)"
                               >{{availableStock.stockCount}} <small class="text-success">Approved</small></a
                             >, <br>
-                            <a href="javascript:void(0)"
+                            <a (click)="pendingSection()" href="javascript:void(0)"
                               >{{pendingStock.pendingStockCount}} <small class="text-warning">Pending</small></a
                             >, <br>
-                            <a href="javascript:void(0)"
+                            <a (click)="declineSection()" href="javascript:void(0)"
                               >{{declinedStock.declinedStockCount}} <small class="text-danger">Declined</small></a
                             >
                             Product(s)
@@ -62,13 +62,17 @@
                 </div>
 
                 <!-- individual stocks -->
+                <span #availableId id="availableId"></span>
                 <app-available-stock></app-available-stock>
 
                 <hr />
 
+                <span #pendingId id="pendingId"></span>
                 <app-pending-stock></app-pending-stock>
 
                 <hr />
+
+                <span #declinedId id="declinedId"></span>
                 <app-declinded-stock></app-declinded-stock>
               </div>
             </div>

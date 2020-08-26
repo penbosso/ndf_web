@@ -3,6 +3,8 @@ import { StockService } from './../../vendor/stock/stock.service';
 import { Stock } from './../../vendor/stock/stock';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AdminVendorService } from '../admin-vendor.service';
+import { VendorInfo } from '../vendorInfo';
 
 @Component({
   selector: 'app-admin-home',
@@ -17,6 +19,7 @@ export class AdminHomeComponent implements OnInit {
   cancelClicked = false;
 
   pendingStocks: Stock[] = []
+  vendor: VendorInfo;
   filteredStock: Stock;
   errorMessage: any;
   pageOfItems: Array<any>;
@@ -27,7 +30,7 @@ export class AdminHomeComponent implements OnInit {
   message: string;
   statusComment: string = ""
 
-  constructor(private stockService: StockService) { }
+  constructor(private stockService: StockService, private vendorService : AdminVendorService) { }
 
   ngOnInit() {
     this.showOverlay = true;
@@ -47,6 +50,13 @@ export class AdminHomeComponent implements OnInit {
 
   getFilteredStock(id: string) {
     this.filteredStock = this.pendingStocks.find(stock => stock.id === id);
+    this.getStockVendor(this.filteredStock.vendorId);console.log("venodr ID", this.filteredStock.vendorId);
+  }
+
+  getStockVendor(id: string) {
+    return this.vendorService.getVendorByid(id).subscribe(
+      vendor => this.vendor = vendor
+    );
   }
 
   // getStock(id: string):Stock {

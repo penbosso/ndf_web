@@ -49,7 +49,7 @@ export class CatalogComponent implements OnInit {
     this.filteredStocks = this.unitFilter ? this.performFilter() : this.stocks;
   }
 
-  constructor(private stockService : StockService,private vendorService : AdminVendorService) { }
+  constructor(private stockService : StockService, private vendorService : AdminVendorService) { }
 
   ngOnInit() {
     this.stockService.getStocks().subscribe(
@@ -98,6 +98,7 @@ export class CatalogComponent implements OnInit {
 
     let fuse  = new Fuse(this.stocks, options);
     let para
+    // various filter prameter combinations
     if(this._nameFilter.length > 1 && this._unitFilter.length > 1 && this._locationFilter.length > 1) {
       para = {
         $and: [{ name: this._nameFilter }, { size: this._unitFilter }, { location: this._locationFilter }]

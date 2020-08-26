@@ -50,7 +50,13 @@ export class NewsService {
 
   getNews(): Observable<NewsPage> {
     return this.http.get<NewsPage>(`${this.newsApiBaseUrl}?pageSize=1000`).pipe(
-      tap(data => console.log("All: " + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getPublishedNews(): Observable<NewsPage> {
+    return this.http.get<NewsPage>(`${this.newsApiBaseUrl}?isPublished=true&pageSize=1000`).pipe(
+      // tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
