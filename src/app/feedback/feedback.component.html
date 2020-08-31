@@ -1,1 +1,69 @@
-<p>feedback works!</p>
+
+  <div class="container">
+    <div class="text-center">
+      <h2 class="header">Feedback</h2>
+      <p class="h4" style="color: #ffffff;">
+        We are glad to here from you
+      </p>
+    </div>
+    <div
+      class="form-holder"
+      style="padding-top: 35px; padding-bottom: 25px; margin-top: 25px;"
+    >
+
+
+    <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{errorMessage}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <p *ngIf="showLoading"><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+
+      <form id="contact" class="row" [formGroup]="feedBackForm"
+      (ngSubmit)="save()" *ngIf="!showLoading">
+        <div class="form-group col-md-6 col-sm-12">
+          <label for="name">Subject of Feedback</label>
+          <input
+            type="text"
+            required
+            id="subject"
+            formControlName="subject"
+            placeholder="Enter subject of feedback"
+            [ngClass]="{'is-invalid': feedBackForm.get('subject').touched && !feedBackForm.get('subject').valid}"
+          />
+          <span *ngIf="feedBackForm.get('subject').errors?.required "> Please feedback subject</span>
+        </div>
+
+        <div class="form-group col-md-6 col-sm-12" *ngIf="auth.isLoggedIn()">
+          <label for="email">User</label>
+          <input
+            type="text"
+            id="user"
+            formControlName="user"
+            readonly
+            value="{{ auth.getLoggedUser().firstName +' ' + auth.getLoggedUser().otherName  +' - ' + auth.getLoggedUser().telephone }}"
+          />
+        </div>
+
+        <div class="form-group col-12">
+          <label for="message">Message</label>
+          <textarea id="message" rows="7"
+           formControlName="message"
+            placeholder="Write your message here">
+          </textarea>
+        </div>
+        <div class="my-2 mx-auto">
+          <p *ngIf="!auth.isLoggedIn()" >Kindly login to send your feedback/ message</p>
+          <button *ngIf="auth.isLoggedIn()" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>

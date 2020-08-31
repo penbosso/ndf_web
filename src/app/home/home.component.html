@@ -184,49 +184,5 @@
     padding-bottom: 50px;
   "
 >
-  <div class="container">
-    <div class="text-center">
-      <h2 class="header">Feedback</h2>
-      <p class="h4" style="color: #ffffff;">
-        We are glad to here from you
-      </p>
-    </div>
-    <div
-      class="form-holder"
-      style="padding-top: 35px; padding-bottom: 25px; margin-top: 25px;"
-    >
-      <form id="contact" class="row">
-        <div class="form-group col-md-6 col-sm-12">
-          <label for="name">Subject of Feedback</label>
-          <input
-            type="text"
-            name="subject"
-            id="subject"
-            placeholder="Enter subject of feedback"
-          />
-        </div>
-
-        <div class="form-group col-md-6 col-sm-12" *ngIf="auth.isLoggedIn()">
-          <label for="email">User</label>
-          <input
-            type="text"
-            name="user"
-            id="user"
-            readonly
-            value="{{ auth.getLoggedUser().firstName +' ' + auth.getLoggedUser().otherName  +' - ' + auth.getLoggedUser().telephone }}"
-          />
-        </div>
-
-        <div class="form-group col-12">
-          <label for="message">Message</label>
-          <textarea id="message" rows="7" placeholder="Write your message here">
-          </textarea>
-        </div>
-        <div class="my-2 mx-auto">
-          <p *ngIf="!auth.isLoggedIn()" >Kindly login to send your feedback/ message</p>
-          <button *ngIf="auth.isLoggedIn()" class="btn btn-primary">Send</button>
-        </div>
-      </form>
-    </div>
-  </div>
+<app-feedback></app-feedback>
 </section>
