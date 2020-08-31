@@ -51,6 +51,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
     this.stockForm = this.fb.group({
       name:'',
       size:'',
+      companyCode:'',
       quantity: '',
       pricePerLog: '',
       description:''
@@ -65,6 +66,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
             this.stockForm = this.fb.group({
               name: this.updateThisStock.name,
               size: this.updateThisStock.size,
+              companyCode: this.updateThisStock.companyCode,
               quantity: this.updateThisStock.quantity,
               pricePerLog: this.updateThisStock.pricePerLog,
               description: this.updateThisStock.description

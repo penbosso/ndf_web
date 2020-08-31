@@ -21,6 +21,11 @@
                       </div>
                     </div>
                     <div class="card-body">
+                      <div class="text-right mb-5">
+                        <a [routerLink]="['/vendor/add-stock']" class="btn btn-dark">
+                          <i class="fe fe-plus"></i> Add Stock
+                        </a>
+                      </div>
                       <!-- individual stocks preview modal -->
 
                       <!-- Modal -->
@@ -73,6 +78,10 @@
                                 <td>{{filteredStock.size}}</td>
                               </tr>
 
+                              <tr>
+                                <td>DOTIC Number (License Number)</td>
+                                <td>{{filteredStock.companyCode}}</td>
+                              </tr>
                               <tr>
                                 <td>Price per Log</td>
                                 <td>GHc {{filteredStock.pricePerLog}}</td>

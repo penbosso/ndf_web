@@ -133,6 +133,20 @@
                               <span *ngIf="stockForm.get('pricePerLog').errors?.required "> Please enter the price</span>
                             </div>
                           </div>
+                          <div class="col-4">
+                            <div class="form-group">
+                              <label for="companyCode" class="form-label">DOTIC Number (License Number)</label>
+                              <input
+                                type="text" required
+                                class="form-control"
+                                placeholder=""
+                                formControlName="companyCode"
+                                value="{{updateThisStock ? updateThisStock.companyCode :'' }}"
+                                [ngClass]="{'is-invalid': stockForm.get('companyCode').touched && !stockForm.get('companyCode').valid}"
+                              />
+                              <span *ngIf="stockForm.get('companyCode').errors?.required "> Please  enter the DOTIC Number (License Number)</span>
+                            </div>
+                          </div>
                           <div class="col-md-12">
                             <div class="form-group mb-0">
                               <label for="description" class="form-label">Description</label>

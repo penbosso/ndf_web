@@ -5,6 +5,7 @@ export class Stock {
   constructor(
     public name ='',
     public size ='',
+    public companyCode = '',
     public quantity = 0,
     public pricePerLog= 0,
     public description ='',
