@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { StockService } from './../stock.service';
 import { Stock } from './../stock';
-import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as _ from 'lodash';
 import { ActivatedRoute } from '@angular/router';
@@ -52,10 +52,10 @@ export class AddStockComponent implements OnInit, OnDestroy {
       name:'',
       size:'',
       companyCode:'',
-      quantity: '',
-      pricePerLog: '',
+      quantity: new FormControl(1, [Validators.min(1)]),
+      pricePerLog: new FormControl(0, [Validators.min(0)]),
       description:''
-    });
+    },{validator: [priceCheck, quantityCheck]});
 
     this.subscription = this.route.paramMap.subscribe( params => {
       const id = params.get('id');

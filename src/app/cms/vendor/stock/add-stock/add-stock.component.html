@@ -111,12 +111,12 @@
                               <input
                                 type="number" required min="0"
                                 class="form-control"
-                                placeholder="500"
+                                placeholder="500" 
                                 formControlName="quantity"
                                 value="{{updateThisStock ? updateThisStock.quantity :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('quantity').touched && !stockForm.get('quantity').valid}"
                               />
-                              <span *ngIf="stockForm.get('quantity').errors?.required "> Please enter timber quantity in stock</span>
+                              <span *ngIf="stockForm.get('quantity').errors "> Please enter a valid timber quantity in stock</span>
                             </div>
                           </div>
                           <div class="col-4">
@@ -130,7 +130,7 @@
                                 value="{{updateThisStock ? updateThisStock.pricePerLog :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('pricePerLog').touched && !stockForm.get('pricePerLog').valid}"
                               />
-                              <span *ngIf="stockForm.get('pricePerLog').errors?.required "> Please enter the price</span>
+                              <span *ngIf="stockForm.get('pricePerLog').errors"> Please enter the a valid price</span>
                             </div>
                           </div>
                           <div class="col-4">
