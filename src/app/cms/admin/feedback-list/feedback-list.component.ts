@@ -21,6 +21,7 @@ export class FeedbackListComponent implements OnInit {
     this.feedbackService.getFeedbacks().subscribe(
       feedbacks => {
         this.feedbacks = feedbacks;
+        // console.log(feedbacks)
         this.showLoading = false;
       },
       error => this.errorMessage = "An error occurred please try again later"

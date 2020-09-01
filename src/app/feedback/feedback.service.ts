@@ -19,7 +19,7 @@ export class FeedbackService {
   }
 
   getFeedbacks(): Observable<Feedback[]> {
-    return this.http.get<Feedback[]>(this.feedbackBaseUrl).pipe(catchError(this.handleError));
+    return this.http.get<Feedback[]>(`${this.feedbackBaseUrl}?_sort=updatedAt:desc`).pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {

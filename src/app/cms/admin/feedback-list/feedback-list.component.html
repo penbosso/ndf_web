@@ -21,7 +21,7 @@
                       <h4>
                         <a > {{feedback.subject}} </a>
                       </h4>
-                      <div class="text-muted">
+                      <div class="text-muted overflow-auto" style="height:200px; ">
                         {{feedback.message}}
                       </div>
                       <div class="d-flex align-items-center pt-5 mt-auto">
@@ -33,11 +33,11 @@
                         <div class="ml-auto text-muted"></div>
                       </div>
                     </div>
-
-                <nav aria-label="..." class="text-center">
-                  <jw-pagination [pageSize]="pageSize" [items]="feedbacks" (changePage)="onChangePage($event)"></jw-pagination>
-                </nav>
                   </div>
                 </div>
               </div>
+
+              <nav aria-label="..." class="text-center">
+                <jw-pagination [pageSize]="pageSize" [items]="feedbacks" (changePage)="onChangePage($event)"></jw-pagination>
+              </nav>
             </div>

@@ -112,6 +112,11 @@
                                   </tr>
 
                                   <tr>
+                                    <td>DOTIC Number (License Number)</td>
+                                    <td>{{filteredStock.companyCode}}</td>
+                                  </tr>
+
+                                  <tr>
                                     <td>Price per Log</td>
                                     <td>GHc {{filteredStock.pricePerLog}}</td>
                                   </tr>
@@ -313,6 +318,12 @@
                           {{stock.description.length > 100 ? stock.description.substr(0,100)+"..." : stock.description}}
                           </a>
                         </h4>
+
+                        <tr>
+                          <td>DOTIC Number</td>
+                          <td>{{stock.companyCode}}</td>
+                        </tr>
+
                         <hr />
                         <button
                         (click)=getFilteredStock(stock.id)
@@ -343,5 +354,6 @@
             <hr />
 
             <app-feedback-list></app-feedback-list>
+            <hr style="margin-bottom: 80px;" />
           </div>
         </div>
