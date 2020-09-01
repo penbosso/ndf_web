@@ -50,6 +50,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { DeclindedStockComponent } from './shared/declinded-stock/declinded-stock.component';
+import { FeedbackListComponent } from './cms/admin/feedback-list/feedback-list.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { DeclindedStockComponent } from './shared/declinded-stock/declinded-stoc
     PendingStockComponent,
     FeedbackComponent,
     AddAdminComponent,
-    DeclindedStockComponent
+    DeclindedStockComponent,
+    FeedbackListComponent
   ],
   imports: [
     BrowserModule,
