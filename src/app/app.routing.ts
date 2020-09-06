@@ -1,3 +1,4 @@
+import { ViewSignedupVendorsComponent } from './cms/admin/view-signedup-vendors/view-signedup-vendors.component';
 import { AdminGuard } from './user/admin.guard';
 import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
 import { TermsConditionsComponent } from './signup/terms-conditions/terms-conditions.component';
@@ -67,17 +68,18 @@ const appRoutes: Routes = [
     canActivate: [AdminGuard],
     component: AdminLayoutComponent,
     children: [
-      {path:'', canActivate: [AuthGuard], component: AdminHomeComponent},
-      {path:'create-news', canActivate: [AuthGuard], component: CreateNewsComponent},
-      {path:'create-news/:id', canActivate: [AuthGuard], component: CreateNewsComponent},
-      {path:'view-news', canActivate: [AuthGuard], component: AdminViewNewsComponent},
-      {path:'view-news/:id', canActivate: [AuthGuard], component: VendorViewNewsComponent},
-      {path:'manage-news/:id', canActivate: [AuthGuard], component: AdminViewNewsComponent},
-      {path:'view-vendor/:code', canActivate: [AuthGuard], component: ViewVendorComponent},
-      {path:'upload-excel', canActivate: [AuthGuard], component: UploadExcelComponent},
-      {path:'show-vendors', canActivate: [AuthGuard], component: ShowVendorComponent},
-      {path: 'profile',  canActivate: [AuthGuard], component: ProfileComponent},
-      {path: 'add-admin',  canActivate: [AuthGuard], component: AddAdminComponent}
+      {path:'',  component: AdminHomeComponent},
+      {path:'create-news',  component: CreateNewsComponent},
+      {path:'create-news/:id',  component: CreateNewsComponent},
+      {path:'view-news',  component: AdminViewNewsComponent},
+      {path:'view-news/:id',  component: VendorViewNewsComponent},
+      {path:'manage-news/:id',  component: AdminViewNewsComponent},
+      {path:'view-vendor/:code',  component: ViewVendorComponent},
+      {path:'upload-excel',  component: UploadExcelComponent},
+      {path:'show-vendors',  component: ShowVendorComponent},
+      {path: 'profile',   component: ProfileComponent},
+      {path: 'add-admin',   component: AddAdminComponent},
+      {path:'signedup-vendors', component: ViewSignedupVendorsComponent}
     ]
   },
 

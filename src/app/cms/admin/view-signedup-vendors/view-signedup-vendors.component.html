@@ -1,0 +1,69 @@
+<!-- Loding -->
+<div class="my-overlay" *ngIf="!pageOfItems">
+  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
+</div>
+<div class="my-3 my-md-5">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">
+        Vendor Data
+      </h1>
+      <div class="page-subtitle">
+        Signedup Vendors
+      </div>
+    </div>
+
+    <!-- Body goes here -->
+    <div class="my-auto">
+      <div class="container">
+        <!-- start -->
+        <div class="card">
+          <!-- <div class="card-header">
+                                      <h3 class="card-title">
+                                          Filter vendor data
+                                      </h3>
+                                  </div> -->
+          <div class="table-responsive">
+            <table class="table card-table table-vcenter text-nowrap datatable">
+              <thead>
+                <tr>
+                  <th>Vendor Name</th>
+                  <th>Telephone Number</th>
+                  <th>Company Code</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody *ngIf="vendors && vendors.length">
+                <tr *ngFor="let vendor of pageOfItems">
+                  <td>
+                      {{ vendor.firstName }} - {{ vendor.otherNames }}
+                  </td>
+                  <td>
+                      {{ vendor.telephone }}
+                  </td>
+                  <td>
+                      {{ vendor.companyCode }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <script>
+              require(["datatables", "jquery"], function (datatable, $) {
+                $(".datatable").DataTable();
+              });
+            </script>
+          </div>
+          <!-- Finish -->
+        </div>
+        <!-- Pagination -->
+        <nav aria-label="...">
+          <jw-pagination
+            [items]="vendors"
+            (changePage)="onChangePage($event)"
+          ></jw-pagination>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

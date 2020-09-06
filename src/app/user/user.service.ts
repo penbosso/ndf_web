@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { AuthService } from '../login/auth.service';
+import { UserPage } from './user-page';
 
 
 @Injectable({
@@ -28,6 +29,14 @@ export class UserService {
         }),
         catchError(this.handleError)
       );
+  }
+
+
+  getSignedUpVendors(): Observable<UserPage> {
+    return this.http.get<UserPage>(`${this.userApiBaseUrl}?Type=vendor"&pageSize=1000`)
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
   updateUser(user: User): Observable<User> {

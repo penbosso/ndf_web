@@ -1,4 +1,3 @@
-import { filter } from 'rxjs/operators';
 import { StockService } from './../../vendor/stock/stock.service';
 import { Stock } from './../../vendor/stock/stock';
 import { Component, OnInit } from '@angular/core';
