@@ -16,6 +16,7 @@ export class VendorNewsComponent implements OnInit {
   errorMessage: any;
   pageOfItems: Array<any>;
   imageBaseUrl = environment.baseImageUrl;
+  showOverlay: boolean;
 
 
   get listFilter(): string {
@@ -33,7 +34,10 @@ export class VendorNewsComponent implements OnInit {
         this.news = newsPage.data;
         this.filteredNews = this.news;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => {
+        this.errorMessage = "An error occurred please try again later"
+        this.showOverlay = false;
+    }
     );
     // cleaar error after 5s
     if(this.errorMessage) {

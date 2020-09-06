@@ -13,6 +13,7 @@ export class FeedbackListComponent implements OnInit {
   errorMessage: string;
   pageOfItems: Array<any>;
   pageSize = 6;
+  showOverlay: boolean = false;
 
   constructor(private feedbackService: FeedbackService) { }
 
@@ -24,7 +25,10 @@ export class FeedbackListComponent implements OnInit {
         // console.log(feedbacks)
         this.showLoading = false;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => {
+        this.errorMessage = "An error occurred please try again later"
+        this.showOverlay = false;
+    }
     );
   }
 

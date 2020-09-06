@@ -14,15 +14,16 @@ export class ViewSignedupVendorsComponent implements OnInit {
   pageOfItems: Array<any>;
   showOverlay: boolean= false;
   vendors: User[];
+  showLoading: boolean;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.showOverlay = true;
+    this.showLoading = true;
     this.userService.getSignedUpVendors().subscribe(
       vendorPag => {
         this.vendors = vendorPag.data;
-        this.showOverlay = false;
+        this.showLoading = false;
         console.log(this.vendors);
       }
     );

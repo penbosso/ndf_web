@@ -1,7 +1,4 @@
-<!-- Loding -->
-<div class="my-overlay" *ngIf="!pageOfItems">
-  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
-</div>
+
 <!-- Custom Search bar -->
 <section
   id="newsletter"
@@ -24,6 +21,9 @@
   </div>
 </section>
 <!-- Section for search results -->
+    <div class="" *ngIf="!pageOfItems">
+      <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+    </div>
 <section class="news" style="background-color: #f5f5f5; padding-top: 20px;">
   <div
     class="container text-center"

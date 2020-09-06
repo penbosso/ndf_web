@@ -1,11 +1,10 @@
-<!-- Loding -->
-<div class="my-overlay" *ngIf="!pageOfItems">
-  <i class="fa fa-spinner fa-spin" aria-hidden="true">
-  </i>
-</div>
+
                         <hr />
 
                         <div class="my-3 my-md-5 container">
+                          <div class="" *ngIf="!pageOfItems">
+                            <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+                          </div>
                             <div class="row row-cards row-deck" *ngIf="news && news.length">
                                 <div class="col-lg-12" *ngFor="let newsArticle of pageOfItems">
                                     <div class="card card-aside">

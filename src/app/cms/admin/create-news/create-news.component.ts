@@ -56,7 +56,10 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
               consumer: this.updateThisNews.consumer
             });
           },
-          error => this.errorMessage = "An error occurred please try again later"
+          error => {
+            this.errorMessage = "An error occurred please try again later"
+            this.showOverlay = false;
+        }
         );
       }
     });

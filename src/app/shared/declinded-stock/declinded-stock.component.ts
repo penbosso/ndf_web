@@ -23,6 +23,7 @@ export class DeclindedStockComponent implements OnInit {
   imageBaseUrl = environment.baseImageUrl;
   declinedStockCount: number;
   deletedStock = false;
+  showOverlay: boolean;
 
   constructor(private stockService : StockService,
               private router: Router) { }
@@ -33,7 +34,10 @@ export class DeclindedStockComponent implements OnInit {
         this.pendingStocks = stockPage.data;
         this.declinedStockCount = this.pendingStocks.length;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => {
+        this.errorMessage = "An error occurred please try again later"
+        this.showOverlay = false;
+    }
     );
     // cleaar error after 5s
     if(this.errorMessage) {

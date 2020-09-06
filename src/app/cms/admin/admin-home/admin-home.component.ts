@@ -38,7 +38,10 @@ export class AdminHomeComponent implements OnInit {
         this.pendingStocks = stockPage.data;
         this.showOverlay = false;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => {
+        this.errorMessage = "An error occurred please try again later"
+        this.showOverlay = false;
+    }
     );
   }
 

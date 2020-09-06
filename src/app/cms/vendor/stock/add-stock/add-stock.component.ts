@@ -72,7 +72,10 @@ export class AddStockComponent implements OnInit, OnDestroy {
               description: this.updateThisStock.description
             });
           },
-          error => this.errorMessage = "An error occurred please try again later"
+          error => {
+            this.errorMessage = "An error occurred please try again later"
+            this.showOverlay = false;
+        }
         );
       }
 
