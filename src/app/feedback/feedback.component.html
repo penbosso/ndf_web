@@ -28,7 +28,7 @@
     <p *ngIf="showLoading"><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
 
       <form id="contact" class="row" [formGroup]="feedBackForm"
-      (ngSubmit)="save()" *ngIf="!showLoading">
+      (ngSubmit)="save()" *ngIf="!showLoading && auth.isLoggedIn()" >
         <div class="form-group col-md-6 col-sm-12">
           <label for="name">Subject of Feedback</label>
           <input

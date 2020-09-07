@@ -22,7 +22,7 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit() {
     this.feedBackForm = this.fb.group({
-      user: `${ this.auth.getLoggedUser().firstName +' ' + this.auth.getLoggedUser().otherName  +' - ' + this.auth.getLoggedUser().telephone }`,
+      user: this.auth.getLoggedUser()? `${ this.auth.getLoggedUser().firstName +' ' + this.auth.getLoggedUser().otherName  +' - ' + this.auth.getLoggedUser().telephone }`: '',
       message:'',
       subject:''
     })
