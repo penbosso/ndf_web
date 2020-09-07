@@ -44,14 +44,14 @@
         (click)="toggleShow()"
         class="header-toggler d-lg-none ml-3 ml-lg-0"
         data-toggle="collapse"
-        data-target="#headerMenuCollapse"
       >
         <span class="header-toggler-icon"></span>
       </a>
     </div>
   </div>
 </div>
-<div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+<div [ngClass]="show? 'header collapse d-lg-flex p-0 show': 'header collapse d-lg-flex p-0'"
+      id="headerMenuCollapse">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg order-lg-first">

@@ -12,12 +12,8 @@ import { environment } from 'src/environments/environment';
 export class AdminHeaderComponent implements OnInit {
   imageBaseUrl = environment.baseImageUrl;
 
-  show:boolean = true;
-  firstClick: boolean = true;
-  toggleShow() {
-    if(this.firstClick) { this.firstClick = false; return}
-    this.show = this.show? false : true;
-  }
+  show:boolean = false;
+  toggleShow = () => this.show = !this.show;
 
   constructor(public auth: AuthService, private router: Router) { }
 
