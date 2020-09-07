@@ -152,6 +152,8 @@
                                   </tbody>
                                 </table>
                               </div>
+                              <label style="color: red;">Reason</label>
+                              <input class="form-control" [(ngModel)]="statusComment" type='text' placeholder="Reason for declining this pending stock" />
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -159,6 +161,7 @@
                               (click)=declineStock(filteredStock.id)
                               type="button"
                               class="btn btn-danger"
+                              data-dismiss="modal"
                             >
                             <i class="fe fe-x mr-2"></i>Decline
                             </button>
@@ -235,6 +238,32 @@
                                     <td>Description</td>
                                     <td>
                                       {{filteredStock.description}}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+
+                            <div class="col mt-5" *ngIf="vendor">
+                              <div class="h6">Vendor Info</div>
+                              <table class="table text-left">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Contact</th>
+                                    <!-- <th></th> -->
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>{{ vendor.companyName }}</td>
+                                    <td>{{ vendor.address }}</td>
+                                    <td>{{ vendor.telephoneNumber }}</td>
+                                    <td *ngIf="false">
+                                      <a href="{{ '/catalog/venodor/' + vendor.companyCode }}"
+                                        >View vendor</a
+                                      >
                                     </td>
                                   </tr>
                                 </tbody>
