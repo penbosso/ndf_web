@@ -23,22 +23,24 @@ export class PendingStockComponent implements OnInit {
   imageBaseUrl = environment.baseImageUrl;
   pendingStockCount: number;
   deletedStock = false;
+  showLoading = false;
 
   constructor(private stockService : StockService,
               private router: Router) { }
 
   ngOnInit() {
+    this.showLoading = true;
     this.stockService.getVendorsPendingStocks().subscribe(
       stockPage => {
         this.pendingStocks = stockPage.data;
+        this.showLoading = false;
         this.pendingStockCount = this.pendingStocks.length;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => {
+        this.showLoading = false;
+        this.errorMessage = "An error occurred please try again later"
+      }
     );
-    // cleaar error after 5s
-    if(this.errorMessage) {
-      setTimeout(()=>this.errorMessage = '', 5000)
-    }
   }
 
   onChangePage(pageOfItems: Array<any>) {

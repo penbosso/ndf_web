@@ -49,6 +49,10 @@
                         </button>
                       </div>
 
+                      <div class="" *ngIf="updateThisStockBool || showOverlay">
+                        <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+                      </div>
+
                       <form [formGroup]="stockForm"
                             (ngSubmit)="save()">
                         <div class="row">
@@ -109,9 +113,9 @@
                                 >Quantity in Stock</label
                               >
                               <input
-                                type="number" required min="0"
+                                type="number" required min="1"
                                 class="form-control"
-                                placeholder="500" 
+                                placeholder="500"
                                 formControlName="quantity"
                                 value="{{updateThisStock ? updateThisStock.quantity :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('quantity').touched && !stockForm.get('quantity').valid}"

@@ -19,21 +19,15 @@ export class StockService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<Stock>(this.stockApiBaseUrl, stock, {headers:headers})
       .pipe(
-        tap(data =>{
-          console.log('save Stock: '+ JSON.stringify(data))
-        }),
         catchError(this.handleError)
       );
   }
 
   deleteStock(stock: string): Observable<{}> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const url = `${this.stockApiBaseUrl}/${stock}`; console.log(url);
+    const url = `${this.stockApiBaseUrl}/${stock}`;
     return this.http.delete(url, {headers:headers})
       .pipe(
-        tap(data =>{
-          console.log('delete Stock: '+ JSON.stringify(data))
-        }),
         catchError(this.handleError)
       );
   }
@@ -43,9 +37,6 @@ export class StockService {
     // const newStockStatus = {"id": stock.id, "status": "pending", "statusComment": ""};
     return this.http.put<Stock>(`${this.stockApiBaseUrl}/${stock.id}`, stock, {headers:headers})
       .pipe(
-        tap(data =>{
-          console.log('update Stock: '+ JSON.stringify(data));
-        }),
         catchError(this.handleError)
       );
   }
@@ -54,9 +45,6 @@ export class StockService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<Stock>(`${this.stockApiBaseUrl}/approval`, stock, {headers:headers})
       .pipe(
-        tap(data =>{
-          console.log('update Stock: '+ JSON.stringify(data))
-        }),
         catchError(this.handleError)
       );
   }
@@ -70,7 +58,6 @@ export class StockService {
 
   getVendorsStocks(): Observable<StockPage> {
     return this.http.get<StockPage>(`${this.stockApiBaseUrl}?status=approved&pageSize=500&vendorId=${this.auth.getLoggedUser().vendorId}`).pipe(
-      tap(data => console.log("All: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
@@ -95,7 +82,6 @@ export class StockService {
 
   getStockById(id: string): Observable<Stock> {
     return this.http.get<Stock>(`${this.stockApiBaseUrl}/${id}`).pipe(
-      tap(data => console.log("stock: " + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

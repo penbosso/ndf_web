@@ -40,6 +40,7 @@ export class FeedbackComponent implements OnInit {
       this.feedbackService.saveFeedBack(newFeedback).subscribe(
         () => {
           this.message='Feedback message sent';
+          this.feedBackForm.reset();
           this.showLoading = false;
       },
         () => {

@@ -1,6 +1,4 @@
-<div class="my-overlay" *ngIf="!(availableStock.stockCount || availableStock.stockCount == 0)">
-  <i class="fa fa-spinner fa-spin" aria-hidden="true"> </i>
-</div>
+
         <!-- Page title -->
         <div class="my-3 my-md-5">
           <div class="container">
@@ -59,6 +57,13 @@
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{message}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
 
                 <!-- individual stocks -->

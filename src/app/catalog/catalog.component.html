@@ -50,7 +50,7 @@
                   </tr>
 
                   <tr>
-                    <td class="font-weight-bold">Price per Log</td>
+                    <td class="font-weight-bold">Unit Price</td>
                     <td>GHc {{ filteredStock.pricePerLog }}</td>
                   </tr>
                   <tr>
@@ -63,6 +63,9 @@
               </table>
             </div>
           </div>
+        </div>
+        <div class="" *ngIf="!vendor">
+          <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
         </div>
         <div class="col mt-5" *ngIf="vendor">
           <div class="h6">Vendor Info</div>
@@ -156,7 +159,7 @@
 
     <h2 class="h3">Timber Stock Catalog</h2>
     <div class="" *ngIf="!pageOfItems">
-      <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+      <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 1%; border-radius: 15px;" /></p>
     </div>
     <div
       class="d-flex justify-content-center mt-5"

@@ -3,6 +3,7 @@ import { AvailableStockComponent } from './../../../shared/available-stock/avail
 import { Stock } from './../stock/stock';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PendingStockComponent } from 'src/app/shared/pending-stock/pending-stock.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-vendor-home',
@@ -12,6 +13,7 @@ import { PendingStockComponent } from 'src/app/shared/pending-stock/pending-stoc
 export class VendorHomeComponent implements OnInit {
   pendingStocks: Stock[] = [];
   errorMessage: any;
+  message: string;
 
   @ViewChild(AvailableStockComponent, {static: true}) availableStock: AvailableStockComponent;
   @ViewChild(PendingStockComponent, {static: true}) pendingStock: PendingStockComponent;
@@ -33,8 +35,14 @@ export class VendorHomeComponent implements OnInit {
     this.declinedId.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'start' });
   }
 
-  constructor() { }
+  constructor(private router: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.router.queryParams.subscribe(params => {
+      if(params.msg){
+        this.message = "Stock successfully updated, Admin will have to approve it before its available for buyers";
+      }
+    });
+  }
 
 }

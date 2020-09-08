@@ -23,20 +23,22 @@ export class DeclindedStockComponent implements OnInit {
   imageBaseUrl = environment.baseImageUrl;
   declinedStockCount: number;
   deletedStock = false;
-  showOverlay: boolean;
+  showLoading: boolean;
 
   constructor(private stockService : StockService,
               private router: Router) { }
 
   ngOnInit() {
+    this.showLoading = true;
     this.stockService.getVendorsDeclinedStocks().subscribe(
       stockPage => {
         this.pendingStocks = stockPage.data;
+        this.showLoading = false;
         this.declinedStockCount = this.pendingStocks.length;
       },
       error => {
         this.errorMessage = "An error occurred please try again later"
-        this.showOverlay = false;
+        this.showLoading = false;
     }
     );
     // cleaar error after 5s

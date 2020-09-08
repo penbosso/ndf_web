@@ -4,7 +4,7 @@ import { Stock } from './../stock';
 import { FormGroup, FormBuilder, AbstractControl, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as _ from 'lodash';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 function priceCheck(c: AbstractControl): {[key: string]: boolean } | null {
@@ -40,11 +40,13 @@ export class AddStockComponent implements OnInit, OnDestroy {
   stock = new Stock();
   base64Image: string;
   updateThisStock: Stock;
+  updateThisStockBool: boolean = false;
   private subscription: Subscription;
   imageBaseUrl = environment.baseImageUrl;
 
   constructor(private stockService : StockService,
               private route: ActivatedRoute,
+              private router: Router,
               private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -53,16 +55,18 @@ export class AddStockComponent implements OnInit, OnDestroy {
       size:'',
       companyCode:'',
       quantity: new FormControl(1, [Validators.min(1)]),
-      pricePerLog: new FormControl(0, [Validators.min(0)]),
+      pricePerLog: new FormControl(0, [Validators.min(1)]),
       description:''
     },{validator: [priceCheck, quantityCheck]});
 
     this.subscription = this.route.paramMap.subscribe( params => {
       const id = params.get('id');
       if (id) {
+        this.updateThisStockBool = true;
         this.stockService.getStockById(id).subscribe(
           stock => {
             this.updateThisStock = stock
+            this.updateThisStockBool = false;
             this.stockForm = this.fb.group({
               name: this.updateThisStock.name,
               size: this.updateThisStock.size,
@@ -95,7 +99,11 @@ export class AddStockComponent implements OnInit, OnDestroy {
     if (this.updateThisStock) {
       newStock.id = this.updateThisStock.id;
       this.stockService.updateStock(newStock).subscribe(
-        () => this.onSaveComplete(),
+        () => {
+          this.message = "Stock successfully updated, Admin will have to approve it before its available for buyers";
+          this.onSaveComplete();
+          this.router.navigate(['/vendor'], { queryParams: {msg:'success' }});
+        },
         (error: any) => {
           this.errorMessage = "An error occurred please try again later";
           this.showOverlay = false;
@@ -103,7 +111,11 @@ export class AddStockComponent implements OnInit, OnDestroy {
       );
     } else {
       this.stockService.saveStock(newStock).subscribe(
-        () => this.onSaveComplete(),
+        () => {
+          this.message = "New stock successfully created, Admin will have to approve it before its available for buyers";
+          this.stockForm.reset();
+          this.onSaveComplete();
+        },
         (error: any) => {
           this.errorMessage = "An error occurred please try again later";
           this.showOverlay = false;
@@ -114,7 +126,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
 
   onSaveComplete(): void {
     this.showOverlay = false;
-    this.message = "Stock saved";
+    // this.message = "New stock successfully created, Admin will have to approve it before its available for buyers";
   }
 
   fileChangeEvent(fileInput: any) {

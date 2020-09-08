@@ -24,17 +24,23 @@ export class AvailableStockComponent implements OnInit {
   imageBaseUrl = environment.baseImageUrl;
   stockCount: number;
   deletedStock = false;
+  showLoading = false;
 
   constructor(private stockService : StockService,
               private router: Router) { }
 
   ngOnInit() {
+    this.showLoading = true;
     this.stockService.getVendorsStocks().subscribe(
       stockPage => {
         this.stocks = stockPage.data;
+        this.showLoading = false;
         this.stockCount = this.stocks.length;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => {
+        this.showLoading = false;
+        this.errorMessage = "An error occurred please try again later";
+      }
     );
     // cleaar error after 5s
     if(this.errorMessage) {
