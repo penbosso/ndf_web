@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AdminHeaderComponent implements OnInit {
   imageBaseUrl = environment.baseImageUrl;
+  profilePic = environment.profilePic;
 
   show:boolean = false;
   toggleShow = () => this.show = !this.show;
@@ -18,6 +19,9 @@ export class AdminHeaderComponent implements OnInit {
   constructor(public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.profilePic = this.auth.getLoggedUser().profilePic ?
+                        this.imageBaseUrl +'/'+ this.auth.getLoggedUser().profilePic
+                      : this.profilePic;
   }
 
   logout() {

@@ -55,7 +55,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
       size:'',
       companyCode:'',
       quantity: new FormControl(1, [Validators.min(1)]),
-      pricePerLog: new FormControl(0, [Validators.min(1)]),
+      pricePerLog: new FormControl(1, [Validators.min(1)]),
       description:''
     },{validator: [priceCheck, quantityCheck]});
 

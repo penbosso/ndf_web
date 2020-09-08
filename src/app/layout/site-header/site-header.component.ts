@@ -32,6 +32,7 @@ export class SiteHeaderComponent implements OnInit {
   buyer = new Buyer();
   errorMessage: any;
   public showOverlay = false;
+  profilePic = environment.profilePic;
 
   show:boolean = false;
   toggleShow = () => this.show = !this.show;
@@ -46,6 +47,11 @@ export class SiteHeaderComponent implements OnInit {
               public auth:AuthService) { }
 
   ngOnInit() {
+    if(this.auth.getLoggedUser()) {
+      this.profilePic = this.auth.getLoggedUser().profilePic ?
+                          this.imageBaseUrl +'/'+ this.auth.getLoggedUser().profilePic
+                        : this.profilePic;
+                    }
     this.buyerForm = this.fb.group({
       FirstName: '',
       otherNames: '',
@@ -63,9 +69,9 @@ export class SiteHeaderComponent implements OnInit {
   }
 
   authenticate(loginForm: NgForm): void {
-    this.showOverlay = true;
     const {telephone, password} = loginForm.value;
-    if (telephone && password) {
+    if (telephone && password) {console.log(telephone, password);
+      this.showOverlay = true;
       this.auth.login(telephone,password)
           .subscribe( success => {
             if (success) {
@@ -78,6 +84,8 @@ export class SiteHeaderComponent implements OnInit {
               this.errorMessage = "Invalid telephone number / password";
             }
           });
+        } else {
+          this.errorMessage = "Telephone number / password is required";
         }
   }
 

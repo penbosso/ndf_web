@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
 
   authenticate(loginForm: NgForm): void {
     const {telephone, password} = loginForm.value;
-    this.showOverlay = true;
     if (telephone && password) {
+      this.showOverlay = true;
       this.auth.login(telephone,password)
           .subscribe( success => {
             if (success) {
@@ -44,9 +44,9 @@ export class LoginComponent implements OnInit {
               this.errorMessage = "Invalid telephone number / password";
           }
           });
+        } else {
+          this.errorMessage = "Telephone number / password is required";
         }
-    console.log(telephone, password);
-    console.log(JSON.stringify(loginForm.value))
   }
 
 }
