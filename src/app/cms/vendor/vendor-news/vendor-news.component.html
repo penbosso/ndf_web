@@ -21,7 +21,7 @@
               </form>
             </section>
             <!-- Body goes here -->
-            <div class="" *ngIf="!pageOfItems">
+            <div class="" *ngIf="!pageOfItems || showOverlay">
               <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
             </div>
             <section style="margin-top: 75px;" class="news-link" *ngIf="filteredNews && filteredNews.length">

@@ -316,7 +316,7 @@
               </div>
               <div class="card-body">
                 <!-- Cards of uploads -->
-                <div class="" *ngIf="!pageOfItems">
+                <div class="" *ngIf="!pageOfItems || showOverlay">
                   <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
                 </div>
                 <div class="row row-cards row-deck" *ngIf='pendingStocks && pendingStocks.length'>
