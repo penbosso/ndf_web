@@ -93,7 +93,8 @@ export class CatalogComponent implements OnInit {
         "name",
         "size",
         "location"
-      ]
+      ],
+      threshold: 0.1
     };
 
     let fuse  = new Fuse(this.stocks, options);
