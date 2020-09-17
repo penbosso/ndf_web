@@ -11,5 +11,6 @@ export class Stock {
     public description ='',
     public statusComment = '',
     public isApproved = false,
+    public licenseType = '',
     public image = '') {}
 }

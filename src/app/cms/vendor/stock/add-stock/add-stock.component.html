@@ -107,7 +107,7 @@
                               <span *ngIf="stockForm.get('size').errors?.required "> Please  enter the size</span>
                             </div>
                           </div>
-                          <div class="col-4">
+                          <div class="col-6">
                             <div class="form-group">
                               <label for="quantity" class="form-label"
                                 >Quantity in Stock</label
@@ -123,7 +123,7 @@
                               <span *ngIf="stockForm.get('quantity').errors "> Please enter a valid timber quantity in stock</span>
                             </div>
                           </div>
-                          <div class="col-4">
+                          <div class="col-6">
                             <div class="form-group">
                               <label class="form-label">Unit Price</label>
                               <input
@@ -137,9 +137,9 @@
                               <span *ngIf="stockForm.get('pricePerLog').errors"> Please enter the a valid price</span>
                             </div>
                           </div>
-                          <div class="col-4">
+                          <div class="col-6">
                             <div class="form-group">
-                              <label for="companyCode" class="form-label">DOTIC Number (License Number)</label>
+                              <label for="companyCode" class="form-label">License Number</label>
                               <input
                                 type="text" required
                                 class="form-control"
@@ -148,7 +148,28 @@
                                 value="{{updateThisStock ? updateThisStock.companyCode :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('companyCode').touched && !stockForm.get('companyCode').valid}"
                               />
-                              <span *ngIf="stockForm.get('companyCode').errors?.required "> Please  enter the DOTIC Number (License Number)</span>
+                              <span *ngIf="stockForm.get('companyCode').errors?.required "> Please  enter the License Number)</span>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label for="licenseType" class="form-label">License Type</label>
+
+                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='!updateThisStock'>
+                                <option value="DOTIC">DOTIC</option>
+                                <option value="LMB">LMB</option>
+                              </select>
+
+                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='updateThisStock && updateThisStock.licenseType == "DOTIC"'>
+                                <option selected value="DOTIC">DOTIC</option>
+                                <option value="LMB">LMB</option>
+                              </select>
+
+                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='updateThisStock && updateThisStock.licenseType == "LMC"'>
+                                <option value="DOTIC">DOTIC</option>
+                                <option selected value="LMB">LMB</option>
+                              </select>
+                              <span *ngIf="stockForm.get('licenseType').errors?.required "> Please select License type</span>
                             </div>
                           </div>
                           <div class="col-md-12">

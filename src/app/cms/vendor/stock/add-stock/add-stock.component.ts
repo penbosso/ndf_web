@@ -56,7 +56,8 @@ export class AddStockComponent implements OnInit, OnDestroy {
       companyCode:'',
       quantity: new FormControl(1, [Validators.min(1)]),
       pricePerLog: new FormControl(1, [Validators.min(1)]),
-      description:''
+      description:'',
+      licenseType: '',
     },{validator: [priceCheck, quantityCheck]});
 
     this.subscription = this.route.paramMap.subscribe( params => {
@@ -73,6 +74,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
               companyCode: this.updateThisStock.companyCode,
               quantity: this.updateThisStock.quantity,
               pricePerLog: this.updateThisStock.pricePerLog,
+              licenseType: this.updateThisStock.licenseType,
               description: this.updateThisStock.description
             });
           },
