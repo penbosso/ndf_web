@@ -17,16 +17,16 @@
                 <div class="col-lg-4" *ngFor='let feedback of pageOfItems' >
                   <div class="card">
                     <div class="card-body d-flex flex-column" >
-
+                      {{feedback.createdAt | date}} :
                       <h4>
-                        <a > {{feedback.subject}} </a>
+                        <a > {{feedback.subject}}</a>
                       </h4>
                       <div class="text-muted overflow-auto" style="height:200px; ">
                         {{feedback.message}}
                       </div>
                       <div class="d-flex align-items-center pt-5 mt-auto">
                         <div>
-                          <a href="./user_profile.html" class="text-default">
+                          <a class="text-default">
                             {{feedback.user}} </a
                           >
                         </div>

@@ -162,7 +162,7 @@
                             </div>
                           </div>
                           <div class="modal-footer">
-                            <button
+                            <button  *ngIf='statusComment.length >= 3'
                               (click)=declineStock(filteredStock.id)
                               type="button"
                               class="btn btn-danger"
@@ -170,6 +170,7 @@
                             >
                             <i class="fe fe-x mr-2"></i>Decline
                             </button>
+                            <i style="color:  red;" *ngIf='statusComment.length < 3'>Enter Reason to decline</i>
                             <button
                               (click)=approveStock(filteredStock.id)
                               data-dismiss="modal"
@@ -283,7 +284,7 @@
                             <input class="form-control" [(ngModel)]="statusComment" type='text' placeholder="Reason for declining this pending stock" />
                           </div>
                           <div class="modal-footer">
-                            <button
+                            <button  *ngIf='statusComment.length >= 3'
                               (click)=declineStock(filteredStock.id)
                               type="button"
                               class="btn btn-danger"
@@ -291,6 +292,7 @@
                             >
                             <i class="fe fe-x mr-2"></i>Decline
                             </button>
+                            <i style="color:  red;" *ngIf='statusComment.length < 3'>Enter Reason to decline</i>
                             <button
                               data-dismiss="modal"
                               type="button" class="btn btn-default">

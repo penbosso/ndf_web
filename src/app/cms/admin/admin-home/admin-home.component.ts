@@ -95,8 +95,9 @@ export class AdminHomeComponent implements OnInit {
       this.showOverlay = true;
       this.stockService.approveOrDeclineStock(declinedStock).subscribe(
         () => {
-          this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id)
+          this.pendingStocks = this.pendingStocks.filter(stock => stock.id !== id);
           this.message = "Stock declined";
+          this.statusComment = '';
           this.onSaveComplete()
         },
         (error: any) => {
