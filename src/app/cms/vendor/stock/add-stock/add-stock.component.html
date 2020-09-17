@@ -157,17 +157,17 @@
 
                               <select class="form-control" name="licenseType" id="licenseType" *ngIf='!updateThisStock'>
                                 <option value="DOTIC">DOTIC</option>
-                                <option value="LMB">LMB</option>
+                                <option value="LMCC">LMCC</option>
                               </select>
 
                               <select class="form-control" name="licenseType" id="licenseType" *ngIf='updateThisStock && updateThisStock.licenseType == "DOTIC"'>
                                 <option selected value="DOTIC">DOTIC</option>
-                                <option value="LMB">LMB</option>
+                                <option value="LMCC">LMCC</option>
                               </select>
 
-                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='updateThisStock && updateThisStock.licenseType == "LMC"'>
+                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='updateThisStock && updateThisStock.licenseType == "LMCC"'>
                                 <option value="DOTIC">DOTIC</option>
-                                <option selected value="LMB">LMB</option>
+                                <option selected value="LMCC">LMCC</option>
                               </select>
                               <span *ngIf="stockForm.get('licenseType').errors?.required "> Please select License type</span>
                             </div>
