@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   public showOverlay = false;
   base64Image: string;
   imageBaseUrl = environment.baseImageUrl;
+  profilePic = environment.profilePic;
 
   constructor(private userService: UserService,
               private fb: FormBuilder,

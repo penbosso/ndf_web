@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/auth.service';
 import { User } from 'src/app/user/user';
 import * as _ from 'lodash';
+import { environment } from 'src/environments/environment';
 
 
 function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
@@ -33,6 +34,7 @@ export class AddAdminComponent implements OnInit {
   public showOverlay = false;
   base64Image: string;
   message: string;
+  profilePic = environment.profilePic;
 
 
   constructor(private fb: FormBuilder,

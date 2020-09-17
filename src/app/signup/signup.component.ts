@@ -5,6 +5,7 @@ import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import * as _ from 'lodash';
+import { environment } from 'src/environments/environment';
 
 function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   let confirmControl = c.get('confirmPassword');
@@ -30,6 +31,7 @@ export class SignupComponent implements OnInit {
   errorMessage: any;
   public showOverlay = false;
   base64Image: any;
+  profilePic = environment.profilePic;
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
