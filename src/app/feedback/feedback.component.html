@@ -3,7 +3,7 @@
     <div class="text-center">
       <h2 class="header">Feedback</h2>
       <p class="h4" style="color: #ffffff;">
-        We are glad to here from you
+        We are glad to hear from you
       </p>
     </div>
     <div
@@ -39,7 +39,7 @@
             placeholder="Enter subject of feedback"
             [ngClass]="{'is-invalid': feedBackForm.get('subject').touched && !feedBackForm.get('subject').valid}"
           />
-          <span *ngIf="feedBackForm.get('subject').errors?.required "> Please feedback subject</span>
+          <span *ngIf="feedBackForm.get('subject').errors?.required "> Provide feedback subject</span>
         </div>
 
         <div class="form-group col-md-6 col-sm-12" *ngIf="auth.isLoggedIn()">

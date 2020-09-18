@@ -124,9 +124,6 @@
     </div>
   </nav>
 </header>
-<div *ngIf="errorMessage" class="row row text-center" style="margin-top: 20px;">
-  <div class="alert alert-danger">{{ errorMessage }}</div>
-</div>
 <!-- Sign up Modal-->
 <div
   id="signup"
@@ -151,8 +148,9 @@
         </a>
       </div>
       <div class="signup-modal-body">
-        <div *ngIf="errorMessage" class="row row text-center">
-          <div class="alert alert-danger">{{ errorMessage }}</div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{errorMessage}}
         </div>
         <div class="container">
           <form
@@ -357,8 +355,9 @@
         </a>
       </div>
       <div class="login-modal-body">
-        <div *ngIf="errorMessage" class="row row text-center">
-          <div class="alert alert-danger">{{ errorMessage }}</div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{errorMessage}}
         </div>
         <div class="container">
           <form
