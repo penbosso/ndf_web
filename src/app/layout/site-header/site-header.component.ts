@@ -77,7 +77,12 @@ export class SiteHeaderComponent implements OnInit {
             if (success) {
               this.showOverlay = false;
               this.errorMessage = '';
-              this.router.navigateByUrl(this.router.url);
+              if(this.auth.getLoggedUser().type =='vendor') {
+                this.router.navigateByUrl('/vendor');
+              }
+              if(this.auth.getLoggedUser().type =='admin') {
+                this.router.navigateByUrl('/admin');
+              }
               this.closeLoginModal.nativeElement.click();
             } else {
               this.showOverlay = false;
