@@ -155,17 +155,12 @@
                             <div class="form-group">
                               <label for="licenseType" class="form-label">License Type</label>
 
-                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='!updateThisStock'>
+                              <select class="form-control" formControlName="licenseType" id="licenseType" *ngIf='!updateThisStock'>
                                 <option value="DOTIC">DOTIC</option>
                                 <option value="LMCC">LMCC</option>
                               </select>
 
-                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='updateThisStock && updateThisStock.licenseType == "DOTIC"'>
-                                <option selected value="DOTIC">DOTIC</option>
-                                <option value="LMCC">LMCC</option>
-                              </select>
-
-                              <select class="form-control" name="licenseType" id="licenseType" *ngIf='updateThisStock && updateThisStock.licenseType == "LMCC"'>
+                              <select [(ngModel)]='updateThisStock.licenseType' class="form-control" formControlName="licenseType" id="licenseType" *ngIf='updateThisStock'>
                                 <option value="DOTIC">DOTIC</option>
                                 <option selected value="LMCC">LMCC</option>
                               </select>

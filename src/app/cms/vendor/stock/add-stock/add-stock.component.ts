@@ -65,7 +65,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
       if (id) {
         this.updateThisStockBool = true;
         this.stockService.getStockById(id).subscribe(
-          stock => {
+          stock => {console.log(stock);
             this.updateThisStock = stock
             this.updateThisStockBool = false;
             this.stockForm = this.fb.group({
