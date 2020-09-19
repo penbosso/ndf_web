@@ -79,7 +79,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
             });
           },
           error => {
-            this.errorMessage = "An error occurred please try again later"
+            this.errorMessage = `Error: ${error}`
             this.showOverlay = false;
         }
         );
@@ -107,7 +107,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
           this.router.navigate(['/vendor'], { queryParams: {msg:'success' }});
         },
         (error: any) => {
-          this.errorMessage = "An error occurred please try again later";
+          this.errorMessage = `Error: ${error}`;
           this.showOverlay = false;
         }
       );
@@ -119,7 +119,7 @@ export class AddStockComponent implements OnInit, OnDestroy {
           this.onSaveComplete();
         },
         (error: any) => {
-          this.errorMessage = "An error occurred please try again later";
+          this.errorMessage = `Error: ${error}`;
           this.showOverlay = false;
         }
       );

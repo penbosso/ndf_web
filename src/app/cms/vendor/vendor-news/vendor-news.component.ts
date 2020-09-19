@@ -35,7 +35,7 @@ export class VendorNewsComponent implements OnInit {
         this.filteredNews = this.news;
       },
       error => {
-        this.errorMessage = "An error occurred please try again later"
+        this.errorMessage = `Error: ${error}`
         this.showOverlay = false;
     }
     );

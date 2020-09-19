@@ -69,7 +69,7 @@ export class AddAdminComponent implements OnInit {
     this.userService.createUser(newAdmin).subscribe(
       () => this.onSaveComplete(),
       (error: any) => {
-        this.errorMessage = "An error occurred please try again later";
+        this.errorMessage  = `Error: ${error}`;
         this.showOverlay = false;
       }
     )

@@ -24,10 +24,6 @@
               </div>
             </div>
           </div>
-
-          <div *ngIf="errorMessage" class="text-center">
-            <div class="alert alert-danger">{{ errorMessage }}</div>
-          </div>
           <div class="card">
             <div class="card-body">
               <form [formGroup]="vendorForm" (ngSubmit)="saveVendor()">

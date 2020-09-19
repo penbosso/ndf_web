@@ -57,7 +57,7 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
             });
           },
           error => {
-            this.errorMessage = "An error occurred please try again later"
+            this.errorMessage = `Error: ${error}`
             this.showOverlay = false;
         }
         );
@@ -77,7 +77,7 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
       this.newsService.updateNews(newsArticle).subscribe(
         () => this.onSaveComplete(),
         (error: any) => {
-          this.errorMessage = "An error occurred please try again later";
+          this.errorMessage = `Error: ${error}`;
           this.showOverlay = false;
         }
       );
@@ -85,7 +85,7 @@ export class CreateNewsComponent implements OnInit, OnDestroy {
       this.newsService.saveNews(newsArticle).subscribe(
         () => this.onSaveComplete(),
         (error: any) => {
-          this.errorMessage = "An error occurred please try again later";
+          this.errorMessage = `Error: ${error}`;
           this.showOverlay = false;
         }
       );

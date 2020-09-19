@@ -26,7 +26,7 @@ export class FeedbackListComponent implements OnInit {
         this.showLoading = false;
       },
       error => {
-        this.errorMessage = "An error occurred please try again later"
+        this.errorMessage = `Error: ${error}`
         this.showOverlay = false;
     }
     );

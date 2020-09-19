@@ -38,7 +38,7 @@ export class PendingStockComponent implements OnInit {
       },
       error => {
         this.showLoading = false;
-        this.errorMessage = "An error occurred please try again later"
+        this.errorMessage = `Error: ${error}`
       }
     );
   }

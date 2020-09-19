@@ -43,8 +43,8 @@ export class FeedbackComponent implements OnInit {
           this.feedBackForm.reset();
           this.showLoading = false;
       },
-        () => {
-          this.errorMessage = "An error occurred please try again later";
+        (error) => {
+          this.errorMessage = `Error: ${error}`;
           this.showLoading = false;
         }
       )

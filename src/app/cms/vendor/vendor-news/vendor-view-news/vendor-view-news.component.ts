@@ -28,7 +28,7 @@ export class VendorViewNewsComponent implements OnInit, OnDestroy {
         news => {
           this.newsArticle = news;
         },
-        error => this.errorMessage = "An error occurred please try again later"
+        error => this.errorMessage = `Error: ${error}`
       );
     });
     // cleaar error after 5s

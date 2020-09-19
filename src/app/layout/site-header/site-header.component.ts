@@ -86,7 +86,7 @@ export class SiteHeaderComponent implements OnInit {
               this.closeLoginModal.nativeElement.click();
             } else {
               this.showOverlay = false;
-              this.errorMessage = "Invalid telephone number / password";
+              this.errorMessage = "Invalid telephone number or password";
             }
           });
         } else {
@@ -102,7 +102,8 @@ export class SiteHeaderComponent implements OnInit {
     this.userService.createUser(newBuyer).subscribe(
       () => this.onSaveComplete(),
       (error: any) =>  {
-        this.errorMessage = "An error occurred please try again later";
+        this.errorMessage  = `Error: ${error}`;
+        console.log('error from component');
         this.showOverlay = false;
       }
     );

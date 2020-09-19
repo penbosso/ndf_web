@@ -31,7 +31,7 @@ export class AdminViewNewsComponent implements OnInit {
       newsPage => {
         this.news = newsPage.data;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => this.errorMessage = `Error: ${error}`
     );
 
   // cleaar error after 5s

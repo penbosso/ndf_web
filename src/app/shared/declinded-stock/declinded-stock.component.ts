@@ -37,7 +37,7 @@ export class DeclindedStockComponent implements OnInit {
         this.declinedStockCount = this.pendingStocks.length;
       },
       error => {
-        this.errorMessage = "An error occurred please try again later"
+        this.errorMessage = `Error: ${error}`
         this.showLoading = false;
     }
     );

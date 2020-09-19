@@ -39,7 +39,7 @@ export class AvailableStockComponent implements OnInit {
       },
       error => {
         this.showLoading = false;
-        this.errorMessage = "An error occurred please try again later";
+        this.errorMessage = `Error: ${error}`;
       }
     );
     // cleaar error after 5s

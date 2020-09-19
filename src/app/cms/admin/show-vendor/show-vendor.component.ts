@@ -20,7 +20,7 @@ export class ShowVendorComponent implements OnInit {
       vendorInfoPage => {
         this.vendors = vendorInfoPage.data;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => this.errorMessage = `Error: ${error}`
     );
   }
 

@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
               }
             } else {
               this.showOverlay = false;
-              this.errorMessage = "Invalid telephone number / password";
+              this.errorMessage = "Invalid telephone number or password";
           }
           });
         } else {

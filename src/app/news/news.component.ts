@@ -33,7 +33,7 @@ export class NewsComponent implements OnInit {
         this.news = newsPage.data;
         this.filteredNews = this.news;
       },
-      error => this.errorMessage = "An error occurred please try again later"
+      error => this.errorMessage = `Error: ${error}`
     );
   }
 
