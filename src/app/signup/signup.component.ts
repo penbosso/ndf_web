@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import * as _ from 'lodash';
 import { environment } from 'src/environments/environment';
+import { Validators } from '@angular/forms';
 
 function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   let confirmControl = c.get('confirmPassword');
@@ -40,14 +41,14 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.vendorForm = this.fb.group({
-      FirstName: '',
-      otherNames: '',
-      telephone:'',
+      FirstName: ['', Validators.required],
+      otherNames: ['', Validators.required],
+      telephone:['', Validators.required],
       companyCode:'',
-      password: '',
+      password: ['', Validators.required],
       passwordGroup: this.fb.group({
-        password:'',
-        confirmPassword: ''
+        password:['', Validators.required],
+        confirmPassword: ['', Validators.required]
       }, {validator: confirmPassword})
     });
     // cleaar error after 5s

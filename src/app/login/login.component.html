@@ -54,8 +54,18 @@
                     </button>
                   </div>
                 </div>
-                <a [routerLink]="['/vendor/signup']">Don't have an account? create one</a>
-                <a [routerLink]="['/']">Website home</a>
+                <!-- Footer -->
+                <div class="text-center card-footer mt-1 px-0 py-auto col-12">
+                  <p>
+                    Don't have an account?<a [routerLink]="['/vendor/signup']">
+                      Create one</a
+                    >
+                  </p>
+                  <p>
+                    <i class="fe fe-arrow-left-circle mr-2"></i>
+                    <a [routerLink]="['/']">Site Home</a>
+                  </p>
+                </div>
               </form>
             </div>
       </div>
