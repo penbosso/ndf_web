@@ -249,9 +249,9 @@
                     <input
                       type="checkbox"
                       class="form-check-input mr-2"
-                      name="terms"
-                      id="terms"
                       required
+                      formControlName="terms"
+                      id="terms"
                     />
                     <label class="form-check-label" for="terms"
                       >I agree with the
@@ -269,7 +269,7 @@
                       [title]="
                         vendorForm.valid
                           ? 'Save your entered data'
-                          : 'Disabled until form data is valid'
+                          : 'Disabled until form data is valid & terms agreed'
                       "
                       [disabled]="!vendorForm.valid"
                     >

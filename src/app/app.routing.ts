@@ -1,3 +1,6 @@
+import { SuperAdminGuard } from './user/super-admin.guard';
+import { BlockUserComponent } from './cms/admin/block-user/block-user.component';
+import { ViewActivityComponent } from './cms/admin/view-activity/view-activity.component';
 import { ViewSignedupVendorsComponent } from './cms/admin/view-signedup-vendors/view-signedup-vendors.component';
 import { AdminGuard } from './user/admin.guard';
 import { AddAdminComponent } from './cms/admin/add-admin/add-admin.component';
@@ -65,7 +68,7 @@ const appRoutes: Routes = [
   // cms routes goes here
   {
     path:'admin',
-    canActivate: [AdminGuard],
+    canActivate: [AuthGuard, AdminGuard],
     component: AdminLayoutComponent,
     children: [
       {path:'',  component: AdminHomeComponent},
@@ -78,8 +81,10 @@ const appRoutes: Routes = [
       {path:'upload-excel',  component: UploadExcelComponent},
       {path:'show-vendors',  component: ShowVendorComponent},
       {path: 'profile',   component: ProfileComponent},
-      {path: 'add-admin',   component: AddAdminComponent},
-      {path:'signedup-vendors', component: ViewSignedupVendorsComponent}
+      {path:'signedup-vendors', component: ViewSignedupVendorsComponent},
+      {path:'add-admin', canActivate: [SuperAdminGuard],  component: AddAdminComponent},
+      {path:'view-activity', canActivate: [SuperAdminGuard], component: ViewActivityComponent},
+      {path:'block-user', canActivate: [SuperAdminGuard], component: BlockUserComponent}
     ]
   },
 

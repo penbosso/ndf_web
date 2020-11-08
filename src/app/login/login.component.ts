@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
               this.errorMessage = '';
               if(this.auth.isVendor()) {
                 this.router.navigateByUrl('/vendor');
-              } else if (this.auth.isAdmin) {
+              } else if (this.auth.isAdmin() || this.auth.isSuperAdmin()) {
                 this.router.navigateByUrl('/admin');
               } else {
                 this.router.navigateByUrl('/');

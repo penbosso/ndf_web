@@ -53,7 +53,7 @@
             >News</a
           >
         </li>
-        <li class="nav-item" *ngIf="!auth.isAdmin()">
+        <li class="nav-item" *ngIf="!auth.isAdmin() && !auth.isSuperAdmin()">
           <a
             [routerLink]="['/vendor']"
             routerLinkActive="active"
@@ -61,7 +61,7 @@
             >Vendor</a
           >
         </li>
-        <li class="nav-item" *ngIf="auth.isAdmin()">
+        <li class="nav-item" *ngIf="auth.isAdmin() || auth.isSuperAdmin()">
           <a
             [routerLink]="['/admin']"
             routerLinkActive="active"
@@ -153,7 +153,9 @@
           {{errorMessage}}
         </div>
         <div class="container">
-          <form
+          <p>Sign up as a <a (click)="showBuyerSignUp=true" class="btn btn-primary btn-sm navbar-btn" style="color: white;">Buyer</a> OR
+            <a data-dismiss="modal" aria-label="Close" [routerLink]="['/vendor/signup']"  class="btn btn-primary btn-sm navbar-btn"  style="color: white;">Vendor</a> </p>
+          <form *ngIf="showBuyerSignUp"
             id="signupform"
             [formGroup]="buyerForm"
             (ngSubmit)="saveBuyer()"
@@ -294,7 +296,7 @@
               <div class="col-2">
                 <input
                   type="checkbox"
-                  name="terms"
+                  formControlName="terms"
                   required
                   class="form-control"
                 />
@@ -317,7 +319,7 @@
                 [title]="
                   buyerForm.valid
                     ? 'Save your entered data'
-                    : 'Disabled until form data is valid'
+                    : 'Disabled until form data is valid & terms agreed'
                 "
                 [disabled]="!buyerForm.valid"
               >

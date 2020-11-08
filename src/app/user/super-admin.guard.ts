@@ -6,14 +6,14 @@ import { AuthService } from '../login/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class SuperAdminGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if (!this.authService.isAdmin() && !this.authService.isSuperAdmin()) {
-        this.router.navigate(['/login']);
+      if (!this.authService.isSuperAdmin()) {
+        this.router.navigate(['/admin']);
         return false;
       }
       return true;

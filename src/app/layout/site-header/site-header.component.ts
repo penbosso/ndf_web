@@ -5,6 +5,7 @@ import { AbstractControl, FormBuilder, FormGroup, NgForm } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { environment } from 'src/environments/environment';
+import { Validators } from '@angular/forms';
 
 function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   let confirmControl = c.get('confirmPassword');
@@ -33,6 +34,7 @@ export class SiteHeaderComponent implements OnInit {
   errorMessage: any;
   public showOverlay = false;
   profilePic = environment.profilePic;
+  showBuyerSignUp: boolean = false;
 
   show:boolean = false;
   toggleShow = () => this.show = !this.show;
@@ -53,13 +55,14 @@ export class SiteHeaderComponent implements OnInit {
                         : this.profilePic;
                     }
     this.buyerForm = this.fb.group({
-      FirstName: '',
-      otherNames: '',
-      telephone:'',
+      FirstName: ['', Validators.required],
+      otherNames: ['', Validators.required],
+      telephone:['', Validators.required],
+      terms:['', Validators.required],
       password: '',
       passwordGroup: this.fb.group({
-        password:'',
-        confirmPassword: ''
+        password:['', Validators.required],
+        confirmPassword: ['', Validators.required]
       }, {validator: confirmPassword})
     });
     // cleaar error after 5s

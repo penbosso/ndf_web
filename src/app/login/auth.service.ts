@@ -61,6 +61,12 @@ export class AuthService {
     }
     return false;
   }
+  isSuperAdmin(): boolean {
+    if(this.getLoggedUser() && this.getLoggedUser().type == 'superadmin') {
+      return true;
+    }
+    return false;
+  }
 
   isVendor(): boolean  {
     if(this.getLoggedUser() && this.getLoggedUser().type == 'vendor') {

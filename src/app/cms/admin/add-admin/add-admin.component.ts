@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/auth.service';
@@ -44,24 +44,20 @@ export class AddAdminComponent implements OnInit {
 
   ngOnInit() {
     this.adminForm = this.fb.group({
-      firstName: '',
-      otherNames: '',
-      telephone:'',
+      firstName: ['', Validators.required],
+      otherNames: ['', Validators.required],
+      telephone:['', Validators.required],
+      type: ['admin', Validators.required],
       password: '',
       passwordGroup: this.fb.group({
-        password:'',
-        confirmPassword: ''
+        password:['', Validators.required],
+        confirmPassword: ['', Validators.required]
       }, {validator: confirmPassword})
     });
-    // cleaar error after 5s
-    if(this.errorMessage) {
-      setTimeout(()=>this.errorMessage = '', 5000)
-    }
   }
 
   saveAdmin(): void {
     const newAdmin = {...this.admin, ...this.adminForm.value}
-    newAdmin.type = "admin"
     newAdmin.profilePic = this.base64Image ? this.base64Image.replace(/^data:image\/[a-z]+;base64,/, "") : this.admin.profilePic;
     newAdmin.password = this.adminForm.value.passwordGroup.password;
     console.log(newAdmin);

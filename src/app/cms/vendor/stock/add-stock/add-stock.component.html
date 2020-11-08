@@ -90,7 +90,10 @@
                                 value="{{updateThisStock ? updateThisStock.name :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('name').touched && !stockForm.get('name').valid}"
                               />
-                              <span *ngIf="stockForm.get('name').errors?.required "> Please enter the timber name</span>
+                              <span class="invalid-feedback">
+                              <span *ngIf="(stockForm.get('name').touched ||
+                              stockForm.get('name').dirty) && stockForm.get('name').errors?.required "> Please enter the timber name</span>
+                              </span>
                             </div>
                           </div>
                           <div class="col-4">
@@ -104,7 +107,10 @@
                                 value="{{updateThisStock ? updateThisStock.size :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('size').touched && !stockForm.get('size').valid}"
                               />
-                              <span *ngIf="stockForm.get('size').errors?.required "> Please  enter the size</span>
+                              <span class="invalid-feedback">
+                              <span *ngIf="(stockForm.get('size').touched ||
+                              stockForm.get('size').dirty) && stockForm.get('size').errors?.required "> Please  enter the size</span>
+                              </span>
                             </div>
                           </div>
                           <div class="col-6">
@@ -120,7 +126,9 @@
                                 value="{{updateThisStock ? updateThisStock.quantity :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('quantity').touched && !stockForm.get('quantity').valid}"
                               />
+                              <span class="invalid-feedback">
                               <span *ngIf="stockForm.get('quantity').errors "> Please enter a valid timber quantity in stock</span>
+                              </span>
                             </div>
                           </div>
                           <div class="col-6">
@@ -134,7 +142,9 @@
                                 value="{{updateThisStock ? updateThisStock.pricePerLog :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('pricePerLog').touched && !stockForm.get('pricePerLog').valid}"
                               />
+                              <span class="invalid-feedback">
                               <span *ngIf="stockForm.get('pricePerLog').errors"> Please enter the a valid price</span>
+                              </span>
                             </div>
                           </div>
                           <div class="col-6">
@@ -148,7 +158,10 @@
                                 value="{{updateThisStock ? updateThisStock.companyCode :'' }}"
                                 [ngClass]="{'is-invalid': stockForm.get('companyCode').touched && !stockForm.get('companyCode').valid}"
                               />
-                              <span *ngIf="stockForm.get('companyCode').errors?.required "> Please  enter the License Number)</span>
+                              <span class="invalid-feedback">
+                                <span *ngIf="(stockForm.get('companyCode').touched ||
+                                stockForm.get('companyCode').dirty) && stockForm.get('companyCode').errors "> Please  enter the License Number</span>
+                              </span>
                             </div>
                           </div>
                           <div class="col-6">

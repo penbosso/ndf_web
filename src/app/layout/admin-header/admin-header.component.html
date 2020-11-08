@@ -32,10 +32,23 @@
               Profile
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['/admin/add-admin']">
-              <i class="dropdown-icon fe fe-user"></i>
-              Add Administrator
-            </a>
+            <!-- super admin funx-->
+            <div *ngIf="auth.isSuperAdmin()">
+              <a class="dropdown-item" [routerLink]="['/admin/add-admin']">
+                <i class="dropdown-icon fe fe-user-plus"></i>
+                Add Administrator
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/admin/block-user']">
+                <i class="dropdown-icon fe fe-user-minus"></i>
+                Block Users
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/admin/view-activity']">
+                <i class="dropdown-icon fe fe-eye"></i>
+                View Activities
+              </a>
+            </div>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()">
               <i class="dropdown-icon fe fe-log-out"></i>

@@ -52,6 +52,8 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { DeclindedStockComponent } from './shared/declinded-stock/declinded-stock.component';
 import { FeedbackListComponent } from './cms/admin/feedback-list/feedback-list.component';
 import { ViewSignedupVendorsComponent } from './cms/admin/view-signedup-vendors/view-signedup-vendors.component';
+import { ViewActivityComponent } from './cms/admin/view-activity/view-activity.component';
+import { BlockUserComponent } from './cms/admin/block-user/block-user.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { ViewSignedupVendorsComponent } from './cms/admin/view-signedup-vendors/
     AddAdminComponent,
     DeclindedStockComponent,
     FeedbackListComponent,
-    ViewSignedupVendorsComponent
+    ViewSignedupVendorsComponent,
+    ViewActivityComponent,
+    BlockUserComponent
   ],
   imports: [
     BrowserModule,
