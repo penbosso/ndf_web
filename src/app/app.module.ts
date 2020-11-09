@@ -54,6 +54,8 @@ import { FeedbackListComponent } from './cms/admin/feedback-list/feedback-list.c
 import { ViewSignedupVendorsComponent } from './cms/admin/view-signedup-vendors/view-signedup-vendors.component';
 import { ViewActivityComponent } from './cms/admin/view-activity/view-activity.component';
 import { BlockUserComponent } from './cms/admin/block-user/block-user.component';
+import { ForgotComponent } from './login/forgot/forgot.component';
+import { ResetComponent } from './login/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,9 @@ import { BlockUserComponent } from './cms/admin/block-user/block-user.component'
     FeedbackListComponent,
     ViewSignedupVendorsComponent,
     ViewActivityComponent,
-    BlockUserComponent
+    BlockUserComponent,
+    ForgotComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,

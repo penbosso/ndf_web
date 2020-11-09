@@ -1,0 +1,38 @@
+
+    <div class="page">
+      <div class="page-single">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-login mx-auto">
+              <div class="text-center mb-6">
+              	<img src="assets/images/logo.png" width="120px" height="auto">
+                <h2>Ghana Legal Timber Market</h2>
+              </div>
+              <form class="card" action="" method="post">
+                <div class="card-body p-6">
+                  <p class="card-title text-center">Enter your telephone number that you used to register. We'll send you SMS with a PIN to reset your password. </p>
+                  <div class="form-group">
+                    <label class="form-label">Telephone number</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      id="telephone"
+                      aria-describedby="telephoneHelp"
+                      placeholder="Enter telephone number"
+                    />
+                  </div>
+                  <div class="form-footer">
+                    <a href="home.html" class="btn btn-warning btn-block">
+                      Reset my password
+                    </a>
+                    <a [routerLink]="['/login']" class="btn btn-outline-dark btn-block">
+                      Login
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

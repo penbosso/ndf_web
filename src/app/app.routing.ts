@@ -1,3 +1,5 @@
+import { ResetComponent } from './login/reset/reset.component';
+import { ForgotComponent } from './login/forgot/forgot.component';
 import { SuperAdminGuard } from './user/super-admin.guard';
 import { BlockUserComponent } from './cms/admin/block-user/block-user.component';
 import { ViewActivityComponent } from './cms/admin/view-activity/view-activity.component';
@@ -95,6 +97,8 @@ const appRoutes: Routes = [
 
   {path: 'login', redirectTo: 'app/login'},
   {path: 'signup', redirectTo: 'vendor/signup'},
+  {path: 'forgot-password', component: ForgotComponent},
+  {path: 'reset-password', component: ResetComponent},
   // otherwise redirect to home
   {path: '**',
   component: SiteLayoutComponent,
