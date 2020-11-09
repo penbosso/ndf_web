@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap, mapTo, catchError } from 'rxjs/operators';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
+import { throwError } from 'rxjs/internal/observable/throwError';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,25 @@ export class AuthService {
   eventAuthError$ = this.eventAuthError.asObservable();
 
   private authUrl = environment.userApi + '/login';
+  private sendPinUrl = environment.userApi + '/send-pin';
+  private resertPasswordUrl = environment.userApi+ '/reset-password';
   private authUrlRefresh = environment.userApi + '/guest-login';
   constructor(private http: HttpClient) { }
+
+  sendResetPasswordPin(telephone: string): Observable<boolean> {
+    return this.http.post<any>(this.sendPinUrl, {telephone})
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  resetPassword({telephone, password, pin}): Observable<boolean> {
+    console.log({telephone, password, pin});
+    return this.http.post<any>(this.resertPasswordUrl, {telephone, password, pin})
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
 
   login(telephone: string, password: string): Observable<boolean> {
     return this.http.post<any>(this.authUrl, {telephone, password})
@@ -119,4 +137,21 @@ export class AuthService {
     localStorage.setItem(this.JWT_TOKEN, jwt);
   }
 
+
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    // if (err.error instanceof ErrorEvent) {
+    //   errorMessage = `An error occurred: ${err.error.message}`;
+    // }
+    // else {
+    //   errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    // }
+    if(err.error){
+      errorMessage = err.error.message;
+    } else {
+      errorMessage = "An error occurred please try again later";
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
 }

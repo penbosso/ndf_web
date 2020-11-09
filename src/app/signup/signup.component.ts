@@ -21,6 +21,7 @@ function confirmPassword(c: AbstractControl): {[key: string]: boolean } | null {
   }
   return null;
 }
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

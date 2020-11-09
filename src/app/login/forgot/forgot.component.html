@@ -8,26 +8,75 @@
               	<img src="assets/images/logo.png" width="120px" height="auto">
                 <h2>Ghana Legal Timber Market</h2>
               </div>
-              <form class="card" action="" method="post">
+
+
+              <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{errorMessage}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="" *ngIf="loading">
+                <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+              </div>
+
+              <form class="card"  [formGroup]="forgortPasswordForm" (ngSubmit)="sendPin()">
                 <div class="card-body p-6">
-                  <p class="card-title text-center">Enter your telephone number that you used to register. We'll send you SMS with a PIN to reset your password. </p>
+                  <p class="card-title text-center">Enter the telephone number that you used to register. We'll send you SMS with a PIN to reset your password. </p>
                   <div class="form-group">
-                    <label class="form-label">Telephone number</label>
+                    <label class="form-label" for="telephone"
+                      >Telephone Number</label
+                    >
                     <input
-                      type="tel"
                       class="form-control"
+                      type="tel"
+                      placeholder="Telephone Number"
                       id="telephone"
-                      aria-describedby="telephoneHelp"
-                      placeholder="Enter telephone number"
+                      minlength="10"
+                      formControlName="telephone"
+                      [ngClass]="{
+                        'is-invalid':
+                          (forgortPasswordForm.get('telephone').touched ||
+                            forgortPasswordForm.get('telephone').dirty) &&
+                          !forgortPasswordForm.get('telephone').valid
+                      }"
                     />
+                    <span class="invalid-feedback">
+                      <span *ngIf="forgortPasswordForm.get('telephone').errors"
+                        >Please enter a valid telephone number</span
+                      >
+                      <span
+                        *ngIf="forgortPasswordForm.get('telephone').errors?.minlength"
+                        >telephone number must be longer than 10 Numbers</span
+                      >
+                    </span>
                   </div>
                   <div class="form-footer">
-                    <a href="home.html" class="btn btn-warning btn-block">
+                    <button type="submit" class="btn btn-warning btn-block"
+                    [title]="
+                        forgortPasswordForm.valid
+                          ? 'Send pin'
+                          : 'Disabled, enter valid telephone number'
+                      "
+                      [disabled]="!forgortPasswordForm.valid"
+                    >
                       Reset my password
-                    </a>
-                    <a [routerLink]="['/login']" class="btn btn-outline-dark btn-block">
+                    </button>
+                    <a [routerLink]="['/login']" class="btn btn-outline-dark btn-block"
+                    >
                       Login
                     </a>
+                    <p>
+                      <i class="fe fe-arrow-left-circle mr-2"></i>
+                      <a [routerLink]="['/']">Site Home</a>
+                    </p>
                   </div>
                 </div>
               </form>
