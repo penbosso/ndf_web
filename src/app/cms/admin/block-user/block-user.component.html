@@ -1,1 +1,122 @@
-<p>block-user works!</p>
+
+                <div class="my-3 my-md-5">
+                  <div class="container">
+                      <div class="page-header">
+                          <h1 class="page-title">
+                              Users Data
+                          </h1>
+                          <!-- <div class="page-subtitle">
+                              Show all Administrators
+                          </div> -->
+                      </div>
+                      <div class="container mb-5 text-right">
+                          <a [routerLink]="['/admin/view-activity']" class="btn btn-teal mr-3">
+                              <i class="fe fe-file-plus"></i>
+                              View Admin Logs
+                          </a>
+                          <a  [routerLink]="['/admin/add-admin']" class="btn btn-primary">
+                              <i class="fe fe-plus"></i>
+                              Create new Admin
+                          </a>
+                      </div>
+                      <!-- Body goes here -->
+                      <div class="my-auto">
+                          <div class="container">
+                              <!-- start -->
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h3 class="card-title">
+                                          Filter Users
+                                      </h3>
+                                  </div>
+
+                                  <div class="table-responsive">
+                                      <table
+                                          class="table card-table table-vcenter text-nowrap datatable"
+                                      >
+                                          <thead>
+                                              <tr>
+                                                  <th>Name</th>
+                                                  <th>Role</th>
+                                                  <th>Created at</th>
+                                                  <th>Created by</th>
+                                                  <th>Phone</th>
+                                                  <th></th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td>
+                                                      David Arthur
+                                                  </td>
+                                                  <td>
+                                                      Regular
+                                                  </td>
+                                                  <td>
+                                                      12/12/2019
+                                                  </td>
+                                                  <td>
+                                                      Chris koka
+                                                  </td>
+                                                  <td>
+                                                      020345786
+                                                  </td>
+                                                  <td class="text-right">
+                                                      <a
+                                                          href="./view-vendor.html"
+                                                          class="btn btn-secondary btn-sm"
+                                                          >Suspend</a
+                                                      >
+                                                      <a
+                                                          href="./view-vendor.html"
+                                                          class="btn btn-danger btn-sm ml-2"
+                                                          >Delete</a
+                                                      >
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td>
+                                                      David Arthur
+                                                  </td>
+                                                  <td>
+                                                      Regular
+                                                  </td>
+                                                  <td>
+                                                      12/12/2019
+                                                  </td>
+                                                  <td>
+                                                      Chris koka
+                                                  </td>
+                                                  <td>
+                                                      020345786
+                                                  </td>
+                                                  <td class="text-right">
+                                                      <a
+                                                          href="./view-vendor.html"
+                                                          class="btn btn-secondary btn-sm"
+                                                          >Suspend</a
+                                                      >
+                                                      <a
+                                                          href="./view-vendor.html"
+                                                          class="btn btn-danger btn-sm ml-2"
+                                                          >Delete</a
+                                                      >
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                      <script>
+                                          require([
+                                              "datatables",
+                                              "jquery",
+                                          ], function (datatable, $) {
+                                              $(".datatable").DataTable();
+                                          });
+                                      </script>
+                                  </div>
+                                  <!-- Finish -->
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>

@@ -32,6 +32,13 @@ export class UserService {
   }
 
 
+  getUsers(): Observable<UserPage> {
+    return this.http.get<UserPage>(`${this.userApiBaseUrl}?pageSize=1000`)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getSignedUpVendors(): Observable<UserPage> {
     return this.http.get<UserPage>(`${this.userApiBaseUrl}?Type=vendor&pageSize=1000`)
     .pipe(

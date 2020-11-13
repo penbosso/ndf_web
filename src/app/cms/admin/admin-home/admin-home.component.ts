@@ -1,9 +1,11 @@
+import { filter } from 'rxjs/operators';
 import { StockService } from './../../vendor/stock/stock.service';
 import { Stock } from './../../vendor/stock/stock';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AdminVendorService } from '../admin-vendor.service';
 import { VendorInfo } from '../vendorInfo';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -28,8 +30,10 @@ export class AdminHomeComponent implements OnInit {
   showOverlay: boolean= false;
   message: string;
   statusComment: string = ""
+  vendorCount: number;
+  buyerCount: number;
 
-  constructor(private stockService: StockService, private vendorService : AdminVendorService) { }
+  constructor(private stockService: StockService, private vendorService : AdminVendorService, private userService: UserService) { }
 
   ngOnInit() {
     this.showOverlay = true;
@@ -42,6 +46,17 @@ export class AdminHomeComponent implements OnInit {
         this.errorMessage  = `Error: ${error}`
         this.showOverlay = false;
     }
+    );
+
+    this.getBuyerVendorCount();
+  }
+
+  getBuyerVendorCount() {
+    this.userService.getUsers().subscribe(
+      result => {console.log(result.data);
+        this.vendorCount = result.data.filter(datum => datum.type === 'vendor').length;
+        this.buyerCount = result.data.filter(datum => datum.type ==='buyer').length;
+      }
     );
   }
 
