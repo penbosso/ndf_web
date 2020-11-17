@@ -18,13 +18,13 @@ export class AuthService {
   eventAuthError$ = this.eventAuthError.asObservable();
 
   private authUrl = environment.userApi + '/login';
-  private sendPinUrl = environment.userApi + '/send-pin';
+  private sendPinUrl = environment.userApi + '/send-pin/';
   private resertPasswordUrl = environment.userApi+ '/reset-password';
   private authUrlRefresh = environment.userApi + '/guest-login';
   constructor(private http: HttpClient) { }
 
   sendResetPasswordPin(telephone: string): Observable<boolean> {
-    return this.http.post<any>(this.sendPinUrl, {telephone})
+    return this.http.post<any>(this.sendPinUrl+telephone['telephone'], {telephone})
     .pipe(
       catchError(this.handleError)
     );
@@ -148,6 +148,8 @@ export class AuthService {
     // }
     if(err.error){
       errorMessage = err.error.message;
+    } else if(err.message) {
+      errorMessage = err.message;
     } else {
       errorMessage = "An error occurred please try again later";
     }

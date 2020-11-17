@@ -6,5 +6,6 @@ export class User {
   public profilePic ='',
   public type = '',
   public companyCode = '',
+  public createdAt = '',
   public password?: string) {}
 }

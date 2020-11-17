@@ -44,45 +44,16 @@
                                                   <th></th>
                                               </tr>
                                           </thead>
-                                          <tbody>
-                                              <tr>
+                                          <tbody *ngIf="users && users.length">
+                                              <tr *ngFor="let user of users">
                                                   <td>
-                                                      David Arthur
+                                                    {{ user.firstName }} - {{ user.otherNames }}
                                                   </td>
                                                   <td>
-                                                      Regular
+                                                      {{ user.type }}
                                                   </td>
                                                   <td>
-                                                      12/12/2019
-                                                  </td>
-                                                  <td>
-                                                      Chris koka
-                                                  </td>
-                                                  <td>
-                                                      020345786
-                                                  </td>
-                                                  <td class="text-right">
-                                                      <a
-                                                          href="./view-vendor.html"
-                                                          class="btn btn-secondary btn-sm"
-                                                          >Suspend</a
-                                                      >
-                                                      <a
-                                                          href="./view-vendor.html"
-                                                          class="btn btn-danger btn-sm ml-2"
-                                                          >Delete</a
-                                                      >
-                                                  </td>
-                                              </tr>
-                                              <tr>
-                                                  <td>
-                                                      David Arthur
-                                                  </td>
-                                                  <td>
-                                                      Regular
-                                                  </td>
-                                                  <td>
-                                                      12/12/2019
+                                                      {{user.createdAt}}
                                                   </td>
                                                   <td>
                                                       Chris koka
@@ -93,13 +64,8 @@
                                                   <td class="text-right">
                                                       <a
                                                           href="./view-vendor.html"
-                                                          class="btn btn-secondary btn-sm"
+                                                          class="btn btn-warning btn-sm"
                                                           >Suspend</a
-                                                      >
-                                                      <a
-                                                          href="./view-vendor.html"
-                                                          class="btn btn-danger btn-sm ml-2"
-                                                          >Delete</a
                                                       >
                                                   </td>
                                               </tr>
