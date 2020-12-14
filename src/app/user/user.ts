@@ -5,6 +5,7 @@ export class User {
   public telephone = '',
   public profilePic ='',
   public type = '',
+  public isActive = true,
   public companyCode = '',
   public createdAt = '',
   public password?: string) {}

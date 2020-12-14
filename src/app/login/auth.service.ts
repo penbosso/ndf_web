@@ -74,13 +74,13 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    if(this.getLoggedUser() && this.getLoggedUser().type == 'admin') {
+    if(this.getLoggedUser() && this.getLoggedUser().type == 'administrator') {
       return true;
     }
     return false;
   }
   isSuperAdmin(): boolean {
-    if(this.getLoggedUser() && this.getLoggedUser().type == 'superadmin') {
+    if(this.getLoggedUser() && this.getLoggedUser().type == 'super_administrator') {
       return true;
     }
     return false;

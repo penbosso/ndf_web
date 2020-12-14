@@ -17,6 +17,19 @@ export class UserService {
   constructor(private http: HttpClient,
               public auth:AuthService) { }
 
+  suspendActivateUser(status: boolean, userId: string) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put(this.userApiBaseUrl+'/update-status',
+                        {id: userId, isActive: status},
+                        {headers: headers})
+                        .pipe(
+                          tap(data =>{
+                            console.log('Status updates: '+ JSON.stringify(data))
+                          }),
+                          catchError(this.handleError)
+                        );
+  }
+
   createUser(user: User): Observable<User> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<User>(this.userApiBaseUrl, user, {headers:headers})
@@ -27,6 +40,15 @@ export class UserService {
           }
           console.log('create User: '+ JSON.stringify(data))
         }),
+        catchError(this.handleError)
+      );
+  }
+
+  deleteUser(userId: string) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const url = `${this.userApiBaseUrl}/${userId}`;
+    return this.http.delete(url, {headers:headers})
+      .pipe(
         catchError(this.handleError)
       );
   }

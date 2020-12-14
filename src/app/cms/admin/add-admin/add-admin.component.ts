@@ -47,7 +47,7 @@ export class AddAdminComponent implements OnInit {
       firstName: ['', Validators.required],
       otherNames: ['', Validators.required],
       telephone:['', Validators.required],
-      type: ['admin', Validators.required],
+      type: ['administrator', Validators.required],
       password: '',
       passwordGroup: this.fb.group({
         password:['', Validators.required],

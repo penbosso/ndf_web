@@ -19,6 +19,20 @@
                               Create new Admin
                           </a>
                       </div>
+
+                      <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{errorMessage}}
+                        <button type="button" class="close" (click)="resetErrorMessage(1)">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"(click)="resetErrorMessage(2)">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
                       <!-- Body goes here -->
                       <div class="my-auto">
                           <div class="container">
@@ -28,6 +42,10 @@
                                       <h3 class="card-title">
                                           Filter Users
                                       </h3>
+                                      <div class="col-4">
+                                        <input class="form-control" [(ngModel)]="filter"
+                                        [ngModelOptions]="{ standalone: true }">
+                                      </div>
                                   </div>
 
                                   <div class="table-responsive">
@@ -38,39 +56,56 @@
                                               <tr>
                                                   <th>Name</th>
                                                   <th>Role</th>
-                                                  <th>Created at</th>
-                                                  <th>Created by</th>
                                                   <th>Phone</th>
                                                   <th></th>
                                               </tr>
                                           </thead>
-                                          <tbody *ngIf="users && users.length">
-                                              <tr *ngFor="let user of users">
+                                          <tbody *ngIf="pageOfItems && pageOfItems.length">
+                                              <tr *ngFor="let user of pageOfItems">
                                                   <td>
                                                     {{ user.firstName }} - {{ user.otherNames }}
                                                   </td>
                                                   <td>
-                                                      {{ user.type }}
+                                                      {{ user.type }} {{ user.companyCode ? ' - ' +user.companyCode:'' }}
                                                   </td>
                                                   <td>
-                                                      {{user.createdAt}}
-                                                  </td>
-                                                  <td>
-                                                      Chris koka
-                                                  </td>
-                                                  <td>
-                                                      020345786
+                                                    {{ user.telephone }}
                                                   </td>
                                                   <td class="text-right">
-                                                      <a
-                                                          href="./view-vendor.html"
+                                                      <span>
+                                                        <a *ngIf="user.isActive"
+                                                          (click)="suspendUser(user.id)"
                                                           class="btn btn-warning btn-sm"
                                                           >Suspend</a
+                                                        >
+                                                        <a *ngIf="!user.isActive"
+                                                          (click)="activateUser(user.id)"
+                                                          class="btn btn-success btn-sm"
+                                                          >Activate</a
+                                                        > -
+                                                      </span>
+
+                                                      <a
+                                                          (click)="deleteUser(user.id)"
+                                                          class="btn btn-danger btn-sm"
+                                                          >Delete</a
                                                       >
                                                   </td>
                                               </tr>
                                           </tbody>
                                       </table>
+                                      <!-- Pagination -->
+                                      <div class="row mt-5">
+                                        <nav aria-label="..." class="mx-auto">
+                                          <jw-pagination
+                                            [items]="filteredUsers"
+                                            (changePage)="onChangePage($event)"
+                                          ></jw-pagination>
+                                        </nav>
+                                      </div>
+                                      <div class="" *ngIf="!pageOfItems">
+                                        <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+                                      </div>
                                       <script>
                                           require([
                                               "datatables",

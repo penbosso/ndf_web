@@ -83,7 +83,7 @@ export class SiteHeaderComponent implements OnInit {
               if(this.auth.getLoggedUser().type =='vendor') {
                 this.router.navigateByUrl('/vendor');
               }
-              if(this.auth.getLoggedUser().type =='admin') {
+              if(this.auth.getLoggedUser().type =='administrator') {
                 this.router.navigateByUrl('/admin');
               }
               this.closeLoginModal.nativeElement.click();
