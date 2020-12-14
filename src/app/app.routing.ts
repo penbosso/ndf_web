@@ -86,7 +86,8 @@ const appRoutes: Routes = [
       {path:'signedup-vendors', component: ViewSignedupVendorsComponent},
       {path:'add-admin', canActivate: [SuperAdminGuard],  component: AddAdminComponent},
       {path:'view-activity', canActivate: [SuperAdminGuard], component: ViewActivityComponent},
-      {path:'block-user', canActivate: [SuperAdminGuard], component: BlockUserComponent}
+      {path:'block-user', canActivate: [SuperAdminGuard], component: BlockUserComponent},
+      {path:'block-user/:type', canActivate: [SuperAdminGuard], component: BlockUserComponent}
     ]
   },
 

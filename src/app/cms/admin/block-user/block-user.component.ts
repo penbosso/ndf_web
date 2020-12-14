@@ -2,6 +2,8 @@ import Fuse from 'fuse.js';
 import { UserService } from 'src/app/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/user/user';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-block-user',
@@ -13,6 +15,7 @@ export class BlockUserComponent implements OnInit {
   pageOfItems: Array<any>;
   errorMessage: any;
   message: string;
+  private subscription: Subscription;
 
   resetErrorMessage(id) {
     id == 1? this.errorMessage = '': this.message = '';
@@ -20,13 +23,19 @@ export class BlockUserComponent implements OnInit {
 
   users: User[];
   filteredUsers: User[];
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute,) { }
 
   ngOnInit() {
     this.userService.getUsers().subscribe(
       result => {
         this.users = result.data;
         this.filteredUsers = this.users;
+        this.subscription = this.route.paramMap.subscribe( params => {
+          const type = params.get('type');
+          if(type) {
+            this.filteredUsers = this.filteredUsers.filter(user => user.type === type)
+          }
+        });
       }
     );
   }
@@ -98,11 +107,16 @@ export class BlockUserComponent implements OnInit {
         "companyCode",
         "telephone"
       ],
-      threshold: 0.3
+      threshold: 0.2
     };
 
     let fuse = new Fuse(this.users, options);
 
     return fuse.search(this.filter).map(fuse => fuse.item);
+  }
+
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

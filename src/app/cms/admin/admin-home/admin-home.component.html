@@ -17,7 +17,7 @@
                     </span>
                     <div>
                       <h4 class="m-0">
-                        <a routerLink="/admin/block-user"
+                        <a [routerLink]="['/admin/block-user','vendor']"
                           > {{vendorCount ? vendorCount : '...'}} <small>vendors</small></a
                         >
                       </h4>
@@ -35,7 +35,7 @@
                     </span>
                     <div>
                       <h4 class="m-0">
-                        <a routerLink="/admin/block-user"
+                        <a [routerLink]="['/admin/block-user','buyer']"
                           >{{buyerCount ? buyerCount : '...'}} <small>buyers</small></a
                         >
                       </h4>

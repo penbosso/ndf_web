@@ -86,10 +86,6 @@ export class AddStockComponent implements OnInit, OnDestroy {
       }
 
     });
-    // cleaar error after 5s
-    if(this.errorMessage) {
-      setTimeout(()=>this.errorMessage = '', 5000)
-    }
   }
 
   save() {
