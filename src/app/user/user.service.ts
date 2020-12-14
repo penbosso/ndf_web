@@ -6,6 +6,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { AuthService } from '../login/auth.service';
 import { UserPage } from './user-page';
+import { ILogPage } from '../cms/admin/view-activity/logPage';
 
 
 @Injectable({
@@ -14,8 +15,21 @@ import { UserPage } from './user-page';
 export class UserService {
 
   private userApiBaseUrl = environment.userApi;
+  private activityLogUrl = environment.activityLogApi;
   constructor(private http: HttpClient,
               public auth:AuthService) { }
+
+
+  getAllActivityies() {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.get<ILogPage>(`${this.activityLogUrl}?pageSize=1500`, {headers: headers})
+    .pipe(
+      tap(data =>{
+        console.log('Status updates: '+ JSON.stringify(data))
+      }),
+      catchError(this.handleError)
+    );
+  }
 
   suspendActivateUser(status: boolean, userId: string) {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});

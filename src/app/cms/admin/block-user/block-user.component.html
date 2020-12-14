@@ -72,6 +72,7 @@
                                                     {{ user.telephone }}
                                                   </td>
                                                   <td class="text-right">
+                                                    <span *ngIf="user.type !='super_administrator'">
                                                       <span>
                                                         <a *ngIf="user.isActive"
                                                           (click)="suspendUser(user.id)"
@@ -84,12 +85,12 @@
                                                           >Activate</a
                                                         > -
                                                       </span>
-
                                                       <a
                                                           (click)="deleteUser(user.id)"
                                                           class="btn btn-danger btn-sm"
                                                           >Delete</a
                                                       >
+                                                  </span>
                                                   </td>
                                               </tr>
                                           </tbody>

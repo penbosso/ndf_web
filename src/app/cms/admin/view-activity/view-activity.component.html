@@ -1,48 +1,86 @@
 
           <div class="my-3 my-md-5">
             <div class="container">
-                <div class="col-md-7">
+                <div class="">
                     <div class="card">
                         <div class="card-header">
-                            <h2 class="card-title">Stock activity logs</h2>
+                            <h2 class="card-title">Activity logs</h2>
                         </div>
                         <table class="table card-table">
-                            <tr>
-                                <td>Vendor</td>
-                                <td>Stock</td>
-                                <td>Time</td>
-                                <td>Quantity</td>
-                                <td>License type</td>
-                                <td>License number</td>
-                                <td>Date of upload</td>
-                                <td>License number</td>
-                                <td >Action</td>
-                                <td >Date of action</td>
-                                <td >Admin</td>
-                                <!-- <td class="text-right">
-                                    <span class="badge badge-default"
-                                        >pending stock</span
-                                    >
-                                </td> -->
+                          <thead>
+
+                          <tr>
+                            <th>User</th>
+                            <th>Role</th>
+                            <th>Activity</th>
+                            <th>Other details</th>
+                            <th>Time</th>
+                            <th>Createt by</th>
+                            <!-- <td class="text-right">
+                                <span class="badge badge-default"
+                                    >pending stock</span
+                                >
+                            </td> -->
                             </tr>
-                            <tr>
-                              <td>Vendor</td>
-                              <td>Stock</td>
-                              <td>Time</td>
-                              <td>Quantity</td>
-                              <td>License type</td>
-                              <td>License number</td>
-                              <td>Date of upload</td>
-                              <td>License number</td>
-                                <td>
+                          </thead>
+                          <tbody *ngIf="pageOfItems && pageOfItems.length">
+                            <tr *ngFor="let log of pageOfItems">
+                              <td>{{ log.username }}</td>
+                              <td>{{ log.role }}</td>
+                              <td>{{ log.activity }}</td>
+                              <td>{{ log.otherDetails }}</td>
+                                <!-- <td>
                                   <span class="badge badge-default"
                                       >pending stock</span>
-                                </td>
-                                <td >Date of action</td>
-                                <td >Admin</td>
+                                </td> -->
+                                <td>{{ log.createdAt | date}}</td>
+                                <td>{{ log.createdBy}}</td>
                             </tr>
+                          </tbody>
                         </table>
-                    </div>
+                        <!-- Pagination -->
+                        <div class="row mt-5">
+                          <nav aria-label="..." class="mx-auto">
+                            <jw-pagination
+                              [items]="logs"
+                              (changePage)="onChangePage($event)"
+                            ></jw-pagination>
+                          </nav>
+                        </div>
+                      <div class="" *ngIf="!pageOfItems">
+                        <p><img src="assets/images/loading.gif" style="width: 45px; height:45px; margin-left: 46%; border-radius: 15px;" /></p>
+                      </div>
                 </div>
             </div>
         </div>
+
+<!--
+        <tr>
+          <td>Vendor</td>
+          <td>Stock</td>
+          <td>Time</td>
+          <td>Quantity</td>
+          <td>License type</td>
+          <td>License number</td>
+          <td>Date of upload</td>
+          <td>License number</td>
+          <td >Action</td>
+          <td >Date of action</td>
+          <td >Admin</td>
+      </tr>
+      <tr>
+        <td>Vendor</td>
+        <td>Stock</td>
+        <td>Time</td>
+        <td>Quantity</td>
+        <td>License type</td>
+        <td>License number</td>
+        <td>Date of upload</td>
+        <td>License number</td>
+          <td>
+            <span class="badge badge-default"
+                >pending stock</span>
+          </td>
+          <td >Date of action</td>
+          <td >Admin</td>
+      </tr> -->

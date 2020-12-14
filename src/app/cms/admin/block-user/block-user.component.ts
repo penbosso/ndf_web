@@ -51,7 +51,7 @@ export class BlockUserComponent implements OnInit {
   onChangePage(pageOfItems: Array<any>) {
     // update current page of items
     this.pageOfItems = pageOfItems;
-}
+  }
 
   activateUser(userId: string) {
     this.userService.suspendActivateUser(true, userId).subscribe(
